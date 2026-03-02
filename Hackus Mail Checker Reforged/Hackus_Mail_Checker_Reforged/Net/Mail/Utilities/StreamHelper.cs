@@ -180,7 +180,6 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 									{
 										try
 										{
-											
 											rData = stream.EndRead(innerAr);
 										}
 										catch (Exception ex)
@@ -430,7 +429,6 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 									{
 										try
 										{
-											
 											rData = stream.EndRead(innerAr);
 										}
 										catch (Exception ex)

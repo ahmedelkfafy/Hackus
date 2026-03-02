@@ -81,7 +81,6 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 							this.TcpClient.DisposeObject(ar);
 							return;
 						}
-						
 						localResult = null;
 						this.TcpClient.EndConnect(ar);
 					}
