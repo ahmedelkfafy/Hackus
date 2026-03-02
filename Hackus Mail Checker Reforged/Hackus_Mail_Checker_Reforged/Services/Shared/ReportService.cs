@@ -2,9 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Hackus_Mail_Checker_Reforged.Models;
 using Hackus_Mail_Checker_Reforged.Services.Background;
+using Newtonsoft.Json;
 
 namespace Hackus_Mail_Checker_Reforged.Services.Shared
 {
@@ -47,18 +50,18 @@ namespace Hackus_Mail_Checker_Reforged.Services.Shared
 					bool flag = false;
 					try
 					{
-						ReportService._c_.smethod_0(locker, ref flag);
-						httpContent_ = ReportService._c_.smethod_3(ReportService._c_.smethod_1(ReportService._foundServers), ReportService._c_.smethod_2(), "application/json");
+						Monitor.Enter(locker, ref flag);
+						httpContent_ = new StringContent(JsonConvert.SerializeObject(ReportService._foundServers), Encoding.UTF8, "application/json");
 						ReportService._foundServers.Clear();
 					}
 					finally
 					{
 						if (flag)
 						{
-							ReportService._c_.smethod_4(locker);
+							Monitor.Exit(locker);
 						}
 					}
-					ReportService._c_.smethod_5(ReportService._httpClient, "api/report/sendServers", httpContent_);
+					ReportService._httpClient.PostAsync("api/report/sendServers", httpContent_).GetAwaiter().GetResult();
 				}
 				catch
 				{

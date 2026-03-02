@@ -293,16 +293,16 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 			if (!text.Contains("WINDOWS") && !text.Contains("CP"))
 			{
 				return (from x in Encoding.GetEncodings()
-				where Utils._c__DisplayClass13_0.smethod_0(x).Is(characterSet)
-				select Utils._c_.smethod_0(x)).FirstOrDefault<Encoding>() ?? (@default ?? Encoding.Default);
+				where x.Name.Is(characterSet)
+				select x.GetEncoding()).FirstOrDefault<Encoding>() ?? (@default ?? Encoding.Default);
 			}
 			text = text.Replace("CP", "");
 			text = text.Replace("WINDOWS", "");
 			text = text.Replace("-", "");
 			int codepageNumber = int.Parse(text, CultureInfo.InvariantCulture);
 			return (from x in Encoding.GetEncodings()
-			where Utils._c__DisplayClass13_1.smethod_0(x) == codepageNumber
-			select Utils._c_.smethod_0(x)).FirstOrDefault<Encoding>() ?? (@default ?? Encoding.Default);
+			where x.CodePage == codepageNumber
+			select x.GetEncoding()).FirstOrDefault<Encoding>() ?? (@default ?? Encoding.Default);
 		}
 
 		// Token: 0x06000796 RID: 1942 RVA: 0x0002EAB4 File Offset: 0x0002CCB4

@@ -300,7 +300,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 					{
 						try
 						{
-							StartupViewModel._c_.smethod_0("https://t.me/HackusOfficial");
+							Process.Start("https://t.me/HackusOfficial");
 						}
 						catch
 						{

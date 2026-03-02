@@ -361,7 +361,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			}
 			else
 			{
-				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment = alternateViews.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => FileManager._c_.smethod_0(v.ContentType, "text/html"));
+				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment = alternateViews.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => v.ContentType == "text/html");
 				obj = ((attachment != null) ? attachment.Body : null);
 			}
 			string text = (string)obj;
@@ -373,7 +373,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			}
 			else
 			{
-				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment2 = alternateViews2.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => FileManager._c_.smethod_0(v.ContentType, "text/plain"));
+				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment2 = alternateViews2.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => v.ContentType == "text/plain");
 				obj2 = ((attachment2 != null) ? attachment2.Body : null);
 			}
 			string text2 = (string)obj2;
@@ -424,7 +424,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			}
 			else
 			{
-				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment = alternateViews.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => FileManager._c_.smethod_0(v.ContentType, "text/html"));
+				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment = alternateViews.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => v.ContentType == "text/html");
 				obj = ((attachment != null) ? attachment.Body : null);
 			}
 			string text = (string)obj;
@@ -436,7 +436,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			}
 			else
 			{
-				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment2 = alternateViews2.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => FileManager._c_.smethod_0(v.ContentType, "text/plain"));
+				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment2 = alternateViews2.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => v.ContentType == "text/plain");
 				obj2 = ((attachment2 != null) ? attachment2.Body : null);
 			}
 			string text2 = (string)obj2;
@@ -474,7 +474,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			}
 			else
 			{
-				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment = alternateViews.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => FileManager._c_.smethod_0(v.ContentType, "text/html"));
+				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment = alternateViews.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => v.ContentType == "text/html");
 				obj = ((attachment != null) ? attachment.Body : null);
 			}
 			string text = (string)obj;
@@ -486,7 +486,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			}
 			else
 			{
-				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment2 = alternateViews2.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => FileManager._c_.smethod_0(v.ContentType, "text/plain"));
+				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment2 = alternateViews2.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => v.ContentType == "text/plain");
 				obj2 = ((attachment2 != null) ? attachment2.Body : null);
 			}
 			string text2 = (string)obj2;

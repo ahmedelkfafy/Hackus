@@ -293,7 +293,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Popups.ViewModels
 								switch (this.SelectedRequestTypeIndex)
 								{
 								case 0:
-									if (!this.SelectedGroup.Requests.Any((Request r) => SearchGroupsViewModel._c__DisplayClass47_0.smethod_0(r.Sender, request)))
+									if (!this.SelectedGroup.Requests.Any((Request r) => r.Sender == request))
 									{
 										this.SelectedGroup.Requests.Add(new Request
 										{
@@ -302,7 +302,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Popups.ViewModels
 									}
 									break;
 								case 1:
-									if (!this.SelectedGroup.Requests.Any((Request r) => SearchGroupsViewModel._c__DisplayClass47_0.smethod_0(r.Subject, request)))
+									if (!this.SelectedGroup.Requests.Any((Request r) => r.Subject == request))
 									{
 										this.SelectedGroup.Requests.Add(new Request
 										{
@@ -311,7 +311,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Popups.ViewModels
 									}
 									break;
 								case 2:
-									if (!this.SelectedGroup.Requests.Any((Request r) => SearchGroupsViewModel._c__DisplayClass47_0.smethod_0(r.Body, request)))
+									if (!this.SelectedGroup.Requests.Any((Request r) => r.Body == request))
 									{
 										this.SelectedGroup.Requests.Add(new Request
 										{
@@ -325,7 +325,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Popups.ViewModels
 									{
 										'='
 									});
-									if (parts.Length >= 2 && parts[0].Length != 0 && parts[1].Length != 0 && !this.SelectedGroup.Requests.Any((Request r) => SearchGroupsViewModel._c__DisplayClass47_1.smethod_0(r.Sender, parts[0]) && SearchGroupsViewModel._c__DisplayClass47_1.smethod_0(r.Subject, parts[1])))
+									if (parts.Length >= 2 && parts[0].Length != 0 && parts[1].Length != 0 && !this.SelectedGroup.Requests.Any((Request r) => r.Sender == parts[0] && r.Subject == parts[1]))
 									{
 										this.SelectedGroup.Requests.Add(new Request
 										{
@@ -341,7 +341,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Popups.ViewModels
 									{
 										'='
 									});
-									if (parts.Length >= 2 && parts[0].Length != 0 && parts[1].Length != 0 && !this.SelectedGroup.Requests.Any((Request r) => SearchGroupsViewModel._c__DisplayClass47_1.smethod_0(r.Sender, parts[0]) && SearchGroupsViewModel._c__DisplayClass47_1.smethod_0(r.Body, parts[1])))
+									if (parts.Length >= 2 && parts[0].Length != 0 && parts[1].Length != 0 && !this.SelectedGroup.Requests.Any((Request r) => r.Sender == parts[0] && r.Body == parts[1]))
 									{
 										this.SelectedGroup.Requests.Add(new Request
 										{
@@ -357,7 +357,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Popups.ViewModels
 									{
 										'='
 									});
-									if (parts.Length >= 2 && parts[0].Length != 0 && parts[1].Length != 0 && !this.SelectedGroup.Requests.Any((Request r) => SearchGroupsViewModel._c__DisplayClass47_1.smethod_0(r.Subject, parts[0]) && SearchGroupsViewModel._c__DisplayClass47_1.smethod_0(r.Body, parts[1])))
+									if (parts.Length >= 2 && parts[0].Length != 0 && parts[1].Length != 0 && !this.SelectedGroup.Requests.Any((Request r) => r.Subject == parts[0] && r.Body == parts[1]))
 									{
 										this.SelectedGroup.Requests.Add(new Request
 										{
@@ -373,7 +373,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Popups.ViewModels
 									{
 										'='
 									});
-									if (parts.Length >= 3 && parts[0].Length != 0 && parts[1].Length != 0 && parts[2].Length != 0 && !this.SelectedGroup.Requests.Any((Request r) => SearchGroupsViewModel._c__DisplayClass47_1.smethod_0(r.Sender, parts[0]) && SearchGroupsViewModel._c__DisplayClass47_1.smethod_0(r.Subject, parts[1]) && SearchGroupsViewModel._c__DisplayClass47_1.smethod_0(r.Body, parts[2])))
+									if (parts.Length >= 3 && parts[0].Length != 0 && parts[1].Length != 0 && parts[2].Length != 0 && !this.SelectedGroup.Requests.Any((Request r) => r.Sender == parts[0] && r.Subject == parts[1] && r.Body == parts[2]))
 									{
 										this.SelectedGroup.Requests.Add(new Request
 										{
@@ -435,7 +435,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Popups.ViewModels
 							IEnumerator<Request> enumerator = requestGroup.Requests.GetEnumerator();
 							try
 							{
-								while (SearchGroupsViewModel._c_.smethod_0(enumerator))
+								while (enumerator.MoveNext())
 								{
 									Request request = enumerator.Current;
 									if (!SearchSettings.Instance.Requests.Any((Request r) => r.Equals(request)))
@@ -448,7 +448,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Popups.ViewModels
 							{
 								if (enumerator != null)
 								{
-									SearchGroupsViewModel._c_.smethod_1(enumerator);
+									enumerator.Dispose();
 								}
 							}
 						}

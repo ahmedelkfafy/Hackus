@@ -419,7 +419,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 				Func<RequestResult, bool> predicate;
 				if ((predicate = _9__1) == null)
 				{
-					predicate = (_9__1 = ((RequestResult r) => StatisticsManager._c__DisplayClass86_0.smethod_0(r.Request, result.Request)));
+					predicate = (_9__1 = ((RequestResult r) => r.Request.Equals(result.Request)));
 				}
 				RequestResult requestResult = requestValues.FirstOrDefault(predicate);
 				if (requestResult != null)
@@ -441,7 +441,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 				Func<KeyValuePair<string, string>, bool> predicate;
 				if ((predicate = _9__1) == null)
 				{
-					predicate = (_9__1 = ((KeyValuePair<string, string> p) => StatisticsManager._c__DisplayClass87_0.smethod_0(p.Key, address)));
+					predicate = (_9__1 = ((KeyValuePair<string, string> p) => p.Key == address));
 				}
 				if (badDetails.Any(predicate))
 				{
@@ -461,7 +461,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 				Func<KeyValuePair<string, string>, bool> predicate;
 				if ((predicate = _9__1) == null)
 				{
-					predicate = (_9__1 = ((KeyValuePair<string, string> p) => StatisticsManager._c__DisplayClass88_0.smethod_0(p.Key, address)));
+					predicate = (_9__1 = ((KeyValuePair<string, string> p) => p.Key == address));
 				}
 				if (blockedDetails.Any(predicate))
 				{
@@ -481,7 +481,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 				Func<KeyValuePair<string, string>, bool> predicate;
 				if ((predicate = _9__1) == null)
 				{
-					predicate = (_9__1 = ((KeyValuePair<string, string> p) => StatisticsManager._c__DisplayClass89_0.smethod_0(p.Key, address)));
+					predicate = (_9__1 = ((KeyValuePair<string, string> p) => p.Key == address));
 				}
 				if (errorDetails.Any(predicate))
 				{

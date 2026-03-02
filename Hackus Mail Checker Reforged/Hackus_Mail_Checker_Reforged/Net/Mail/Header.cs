@@ -121,8 +121,8 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		public override string ToString()
 		{
 			IEnumerable<string> enumerable = from x in this._values
-			where !Header._c_.smethod_0(x.Key)
-			select Header._c_.smethod_1(x.Key, "=", x.Value);
+			where !string.IsNullOrEmpty(x.Key)
+			select x.Key + "=" + x.Value;
 			return this.Value + (enumerable.Any<string>() ? ("; " + string.Join(", ", enumerable)) : null);
 		}
 

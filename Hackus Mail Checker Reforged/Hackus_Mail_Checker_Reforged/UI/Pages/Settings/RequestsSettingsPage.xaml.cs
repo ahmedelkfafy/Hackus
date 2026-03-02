@@ -131,7 +131,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Settings
 			};
 			searchGroups.Canceled += delegate(object sender, EventArgs e)
 			{
-				RequestsSettingsPage._c__DisplayClass2_0.smethod_0(window);
+				window.Close();
 			};
 			window.Show(window, false);
 		}

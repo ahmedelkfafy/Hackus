@@ -122,21 +122,21 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 								this.SafeExecute(new Action(Worker.Run));
 							});
 						}
-						Thread thread = ThreadsManager._c__DisplayClass18_0.smethod_0(threadStart_);
-						ThreadsManager._c__DisplayClass18_0.smethod_1(thread, true);
-						ThreadsManager._c__DisplayClass18_0.smethod_2(thread);
+						Thread thread = new Thread(threadStart_);
+						thread.IsBackground = true;
+						thread.Start();
 						object locker = this._locker;
 						bool flag = false;
 						try
 						{
-							ThreadsManager._c__DisplayClass18_0.smethod_3(locker, ref flag);
+							Monitor.Enter(locker, ref flag);
 							this.Threads.Add(thread);
 						}
 						finally
 						{
 							if (flag)
 							{
-								ThreadsManager._c__DisplayClass18_0.smethod_4(locker);
+								Monitor.Exit(locker);
 							}
 						}
 					}

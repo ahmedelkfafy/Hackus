@@ -186,7 +186,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 								Scheduler.Instance.AddNotification(new Notification
 								{
 									Address = this._mailbox.Address,
-									Message = ScheduledPop3Handler._c__DisplayClass12_0.smethod_0("New messages ({0}, {1}) were found on the account", finded, request),
+									Message = string.Format("New messages ({0}, {1}) were found on the account", finded, request),
 									Time = DateTime.Now
 								});
 							});
@@ -244,7 +244,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 									while (enumerator.MoveNext())
 									{
 										Request request = enumerator.Current;
-										Request request2 = checkedRequests.FirstOrDefault((Request r) => ScheduledPop3Handler._c__DisplayClass13_1.smethod_0(r.Sender, request.Sender) && ScheduledPop3Handler._c__DisplayClass13_1.smethod_0(r.Body, request.Body) && ScheduledPop3Handler._c__DisplayClass13_1.smethod_0(r.Subject, request.Subject));
+										Request request2 = checkedRequests.FirstOrDefault((Request r) => r.Sender == request.Sender && r.Body == request.Body && r.Subject == request.Subject);
 										if (request2 != null)
 										{
 											if (request2.IsChecked)

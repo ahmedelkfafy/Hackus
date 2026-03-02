@@ -85,22 +85,22 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Message
 				}
 				if (SearchSettings.Instance.DownloadMode == DownloadMode.Plain)
 				{
-					if (this.AlternateViews.Any((Attachment v) => MailMessage._c_.smethod_0(v.ContentType, "text/plain")))
+					if (this.AlternateViews.Any((Attachment v) => v.ContentType == "text/plain"))
 					{
-						attachment = this.AlternateViews.FirstOrDefault((Attachment v) => MailMessage._c_.smethod_0(v.ContentType, "text/plain"));
+						attachment = this.AlternateViews.FirstOrDefault((Attachment v) => v.ContentType == "text/plain");
 					}
 					else
 					{
-						attachment = this.AlternateViews.FirstOrDefault((Attachment v) => MailMessage._c_.smethod_0(v.ContentType, "text/html"));
+						attachment = this.AlternateViews.FirstOrDefault((Attachment v) => v.ContentType == "text/html");
 					}
 				}
-				else if (this.AlternateViews.Any((Attachment v) => MailMessage._c_.smethod_0(v.ContentType, "text/html")))
+				else if (this.AlternateViews.Any((Attachment v) => v.ContentType == "text/html"))
 				{
-					attachment = this.AlternateViews.FirstOrDefault((Attachment v) => MailMessage._c_.smethod_0(v.ContentType, "text/html"));
+					attachment = this.AlternateViews.FirstOrDefault((Attachment v) => v.ContentType == "text/html");
 				}
 				else
 				{
-					attachment = this.AlternateViews.FirstOrDefault((Attachment v) => MailMessage._c_.smethod_0(v.ContentType, "text/plain"));
+					attachment = this.AlternateViews.FirstOrDefault((Attachment v) => v.ContentType == "text/plain");
 				}
 				if (!string.IsNullOrEmpty((string)attachment.Body))
 				{

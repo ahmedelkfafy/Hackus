@@ -55,13 +55,13 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 				switch (frameType)
 				{
 				case FrameType.MainSettings:
-					PagesManager._c__DisplayClass8_0.smethod_0(this._mainSettingsFrame, page);
+					this._mainSettingsFrame.Navigate(page);
 					return;
 				case FrameType.MainOverlay:
-					PagesManager._c__DisplayClass8_0.smethod_0(this._mainOverlay, page);
+					this._mainOverlay.Navigate(page);
 					return;
 				case FrameType.Startup:
-					PagesManager._c__DisplayClass8_0.smethod_0(this._startupFrame, page);
+					this._startupFrame.Navigate(page);
 					return;
 				default:
 					return;
@@ -79,12 +79,12 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 				Func<Page, bool> predicate;
 				if ((predicate = _9__1) == null)
 				{
-					predicate = (_9__1 = ((Page p) => PagesManager._c__DisplayClass9_0.smethod_2(PagesManager._c__DisplayClass9_0.smethod_1(p), pageType)));
+					predicate = (_9__1 = ((Page p) => p.GetType() == pageType));
 				}
 				Page page = cachedPages.FirstOrDefault(predicate);
 				if (page == null)
 				{
-					page = (Page)PagesManager._c__DisplayClass9_0.smethod_0(pageType);
+					page = (Page)Activator.CreateInstance(pageType);
 					this._cachedPages.Add(page);
 				}
 				this.OpenPage(page, frameType);

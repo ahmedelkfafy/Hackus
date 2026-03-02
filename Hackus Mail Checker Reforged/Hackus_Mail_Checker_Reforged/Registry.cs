@@ -28,10 +28,10 @@ namespace Hackus_Mail_Checker_Reforged
 		{
 			if (RegistryHelper.GetValue<string>("Lang", "Hackus Apps\\Mail Checker", null) == "ru-RU")
 			{
-				App.Language = App.Languages.FirstOrDefault((CultureInfo language) => Registry._c_.smethod_1(Registry._c_.smethod_0(language), "ru-RU"));
+				App.Language = App.Languages.FirstOrDefault((CultureInfo language) => language.Name == "ru-RU");
 				return;
 			}
-			App.Language = App.Languages.FirstOrDefault((CultureInfo language) => Registry._c_.smethod_1(Registry._c_.smethod_0(language), "en-US"));
+			App.Language = App.Languages.FirstOrDefault((CultureInfo language) => language.Name == "en-US");
 		}
 
 		// Token: 0x060000AF RID: 175 RVA: 0x00011B90 File Offset: 0x0000FD90

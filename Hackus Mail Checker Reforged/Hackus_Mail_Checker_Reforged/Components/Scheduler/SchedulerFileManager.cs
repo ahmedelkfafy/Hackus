@@ -31,7 +31,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler
 			}
 			else
 			{
-				Attachment attachment = alternateViews.FirstOrDefault((Attachment v) => SchedulerFileManager._c_.smethod_0(v.ContentType, "text/html"));
+				Attachment attachment = alternateViews.FirstOrDefault((Attachment v) => v.ContentType == "text/html");
 				obj = ((attachment != null) ? attachment.Body : null);
 			}
 			string text = (string)obj;
@@ -43,7 +43,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler
 			}
 			else
 			{
-				Attachment attachment2 = alternateViews2.FirstOrDefault((Attachment v) => SchedulerFileManager._c_.smethod_0(v.ContentType, "text/plain"));
+				Attachment attachment2 = alternateViews2.FirstOrDefault((Attachment v) => v.ContentType == "text/plain");
 				obj2 = ((attachment2 != null) ? attachment2.Body : null);
 			}
 			string text2 = (string)obj2;

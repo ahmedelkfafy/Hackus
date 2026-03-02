@@ -864,6 +864,6 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Message
 			"\\d{1,2}\\s+[a-z]{3}\\s+\\d{2,4}\\s+\\d{1,2}\\:\\d{2}\\:\\d{1,2}\\s+[\\+\\-\\d\\:]*",
 			"\\d{4}\\-\\d{1,2}-\\d{1,2}\\s+\\d{1,2}\\:\\d{2}(?:\\:\\d{2})?(?:\\s+[\\+\\-\\d:]+)?"
 		}
-		select MessageBuilder._c_.smethod_0(x, RegexOptions.IgnoreCase | RegexOptions.Compiled)).ToArray<Regex>();
+		select new Regex(x, RegexOptions.IgnoreCase | RegexOptions.Compiled)).ToArray<Regex>();
 	}
 }

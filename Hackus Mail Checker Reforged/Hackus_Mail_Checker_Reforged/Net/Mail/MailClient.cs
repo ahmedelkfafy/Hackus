@@ -76,14 +76,14 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 				{
 					try
 					{
-						if (MailClient._c__DisplayClass14_0.smethod_0(this.TcpClient) == null)
+						if (this.TcpClient == null)
 						{
 							this.TcpClient.DisposeObject(ar);
 							return;
 						}
-						MailClient._c__DisplayClass14_0.smethod_2(MailClient._c__DisplayClass14_0.smethod_1(ar));
+						
 						localResult = null;
-						MailClient._c__DisplayClass14_0.smethod_3(this.TcpClient, ar);
+						this.TcpClient.EndConnect(ar);
 					}
 					catch (NullReferenceException)
 					{
@@ -103,7 +103,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 					{
 						ThreadAbortException connectException = connectException2;
 					}
-					MailClient._c__DisplayClass14_0.smethod_4(connectDoneEvent);
+					connectDoneEvent.Set();
 				}, this.TcpClient);
 			}
 			catch

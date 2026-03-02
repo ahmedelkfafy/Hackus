@@ -276,7 +276,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 				txt.WriteLine("Message-ID: {0}", this.MessageID);
 			}
 			foreach (KeyValuePair<string, Header> keyValuePair in from x in this.Headers
-			where !MailMessage.SpecialHeaders.Contains(x.Key, MailMessage._c_.smethod_0())
+			where !MailMessage.SpecialHeaders.Contains(x.Key, StringComparer.OrdinalIgnoreCase)
 			select x)
 			{
 				txt.WriteLine("{0}: {1}", keyValuePair.Key, keyValuePair.Value);
@@ -297,11 +297,11 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 			txt.WriteLine(this.Body);
 			this.AlternateViews.Union(this.Attachments).ToList<Attachment>().ForEach(delegate(Attachment att)
 			{
-				MailMessage._c__DisplayClass48_0.smethod_1(txt, MailMessage._c__DisplayClass48_0.smethod_0("--", boundary));
-				MailMessage._c__DisplayClass48_0.smethod_1(txt, MailMessage._c__DisplayClass48_0.smethod_2("", from h in att.Headers
-				select MailMessage._c_.smethod_1("{0}: {1}", h.Key, h.Value)));
-				MailMessage._c__DisplayClass48_0.smethod_3(txt);
-				MailMessage._c__DisplayClass48_0.smethod_1(txt, att.Body);
+				txt.WriteLine("--" + boundary);
+				txt.WriteLine(string.Join("\r\n", from h in att.Headers
+				select string.Format("{0}: {1}", h.Key, h.Value)));
+				txt.WriteLine();
+				txt.WriteLine(att.Body);
 			});
 			if (boundary != null)
 			{
