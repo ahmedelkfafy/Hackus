@@ -480,7 +480,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			{
 				try
 				{
-					var folderList = this.Imap.GetFolderList();
+					var folderList = this.Imap.DownloadFolders();
 					Application.Current.Dispatcher.Invoke(() =>
 					{
 						this.Folders.Clear();
@@ -488,7 +488,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 						{
 							foreach (FolderStatus folder in folderList)
 							{
-								string folderName = folder.Name;
+								string folderName = folder.FolderName;
 								string[] parts = folderName.Split(new char[] { '/', '.' });
 								this.ProcessFolder(parts, this.Folders, folderName);
 							}
@@ -592,7 +592,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			{
 				try
 				{
-					return this.Imap.Search(searchQuery);
+					return this.Imap.Search(true, searchQuery, "UTF-8");
 				}
 				catch
 				{
@@ -658,7 +658,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 					UidCollection pageUidCollection = new UidCollection();
 					for (int i = startIdx; i < endIdx; i++)
 						pageUidCollection.Add(uids[i]);
-					await Task.Run(() => { try { this.Imap.DownloadEnvelopes(pageUidCollection, false); } catch { } });
+					await Task.Run(() => { try { this.Imap.UidMode = true; this.Imap.DownloadEnvelopes(string.Join(",", pageUidCollection), false); } catch { } finally { this.Imap.UidMode = false; } });
 				}
 				this.ImapOperationStatus = "Loaded " + this.Messages.Count + " messages";
 			}
@@ -690,8 +690,9 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 							this.ImapOperationStatus = "Loading message...";
 							MailMessage msg = await Task.Run(() =>
 							{
-								try { return this.Imap.DownloadMessageByUID(envelope.UID); }
+								try { this.Imap.UidMode = true; return this.Imap.DownloadEntireMessage(envelope.Uid); }
 								catch { return null; }
+								finally { this.Imap.UidMode = false; }
 							});
 							if (msg != null)
 							{
@@ -732,10 +733,13 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 							{
 								try
 								{
+									this.Imap.UidMode = true;
 									foreach (var env in toDelete)
-										this.Imap.DeleteMessageByUID(env.UID);
+										this.Imap.SetMessageFlags(env.Uid, MessageFlags.Deleted, true);
+									this.Imap.Expunge();
 								}
 								catch { }
+								finally { this.Imap.UidMode = false; }
 							});
 							Application.Current.Dispatcher.Invoke(() =>
 							{

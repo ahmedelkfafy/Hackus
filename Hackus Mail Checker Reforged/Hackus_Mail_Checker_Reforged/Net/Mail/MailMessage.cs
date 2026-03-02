@@ -32,6 +32,8 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		// Token: 0x1700018D RID: 397
 		// (get) Token: 0x0600074B RID: 1867 RVA: 0x0000A944 File Offset: 0x00008B44
 		// (set) Token: 0x0600074C RID: 1868 RVA: 0x0000A94C File Offset: 0x00008B4C
+		public virtual bool IsBodyHtml { get; set; }
+
 		public virtual DateTime Date { get; set; }
 
 		// Token: 0x1700018E RID: 398

@@ -520,7 +520,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			}
 			finally
 			{
-				try { client?.Close(); } catch { }
+				try { client?.Disconnect(); } catch { }
 			}
 			return false;
 		}
