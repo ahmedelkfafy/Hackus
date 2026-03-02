@@ -33,7 +33,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Settings
 				return;
 			}
 			string name = ((ComboBoxItem)this.SearchRequestComboBox.SelectedItem).Name;
-			uint num = <PrivateImplementationDetails>.ComputeStringHash(name);
+			uint num = _PrivateImplementationDetails_.ComputeStringHash(name);
 			if (num > 1788324655U)
 			{
 				if (num <= 1912235038U)

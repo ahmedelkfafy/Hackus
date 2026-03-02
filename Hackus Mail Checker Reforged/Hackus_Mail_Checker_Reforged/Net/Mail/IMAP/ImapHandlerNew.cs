@@ -279,12 +279,12 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 			bool flag = this.IsAdditionalCheckRequired();
 			try
 			{
-				Func<AttachmentMessageInfo, bool> <>9__11;
+				Func<AttachmentMessageInfo, bool> _9__11;
 				int l;
 				int i;
-				Func<string, bool> <>9__1;
-				Func<Uid, bool> <>9__2;
-				Func<Uid, bool> <>9__3;
+				Func<string, bool> _9__1;
+				Func<Uid, bool> _9__2;
+				Func<Uid, bool> _9__3;
 				for (i = 0; i < allFolders.Count; i = l + 1)
 				{
 					this.WaitPause();
@@ -331,9 +331,9 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 											{
 												IEnumerable<string> checkedFolders = request2.CheckedFolders;
 												Func<string, bool> predicate;
-												if ((predicate = <>9__1) == null)
+												if ((predicate = _9__1) == null)
 												{
-													predicate = (<>9__1 = ((string u) => ImapHandlerNew._c__DisplayClass15_1.smethod_0(u, allFolders[i].Name)));
+													predicate = (_9__1 = ((string u) => ImapHandlerNew._c__DisplayClass15_1.smethod_0(u, allFolders[i].Name)));
 												}
 												if (!checkedFolders.Any(predicate) && (request2.SavedUids == null || request2.SavedUids.Count < this.SearchSettings.DownloadLettersLimit))
 												{
@@ -351,9 +351,9 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 										request4 = request2;
 										IEnumerable<Uid> findedUids = request2.FindedUids;
 										Func<Uid, bool> predicate2;
-										if ((predicate2 = <>9__2) == null)
+										if ((predicate2 = _9__2) == null)
 										{
-											predicate2 = (<>9__2 = ((Uid u) => ImapHandlerNew._c__DisplayClass15_1.smethod_0(u.Folder.Name, allFolders[i].Name)));
+											predicate2 = (_9__2 = ((Uid u) => ImapHandlerNew._c__DisplayClass15_1.smethod_0(u.Folder.Name, allFolders[i].Name)));
 										}
 										Uid[] array;
 										if (!findedUids.Any(predicate2))
@@ -364,9 +364,9 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 										{
 											IEnumerable<Uid> findedUids2 = request2.FindedUids;
 											Func<Uid, bool> predicate3;
-											if ((predicate3 = <>9__3) == null)
+											if ((predicate3 = _9__3) == null)
 											{
-												predicate3 = (<>9__3 = ((Uid u) => ImapHandlerNew._c__DisplayClass15_1.smethod_0(u.Folder.Name, allFolders[i].Name)));
+												predicate3 = (_9__3 = ((Uid u) => ImapHandlerNew._c__DisplayClass15_1.smethod_0(u.Folder.Name, allFolders[i].Name)));
 											}
 											array = findedUids2.Where(predicate3).ToArray<Uid>();
 										}
@@ -1039,9 +1039,9 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 								}
 								IEnumerable<AttachmentMessageInfo> source = list2;
 								Func<AttachmentMessageInfo, bool> predicate4;
-								if ((predicate4 = <>9__11) == null)
+								if ((predicate4 = _9__11) == null)
 								{
-									predicate4 = (<>9__11 = ((AttachmentMessageInfo m) => this.IsValidAttachmentMessage(m)));
+									predicate4 = (_9__11 = ((AttachmentMessageInfo m) => this.IsValidAttachmentMessage(m)));
 								}
 								foreach (AttachmentMessageInfo attachmentMessageInfo in source.Where(predicate4).ToList<AttachmentMessageInfo>())
 								{

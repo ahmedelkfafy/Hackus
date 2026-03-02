@@ -272,11 +272,11 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 				{
 					result = (this._startCommand = new RelayCommand(delegate(object obj)
 					{
-						MainViewModel.<<get_StartCommand>b__53_0>d <<get_StartCommand>b__53_0>d;
-						<<get_StartCommand>b__53_0>d.<>t__builder = AsyncVoidMethodBuilder.Create();
-						<<get_StartCommand>b__53_0>d.<>4__this = this;
-						<<get_StartCommand>b__53_0>d.<>1__state = -1;
-						<<get_StartCommand>b__53_0>d.<>t__builder.Start<MainViewModel.<<get_StartCommand>b__53_0>d>(ref <<get_StartCommand>b__53_0>d);
+						MainViewModel.get_StartCommand_b__53_0_d get_StartCommand_b__53_0_d;
+						get_StartCommand_b__53_0_d._t__builder = AsyncVoidMethodBuilder.Create();
+						get_StartCommand_b__53_0_d._4__this = this;
+						get_StartCommand_b__53_0_d._1__state = -1;
+						get_StartCommand_b__53_0_d._t__builder.Start<MainViewModel.get_StartCommand_b__53_0_d>(ref get_StartCommand_b__53_0_d);
 					}, (object obj) => MailManager.Instance.Any() && ThreadsManager.Instance.State == CheckerState.Stopped && (!ProxySettings.Instance.UseProxy || ProxyManager.Instance.Any() || !MainViewModel._c_.smethod_1(ProxySettings.Instance.WebLinks))));
 				}
 				return result;
@@ -764,7 +764,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 								string request = array[i];
 								if (!string.IsNullOrWhiteSpace(request))
 								{
-									uint num = <PrivateImplementationDetails>.ComputeStringHash(text);
+									uint num = _PrivateImplementationDetails_.ComputeStringHash(text);
 									if (num > 2179143197U)
 									{
 										if (num <= 2692293871U)
@@ -942,12 +942,12 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 				{
 					result = (this._loadBaseCommand = new RelayCommand(delegate(object obj)
 					{
-						MainViewModel.<<get_LoadBaseCommand>b__125_0>d <<get_LoadBaseCommand>b__125_0>d;
-						<<get_LoadBaseCommand>b__125_0>d.<>t__builder = AsyncVoidMethodBuilder.Create();
-						<<get_LoadBaseCommand>b__125_0>d.<>4__this = this;
-						<<get_LoadBaseCommand>b__125_0>d.obj = obj;
-						<<get_LoadBaseCommand>b__125_0>d.<>1__state = -1;
-						<<get_LoadBaseCommand>b__125_0>d.<>t__builder.Start<MainViewModel.<<get_LoadBaseCommand>b__125_0>d>(ref <<get_LoadBaseCommand>b__125_0>d);
+						MainViewModel.get_LoadBaseCommand_b__125_0_d get_LoadBaseCommand_b__125_0_d;
+						get_LoadBaseCommand_b__125_0_d._t__builder = AsyncVoidMethodBuilder.Create();
+						get_LoadBaseCommand_b__125_0_d._4__this = this;
+						get_LoadBaseCommand_b__125_0_d.obj = obj;
+						get_LoadBaseCommand_b__125_0_d._1__state = -1;
+						get_LoadBaseCommand_b__125_0_d._t__builder.Start<MainViewModel.get_LoadBaseCommand_b__125_0_d>(ref get_LoadBaseCommand_b__125_0_d);
 					}, null));
 				}
 				return result;
@@ -1451,11 +1451,11 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 				{
 					result = (this._getCaptchaBalanceCommand = new RelayCommand(delegate(object obj)
 					{
-						MainViewModel.<<get_GetCaptchaBalanceCommand>b__176_0>d <<get_GetCaptchaBalanceCommand>b__176_0>d;
-						<<get_GetCaptchaBalanceCommand>b__176_0>d.<>t__builder = AsyncVoidMethodBuilder.Create();
-						<<get_GetCaptchaBalanceCommand>b__176_0>d.<>4__this = this;
-						<<get_GetCaptchaBalanceCommand>b__176_0>d.<>1__state = -1;
-						<<get_GetCaptchaBalanceCommand>b__176_0>d.<>t__builder.Start<MainViewModel.<<get_GetCaptchaBalanceCommand>b__176_0>d>(ref <<get_GetCaptchaBalanceCommand>b__176_0>d);
+						MainViewModel.get_GetCaptchaBalanceCommand_b__176_0_d get_GetCaptchaBalanceCommand_b__176_0_d;
+						get_GetCaptchaBalanceCommand_b__176_0_d._t__builder = AsyncVoidMethodBuilder.Create();
+						get_GetCaptchaBalanceCommand_b__176_0_d._4__this = this;
+						get_GetCaptchaBalanceCommand_b__176_0_d._1__state = -1;
+						get_GetCaptchaBalanceCommand_b__176_0_d._t__builder.Start<MainViewModel.get_GetCaptchaBalanceCommand_b__176_0_d>(ref get_GetCaptchaBalanceCommand_b__176_0_d);
 					}, null));
 				}
 				return result;

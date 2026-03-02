@@ -56,7 +56,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 			{
 				return default(T);
 			}
-			return Enum.GetValues(typeof(T)).Cast<T>().ToArray<T>().FirstOrDefault((T x) => HeaderDictionary._c__DisplayClass4_0<T>.\u202A\u206C\u206A\u206D\u206D\u206B\u202C\u202A\u200D\u200F\u200D\u200E\u200B\u206E\u206E\u202B\u206E\u202D\u206F\u202D\u202E\u200E\u206B\u206D\u202A\u206B\u200B\u202B\u200D\u200C\u200B\u202C\u206A\u200F\u202B\u206F\u202E\u200C\u206F\u202E(x.ToString(), value, StringComparison.OrdinalIgnoreCase));
+			return Enum.GetValues(typeof(T)).Cast<T>().ToArray<T>().FirstOrDefault((T x) => string.Equals(x.ToString(), value, StringComparison.OrdinalIgnoreCase));
 		}
 
 		// Token: 0x060006EA RID: 1770 RVA: 0x0000A418 File Offset: 0x00008618

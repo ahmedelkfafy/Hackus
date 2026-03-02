@@ -40,14 +40,14 @@ namespace Hackus_Mail_Checker_Reforged
 		// Token: 0x06000077 RID: 119 RVA: 0x00010910 File Offset: 0x0000EB10
 		public Task UploadConfiguration(HashSet<string> toSearch, ProtocolType protocol)
 		{
-			SqlConfiguration.<UploadConfiguration>d__8 <UploadConfiguration>d__;
-			<UploadConfiguration>d__.<>t__builder = AsyncTaskMethodBuilder.Create();
-			<UploadConfiguration>d__.<>4__this = this;
-			<UploadConfiguration>d__.toSearch = toSearch;
-			<UploadConfiguration>d__.protocol = protocol;
-			<UploadConfiguration>d__.<>1__state = -1;
-			<UploadConfiguration>d__.<>t__builder.Start<SqlConfiguration.<UploadConfiguration>d__8>(ref <UploadConfiguration>d__);
-			return <UploadConfiguration>d__.<>t__builder.Task;
+			SqlConfiguration.UploadConfiguration_d__8 UploadConfiguration_d__;
+			UploadConfiguration_d__._t__builder = AsyncTaskMethodBuilder.Create();
+			UploadConfiguration_d__._4__this = this;
+			UploadConfiguration_d__.toSearch = toSearch;
+			UploadConfiguration_d__.protocol = protocol;
+			UploadConfiguration_d__._1__state = -1;
+			UploadConfiguration_d__._t__builder.Start<SqlConfiguration.UploadConfiguration_d__8>(ref UploadConfiguration_d__);
+			return UploadConfiguration_d__._t__builder.Task;
 		}
 
 		// Token: 0x06000078 RID: 120 RVA: 0x00010964 File Offset: 0x0000EB64

@@ -318,11 +318,11 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 				{
 					result = (this._loadProxyCommand = new RelayCommand(delegate(object obj)
 					{
-						ProxyLoaderViewModel.<<get_LoadProxyCommand>b__62_0>d <<get_LoadProxyCommand>b__62_0>d;
-						<<get_LoadProxyCommand>b__62_0>d.<>t__builder = AsyncVoidMethodBuilder.Create();
-						<<get_LoadProxyCommand>b__62_0>d.<>4__this = this;
-						<<get_LoadProxyCommand>b__62_0>d.<>1__state = -1;
-						<<get_LoadProxyCommand>b__62_0>d.<>t__builder.Start<ProxyLoaderViewModel.<<get_LoadProxyCommand>b__62_0>d>(ref <<get_LoadProxyCommand>b__62_0>d);
+						ProxyLoaderViewModel.get_LoadProxyCommand_b__62_0_d get_LoadProxyCommand_b__62_0_d;
+						get_LoadProxyCommand_b__62_0_d._t__builder = AsyncVoidMethodBuilder.Create();
+						get_LoadProxyCommand_b__62_0_d._4__this = this;
+						get_LoadProxyCommand_b__62_0_d._1__state = -1;
+						get_LoadProxyCommand_b__62_0_d._t__builder.Start<ProxyLoaderViewModel.get_LoadProxyCommand_b__62_0_d>(ref get_LoadProxyCommand_b__62_0_d);
 					}, (object obj) => this.LoadFromFile || (this.LoadFromWeb && !string.IsNullOrEmpty(this.WebTextSources))));
 				}
 				return result;

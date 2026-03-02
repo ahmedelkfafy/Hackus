@@ -120,7 +120,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 					try
 					{
 						AsyncCallback asyncCallback = null;
-						AsyncCallback <>9__0;
+						AsyncCallback _9__0;
 						for (;;)
 						{
 							if (asyncResult == null)
@@ -174,9 +174,9 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 							if ((callback = asyncCallback) == null)
 							{
 								AsyncCallback asyncCallback2;
-								if ((asyncCallback2 = <>9__0) == null)
+								if ((asyncCallback2 = _9__0) == null)
 								{
-									asyncCallback2 = (<>9__0 = delegate(IAsyncResult innerAr)
+									asyncCallback2 = (_9__0 = delegate(IAsyncResult innerAr)
 									{
 										try
 										{
@@ -300,29 +300,29 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 		// Token: 0x060007F9 RID: 2041 RVA: 0x0000AE25 File Offset: 0x00009025
 		public static IEnumerable<string> ReadLines(this Stream stream, int ReadTimeOut = 15000)
 		{
-			if (!StreamHelper.<ReadLines>d__8.smethod_1(stream))
+			if (!StreamHelper.ReadLines_d__8.smethod_1(stream))
 			{
 				goto IL_63;
 			}
-			if (StreamHelper.<ReadLines>d__8.smethod_3(stream))
+			if (StreamHelper.ReadLines_d__8.smethod_3(stream))
 			{
-				StreamHelper.<ReadLines>d__8.smethod_4(stream, ReadTimeOut);
+				StreamHelper.ReadLines_d__8.smethod_4(stream, ReadTimeOut);
 			}
-			StreamReader reader2 = StreamHelper.<ReadLines>d__8.smethod_6(stream, StreamHelper.<ReadLines>d__8.smethod_5(), true, 4096, true);
+			StreamReader reader2 = StreamHelper.ReadLines_d__8.smethod_6(stream, StreamHelper.ReadLines_d__8.smethod_5(), true, 4096, true);
 			for (;;)
 			{
 				string text;
 				try
 				{
 					IL_8A:
-					if ((text = StreamHelper.<ReadLines>d__8.smethod_7(reader2)) == null)
+					if ((text = StreamHelper.ReadLines_d__8.smethod_7(reader2)) == null)
 					{
 						break;
 					}
 					goto IL_AA;
 					IL_63:
 					stream.DisposeObject();
-					throw StreamHelper.<ReadLines>d__8.smethod_2(_Module_.smethod_4<string>(-322178440));
+					throw StreamHelper.ReadLines_d__8.smethod_2(_Module_.smethod_4<string>(-322178440));
 					IL_7E:
 					int num;
 					if (num != 1)
@@ -335,7 +335,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 				{
 					if (reader2 != null)
 					{
-						StreamHelper.<ReadLines>d__8.smethod_8(reader2);
+						StreamHelper.ReadLines_d__8.smethod_8(reader2);
 					}
 				}
 				break;
@@ -411,7 +411,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 				try
 				{
 					AsyncCallback asyncCallback = null;
-					AsyncCallback <>9__0;
+					AsyncCallback _9__0;
 					for (;;)
 					{
 						if (asyncResult == null || asyncResult.IsCompleted)
@@ -424,9 +424,9 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 							if ((callback = asyncCallback) == null)
 							{
 								AsyncCallback asyncCallback2;
-								if ((asyncCallback2 = <>9__0) == null)
+								if ((asyncCallback2 = _9__0) == null)
 								{
-									asyncCallback2 = (<>9__0 = delegate(IAsyncResult innerAr)
+									asyncCallback2 = (_9__0 = delegate(IAsyncResult innerAr)
 									{
 										try
 										{

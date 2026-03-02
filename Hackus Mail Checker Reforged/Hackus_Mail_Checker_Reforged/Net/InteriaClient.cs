@@ -220,12 +220,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 		}
 
 		// Token: 0x0600052E RID: 1326 RVA: 0x0001D9FC File Offset: 0x0001BBFC
-		[return: TupleElementNames(new string[]
-		{
-			"status",
-			"image"
-		})]
-		private ValueTuple<OperationResult, MemoryStream> GetCaptchaImage(string url)
+				private ValueTuple<OperationResult, MemoryStream> GetCaptchaImage(string url)
 		{
 			for (int i = 0; i < 2; i++)
 			{

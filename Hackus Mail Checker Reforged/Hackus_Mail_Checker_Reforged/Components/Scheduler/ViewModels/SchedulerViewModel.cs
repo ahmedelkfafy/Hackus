@@ -331,12 +331,12 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.ViewModels
 				{
 					result = (this._loadMailsFromBaseCommand = new RelayCommand(delegate(object obj)
 					{
-						SchedulerViewModel.<<get_LoadMailsFromBaseCommand>b__52_0>d <<get_LoadMailsFromBaseCommand>b__52_0>d;
-						<<get_LoadMailsFromBaseCommand>b__52_0>d.<>t__builder = AsyncVoidMethodBuilder.Create();
-						<<get_LoadMailsFromBaseCommand>b__52_0>d.<>4__this = this;
-						<<get_LoadMailsFromBaseCommand>b__52_0>d.obj = obj;
-						<<get_LoadMailsFromBaseCommand>b__52_0>d.<>1__state = -1;
-						<<get_LoadMailsFromBaseCommand>b__52_0>d.<>t__builder.Start<SchedulerViewModel.<<get_LoadMailsFromBaseCommand>b__52_0>d>(ref <<get_LoadMailsFromBaseCommand>b__52_0>d);
+						SchedulerViewModel.get_LoadMailsFromBaseCommand_b__52_0_d get_LoadMailsFromBaseCommand_b__52_0_d;
+						get_LoadMailsFromBaseCommand_b__52_0_d._t__builder = AsyncVoidMethodBuilder.Create();
+						get_LoadMailsFromBaseCommand_b__52_0_d._4__this = this;
+						get_LoadMailsFromBaseCommand_b__52_0_d.obj = obj;
+						get_LoadMailsFromBaseCommand_b__52_0_d._1__state = -1;
+						get_LoadMailsFromBaseCommand_b__52_0_d._t__builder.Start<SchedulerViewModel.get_LoadMailsFromBaseCommand_b__52_0_d>(ref get_LoadMailsFromBaseCommand_b__52_0_d);
 					}, null));
 				}
 				return result;

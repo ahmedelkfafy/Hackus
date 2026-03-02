@@ -28,13 +28,13 @@ namespace Hackus_Mail_Checker_Reforged.Helpers
 		// Token: 0x06000A26 RID: 2598 RVA: 0x0003B2E4 File Offset: 0x000394E4
 		public static Task<string[]> ReadAllLinesAsync(string path, CancellationToken token)
 		{
-			ToolsHelper.<ReadAllLinesAsync>d__1 <ReadAllLinesAsync>d__;
-			<ReadAllLinesAsync>d__.<>t__builder = AsyncTaskMethodBuilder<string[]>.Create();
-			<ReadAllLinesAsync>d__.path = path;
-			<ReadAllLinesAsync>d__.token = token;
-			<ReadAllLinesAsync>d__.<>1__state = -1;
-			<ReadAllLinesAsync>d__.<>t__builder.Start<ToolsHelper.<ReadAllLinesAsync>d__1>(ref <ReadAllLinesAsync>d__);
-			return <ReadAllLinesAsync>d__.<>t__builder.Task;
+			ToolsHelper.ReadAllLinesAsync_d__1 ReadAllLinesAsync_d__;
+			ReadAllLinesAsync_d__._t__builder = AsyncTaskMethodBuilder<string[]>.Create();
+			ReadAllLinesAsync_d__.path = path;
+			ReadAllLinesAsync_d__.token = token;
+			ReadAllLinesAsync_d__._1__state = -1;
+			ReadAllLinesAsync_d__._t__builder.Start<ToolsHelper.ReadAllLinesAsync_d__1>(ref ReadAllLinesAsync_d__);
+			return ReadAllLinesAsync_d__._t__builder.Task;
 		}
 	}
 }

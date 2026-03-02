@@ -13,12 +13,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 	internal class AntiCaptcha : ICaptchaClient
 	{
 		// Token: 0x06000963 RID: 2403 RVA: 0x00039990 File Offset: 0x00037B90
-		[return: TupleElementNames(new string[]
-		{
-			"status",
-			"result"
-		})]
-		public ValueTuple<OperationResult, string> GetBalance()
+				public ValueTuple<OperationResult, string> GetBalance()
 		{
 			try
 			{
@@ -50,12 +45,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 		}
 
 		// Token: 0x06000964 RID: 2404 RVA: 0x00039AEC File Offset: 0x00037CEC
-		[return: TupleElementNames(new string[]
-		{
-			"status",
-			"solution"
-		})]
-		public ValueTuple<OperationResult, string> SolveCaptcha(string base64, string lang, bool onlyLetters = false)
+				public ValueTuple<OperationResult, string> SolveCaptcha(string base64, string lang, bool onlyLetters = false)
 		{
 			if (lang == null)
 			{
@@ -73,12 +63,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 		}
 
 		// Token: 0x06000965 RID: 2405 RVA: 0x00039B50 File Offset: 0x00037D50
-		[return: TupleElementNames(new string[]
-		{
-			"status",
-			"solution"
-		})]
-		public ValueTuple<OperationResult, string> SolveRecaptchaV2Proxyless(string siteKey, string pageUrl)
+				public ValueTuple<OperationResult, string> SolveRecaptchaV2Proxyless(string siteKey, string pageUrl)
 		{
 			ValueTuple<OperationResult, string> valueTuple = this.SendRecaptchaV2ProxylessRequest(siteKey, pageUrl);
 			OperationResult item = valueTuple.Item1;
@@ -91,12 +76,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 		}
 
 		// Token: 0x06000966 RID: 2406 RVA: 0x00039B84 File Offset: 0x00037D84
-		[return: TupleElementNames(new string[]
-		{
-			"status",
-			"solution"
-		})]
-		public ValueTuple<OperationResult, string> SolveHCaptcha(string siteKey, string pageUrl, string userAgent)
+				public ValueTuple<OperationResult, string> SolveHCaptcha(string siteKey, string pageUrl, string userAgent)
 		{
 			ValueTuple<OperationResult, string> valueTuple = this.SendHCaptchaRequest(siteKey, pageUrl, userAgent);
 			OperationResult item = valueTuple.Item1;
@@ -109,12 +89,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 		}
 
 		// Token: 0x06000967 RID: 2407 RVA: 0x00039BBC File Offset: 0x00037DBC
-		[return: TupleElementNames(new string[]
-		{
-			"status",
-			"id"
-		})]
-		private ValueTuple<OperationResult, string> SendCaptchaRequest(string base64, string lang, bool onlyLetters)
+				private ValueTuple<OperationResult, string> SendCaptchaRequest(string base64, string lang, bool onlyLetters)
 		{
 			for (int i = 0; i < 3; i++)
 			{
@@ -156,12 +131,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 		}
 
 		// Token: 0x06000968 RID: 2408 RVA: 0x00039D28 File Offset: 0x00037F28
-		[return: TupleElementNames(new string[]
-		{
-			"status",
-			"id"
-		})]
-		private ValueTuple<OperationResult, string> SendRecaptchaV2ProxylessRequest(string siteKey, string pageUrl)
+				private ValueTuple<OperationResult, string> SendRecaptchaV2ProxylessRequest(string siteKey, string pageUrl)
 		{
 			for (int i = 0; i < 3; i++)
 			{
@@ -201,12 +171,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 		}
 
 		// Token: 0x06000969 RID: 2409 RVA: 0x00039E58 File Offset: 0x00038058
-		[return: TupleElementNames(new string[]
-		{
-			"status",
-			"id"
-		})]
-		private ValueTuple<OperationResult, string> SendHCaptchaRequest(string siteKey, string pageUrl, string userAgent)
+				private ValueTuple<OperationResult, string> SendHCaptchaRequest(string siteKey, string pageUrl, string userAgent)
 		{
 			for (int i = 0; i < 3; i++)
 			{
@@ -248,12 +213,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 		}
 
 		// Token: 0x0600096A RID: 2410 RVA: 0x00039F9C File Offset: 0x0003819C
-		[return: TupleElementNames(new string[]
-		{
-			"status",
-			"result"
-		})]
-		private ValueTuple<OperationResult, string> GetResult(string id)
+				private ValueTuple<OperationResult, string> GetResult(string id)
 		{
 			if (id == null)
 			{

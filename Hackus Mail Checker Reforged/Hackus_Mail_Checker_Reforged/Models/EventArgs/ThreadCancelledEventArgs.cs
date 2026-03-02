@@ -4,7 +4,7 @@ using System.Threading;
 namespace Hackus_Mail_Checker_Reforged.Models.EventArgs
 {
 	// Token: 0x02000143 RID: 323
-	internal class ThreadCancelledEventArgs : EventArgs
+	internal class ThreadCancelledEventArgs : System.EventArgs
 	{
 		// Token: 0x06000A0B RID: 2571 RVA: 0x0000C1DD File Offset: 0x0000A3DD
 		public ThreadCancelledEventArgs()

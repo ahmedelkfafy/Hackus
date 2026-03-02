@@ -584,7 +584,6 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 				return this._updatePageCommand;
 			}
 		}
-		}
 
 		// Token: 0x06000ACB RID: 2763 RVA: 0x0003CF74 File Offset: 0x0003B174
 		private async Task<UidCollection> Search(string searchQuery)

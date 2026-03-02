@@ -14,7 +14,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 		// Token: 0x06000514 RID: 1300 RVA: 0x0001D1AC File Offset: 0x0001B3AC
 		public static Server Find(string domain)
 		{
-			Func<HostFinderContext, bool> <>9__0;
+			Func<HostFinderContext, bool> _9__0;
 			Server result;
 			for (;;)
 			{
@@ -24,9 +24,9 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				{
 					IEnumerable<HostFinderContext> contexts = HostFinderHandler._contexts;
 					Func<HostFinderContext, bool> predicate;
-					if ((predicate = <>9__0) == null)
+					if ((predicate = _9__0) == null)
 					{
-						predicate = (<>9__0 = ((HostFinderContext c) => HostFinderHandler._c__DisplayClass4_0.smethod_0(c.Domain, domain)));
+						predicate = (_9__0 = ((HostFinderContext c) => HostFinderHandler._c__DisplayClass4_0.smethod_0(c.Domain, domain)));
 					}
 					hostFinderContext = contexts.FirstOrDefault(predicate);
 					if (hostFinderContext == null)

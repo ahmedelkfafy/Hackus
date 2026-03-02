@@ -50,12 +50,6 @@ namespace Hackus_Mail_Checker_Reforged.Services.Background
 			FileManager.SaveRest();
 		}
 
-		// Token: 0x060004B9 RID: 1209 RVA: 0x00009684 File Offset: 0x00007884
-		void method_0()
-		{
-			base.Dispose();
-		}
-
 		// Token: 0x04000298 RID: 664
 		private static Timer _timer;
 	}

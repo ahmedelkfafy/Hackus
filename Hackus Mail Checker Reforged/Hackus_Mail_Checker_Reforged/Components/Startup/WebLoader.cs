@@ -57,14 +57,14 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 		// Token: 0x06000D7E RID: 3454 RVA: 0x000458A4 File Offset: 0x00043AA4
 		public Task Download(Uri uri, string filePath)
 		{
-			WebLoader.<Download>d__15 <Download>d__;
-			<Download>d__.<>t__builder = AsyncTaskMethodBuilder.Create();
-			<Download>d__.<>4__this = this;
-			<Download>d__.uri = uri;
-			<Download>d__.filePath = filePath;
-			<Download>d__.<>1__state = -1;
-			<Download>d__.<>t__builder.Start<WebLoader.<Download>d__15>(ref <Download>d__);
-			return <Download>d__.<>t__builder.Task;
+			WebLoader.Download_d__15 Download_d__;
+			Download_d__._t__builder = AsyncTaskMethodBuilder.Create();
+			Download_d__._4__this = this;
+			Download_d__.uri = uri;
+			Download_d__.filePath = filePath;
+			Download_d__._1__state = -1;
+			Download_d__._t__builder.Start<WebLoader.Download_d__15>(ref Download_d__);
+			return Download_d__._t__builder.Task;
 		}
 
 		// Token: 0x06000D7F RID: 3455 RVA: 0x0000DDB4 File Offset: 0x0000BFB4

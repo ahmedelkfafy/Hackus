@@ -12,22 +12,12 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 	public class MailMessage : ObjectHeaders
 	{
 		// Token: 0x06000749 RID: 1865 RVA: 0x0002D6D0 File Offset: 0x0002B8D0
-		public static implicit operator MailMessage(MailMessage msg)
+		public static implicit operator MailMessage(MailBee.Mime.MailMessage msg)
 		{
 			MailMessage mailMessage = new MailMessage();
 			mailMessage.Subject = msg.Subject;
-			mailMessage.Sender = msg.Sender;
-			mailMessage.Body = msg.Body;
-			mailMessage.IsBodyHtml = msg.ContentType.Contains(_Module_.smethod_2<string>(1569658303));
-			mailMessage.From = msg.From;
-			foreach (Attachment attachment in msg.Attachments)
-			{
-				mailMessage.Attachments.Add(new Attachment(new MemoryStream(attachment.GetData()), attachment.Filename, attachment.ContentType));
-			}
-			foreach (Attachment attachment2 in msg.AlternateViews)
-			{
-				mailMessage.AlternateViews.Add(new AlternateView(new MemoryStream(attachment2.GetData()), attachment2.ContentType));
-			}
+			mailMessage.Body = msg.BodyPlainText;
+			mailMessage.IsBodyHtml = msg.BodyHtmlText != null;
 			return mailMessage;
 		}
 

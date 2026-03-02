@@ -65,12 +65,6 @@ namespace Hackus_Mail_Checker_Reforged.Services.Background
 			StatisticsManager.Instance.EstimatedCompletionTime = ResourceHelper.GetResource<string>(_Module_.smethod_5<string>(-640823942)) + _Module_.smethod_2<string>(-649890199);
 		}
 
-		// Token: 0x060004BD RID: 1213 RVA: 0x00009684 File Offset: 0x00007884
-		void method_0()
-		{
-			base.Dispose();
-		}
-
 		// Token: 0x04000299 RID: 665
 		private static Timer _timer;
 	}

@@ -412,14 +412,14 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		// Token: 0x0600044F RID: 1103 RVA: 0x000198D0 File Offset: 0x00017AD0
 		public void AddRequestValue(RequestResult result)
 		{
-			Func<RequestResult, bool> <>9__1;
+			Func<RequestResult, bool> _9__1;
 			Application.Current.Dispatcher.Invoke(delegate()
 			{
 				IEnumerable<RequestResult> requestValues = this.RequestValues;
 				Func<RequestResult, bool> predicate;
-				if ((predicate = <>9__1) == null)
+				if ((predicate = _9__1) == null)
 				{
-					predicate = (<>9__1 = ((RequestResult r) => StatisticsManager._c__DisplayClass86_0.smethod_0(r.Request, result.Request)));
+					predicate = (_9__1 = ((RequestResult r) => StatisticsManager._c__DisplayClass86_0.smethod_0(r.Request, result.Request)));
 				}
 				RequestResult requestResult = requestValues.FirstOrDefault(predicate);
 				if (requestResult != null)
@@ -434,14 +434,14 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		// Token: 0x06000450 RID: 1104 RVA: 0x0001990C File Offset: 0x00017B0C
 		public void AddBadDetails(string address, string message)
 		{
-			Func<KeyValuePair<string, string>, bool> <>9__1;
+			Func<KeyValuePair<string, string>, bool> _9__1;
 			Application.Current.Dispatcher.Invoke(delegate()
 			{
 				IEnumerable<KeyValuePair<string, string>> badDetails = this.BadDetails;
 				Func<KeyValuePair<string, string>, bool> predicate;
-				if ((predicate = <>9__1) == null)
+				if ((predicate = _9__1) == null)
 				{
-					predicate = (<>9__1 = ((KeyValuePair<string, string> p) => StatisticsManager._c__DisplayClass87_0.smethod_0(p.Key, address)));
+					predicate = (_9__1 = ((KeyValuePair<string, string> p) => StatisticsManager._c__DisplayClass87_0.smethod_0(p.Key, address)));
 				}
 				if (badDetails.Any(predicate))
 				{
@@ -454,14 +454,14 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		// Token: 0x06000451 RID: 1105 RVA: 0x00019950 File Offset: 0x00017B50
 		public void AddBlockedDetails(string address, string message)
 		{
-			Func<KeyValuePair<string, string>, bool> <>9__1;
+			Func<KeyValuePair<string, string>, bool> _9__1;
 			Application.Current.Dispatcher.Invoke(delegate()
 			{
 				IEnumerable<KeyValuePair<string, string>> blockedDetails = this.BlockedDetails;
 				Func<KeyValuePair<string, string>, bool> predicate;
-				if ((predicate = <>9__1) == null)
+				if ((predicate = _9__1) == null)
 				{
-					predicate = (<>9__1 = ((KeyValuePair<string, string> p) => StatisticsManager._c__DisplayClass88_0.smethod_0(p.Key, address)));
+					predicate = (_9__1 = ((KeyValuePair<string, string> p) => StatisticsManager._c__DisplayClass88_0.smethod_0(p.Key, address)));
 				}
 				if (blockedDetails.Any(predicate))
 				{
@@ -474,14 +474,14 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		// Token: 0x06000452 RID: 1106 RVA: 0x00019994 File Offset: 0x00017B94
 		public void AddErrorDetails(string address, string message)
 		{
-			Func<KeyValuePair<string, string>, bool> <>9__1;
+			Func<KeyValuePair<string, string>, bool> _9__1;
 			Application.Current.Dispatcher.Invoke(delegate()
 			{
 				IEnumerable<KeyValuePair<string, string>> errorDetails = this.ErrorDetails;
 				Func<KeyValuePair<string, string>, bool> predicate;
-				if ((predicate = <>9__1) == null)
+				if ((predicate = _9__1) == null)
 				{
-					predicate = (<>9__1 = ((KeyValuePair<string, string> p) => StatisticsManager._c__DisplayClass89_0.smethod_0(p.Key, address)));
+					predicate = (_9__1 = ((KeyValuePair<string, string> p) => StatisticsManager._c__DisplayClass89_0.smethod_0(p.Key, address)));
 				}
 				if (errorDetails.Any(predicate))
 				{

@@ -96,12 +96,12 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 				{
 					result = (this._startCommand = new RelayCommand(delegate(object obj)
 					{
-						ToolsTabViewModel.<<get_StartCommand>b__23_0>d <<get_StartCommand>b__23_0>d;
-						<<get_StartCommand>b__23_0>d.<>t__builder = AsyncVoidMethodBuilder.Create();
-						<<get_StartCommand>b__23_0>d.<>4__this = this;
-						<<get_StartCommand>b__23_0>d.obj = obj;
-						<<get_StartCommand>b__23_0>d.<>1__state = -1;
-						<<get_StartCommand>b__23_0>d.<>t__builder.Start<ToolsTabViewModel.<<get_StartCommand>b__23_0>d>(ref <<get_StartCommand>b__23_0>d);
+						ToolsTabViewModel.get_StartCommand_b__23_0_d get_StartCommand_b__23_0_d;
+						get_StartCommand_b__23_0_d._t__builder = AsyncVoidMethodBuilder.Create();
+						get_StartCommand_b__23_0_d._4__this = this;
+						get_StartCommand_b__23_0_d.obj = obj;
+						get_StartCommand_b__23_0_d._1__state = -1;
+						get_StartCommand_b__23_0_d._t__builder.Start<ToolsTabViewModel.get_StartCommand_b__23_0_d>(ref get_StartCommand_b__23_0_d);
 					}, null));
 				}
 				return result;

@@ -12,12 +12,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 	internal class RuCaptcha : ICaptchaClient
 	{
 		// Token: 0x06000972 RID: 2418 RVA: 0x0003A134 File Offset: 0x00038334
-		[return: TupleElementNames(new string[]
-		{
-			"status",
-			"result"
-		})]
-		public ValueTuple<OperationResult, string> GetBalance()
+				public ValueTuple<OperationResult, string> GetBalance()
 		{
 			try
 			{
@@ -45,12 +40,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 		}
 
 		// Token: 0x06000973 RID: 2419 RVA: 0x0003A204 File Offset: 0x00038404
-		[return: TupleElementNames(new string[]
-		{
-			"status",
-			"solution"
-		})]
-		public ValueTuple<OperationResult, string> SolveCaptcha(string base64, string lang, bool onlyLetters = false)
+				public ValueTuple<OperationResult, string> SolveCaptcha(string base64, string lang, bool onlyLetters = false)
 		{
 			ValueTuple<OperationResult, string> valueTuple = this.SendCaptchaRequest(base64, lang, onlyLetters);
 			OperationResult item = valueTuple.Item1;
@@ -63,12 +53,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 		}
 
 		// Token: 0x06000974 RID: 2420 RVA: 0x0003A23C File Offset: 0x0003843C
-		[return: TupleElementNames(new string[]
-		{
-			"status",
-			"solution"
-		})]
-		public ValueTuple<OperationResult, string> SolveRecaptchaV2Proxyless(string siteKey, string pageUrl)
+				public ValueTuple<OperationResult, string> SolveRecaptchaV2Proxyless(string siteKey, string pageUrl)
 		{
 			ValueTuple<OperationResult, string> valueTuple = this.SendRecaptchaV2ProxylessRequest(siteKey, pageUrl);
 			OperationResult item = valueTuple.Item1;
@@ -81,12 +66,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 		}
 
 		// Token: 0x06000975 RID: 2421 RVA: 0x0003A270 File Offset: 0x00038470
-		[return: TupleElementNames(new string[]
-		{
-			"status",
-			"solution"
-		})]
-		public ValueTuple<OperationResult, string> SolveHCaptcha(string siteKey, string pageUrl, string userAgent)
+				public ValueTuple<OperationResult, string> SolveHCaptcha(string siteKey, string pageUrl, string userAgent)
 		{
 			ValueTuple<OperationResult, string> valueTuple = this.SendHcaptchaRequest(siteKey, pageUrl);
 			OperationResult item = valueTuple.Item1;
@@ -99,12 +79,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 		}
 
 		// Token: 0x06000976 RID: 2422 RVA: 0x0003A2A4 File Offset: 0x000384A4
-		[return: TupleElementNames(new string[]
-		{
-			"status",
-			"id"
-		})]
-		private ValueTuple<OperationResult, string> SendCaptchaRequest(string base64, string lang, bool onlyLetters)
+				private ValueTuple<OperationResult, string> SendCaptchaRequest(string base64, string lang, bool onlyLetters)
 		{
 			for (int i = 0; i < 3; i++)
 			{
@@ -149,12 +124,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 		}
 
 		// Token: 0x06000977 RID: 2423 RVA: 0x0003A41C File Offset: 0x0003861C
-		[return: TupleElementNames(new string[]
-		{
-			"status",
-			"id"
-		})]
-		private ValueTuple<OperationResult, string> SendRecaptchaV2ProxylessRequest(string siteKey, string pageUrl)
+				private ValueTuple<OperationResult, string> SendRecaptchaV2ProxylessRequest(string siteKey, string pageUrl)
 		{
 			for (int i = 0; i < 3; i++)
 			{
@@ -192,12 +162,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 		}
 
 		// Token: 0x06000978 RID: 2424 RVA: 0x0003A560 File Offset: 0x00038760
-		[return: TupleElementNames(new string[]
-		{
-			"status",
-			"id"
-		})]
-		private ValueTuple<OperationResult, string> SendHcaptchaRequest(string siteKey, string pageUrl)
+				private ValueTuple<OperationResult, string> SendHcaptchaRequest(string siteKey, string pageUrl)
 		{
 			for (int i = 0; i < 3; i++)
 			{
@@ -235,12 +200,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 		}
 
 		// Token: 0x06000979 RID: 2425 RVA: 0x0003A6A0 File Offset: 0x000388A0
-		[return: TupleElementNames(new string[]
-		{
-			null,
-			"result"
-		})]
-		private ValueTuple<OperationResult, string> GetResult(string id)
+				private ValueTuple<OperationResult, string> GetResult(string id)
 		{
 			if (id == null)
 			{

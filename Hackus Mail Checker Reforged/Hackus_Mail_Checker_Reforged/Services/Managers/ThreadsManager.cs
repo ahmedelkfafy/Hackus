@@ -109,15 +109,15 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 				MailManager.Instance.SavedLogins.Clear();
 				MailManager.Instance.SavedContacts.Clear();
 				int threadsCount = this.GetOptimalThreadsCount();
-				ThreadStart <>9__1;
+				ThreadStart _9__1;
 				Task.Run(delegate()
 				{
 					for (int i = 0; i < threadsCount; i++)
 					{
 						ThreadStart threadStart_;
-						if ((threadStart_ = <>9__1) == null)
+						if ((threadStart_ = _9__1) == null)
 						{
-							threadStart_ = (<>9__1 = delegate()
+							threadStart_ = (_9__1 = delegate()
 							{
 								this.SafeExecute(new Action(Worker.Run));
 							});

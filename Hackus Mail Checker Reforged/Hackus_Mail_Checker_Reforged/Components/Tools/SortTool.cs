@@ -21,12 +21,12 @@ namespace Hackus_Mail_Checker_Reforged.Components.Tools
 		// Token: 0x06000C49 RID: 3145 RVA: 0x000420E8 File Offset: 0x000402E8
 		public Task<bool> Run()
 		{
-			SortTool.<Run>d__4 <Run>d__;
-			<Run>d__.<>t__builder = AsyncTaskMethodBuilder<bool>.Create();
-			<Run>d__.<>4__this = this;
-			<Run>d__.<>1__state = -1;
-			<Run>d__.<>t__builder.Start<SortTool.<Run>d__4>(ref <Run>d__);
-			return <Run>d__.<>t__builder.Task;
+			SortTool.Run_d__4 Run_d__;
+			Run_d__._t__builder = AsyncTaskMethodBuilder<bool>.Create();
+			Run_d__._4__this = this;
+			Run_d__._1__state = -1;
+			Run_d__._t__builder.Start<SortTool.Run_d__4>(ref Run_d__);
+			return Run_d__._t__builder.Task;
 		}
 
 		// Token: 0x06000C4A RID: 3146 RVA: 0x0000D5E2 File Offset: 0x0000B7E2

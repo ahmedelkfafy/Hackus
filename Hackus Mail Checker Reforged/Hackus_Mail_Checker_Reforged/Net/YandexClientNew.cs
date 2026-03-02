@@ -296,13 +296,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 		}
 
 		// Token: 0x060005BF RID: 1471 RVA: 0x00025580 File Offset: 0x00023780
-		[return: TupleElementNames(new string[]
-		{
-			"status",
-			"url",
-			"key"
-		})]
-		private ValueTuple<OperationResult, string, string> GetCaptchaLink()
+				private ValueTuple<OperationResult, string, string> GetCaptchaLink()
 		{
 			for (int i = 0; i < 3; i++)
 			{
@@ -347,12 +341,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 		}
 
 		// Token: 0x060005C0 RID: 1472 RVA: 0x0002571C File Offset: 0x0002391C
-		[return: TupleElementNames(new string[]
-		{
-			"status",
-			"image"
-		})]
-		private ValueTuple<OperationResult, MemoryStream> GetCaptchaImage(string url)
+				private ValueTuple<OperationResult, MemoryStream> GetCaptchaImage(string url)
 		{
 			for (int i = 0; i < 2; i++)
 			{
