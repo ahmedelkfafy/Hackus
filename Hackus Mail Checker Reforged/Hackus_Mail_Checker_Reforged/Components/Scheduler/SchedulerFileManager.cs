@@ -9,6 +9,8 @@ using Hackus_Mail_Checker_Reforged.Models.Enums;
 using Hackus_Mail_Checker_Reforged.Net.Mail.IMAP;
 using Hackus_Mail_Checker_Reforged.Net.Mail.Message;
 using Hackus_Mail_Checker_Reforged.Services.Settings;
+using GenericFolder = Hackus_Mail_Checker_Reforged.Net.Mail.Folder;
+using ImapFolder = Hackus_Mail_Checker_Reforged.Net.Mail.IMAP.Folder;
 
 namespace Hackus_Mail_Checker_Reforged.Components.Scheduler
 {

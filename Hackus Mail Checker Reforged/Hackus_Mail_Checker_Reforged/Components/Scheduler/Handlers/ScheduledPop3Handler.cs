@@ -18,6 +18,7 @@ using Hackus_Mail_Checker_Reforged.Services.Settings;
 using HandyControl.Tools;
 using HandyControl.Tools.Extension;
 using xNet;
+using SchedulerNotification = Hackus_Mail_Checker_Reforged.Components.Scheduler.Models.Notification;
 
 namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 {
@@ -183,7 +184,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 						{
 							DispatcherHelper.RunOnMainThread(delegate
 							{
-								Scheduler.Instance.AddNotification(new Notification
+								Scheduler.Instance.AddNotification(new SchedulerNotification
 								{
 									Address = this._mailbox.Address,
 									Message = string.Format("New messages ({0}, {1}) were found on the account", finded, request),

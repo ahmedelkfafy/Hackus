@@ -14,6 +14,7 @@ using Hackus_Mail_Checker_Reforged.Services.Managers;
 using Hackus_Mail_Checker_Reforged.Services.Settings;
 using HandyControl.Tools.Extension;
 using xNet;
+using MailMessage = Hackus_Mail_Checker_Reforged.Net.Mail.Message.MailMessage;
 
 namespace Hackus_Mail_Checker_Reforged.Net.Mail.POP3
 {

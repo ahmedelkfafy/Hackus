@@ -6,6 +6,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Hackus_Mail_Checker_Reforged.Net.Mail.Message;
 using Hackus_Mail_Checker_Reforged.Net.Mail.Utilities;
+using MailMessage = Hackus_Mail_Checker_Reforged.Net.Mail.Message.MailMessage;
+using GenericFolder = Hackus_Mail_Checker_Reforged.Net.Mail.Folder;
+using ImapFolder = Hackus_Mail_Checker_Reforged.Net.Mail.IMAP.Folder;
 
 namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 {
