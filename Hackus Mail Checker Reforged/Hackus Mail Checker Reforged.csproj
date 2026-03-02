@@ -13,12 +13,12 @@
 
   <ItemGroup>
     <PackageReference Include="DnsClient" Version="1.6.1" />
-    <PackageReference Include="DotNetZip" Version="1.19.0" />
+    <PackageReference Include="DotNetZip" Version="1.16.0" />
     <PackageReference Include="HandyControls" Version="3.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Notification.Wpf" Version="6.1.0" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.118" />
-    <PackageReference Include="ToolGood.Words" Version="3.0.5" />
+    <PackageReference Include="ToolGood.Words" Version="3.0.3.3" />
     <PackageReference Include="System.Management" Version="6.0.0" />
     <PackageReference Include="xNet" Version="3.3.3" />
   </ItemGroup>
