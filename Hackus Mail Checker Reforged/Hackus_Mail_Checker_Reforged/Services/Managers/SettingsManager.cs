@@ -3,6 +3,7 @@ using System.IO;
 using Hackus_Mail_Checker_Reforged.Models;
 using Hackus_Mail_Checker_Reforged.Services.Settings;
 using Newtonsoft.Json;
+using SettingsModel = Hackus_Mail_Checker_Reforged.Models.Settings;
 
 namespace Hackus_Mail_Checker_Reforged.Services.Managers
 {
@@ -23,7 +24,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			}
 			if (text != null)
 			{
-				Settings settings = JsonConvert.DeserializeObject<Settings>(text, new JsonSerializerSettings
+				SettingsModel settings = JsonConvert.DeserializeObject<SettingsModel>(text, new JsonSerializerSettings
 				{
 					ObjectCreationHandling = 2
 				});
@@ -39,7 +40,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		// Token: 0x06000423 RID: 1059 RVA: 0x00019810 File Offset: 0x00017A10
 		public static void SaveSettings()
 		{
-			string value = JsonConvert.SerializeObject(new Settings(1), 1);
+			string value = JsonConvert.SerializeObject(new SettingsModel(1), 1);
 			using (StreamWriter streamWriter = new StreamWriter(FileManager.SettingsPath, false))
 			{
 				streamWriter.Write(value);

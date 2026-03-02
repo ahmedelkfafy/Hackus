@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using Hackus_Mail_Checker_Reforged.Net.Mail.Message;
 using Hackus_Mail_Checker_Reforged.Net.Mail.Utilities;
+using MailMessage = Hackus_Mail_Checker_Reforged.Net.Mail.Message.MailMessage;
 
 namespace Hackus_Mail_Checker_Reforged.Net.Mail.POP3
 {

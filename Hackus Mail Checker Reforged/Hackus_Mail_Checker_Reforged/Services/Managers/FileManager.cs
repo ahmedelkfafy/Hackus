@@ -13,6 +13,8 @@ using Hackus_Mail_Checker_Reforged.Net.Mail;
 using Hackus_Mail_Checker_Reforged.Net.Mail.IMAP;
 using Hackus_Mail_Checker_Reforged.Net.Mail.Message;
 using Hackus_Mail_Checker_Reforged.Services.Settings;
+using GenericFolder = Hackus_Mail_Checker_Reforged.Net.Mail.Folder;
+using ImapFolder = Hackus_Mail_Checker_Reforged.Net.Mail.IMAP.Folder;
 
 namespace Hackus_Mail_Checker_Reforged.Services.Managers
 {
@@ -195,7 +197,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			{
 				return;
 			}
-			FileManager.SaveLetter(login, password, request, message.Sender.ToString(), text, message.Subject, DateTime.Parse(message.Headers["Date"]), "INBOX");
+			FileManager.SaveLetter(login, password, request, message.Sender?.Address ?? string.Empty, text, message.Subject, DateTime.Parse(message.Headers["Date"]), "INBOX");
 		}
 
 		// Token: 0x060003D2 RID: 978 RVA: 0x00018178 File Offset: 0x00016378
@@ -206,7 +208,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			{
 				return;
 			}
-			FileManager.SaveLetter(login, password, request, message.Sender.ToString(), body, message.Subject, message.Date, message.Folder ?? "INBOX");
+			FileManager.SaveLetter(login, password, request, message.Sender?.Address ?? string.Empty, body, message.Subject, message.Date, message.Folder ?? "INBOX");
 		}
 
 		// Token: 0x060003D3 RID: 979 RVA: 0x000181D0 File Offset: 0x000163D0

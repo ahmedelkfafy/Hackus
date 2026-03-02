@@ -10,6 +10,9 @@ using Hackus_Mail_Checker_Reforged.Net.Mail.Utilities;
 using Hackus_Mail_Checker_Reforged.Services.Managers;
 using Hackus_Mail_Checker_Reforged.Services.Settings;
 using xNet;
+using MailMessage = Hackus_Mail_Checker_Reforged.Net.Mail.Message.MailMessage;
+using GenericFolder = Hackus_Mail_Checker_Reforged.Net.Mail.Folder;
+using ImapFolder = Hackus_Mail_Checker_Reforged.Net.Mail.IMAP.Folder;
 
 namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 {
@@ -204,7 +207,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 		public List<Folder> GetRequiredFolders()
 		{
 			List<Folder> list = new List<Folder>();
-			foreach (Folder folder in this.SearchSettings.Folders)
+			foreach (var folder in this.SearchSettings.Folders)
 			{
 				if (folder.IsEnabled)
 				{

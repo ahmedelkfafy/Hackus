@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
+using MailAddress = System.Net.Mail.MailAddress;
 
 namespace Hackus_Mail_Checker_Reforged.Net.Mail
 {

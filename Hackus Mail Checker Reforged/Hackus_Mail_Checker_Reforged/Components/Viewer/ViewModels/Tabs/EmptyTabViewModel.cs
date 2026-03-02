@@ -12,6 +12,8 @@ using MailBee.Pop3Mail;
 using MailBee.Proxy;
 using MailBee.Security;
 using xNet;
+using ProxyTypeEnum = Hackus_Mail_Checker_Reforged.Models.Enums.ProxyType;
+using XNetProxyType = xNet.ProxyType;
 
 namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 {
@@ -292,13 +294,13 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 						}
 						switch (this.ViewerSettings.ProxyType)
 						{
-						case ProxyType.HTTP:
+						case ProxyTypeEnum.HTTP:
 							imap.Proxy.Protocol = ProxyProtocol.Http;
 							return;
-						case ProxyType.SOCKS4:
+						case ProxyTypeEnum.SOCKS4:
 							imap.Proxy.Protocol = ProxyProtocol.Socks4;
 							return;
-						case ProxyType.SOCKS5:
+						case ProxyTypeEnum.SOCKS5:
 							imap.Proxy.Protocol = ProxyProtocol.Socks5;
 							break;
 						default:
@@ -318,13 +320,13 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 					}
 					switch (ProxySettings.Instance.ProxyType)
 					{
-					case ProxyType.HTTP:
+					case ProxyTypeEnum.HTTP:
 						imap.Proxy.Protocol = ProxyProtocol.Http;
 						return;
-					case ProxyType.SOCKS4:
+					case ProxyTypeEnum.SOCKS4:
 						imap.Proxy.Protocol = ProxyProtocol.Socks4;
 						return;
-					case ProxyType.SOCKS5:
+					case ProxyTypeEnum.SOCKS5:
 						imap.Proxy.Protocol = ProxyProtocol.Socks5;
 						return;
 					default:
@@ -361,13 +363,13 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 						}
 						switch (this.ViewerSettings.ProxyType)
 						{
-						case ProxyType.HTTP:
+						case ProxyTypeEnum.HTTP:
 							pop3.Proxy.Protocol = ProxyProtocol.Http;
 							return;
-						case ProxyType.SOCKS4:
+						case ProxyTypeEnum.SOCKS4:
 							pop3.Proxy.Protocol = ProxyProtocol.Socks4;
 							return;
-						case ProxyType.SOCKS5:
+						case ProxyTypeEnum.SOCKS5:
 							pop3.Proxy.Protocol = ProxyProtocol.Socks5;
 							break;
 						default:
@@ -387,13 +389,13 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 					}
 					switch (ProxySettings.Instance.ProxyType)
 					{
-					case ProxyType.HTTP:
+					case ProxyTypeEnum.HTTP:
 						pop3.Proxy.Protocol = ProxyProtocol.Http;
 						return;
-					case ProxyType.SOCKS4:
+					case ProxyTypeEnum.SOCKS4:
 						pop3.Proxy.Protocol = ProxyProtocol.Socks4;
 						return;
-					case ProxyType.SOCKS5:
+					case ProxyTypeEnum.SOCKS5:
 						pop3.Proxy.Protocol = ProxyProtocol.Socks5;
 						return;
 					default:
