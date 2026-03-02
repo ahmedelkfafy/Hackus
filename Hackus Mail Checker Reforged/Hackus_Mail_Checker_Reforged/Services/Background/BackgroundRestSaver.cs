@@ -41,7 +41,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Background
 			{
 				return;
 			}
-			timer2.method_0();
+			timer2.Dispose();
 		}
 
 		// Token: 0x060004B8 RID: 1208 RVA: 0x0000975F File Offset: 0x0000795F
