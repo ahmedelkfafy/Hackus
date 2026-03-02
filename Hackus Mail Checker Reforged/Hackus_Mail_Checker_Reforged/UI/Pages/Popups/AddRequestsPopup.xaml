@@ -52,8 +52,8 @@
 					Row="1">
 					<hc:TextBox
 						Padding="10,0,30,0"
-						BorderElement.CornerRadius="0"
-						InfoElement.Placeholder="{DynamicResource l_Request}"
+						hc:BorderElement.CornerRadius="0"
+						hc:InfoElement.Placeholder="{DynamicResource l_Request}"
 						BorderThickness="0,0,0,1"
 						Text="{Binding CreateRequestField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 						<UIElement.InputBindings>
@@ -79,9 +79,9 @@
 				</Grid>
 				<hc:ComboBox
 					Grid.Row="2"
-					BorderElement.CornerRadius="4"
-					ThemeManager.RequestedAccentColor="#303030"
-					ThemeManager.RequestedTheme="Dark"
+					hc:BorderElement.CornerRadius="4"
+					hc:ThemeManager.RequestedAccentColor="#303030"
+					hc:ThemeManager.RequestedTheme="Dark"
 					BorderThickness="0"
 					Cursor="Hand"
 					FontFamily="{StaticResource Roboto-Regular}"
@@ -142,10 +142,10 @@
 				</Border>
 				<hc:SearchBar
 					Grid.Row="1"
-					BorderElement.CornerRadius="0"
-					InfoElement.Placeholder="{DynamicResource l_Search}"
-					InfoElement.Symbol="#"
-					ThemeManager.RequestedAccentColor="#64FFD1"
+					hc:BorderElement.CornerRadius="0"
+					hc:InfoElement.Placeholder="{DynamicResource l_Search}"
+					hc:InfoElement.Symbol="#"
+					hc:ThemeManager.RequestedAccentColor="#64FFD1"
 					BorderThickness="0,0,0,1"
 					Style="{StaticResource SearchBarPlus}"
 					Command="{Binding SearchCommand}"

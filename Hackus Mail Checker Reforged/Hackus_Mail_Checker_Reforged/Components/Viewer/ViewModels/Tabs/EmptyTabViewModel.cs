@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -76,7 +76,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 				{
 					this._login = value;
 				}
-				base.OnPropertyChanged(<Module>.smethod_4<string>(-1156029122));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(-1156029122));
 			}
 		}
 
@@ -92,7 +92,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._password = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(-1928335903));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(-1928335903));
 			}
 		}
 
@@ -108,7 +108,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._errorMessage = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(-435032899));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(-435032899));
 			}
 		}
 
@@ -124,7 +124,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._isBusy = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(-1014052106));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(-1014052106));
 			}
 		}
 

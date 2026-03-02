@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -42,7 +42,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 				mailbox.Context = new ImapContext();
 			}
 			this._context = (ImapContext)mailbox.Context;
-			this._folder = Hackus_Mail_Checker_Reforged.Net.Mail.IMAP.Folder.Parse(<Module>.smethod_3<string>(-762368918));
+			this._folder = Hackus_Mail_Checker_Reforged.Net.Mail.IMAP.Folder.Parse(_Module_.smethod_3<string>(-762368918));
 		}
 
 		// Token: 0x06000E36 RID: 3638 RVA: 0x000478E4 File Offset: 0x00045AE4
@@ -194,7 +194,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 							Scheduler.Instance.AddNotification(new Notification
 							{
 								Address = this._mailbox.Address,
-								Message = ScheduledImapHandler.<>c__DisplayClass12_0.smethod_0(<Module>.smethod_2<string>(73804730), finded, request),
+								Message = ScheduledImapHandler._c__DisplayClass12_0.smethod_0(_Module_.smethod_2<string>(73804730), finded, request),
 								Time = DateTime.Now
 							});
 						});
@@ -226,7 +226,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 					if (ex.Message != null)
 					{
 						string text = ex.Message.ToLower();
-						if (text.Contains(<Module>.smethod_3<string>(-704876428)) || text.Contains(<Module>.smethod_4<string>(-1527405962)))
+						if (text.Contains(_Module_.smethod_3<string>(-704876428)) || text.Contains(_Module_.smethod_4<string>(-1527405962)))
 						{
 							return OperationResult.Ok;
 						}
@@ -242,7 +242,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 						{
 							try
 							{
-								Request request2 = checkedRequests.FirstOrDefault((Request r) => ScheduledImapHandler.<>c__DisplayClass13_0.smethod_0(r.Sender, request.Sender) && ScheduledImapHandler.<>c__DisplayClass13_0.smethod_0(r.Body, request.Body) && ScheduledImapHandler.<>c__DisplayClass13_0.smethod_0(r.Subject, request.Subject));
+								Request request2 = checkedRequests.FirstOrDefault((Request r) => ScheduledImapHandler._c__DisplayClass13_0.smethod_0(r.Sender, request.Sender) && ScheduledImapHandler._c__DisplayClass13_0.smethod_0(r.Body, request.Body) && ScheduledImapHandler._c__DisplayClass13_0.smethod_0(r.Subject, request.Subject));
 								if (request2 == null)
 								{
 									request2 = request.Clone();
@@ -291,7 +291,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 														}
 														catch (Exception ex2)
 														{
-															if (ex2.Message == null || !ex2.Message.Contains(<Module>.smethod_5<string>(1891727559)))
+															if (ex2.Message == null || !ex2.Message.Contains(_Module_.smethod_5<string>(1891727559)))
 															{
 																throw;
 															}
@@ -309,7 +309,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 															}
 															catch (Exception ex3)
 															{
-																if (ex3.Message == null || !ex3.Message.Contains(<Module>.smethod_6<string>(2021793209)))
+																if (ex3.Message == null || !ex3.Message.Contains(_Module_.smethod_6<string>(2021793209)))
 																{
 																	throw;
 																}
@@ -343,7 +343,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 														}
 														catch (Exception ex4)
 														{
-															if (ex4.Message == null || !ex4.Message.Contains(<Module>.smethod_4<string>(-401647309)))
+															if (ex4.Message == null || !ex4.Message.Contains(_Module_.smethod_4<string>(-401647309)))
 															{
 																throw;
 															}
@@ -357,7 +357,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 															}
 															catch (Exception ex5)
 															{
-																if (ex5.Message == null || !ex5.Message.Contains(<Module>.smethod_4<string>(-401647309)))
+																if (ex5.Message == null || !ex5.Message.Contains(_Module_.smethod_4<string>(-401647309)))
 																{
 																	throw;
 																}
@@ -389,7 +389,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 													}
 													catch (Exception ex6)
 													{
-														if (ex6.Message == null || !ex6.Message.Contains(<Module>.smethod_2<string>(802576006)))
+														if (ex6.Message == null || !ex6.Message.Contains(_Module_.smethod_2<string>(802576006)))
 														{
 															throw;
 														}
@@ -421,7 +421,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 														}
 														catch (Exception ex7)
 														{
-															if (ex7.Message == null || !ex7.Message.Contains(<Module>.smethod_2<string>(802576006)))
+															if (ex7.Message == null || !ex7.Message.Contains(_Module_.smethod_2<string>(802576006)))
 															{
 																throw;
 															}
@@ -435,7 +435,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 															}
 															catch (Exception ex8)
 															{
-																if (ex8.Message == null || !ex8.Message.Contains(<Module>.smethod_2<string>(802576006)))
+																if (ex8.Message == null || !ex8.Message.Contains(_Module_.smethod_2<string>(802576006)))
 																{
 																	throw;
 																}
@@ -469,7 +469,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 														}
 														catch (Exception ex9)
 														{
-															if (ex9.Message == null || !ex9.Message.Contains(<Module>.smethod_5<string>(1891727559)))
+															if (ex9.Message == null || !ex9.Message.Contains(_Module_.smethod_5<string>(1891727559)))
 															{
 																throw;
 															}
@@ -483,7 +483,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 															}
 															catch (Exception ex10)
 															{
-																if (ex10.Message == null || !ex10.Message.Contains(<Module>.smethod_4<string>(-401647309)))
+																if (ex10.Message == null || !ex10.Message.Contains(_Module_.smethod_4<string>(-401647309)))
 																{
 																	throw;
 																}
@@ -517,7 +517,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 														}
 														catch (Exception ex11)
 														{
-															if (ex11.Message == null || !ex11.Message.Contains(<Module>.smethod_3<string>(207274666)))
+															if (ex11.Message == null || !ex11.Message.Contains(_Module_.smethod_3<string>(207274666)))
 															{
 																throw;
 															}
@@ -531,7 +531,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 															}
 															catch (Exception ex12)
 															{
-																if (ex12.Message == null || !ex12.Message.Contains(<Module>.smethod_5<string>(1891727559)))
+																if (ex12.Message == null || !ex12.Message.Contains(_Module_.smethod_5<string>(1891727559)))
 																{
 																	throw;
 																}
@@ -563,7 +563,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 													}
 													catch (Exception ex13)
 													{
-														if (ex13.Message == null || !ex13.Message.Contains(<Module>.smethod_3<string>(207274666)))
+														if (ex13.Message == null || !ex13.Message.Contains(_Module_.smethod_3<string>(207274666)))
 														{
 															throw;
 														}
@@ -577,7 +577,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 														}
 														catch (Exception ex14)
 														{
-															if (ex14.Message == null || !ex14.Message.Contains(<Module>.smethod_5<string>(1891727559)))
+															if (ex14.Message == null || !ex14.Message.Contains(_Module_.smethod_5<string>(1891727559)))
 															{
 																throw;
 															}

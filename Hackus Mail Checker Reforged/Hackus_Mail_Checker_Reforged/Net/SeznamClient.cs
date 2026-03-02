@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using Hackus_Mail_Checker_Reforged.Models;
 using Hackus_Mail_Checker_Reforged.Models.Enums;
@@ -71,33 +71,33 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					{
 						username = this._mailbox.Address,
 						password = this._mailbox.Password,
-						service = <Module>.smethod_6<string>(1848814709),
-						return_url = <Module>.smethod_4<string>(-872950308)
+						service = _Module_.smethod_6<string>(1848814709),
+						return_url = _Module_.smethod_4<string>(-872950308)
 					});
-					string text2 = httpRequest.Post(<Module>.smethod_4<string>(1233356625), text, <Module>.smethod_4<string>(-423852883)).ToString();
+					string text2 = httpRequest.Post(_Module_.smethod_4<string>(1233356625), text, _Module_.smethod_4<string>(-423852883)).ToString();
 					if (text2.ContainsOneIgnoreCase(new string[]
 					{
-						<Module>.smethod_6<string>(220166365),
-						<Module>.smethod_3<string>(401681461),
-						<Module>.smethod_5<string>(-1676814541),
-						<Module>.smethod_3<string>(-1564920533)
+						_Module_.smethod_6<string>(220166365),
+						_Module_.smethod_3<string>(401681461),
+						_Module_.smethod_5<string>(-1676814541),
+						_Module_.smethod_3<string>(-1564920533)
 					}))
 					{
 						return OperationResult.Blocked;
 					}
 					if (text2.ContainsOneIgnoreCase(new string[]
 					{
-						<Module>.smethod_2<string>(383658666),
-						<Module>.smethod_3<string>(-1805453592)
+						_Module_.smethod_2<string>(383658666),
+						_Module_.smethod_3<string>(-1805453592)
 					}))
 					{
 						return OperationResult.Bad;
 					}
-					if (text2.Contains(<Module>.smethod_2<string>(568625173)))
+					if (text2.Contains(_Module_.smethod_2<string>(568625173)))
 					{
 						return OperationResult.Ok;
 					}
-					if (text2.Contains(<Module>.smethod_4<string>(2003387409)))
+					if (text2.Contains(_Module_.smethod_4<string>(2003387409)))
 					{
 						return OperationResult.HttpError;
 					}
@@ -121,9 +121,9 @@ namespace Hackus_Mail_Checker_Reforged.Net
 			request.ConnectTimeout = CheckerSettings.Instance.Timeout * 1000;
 			request.Cookies = this._cookies;
 			request.Proxy = this._proxyClient;
-			request.UserAgent = <Module>.smethod_5<string>(1482021352);
-			request.AddHeader(<Module>.smethod_6<string>(-452519608), <Module>.smethod_5<string>(1409696498));
-			request.AddHeader(<Module>.smethod_3<string>(-1607191919), <Module>.smethod_6<string>(-1488460431));
+			request.UserAgent = _Module_.smethod_5<string>(1482021352);
+			request.AddHeader(_Module_.smethod_6<string>(-452519608), _Module_.smethod_5<string>(1409696498));
+			request.AddHeader(_Module_.smethod_3<string>(-1607191919), _Module_.smethod_6<string>(-1488460431));
 		}
 
 		// Token: 0x060005A6 RID: 1446 RVA: 0x00009CB1 File Offset: 0x00007EB1

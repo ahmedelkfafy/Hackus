@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Sockets;
@@ -16,7 +16,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 			if (!stream.CanRead)
 			{
 				stream.DisposeObject();
-				throw new IOException(<Module>.smethod_3<string>(2010242753));
+				throw new IOException(_Module_.smethod_3<string>(2010242753));
 			}
 			if (stream.CanTimeout)
 			{
@@ -51,7 +51,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 				return memoryStream.ToArray();
 				IL_7C:
 				stream.DisposeObject();
-				throw new IOException(<Module>.smethod_6<string>(-1996104120));
+				throw new IOException(_Module_.smethod_6<string>(-1996104120));
 				IL_92:
 				result = memoryStream.ToArray();
 			}
@@ -64,7 +64,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 			if (!stream.CanRead)
 			{
 				stream.DisposeObject();
-				throw new IOException(<Module>.smethod_6<string>(-1996104120));
+				throw new IOException(_Module_.smethod_6<string>(-1996104120));
 			}
 			if (stream.CanTimeout)
 			{
@@ -93,7 +93,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 				return memoryStream.ToArray();
 				IL_71:
 				stream.DisposeObject();
-				throw new IOException(<Module>.smethod_3<string>(2010242753));
+				throw new IOException(_Module_.smethod_3<string>(2010242753));
 				IL_90:
 				result = memoryStream.ToArray();
 			}
@@ -120,7 +120,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 					try
 					{
 						AsyncCallback asyncCallback = null;
-						AsyncCallback <>9__0;
+						AsyncCallback _9__0;
 						for (;;)
 						{
 							if (asyncResult == null)
@@ -174,25 +174,25 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 							if ((callback = asyncCallback) == null)
 							{
 								AsyncCallback asyncCallback2;
-								if ((asyncCallback2 = <>9__0) == null)
+								if ((asyncCallback2 = _9__0) == null)
 								{
-									asyncCallback2 = (<>9__0 = delegate(IAsyncResult innerAr)
+									asyncCallback2 = (_9__0 = delegate(IAsyncResult innerAr)
 									{
 										try
 										{
-											StreamHelper.<>c__DisplayClass6_0.smethod_1(StreamHelper.<>c__DisplayClass6_0.smethod_0(innerAr));
-											rData = StreamHelper.<>c__DisplayClass6_0.smethod_2(stream, innerAr);
+											StreamHelper._c__DisplayClass6_0.smethod_1(StreamHelper._c__DisplayClass6_0.smethod_0(innerAr));
+											rData = StreamHelper._c__DisplayClass6_0.smethod_2(stream, innerAr);
 										}
 										catch (Exception ex)
 										{
 											if (ex is NullReferenceException || ex is ObjectDisposedException)
 											{
-												innerException = StreamHelper.<>c__DisplayClass6_0.smethod_3(<Module>.smethod_5<string>(-16128818), ex);
+												innerException = StreamHelper._c__DisplayClass6_0.smethod_3(_Module_.smethod_5<string>(-16128818), ex);
 												return;
 											}
 											innerException = ex;
 										}
-										StreamHelper.<>c__DisplayClass6_0.smethod_4(readDoneEvent);
+										StreamHelper._c__DisplayClass6_0.smethod_4(readDoneEvent);
 									});
 								}
 								asyncCallback = (callback = asyncCallback2);
@@ -203,22 +203,22 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 						if (memoryStream.Length != (long)MaxBufferLength)
 						{
 							stream.DisposeObject(asyncResult);
-							throw new IOException(<Module>.smethod_2<string>(-1762264601));
+							throw new IOException(_Module_.smethod_2<string>(-1762264601));
 						}
 						return memoryStream.ToArray();
 						IL_160:
 						stream.DisposeObject(asyncResult);
-						throw new IOException(<Module>.smethod_2<string>(-1762264601));
+						throw new IOException(_Module_.smethod_2<string>(-1762264601));
 						IL_17C:
 						stream.DisposeObject(asyncResult);
-						throw new TimeoutException(<Module>.smethod_2<string>(1433800077));
+						throw new TimeoutException(_Module_.smethod_2<string>(1433800077));
 						IL_198:
 						stream.DisposeObject(asyncResult);
 						if (!(innerException is IOException) && !(innerException is SocketException))
 						{
 							throw innerException;
 						}
-						throw new IOException(<Module>.smethod_3<string>(-1401485034) + innerException.Message);
+						throw new IOException(_Module_.smethod_3<string>(-1401485034) + innerException.Message);
 						IL_1E5:
 						result = memoryStream.ToArray();
 					}
@@ -226,14 +226,14 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 					{
 						stream.DisposeObject(asyncResult);
 						NotSupportedException innerException3;
-						throw new IOException(<Module>.smethod_5<string>(-16128818), innerException3);
+						throw new IOException(_Module_.smethod_5<string>(-16128818), innerException3);
 					}
 					catch (EndOfStreamException innerException2)
 					{
 						if (memoryStream.Length != (long)MaxBufferLength)
 						{
 							stream.DisposeObject(asyncResult);
-							throw new IOException(<Module>.smethod_6<string>(-1996104120), innerException2);
+							throw new IOException(_Module_.smethod_6<string>(-1996104120), innerException2);
 						}
 						result = memoryStream.ToArray();
 					}
@@ -241,7 +241,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 				return result;
 			}
 			stream.DisposeObject();
-			throw new IOException(<Module>.smethod_5<string>(-16128818));
+			throw new IOException(_Module_.smethod_5<string>(-16128818));
 		}
 
 		// Token: 0x060007F8 RID: 2040 RVA: 0x000314E0 File Offset: 0x0002F6E0
@@ -250,7 +250,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 			if (!stream.CanRead)
 			{
 				stream.DisposeObject();
-				throw new IOException(<Module>.smethod_4<string>(-322178440));
+				throw new IOException(_Module_.smethod_4<string>(-322178440));
 			}
 			if (stream.CanTimeout)
 			{
@@ -270,7 +270,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 						if (memoryStream.Length <= 0L)
 						{
 							stream.DisposeObject();
-							throw new IOException(<Module>.smethod_6<string>(-1996104120));
+							throw new IOException(_Module_.smethod_6<string>(-1996104120));
 						}
 						return Encoding.UTF8.GetString(memoryStream.ToArray());
 					}
@@ -291,7 +291,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 				return Encoding.UTF8.GetString(memoryStream.ToArray());
 				IL_96:
 				stream.DisposeObject();
-				throw new IOException(<Module>.smethod_4<string>(-322178440));
+				throw new IOException(_Module_.smethod_4<string>(-322178440));
 			}
 			string result;
 			return result;
@@ -300,29 +300,29 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 		// Token: 0x060007F9 RID: 2041 RVA: 0x0000AE25 File Offset: 0x00009025
 		public static IEnumerable<string> ReadLines(this Stream stream, int ReadTimeOut = 15000)
 		{
-			if (!StreamHelper.<ReadLines>d__8.smethod_1(stream))
+			if (!StreamHelper.ReadLines_d__8.smethod_1(stream))
 			{
 				goto IL_63;
 			}
-			if (StreamHelper.<ReadLines>d__8.smethod_3(stream))
+			if (StreamHelper.ReadLines_d__8.smethod_3(stream))
 			{
-				StreamHelper.<ReadLines>d__8.smethod_4(stream, ReadTimeOut);
+				StreamHelper.ReadLines_d__8.smethod_4(stream, ReadTimeOut);
 			}
-			StreamReader reader2 = StreamHelper.<ReadLines>d__8.smethod_6(stream, StreamHelper.<ReadLines>d__8.smethod_5(), true, 4096, true);
+			StreamReader reader2 = StreamHelper.ReadLines_d__8.smethod_6(stream, StreamHelper.ReadLines_d__8.smethod_5(), true, 4096, true);
 			for (;;)
 			{
 				string text;
 				try
 				{
 					IL_8A:
-					if ((text = StreamHelper.<ReadLines>d__8.smethod_7(reader2)) == null)
+					if ((text = StreamHelper.ReadLines_d__8.smethod_7(reader2)) == null)
 					{
 						break;
 					}
 					goto IL_AA;
 					IL_63:
 					stream.DisposeObject();
-					throw StreamHelper.<ReadLines>d__8.smethod_2(<Module>.smethod_4<string>(-322178440));
+					throw StreamHelper.ReadLines_d__8.smethod_2(_Module_.smethod_4<string>(-322178440));
 					IL_7E:
 					int num;
 					if (num != 1)
@@ -335,7 +335,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 				{
 					if (reader2 != null)
 					{
-						StreamHelper.<ReadLines>d__8.smethod_8(reader2);
+						StreamHelper.ReadLines_d__8.smethod_8(reader2);
 					}
 				}
 				break;
@@ -355,7 +355,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 			if (!stream.CanRead)
 			{
 				stream.DisposeObject();
-				throw new IOException(<Module>.smethod_4<string>(-322178440));
+				throw new IOException(_Module_.smethod_4<string>(-322178440));
 			}
 			if (stream.CanTimeout)
 			{
@@ -375,7 +375,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 			if (!stream.CanRead)
 			{
 				stream.DisposeObject();
-				throw new IOException(<Module>.smethod_5<string>(-16128818));
+				throw new IOException(_Module_.smethod_5<string>(-16128818));
 			}
 			if (stream.CanTimeout)
 			{
@@ -395,7 +395,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 			if (!stream.CanRead)
 			{
 				stream.DisposeObject();
-				throw new IOException(<Module>.smethod_2<string>(-1762264601));
+				throw new IOException(_Module_.smethod_2<string>(-1762264601));
 			}
 			if (stream.CanTimeout)
 			{
@@ -411,7 +411,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 				try
 				{
 					AsyncCallback asyncCallback = null;
-					AsyncCallback <>9__0;
+					AsyncCallback _9__0;
 					for (;;)
 					{
 						if (asyncResult == null || asyncResult.IsCompleted)
@@ -424,25 +424,25 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 							if ((callback = asyncCallback) == null)
 							{
 								AsyncCallback asyncCallback2;
-								if ((asyncCallback2 = <>9__0) == null)
+								if ((asyncCallback2 = _9__0) == null)
 								{
-									asyncCallback2 = (<>9__0 = delegate(IAsyncResult innerAr)
+									asyncCallback2 = (_9__0 = delegate(IAsyncResult innerAr)
 									{
 										try
 										{
-											StreamHelper.<>c__DisplayClass11_0.smethod_1(StreamHelper.<>c__DisplayClass11_0.smethod_0(innerAr));
-											rData = StreamHelper.<>c__DisplayClass11_0.smethod_2(stream, innerAr);
+											StreamHelper._c__DisplayClass11_0.smethod_1(StreamHelper._c__DisplayClass11_0.smethod_0(innerAr));
+											rData = StreamHelper._c__DisplayClass11_0.smethod_2(stream, innerAr);
 										}
 										catch (Exception ex)
 										{
 											if (ex is NullReferenceException || ex is ObjectDisposedException)
 											{
-												innerException = StreamHelper.<>c__DisplayClass11_0.smethod_3(<Module>.smethod_5<string>(-16128818));
+												innerException = StreamHelper._c__DisplayClass11_0.smethod_3(_Module_.smethod_5<string>(-16128818));
 												return;
 											}
 											innerException = ex;
 										}
-										StreamHelper.<>c__DisplayClass11_0.smethod_4(readDoneEvent);
+										StreamHelper._c__DisplayClass11_0.smethod_4(readDoneEvent);
 									});
 								}
 								asyncCallback = (callback = asyncCallback2);
@@ -522,7 +522,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 					return Encoding.UTF8.GetString(memoryStream.ToArray());
 					IL_23A:
 					stream.DisposeObject(asyncResult);
-					throw new IOException(<Module>.smethod_3<string>(2010242753));
+					throw new IOException(_Module_.smethod_3<string>(2010242753));
 					IL_256:
 					return Encoding.UTF8.GetString(memoryStream.ToArray());
 					IL_284:
@@ -533,31 +533,31 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 					if (memoryStream.Length <= 0L || !Sck.WaitAvailableData(500, 50))
 					{
 						stream.DisposeObject(asyncResult);
-						throw new IOException(<Module>.smethod_3<string>(2010242753));
+						throw new IOException(_Module_.smethod_3<string>(2010242753));
 					}
 					return Encoding.UTF8.GetString(memoryStream.ToArray());
 					IL_2EE:
 					stream.DisposeObject(asyncResult);
-					throw new IOException(<Module>.smethod_4<string>(1082026182));
+					throw new IOException(_Module_.smethod_4<string>(1082026182));
 					IL_30A:
 					stream.DisposeObject(asyncResult);
 					if (!(innerException is IOException) && !(innerException is SocketException))
 					{
 						throw innerException;
 					}
-					throw new IOException(<Module>.smethod_3<string>(2010242753));
+					throw new IOException(_Module_.smethod_3<string>(2010242753));
 				}
 				catch (NotSupportedException)
 				{
 					stream.DisposeObject(asyncResult);
-					throw new IOException(<Module>.smethod_2<string>(-1762264601));
+					throw new IOException(_Module_.smethod_2<string>(-1762264601));
 				}
 				catch (EndOfStreamException)
 				{
 					if (memoryStream.Length <= 0L)
 					{
 						stream.DisposeObject(asyncResult);
-						throw new IOException(<Module>.smethod_3<string>(2010242753));
+						throw new IOException(_Module_.smethod_3<string>(2010242753));
 					}
 					return Encoding.UTF8.GetString(memoryStream.ToArray());
 				}
@@ -572,7 +572,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 			if (!stream.CanRead)
 			{
 				stream.DisposeObject();
-				throw new IOException(<Module>.smethod_2<string>(-1762264601));
+				throw new IOException(_Module_.smethod_2<string>(-1762264601));
 			}
 			if (stream.CanTimeout)
 			{
@@ -594,7 +594,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 						if (memoryStream.Length <= 0L)
 						{
 							stream.DisposeObject();
-							throw new IOException(<Module>.smethod_2<string>(-1762264601));
+							throw new IOException(_Module_.smethod_2<string>(-1762264601));
 						}
 						return Encoding.UTF8.GetString(memoryStream.ToArray());
 					}
@@ -672,14 +672,14 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 					return Encoding.UTF8.GetString(memoryStream.ToArray());
 				}
 				stream.DisposeObject();
-				throw new IOException(<Module>.smethod_5<string>(-16128818));
+				throw new IOException(_Module_.smethod_5<string>(-16128818));
 				Block_16:
 				goto IL_1F5;
 				Block_17:
 				return Encoding.UTF8.GetString(memoryStream.ToArray());
 				IL_1CB:
 				stream.DisposeObject();
-				throw new IOException(<Module>.smethod_6<string>(-1996104120));
+				throw new IOException(_Module_.smethod_6<string>(-1996104120));
 				IL_1F5:
 				return Encoding.UTF8.GetString(memoryStream.ToArray());
 				IL_209:

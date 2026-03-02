@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -86,7 +86,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web
 								{
 									continue;
 								}
-								ValueTuple<OperationResult, string> valueTuple = CaptchaHelpers.CreateInstance().SolveRecaptchaV2Proxyless(this._siteKey, <Module>.smethod_3<string>(2069927226));
+								ValueTuple<OperationResult, string> valueTuple = CaptchaHelpers.CreateInstance().SolveRecaptchaV2Proxyless(this._siteKey, _Module_.smethod_3<string>(2069927226));
 								OperationResult item = valueTuple.Item1;
 								string item2 = valueTuple.Item2;
 								if (item == OperationResult.Error)
@@ -142,7 +142,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web
 								{
 									return OperationResult.Captcha;
 								}
-								ValueTuple<OperationResult, string> valueTuple2 = CaptchaHelpers.CreateInstance().SolveRecaptchaV2Proxyless(this._siteKey, <Module>.smethod_5<string>(1500698071));
+								ValueTuple<OperationResult, string> valueTuple2 = CaptchaHelpers.CreateInstance().SolveRecaptchaV2Proxyless(this._siteKey, _Module_.smethod_5<string>(1500698071));
 								OperationResult item3 = valueTuple2.Item1;
 								string item4 = valueTuple2.Item2;
 								if (item3 == OperationResult.Error)
@@ -172,24 +172,24 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web
 			this.WaitPause();
 			try
 			{
-				string text = this._httpRequest.Get(<Module>.smethod_3<string>(-1060857419), null).ToString();
-				if (text == <Module>.smethod_3<string>(103325232))
+				string text = this._httpRequest.Get(_Module_.smethod_3<string>(-1060857419), null).ToString();
+				if (text == _Module_.smethod_3<string>(103325232))
 				{
 					return OperationResult.Blocked;
 				}
-				Match match = Regex.Match(text, <Module>.smethod_6<string>(1894806195));
+				Match match = Regex.Match(text, _Module_.smethod_6<string>(1894806195));
 				if (!match.Success)
 				{
 					return OperationResult.Error;
 				}
 				this._crumb = match.Groups[1].Value;
-				match = Regex.Match(text, <Module>.smethod_6<string>(-771512757));
+				match = Regex.Match(text, _Module_.smethod_6<string>(-771512757));
 				if (!match.Success)
 				{
 					return OperationResult.Error;
 				}
 				this._acrumb = match.Groups[1].Value;
-				match = Regex.Match(text, <Module>.smethod_6<string>(2066767619));
+				match = Regex.Match(text, _Module_.smethod_6<string>(2066767619));
 				if (!match.Success)
 				{
 					return OperationResult.Error;
@@ -214,43 +214,43 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web
 			this.WaitPause();
 			try
 			{
-				this._httpRequest.AddHeader(<Module>.smethod_6<string>(578231860), <Module>.smethod_5<string>(853751315));
+				this._httpRequest.AddHeader(_Module_.smethod_6<string>(578231860), _Module_.smethod_5<string>(853751315));
 				FormUrlEncodedContent formUrlEncodedContent = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>
 				{
-					new KeyValuePair<string, string>(<Module>.smethod_2<string>(-742435430), this._crumb),
-					new KeyValuePair<string, string>(<Module>.smethod_6<string>(1030826796), this._acrumb),
-					new KeyValuePair<string, string>(<Module>.smethod_6<string>(-1190529069), this._sessionIndex),
-					new KeyValuePair<string, string>(<Module>.smethod_3<string>(-127570632), <Module>.smethod_4<string>(-678169520)),
-					new KeyValuePair<string, string>(<Module>.smethod_6<string>(461623556), this._mailbox.Address)
+					new KeyValuePair<string, string>(_Module_.smethod_2<string>(-742435430), this._crumb),
+					new KeyValuePair<string, string>(_Module_.smethod_6<string>(1030826796), this._acrumb),
+					new KeyValuePair<string, string>(_Module_.smethod_6<string>(-1190529069), this._sessionIndex),
+					new KeyValuePair<string, string>(_Module_.smethod_3<string>(-127570632), _Module_.smethod_4<string>(-678169520)),
+					new KeyValuePair<string, string>(_Module_.smethod_6<string>(461623556), this._mailbox.Address)
 				}, false, null);
-				string text = this._httpRequest.Post(<Module>.smethod_5<string>(-1311615358), formUrlEncodedContent).ToString();
+				string text = this._httpRequest.Post(_Module_.smethod_5<string>(-1311615358), formUrlEncodedContent).ToString();
 				if (text.ContainsOne(new string[]
 				{
-					<Module>.smethod_5<string>(-747721955),
-					<Module>.smethod_4<string>(-770139588),
-					<Module>.smethod_2<string>(489750054),
-					<Module>.smethod_2<string>(-2140543470)
+					_Module_.smethod_5<string>(-747721955),
+					_Module_.smethod_4<string>(-770139588),
+					_Module_.smethod_2<string>(489750054),
+					_Module_.smethod_2<string>(-2140543470)
 				}))
 				{
 					return OperationResult.Bad;
 				}
 				if (text.ContainsOne(new string[]
 				{
-					<Module>.smethod_3<string>(1117432185),
-					<Module>.smethod_4<string>(28741110),
-					<Module>.smethod_3<string>(-1130112951),
-					<Module>.smethod_2<string>(-1675415492)
+					_Module_.smethod_3<string>(1117432185),
+					_Module_.smethod_4<string>(28741110),
+					_Module_.smethod_3<string>(-1130112951),
+					_Module_.smethod_2<string>(-1675415492)
 				}))
 				{
 					return OperationResult.Blocked;
 				}
-				if (!text.Contains(<Module>.smethod_6<string>(44337029)))
+				if (!text.Contains(_Module_.smethod_6<string>(44337029)))
 				{
-					if (text.Contains(<Module>.smethod_2<string>(-46006352)))
+					if (text.Contains(_Module_.smethod_2<string>(-46006352)))
 					{
 						return OperationResult.Ok;
 					}
-					if (text == <Module>.smethod_3<string>(103325232) && ProxySettings.Instance.UseProxy)
+					if (text == _Module_.smethod_3<string>(103325232) && ProxySettings.Instance.UseProxy)
 					{
 						return OperationResult.HttpError;
 					}
@@ -258,10 +258,10 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web
 				}
 				else
 				{
-					Match match = Regex.Match(text, <Module>.smethod_2<string>(1237763609));
+					Match match = Regex.Match(text, _Module_.smethod_2<string>(1237763609));
 					if (match.Success)
 					{
-						captchaUrl = <Module>.smethod_2<string>(-1615559533) + match.Groups[1].Value;
+						captchaUrl = _Module_.smethod_2<string>(-1615559533) + match.Groups[1].Value;
 						return OperationResult.Captcha;
 					}
 					return OperationResult.Blocked;
@@ -285,39 +285,39 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web
 			try
 			{
 				this._httpRequest.Reconnect = true;
-				this._httpRequest.AddUrlParam(<Module>.smethod_4<string>(551711604), <Module>.smethod_2<string>(-592832719));
-				this._httpRequest.AddUrlParam(<Module>.smethod_5<string>(771888973), this._sessionIndex);
-				this._httpRequest.AddUrlParam(<Module>.smethod_4<string>(1689622660), this._acrumb);
-				this._httpRequest.AddUrlParam(<Module>.smethod_2<string>(1904177939), <Module>.smethod_4<string>(-1899046013));
-				this._httpRequest.AddUrlParam(<Module>.smethod_3<string>(957719292), <Module>.smethod_2<string>(938558187));
+				this._httpRequest.AddUrlParam(_Module_.smethod_4<string>(551711604), _Module_.smethod_2<string>(-592832719));
+				this._httpRequest.AddUrlParam(_Module_.smethod_5<string>(771888973), this._sessionIndex);
+				this._httpRequest.AddUrlParam(_Module_.smethod_4<string>(1689622660), this._acrumb);
+				this._httpRequest.AddUrlParam(_Module_.smethod_2<string>(1904177939), _Module_.smethod_4<string>(-1899046013));
+				this._httpRequest.AddUrlParam(_Module_.smethod_3<string>(957719292), _Module_.smethod_2<string>(938558187));
 				FormUrlEncodedContent formUrlEncodedContent = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>
 				{
-					new KeyValuePair<string, string>(<Module>.smethod_6<string>(-451806899), this._crumb),
-					new KeyValuePair<string, string>(<Module>.smethod_4<string>(1689622660), this._acrumb),
-					new KeyValuePair<string, string>(<Module>.smethod_2<string>(1754575228), this._sessionIndex),
-					new KeyValuePair<string, string>(<Module>.smethod_4<string>(-1728918827), <Module>.smethod_4<string>(-678169520)),
-					new KeyValuePair<string, string>(<Module>.smethod_6<string>(461623556), this._mailbox.Address),
-					new KeyValuePair<string, string>(<Module>.smethod_6<string>(1029097011), this._mailbox.Address),
-					new KeyValuePair<string, string>(<Module>.smethod_4<string>(893801997), this._mailbox.Password),
-					new KeyValuePair<string, string>(<Module>.smethod_3<string>(-727939560), <Module>.smethod_2<string>(1637612207)),
-					new KeyValuePair<string, string>(<Module>.smethod_3<string>(-1851712128), <Module>.smethod_5<string>(397152302))
+					new KeyValuePair<string, string>(_Module_.smethod_6<string>(-451806899), this._crumb),
+					new KeyValuePair<string, string>(_Module_.smethod_4<string>(1689622660), this._acrumb),
+					new KeyValuePair<string, string>(_Module_.smethod_2<string>(1754575228), this._sessionIndex),
+					new KeyValuePair<string, string>(_Module_.smethod_4<string>(-1728918827), _Module_.smethod_4<string>(-678169520)),
+					new KeyValuePair<string, string>(_Module_.smethod_6<string>(461623556), this._mailbox.Address),
+					new KeyValuePair<string, string>(_Module_.smethod_6<string>(1029097011), this._mailbox.Address),
+					new KeyValuePair<string, string>(_Module_.smethod_4<string>(893801997), this._mailbox.Password),
+					new KeyValuePair<string, string>(_Module_.smethod_3<string>(-727939560), _Module_.smethod_2<string>(1637612207)),
+					new KeyValuePair<string, string>(_Module_.smethod_3<string>(-1851712128), _Module_.smethod_5<string>(397152302))
 				}, false, null);
-				string text = this._httpRequest.Post(<Module>.smethod_4<string>(798771894), formUrlEncodedContent).ToString();
+				string text = this._httpRequest.Post(_Module_.smethod_4<string>(798771894), formUrlEncodedContent).ToString();
 				if (text.ContainsOne(new string[]
 				{
-					<Module>.smethod_3<string>(-366176252),
-					<Module>.smethod_5<string>(550146607)
+					_Module_.smethod_3<string>(-366176252),
+					_Module_.smethod_5<string>(550146607)
 				}))
 				{
 					this._apiAuthorizeUrl = this._httpRequest.Response.Location;
 					return OperationResult.Ok;
 				}
-				if (text.Contains(<Module>.smethod_3<string>(-200548770)))
+				if (text.Contains(_Module_.smethod_3<string>(-200548770)))
 				{
-					Match match = Regex.Match(text, <Module>.smethod_6<string>(-1197448209));
+					Match match = Regex.Match(text, _Module_.smethod_6<string>(-1197448209));
 					if (match.Success)
 					{
-						captchaUrl = <Module>.smethod_4<string>(701381500) + match.Groups[1].Value;
+						captchaUrl = _Module_.smethod_4<string>(701381500) + match.Groups[1].Value;
 						return OperationResult.Captcha;
 					}
 					return OperationResult.Blocked;
@@ -326,24 +326,24 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web
 				{
 					if (text.ContainsOne(new string[]
 					{
-						<Module>.smethod_2<string>(-2072539984),
-						<Module>.smethod_4<string>(-1481858537),
-						<Module>.smethod_2<string>(772635631),
-						<Module>.smethod_3<string>(-1971014938)
+						_Module_.smethod_2<string>(-2072539984),
+						_Module_.smethod_4<string>(-1481858537),
+						_Module_.smethod_2<string>(772635631),
+						_Module_.smethod_3<string>(-1971014938)
 					}))
 					{
 						return OperationResult.Blocked;
 					}
 					if (text.ContainsOne(new string[]
 					{
-						<Module>.smethod_6<string>(-1795345085),
-						<Module>.smethod_2<string>(1022881518),
-						<Module>.smethod_2<string>(489750054)
+						_Module_.smethod_6<string>(-1795345085),
+						_Module_.smethod_2<string>(1022881518),
+						_Module_.smethod_2<string>(489750054)
 					}))
 					{
 						return OperationResult.Bad;
 					}
-					if (text == <Module>.smethod_6<string>(1152624455) && ProxySettings.Instance.UseProxy)
+					if (text == _Module_.smethod_6<string>(1152624455) && ProxySettings.Instance.UseProxy)
 					{
 						return OperationResult.HttpError;
 					}
@@ -366,7 +366,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web
 			this.WaitPause();
 			try
 			{
-				Match match = Regex.Match(this._httpRequest.Get(captchaUrl, null).ToString(), <Module>.smethod_4<string>(-1912858963));
+				Match match = Regex.Match(this._httpRequest.Get(captchaUrl, null).ToString(), _Module_.smethod_4<string>(-1912858963));
 				if (match.Success)
 				{
 					this._siteKey = match.Groups[1].Value;
@@ -390,27 +390,27 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web
 			this.WaitPause();
 			try
 			{
-				this._httpRequest.AddUrlParam(<Module>.smethod_6<string>(-2082185028), <Module>.smethod_5<string>(661017790));
-				this._httpRequest.AddUrlParam(<Module>.smethod_4<string>(-939654767), this._sessionIndex);
-				this._httpRequest.AddUrlParam(<Module>.smethod_2<string>(506069899), this._acrumb);
-				this._httpRequest.AddUrlParam(<Module>.smethod_2<string>(1904177939), <Module>.smethod_5<string>(1847220535));
-				this._httpRequest.AddUrlParam(<Module>.smethod_3<string>(957719292), <Module>.smethod_3<string>(-1892122211));
-				this._httpRequest.AddUrlParam(<Module>.smethod_5<string>(-478690406), <Module>.smethod_3<string>(1280999956));
-				this._httpRequest.AddUrlParam(<Module>.smethod_5<string>(-1238495870), <Module>.smethod_3<string>(-1051087952));
-				this._httpRequest.AddUrlParam(<Module>.smethod_3<string>(157227388), <Module>.smethod_6<string>(-641778882));
+				this._httpRequest.AddUrlParam(_Module_.smethod_6<string>(-2082185028), _Module_.smethod_5<string>(661017790));
+				this._httpRequest.AddUrlParam(_Module_.smethod_4<string>(-939654767), this._sessionIndex);
+				this._httpRequest.AddUrlParam(_Module_.smethod_2<string>(506069899), this._acrumb);
+				this._httpRequest.AddUrlParam(_Module_.smethod_2<string>(1904177939), _Module_.smethod_5<string>(1847220535));
+				this._httpRequest.AddUrlParam(_Module_.smethod_3<string>(957719292), _Module_.smethod_3<string>(-1892122211));
+				this._httpRequest.AddUrlParam(_Module_.smethod_5<string>(-478690406), _Module_.smethod_3<string>(1280999956));
+				this._httpRequest.AddUrlParam(_Module_.smethod_5<string>(-1238495870), _Module_.smethod_3<string>(-1051087952));
+				this._httpRequest.AddUrlParam(_Module_.smethod_3<string>(157227388), _Module_.smethod_6<string>(-641778882));
 				if (isSecondCaptcha)
 				{
-					this._httpRequest.AddUrlParam(<Module>.smethod_4<string>(1239388958), <Module>.smethod_3<string>(45766606));
-					this._httpRequest.AddUrlParam(<Module>.smethod_6<string>(-755944692), <Module>.smethod_5<string>(-940057223));
+					this._httpRequest.AddUrlParam(_Module_.smethod_4<string>(1239388958), _Module_.smethod_3<string>(45766606));
+					this._httpRequest.AddUrlParam(_Module_.smethod_6<string>(-755944692), _Module_.smethod_5<string>(-940057223));
 				}
 				FormUrlEncodedContent formUrlEncodedContent = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>
 				{
-					new KeyValuePair<string, string>(<Module>.smethod_6<string>(-1017550569), captchaResult),
-					new KeyValuePair<string, string>(<Module>.smethod_6<string>(1030826796), this._acrumb),
-					new KeyValuePair<string, string>(<Module>.smethod_5<string>(771888973), this._sessionIndex),
-					new KeyValuePair<string, string>(<Module>.smethod_5<string>(-1808349968), <Module>.smethod_4<string>(-586199452))
+					new KeyValuePair<string, string>(_Module_.smethod_6<string>(-1017550569), captchaResult),
+					new KeyValuePair<string, string>(_Module_.smethod_6<string>(1030826796), this._acrumb),
+					new KeyValuePair<string, string>(_Module_.smethod_5<string>(771888973), this._sessionIndex),
+					new KeyValuePair<string, string>(_Module_.smethod_5<string>(-1808349968), _Module_.smethod_4<string>(-586199452))
 				}, false, null);
-				if (!this._httpRequest.Post(<Module>.smethod_5<string>(-325696101), formUrlEncodedContent).ToString().Contains(<Module>.smethod_5<string>(835470973)))
+				if (!this._httpRequest.Post(_Module_.smethod_5<string>(-325696101), formUrlEncodedContent).ToString().Contains(_Module_.smethod_5<string>(835470973)))
 				{
 					return OperationResult.Error;
 				}
@@ -432,47 +432,47 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web
 			this.WaitPause();
 			try
 			{
-				this._httpRequest.AddUrlParam(<Module>.smethod_6<string>(-2082185028), <Module>.smethod_5<string>(661017790));
-				this._httpRequest.AddUrlParam(<Module>.smethod_4<string>(-939654767), this._sessionIndex);
-				this._httpRequest.AddUrlParam(<Module>.smethod_4<string>(1689622660), this._acrumb);
-				this._httpRequest.AddUrlParam(<Module>.smethod_2<string>(1904177939), <Module>.smethod_5<string>(1847220535));
-				this._httpRequest.AddUrlParam(<Module>.smethod_5<string>(275948997), <Module>.smethod_4<string>(-586199452));
-				this._httpRequest.AddUrlParam(<Module>.smethod_2<string>(1139844539), <Module>.smethod_5<string>(1763768925));
-				this._httpRequest.AddUrlParam(<Module>.smethod_4<string>(-513462660), <Module>.smethod_5<string>(115404729));
-				this._httpRequest.AddUrlParam(<Module>.smethod_4<string>(1152227209), <Module>.smethod_5<string>(1510633816));
-				this._httpRequest.AddUrlParam(<Module>.smethod_6<string>(1315936954), <Module>.smethod_4<string>(-35515321));
-				this._httpRequest.AddUrlParam(<Module>.smethod_3<string>(1602353181), <Module>.smethod_4<string>(893801997));
+				this._httpRequest.AddUrlParam(_Module_.smethod_6<string>(-2082185028), _Module_.smethod_5<string>(661017790));
+				this._httpRequest.AddUrlParam(_Module_.smethod_4<string>(-939654767), this._sessionIndex);
+				this._httpRequest.AddUrlParam(_Module_.smethod_4<string>(1689622660), this._acrumb);
+				this._httpRequest.AddUrlParam(_Module_.smethod_2<string>(1904177939), _Module_.smethod_5<string>(1847220535));
+				this._httpRequest.AddUrlParam(_Module_.smethod_5<string>(275948997), _Module_.smethod_4<string>(-586199452));
+				this._httpRequest.AddUrlParam(_Module_.smethod_2<string>(1139844539), _Module_.smethod_5<string>(1763768925));
+				this._httpRequest.AddUrlParam(_Module_.smethod_4<string>(-513462660), _Module_.smethod_5<string>(115404729));
+				this._httpRequest.AddUrlParam(_Module_.smethod_4<string>(1152227209), _Module_.smethod_5<string>(1510633816));
+				this._httpRequest.AddUrlParam(_Module_.smethod_6<string>(1315936954), _Module_.smethod_4<string>(-35515321));
+				this._httpRequest.AddUrlParam(_Module_.smethod_3<string>(1602353181), _Module_.smethod_4<string>(893801997));
 				FormUrlEncodedContent formUrlEncodedContent = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>
 				{
-					new KeyValuePair<string, string>(<Module>.smethod_6<string>(-1017550569), captchaResult),
-					new KeyValuePair<string, string>(<Module>.smethod_2<string>(506069899), this._acrumb),
-					new KeyValuePair<string, string>(<Module>.smethod_4<string>(-939654767), this._sessionIndex),
-					new KeyValuePair<string, string>(<Module>.smethod_3<string>(1321410039), <Module>.smethod_5<string>(1568651498))
+					new KeyValuePair<string, string>(_Module_.smethod_6<string>(-1017550569), captchaResult),
+					new KeyValuePair<string, string>(_Module_.smethod_2<string>(506069899), this._acrumb),
+					new KeyValuePair<string, string>(_Module_.smethod_4<string>(-939654767), this._sessionIndex),
+					new KeyValuePair<string, string>(_Module_.smethod_3<string>(1321410039), _Module_.smethod_5<string>(1568651498))
 				}, false, null);
-				string original = this._httpRequest.Post(<Module>.smethod_2<string>(1289447250), formUrlEncodedContent).ToString();
+				string original = this._httpRequest.Post(_Module_.smethod_2<string>(1289447250), formUrlEncodedContent).ToString();
 				if (original.ContainsOne(new string[]
 				{
-					<Module>.smethod_3<string>(-366176252),
-					<Module>.smethod_4<string>(-251977413)
+					_Module_.smethod_3<string>(-366176252),
+					_Module_.smethod_4<string>(-251977413)
 				}))
 				{
 					return OperationResult.Ok;
 				}
 				if (original.ContainsOne(new string[]
 				{
-					<Module>.smethod_2<string>(-2072539984),
-					<Module>.smethod_4<string>(-1481858537),
-					<Module>.smethod_3<string>(1117432185),
-					<Module>.smethod_2<string>(1504329341)
+					_Module_.smethod_2<string>(-2072539984),
+					_Module_.smethod_4<string>(-1481858537),
+					_Module_.smethod_3<string>(1117432185),
+					_Module_.smethod_2<string>(1504329341)
 				}))
 				{
 					return OperationResult.Blocked;
 				}
 				if (!original.ContainsOne(new string[]
 				{
-					<Module>.smethod_3<string>(1481122932),
-					<Module>.smethod_4<string>(629256715),
-					<Module>.smethod_2<string>(489750054)
+					_Module_.smethod_3<string>(1481122932),
+					_Module_.smethod_4<string>(629256715),
+					_Module_.smethod_2<string>(489750054)
 				}))
 				{
 					return OperationResult.Error;
@@ -497,55 +497,55 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web
 			{
 				this._httpRequest.Reconnect = true;
 				this._httpRequest.ReconnectLimit = 3;
-				if (this._apiAuthorizeUrl.Contains(<Module>.smethod_5<string>(-1596939724)))
+				if (this._apiAuthorizeUrl.Contains(_Module_.smethod_5<string>(-1596939724)))
 				{
-					Match match = Regex.Match(this._httpRequest.Get(this._apiAuthorizeUrl, null).ToString(), <Module>.smethod_2<string>(508794005));
+					Match match = Regex.Match(this._httpRequest.Get(this._apiAuthorizeUrl, null).ToString(), _Module_.smethod_2<string>(508794005));
 					if (match.Success)
 					{
 						this._apiAuthorizeUrl = match.Groups[1].Value;
 					}
 				}
 				string location = this._httpRequest.Get(this._apiAuthorizeUrl, null).Location;
-				if (location == null || !location.Contains(<Module>.smethod_4<string>(-1294858366)))
+				if (location == null || !location.Contains(_Module_.smethod_4<string>(-1294858366)))
 				{
 					return OperationResult.Error;
 				}
 				location = this._httpRequest.Get(location, null).Location;
-				if (location == null || !location.Contains(<Module>.smethod_3<string>(911526892)))
+				if (location == null || !location.Contains(_Module_.smethod_3<string>(911526892)))
 				{
 					return OperationResult.Error;
 				}
 				location = this._httpRequest.Get(location, null).Location;
-				if (location == null || !location.Contains(<Module>.smethod_3<string>(349640608)))
+				if (location == null || !location.Contains(_Module_.smethod_3<string>(349640608)))
 				{
 					return OperationResult.Error;
 				}
 				location = this._httpRequest.Get(location, null).Location;
-				if (location == null || !location.Contains(<Module>.smethod_4<string>(1447370689)))
+				if (location == null || !location.Contains(_Module_.smethod_4<string>(1447370689)))
 				{
 					return OperationResult.Error;
 				}
 				location = this._httpRequest.Get(location, null).Location;
-				if (location == null || !location.Contains(<Module>.smethod_4<string>(-1884009049)))
+				if (location == null || !location.Contains(_Module_.smethod_4<string>(-1884009049)))
 				{
 					return OperationResult.Error;
 				}
 				location = this._httpRequest.Get(location, null).Location;
-				if (location == null || !location.Contains(<Module>.smethod_6<string>(-1915412959)))
+				if (location == null || !location.Contains(_Module_.smethod_6<string>(-1915412959)))
 				{
 					return OperationResult.Error;
 				}
 				location = this._httpRequest.Get(location, null).Location;
-				if (location == null || !location.Contains(<Module>.smethod_6<string>(1046394861)))
+				if (location == null || !location.Contains(_Module_.smethod_6<string>(1046394861)))
 				{
 					return OperationResult.Error;
 				}
 				location = this._httpRequest.Get(location, null).Location;
-				if (location != <Module>.smethod_2<string>(-592832719))
+				if (location != _Module_.smethod_2<string>(-592832719))
 				{
 					return OperationResult.Error;
 				}
-				Match match2 = Regex.Match(this._httpRequest.Get(<Module>.smethod_2<string>(1740979489), null).ToString(), <Module>.smethod_5<string>(171038509));
+				Match match2 = Regex.Match(this._httpRequest.Get(_Module_.smethod_2<string>(1740979489), null).ToString(), _Module_.smethod_5<string>(171038509));
 				if (match2.Success)
 				{
 					this._crumb = match2.Groups[1].Value;
@@ -654,7 +654,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web
 		{
 			try
 			{
-				foreach (object obj in Regex.Matches(this._httpRequest.Get(<Module>.smethod_5<string>(-378151345), null).ToString(), <Module>.smethod_3<string>(1875586567)))
+				foreach (object obj in Regex.Matches(this._httpRequest.Get(_Module_.smethod_5<string>(-378151345), null).ToString(), _Module_.smethod_3<string>(1875586567)))
 				{
 					FileManager.SaveContact(((Match)obj).Groups[1].Value);
 				}
@@ -678,7 +678,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web
 				while (enumerator.MoveNext())
 				{
 					Request request = enumerator.Current;
-					Request request3 = checkedRequests.FirstOrDefault((Request r) => AolClient.<>c__DisplayClass23_0.smethod_0(r.Sender, request.Sender) && AolClient.<>c__DisplayClass23_0.smethod_0(r.Body, request.Body) && AolClient.<>c__DisplayClass23_0.smethod_0(r.Subject, request.Subject));
+					Request request3 = checkedRequests.FirstOrDefault((Request r) => AolClient._c__DisplayClass23_0.smethod_0(r.Sender, request.Sender) && AolClient._c__DisplayClass23_0.smethod_0(r.Body, request.Body) && AolClient._c__DisplayClass23_0.smethod_0(r.Subject, request.Subject));
 					if (request3 == null)
 					{
 						request3 = request.Clone();
@@ -753,16 +753,16 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web
 			try
 			{
 				this._httpRequest.AllowAutoRedirect = true;
-				this._httpRequest.AddUrlParam(<Module>.smethod_3<string>(-371958569), 1);
-				this._httpRequest.AddUrlParam(<Module>.smethod_5<string>(961840339), this._crumb);
-				this._httpRequest.AddUrlParam(<Module>.smethod_2<string>(408150829), this.BuildSearchQuery(searchRequest));
-				foreach (object obj in Regex.Matches(this._httpRequest.Get(<Module>.smethod_4<string>(-1172290100), null).ToString(), <Module>.smethod_5<string>(1632233498)))
+				this._httpRequest.AddUrlParam(_Module_.smethod_3<string>(-371958569), 1);
+				this._httpRequest.AddUrlParam(_Module_.smethod_5<string>(961840339), this._crumb);
+				this._httpRequest.AddUrlParam(_Module_.smethod_2<string>(408150829), this.BuildSearchQuery(searchRequest));
+				foreach (object obj in Regex.Matches(this._httpRequest.Get(_Module_.smethod_4<string>(-1172290100), null).ToString(), _Module_.smethod_5<string>(1632233498)))
 				{
 					Match match = (Match)obj;
 					if (match.Success)
 					{
 						string value = match.Groups[1].Value;
-						DateTime date = DateTime.Parse(match.Groups[2].Value + <Module>.smethod_2<string>(1849819774) + match.Groups[3].Value);
+						DateTime date = DateTime.Parse(match.Groups[2].Value + _Module_.smethod_2<string>(1849819774) + match.Groups[3].Value);
 						string value2 = match.Groups[4].Value;
 						string value3 = match.Groups[5].Value;
 						if (this.Validate(searchRequest, value2, value, date))
@@ -796,23 +796,23 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web
 			try
 			{
 				this._httpRequest.AllowAutoRedirect = false;
-				Match match = Regex.Match(this._httpRequest.Get(<Module>.smethod_4<string>(561328242) + mid.MID, null).ToString(), <Module>.smethod_5<string>(-1438779358));
+				Match match = Regex.Match(this._httpRequest.Get(_Module_.smethod_4<string>(561328242) + mid.MID, null).ToString(), _Module_.smethod_5<string>(-1438779358));
 				if (!match.Success)
 				{
 					return OperationResult.Error;
 				}
 				message.Subject = match.Groups[1].Value;
-				string[] array = match.Groups[2].Value.Replace(<Module>.smethod_3<string>(-370031130), <Module>.smethod_3<string>(2023933234)).Split(new char[]
+				string[] array = match.Groups[2].Value.Replace(_Module_.smethod_3<string>(-370031130), _Module_.smethod_3<string>(2023933234)).Split(new char[]
 				{
 					' '
 				});
 				if (array.Length != 4)
 				{
-					message.Date = DateTime.Parse(match.Groups[2].Value.Replace(<Module>.smethod_5<string>(-30039613), <Module>.smethod_6<string>(820097393)));
+					message.Date = DateTime.Parse(match.Groups[2].Value.Replace(_Module_.smethod_5<string>(-30039613), _Module_.smethod_6<string>(820097393)));
 				}
 				else
 				{
-					message.Date = DateTime.Parse(string.Format(<Module>.smethod_4<string>(-1544978691), new object[]
+					message.Date = DateTime.Parse(string.Format(_Module_.smethod_4<string>(-1544978691), new object[]
 					{
 						array[0],
 						array[1],
@@ -822,7 +822,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web
 					}));
 				}
 				message.From = match.Groups[3].Value;
-				message.AlternateViews.Add(new Attachment(<Module>.smethod_6<string>(-2006787197), match.Groups[4].Value + <Module>.smethod_6<string>(-351479369)));
+				message.AlternateViews.Add(new Attachment(_Module_.smethod_6<string>(-2006787197), match.Groups[4].Value + _Module_.smethod_6<string>(-351479369)));
 				return OperationResult.Ok;
 			}
 			catch (HttpException)
@@ -910,7 +910,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web
 				KeepAlive = false,
 				Reconnect = false,
 				ReconnectLimit = 2,
-				UserAgent = <Module>.smethod_5<string>(-1517859541)
+				UserAgent = _Module_.smethod_5<string>(-1517859541)
 			};
 			if (ProxySettings.Instance.UseProxy)
 			{

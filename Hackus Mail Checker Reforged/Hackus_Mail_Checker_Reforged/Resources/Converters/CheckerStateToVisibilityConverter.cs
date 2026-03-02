@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
@@ -14,7 +14,7 @@ namespace Hackus_Mail_Checker_Reforged.Resources.Converters
 		{
 			CheckerState checkerState = (CheckerState)value;
 			string a = (string)parameter;
-			if (a == <Module>.smethod_4<string>(-1425906993))
+			if (a == _Module_.smethod_4<string>(-1425906993))
 			{
 				if (checkerState != CheckerState.Closing)
 				{
@@ -25,9 +25,9 @@ namespace Hackus_Mail_Checker_Reforged.Resources.Converters
 				}
 				return Visibility.Visible;
 			}
-			if (!(a == <Module>.smethod_5<string>(2134532426)))
+			if (!(a == _Module_.smethod_5<string>(2134532426)))
 			{
-				if (!(a == <Module>.smethod_2<string>(-1199341508)))
+				if (!(a == _Module_.smethod_2<string>(-1199341508)))
 				{
 					return DependencyProperty.UnsetValue;
 				}

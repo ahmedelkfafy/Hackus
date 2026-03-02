@@ -50,8 +50,8 @@
 					Width="80"
 					HorizontalAlignment="Right"
 					VerticalAlignment="Center"
-					ThemeManager.RequestedAccentColor="#64FFD1"
-					ThemeManager.RequestedTheme="Dark"
+					hc:ThemeManager.RequestedAccentColor="#64FFD1"
+					hc:ThemeManager.RequestedTheme="Dark"
 					BorderThickness="0"
 					Maximum="1000"
 					Minimum="1"
@@ -78,9 +78,9 @@
 				<hc:DatePicker
 					Width="110"
 					HorizontalAlignment="Left"
-					InfoElement.Placeholder="{DynamicResource l_From}"
-					ThemeManager.RequestedAccentColor="#64FFD1"
-					ThemeManager.RequestedTheme="Dark"
+					hc:InfoElement.Placeholder="{DynamicResource l_From}"
+					hc:ThemeManager.RequestedAccentColor="#64FFD1"
+					hc:ThemeManager.RequestedTheme="Dark"
 					FontFamily="{StaticResource Roboto-Regular}"
 					Foreground="#d9d9d9"
 					IsEnabled="{Binding ElementName=CheckDateCheckBox, Path=IsChecked}"
@@ -88,9 +88,9 @@
 				<hc:DatePicker
 					Width="110"
 					HorizontalAlignment="Right"
-					InfoElement.Placeholder="{DynamicResource l_To}"
-					ThemeManager.RequestedAccentColor="#64FFD1"
-					ThemeManager.RequestedTheme="Dark"
+					hc:InfoElement.Placeholder="{DynamicResource l_To}"
+					hc:ThemeManager.RequestedAccentColor="#64FFD1"
+					hc:ThemeManager.RequestedTheme="Dark"
 					FontFamily="{StaticResource Roboto-Regular}"
 					Foreground="#d9d9d9"
 					IsEnabled="{Binding ElementName=CheckDateCheckBox, Path=IsChecked}"
@@ -163,8 +163,8 @@
 						Width="80"
 						HorizontalAlignment="Right"
 						VerticalAlignment="Center"
-						ThemeManager.RequestedAccentColor="#64FFD1"
-						ThemeManager.RequestedTheme="Dark"
+						hc:ThemeManager.RequestedAccentColor="#64FFD1"
+						hc:ThemeManager.RequestedTheme="Dark"
 						BorderThickness="0"
 						Maximum="5000"
 						Minimum="1"
@@ -227,8 +227,8 @@
 				</TextBlock>
 				<hc:ButtonGroup
 					Margin="0,10,0,0"
-					ThemeManager.RequestedAccentColor="#64FFD1"
-					ThemeManager.RequestedTheme="Dark"
+					hc:ThemeManager.RequestedAccentColor="#64FFD1"
+					hc:ThemeManager.RequestedTheme="Dark"
 					IsEnabled="{Binding ElementName=DownloadLettersCheckBox, Path=IsChecked}">
 					<RadioButton
 						Content="TEXT"
@@ -274,8 +274,8 @@
 			</Grid>
 			<hc:ButtonGroup
 				Margin="0,15,0,0"
-				ThemeManager.RequestedAccentColor="#64FFD1"
-				ThemeManager.RequestedTheme="Dark"
+				hc:ThemeManager.RequestedAccentColor="#64FFD1"
+				hc:ThemeManager.RequestedTheme="Dark"
 				IsEnabled="{Binding ElementName=SearchAttachmentsCheckBox, Path=IsChecked}">
 				<RadioButton
 					Content="{DynamicResource l_Everywhere}"

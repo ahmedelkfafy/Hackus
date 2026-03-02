@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
@@ -46,7 +46,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._webLoader = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(2013179521));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(2013179521));
 			}
 		}
 
@@ -62,7 +62,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._username = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(-1795053037));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(-1795053037));
 			}
 		}
 
@@ -78,7 +78,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._password = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(-2024528016));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(-2024528016));
 			}
 		}
 
@@ -94,7 +94,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._isAuthorizing = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(1679524561));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(1679524561));
 			}
 		}
 
@@ -110,7 +110,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._errorMessage = value;
-				base.OnPropertyChanged(<Module>.smethod_3<string>(1945040507));
+				base.OnPropertyChanged(_Module_.smethod_3<string>(1945040507));
 			}
 		}
 
@@ -126,7 +126,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._status = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(-2020302528));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(-2020302528));
 			}
 		}
 
@@ -142,7 +142,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._currentVersion = value;
-				base.OnPropertyChanged(<Module>.smethod_6<string>(1816861895));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(1816861895));
 			}
 		}
 
@@ -158,7 +158,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._lastVersion = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(-1579685464));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(-1579685464));
 			}
 		}
 
@@ -174,7 +174,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._hwid = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(2116559043));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(2116559043));
 			}
 		}
 
@@ -197,7 +197,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 							});
 						});
 						Version version = Assembly.GetExecutingAssembly().GetName().Version;
-						this.CurrentVersion = string.Format(<Module>.smethod_6<string>(-1788529920), version.Major, version.Minor, version.Build);
+						this.CurrentVersion = string.Format(_Module_.smethod_6<string>(-1788529920), version.Major, version.Minor, version.Build);
 						PagesManager.Instance.OpenPage(new AuthenticationPage(this), FrameType.Startup);
 						ValueTuple<string, string> savedCredentials = Registry.GetSavedCredentials();
 						this.Username = savedCredentials.Item1;
@@ -245,11 +245,11 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 				{
 					result = (this._skipUpdateCommand = new RelayCommand(delegate(object obj)
 					{
-						StartupViewModel.<<get_SkipUpdateCommand>b__50_0>d <<get_SkipUpdateCommand>b__50_0>d;
-						<<get_SkipUpdateCommand>b__50_0>d.<>t__builder = AsyncVoidMethodBuilder.Create();
-						<<get_SkipUpdateCommand>b__50_0>d.<>4__this = this;
-						<<get_SkipUpdateCommand>b__50_0>d.<>1__state = -1;
-						<<get_SkipUpdateCommand>b__50_0>d.<>t__builder.Start<StartupViewModel.<<get_SkipUpdateCommand>b__50_0>d>(ref <<get_SkipUpdateCommand>b__50_0>d);
+						StartupViewModel.get_SkipUpdateCommand_b__50_0_d get_SkipUpdateCommand_b__50_0_d;
+						get_SkipUpdateCommand_b__50_0_d._t__builder = AsyncVoidMethodBuilder.Create();
+						get_SkipUpdateCommand_b__50_0_d._4__this = this;
+						get_SkipUpdateCommand_b__50_0_d._1__state = -1;
+						get_SkipUpdateCommand_b__50_0_d._t__builder.Start<StartupViewModel.get_SkipUpdateCommand_b__50_0_d>(ref get_SkipUpdateCommand_b__50_0_d);
 					}, null));
 				}
 				return result;
@@ -267,11 +267,11 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 				{
 					result = (this._downloadUpdateCommand = new RelayCommand(delegate(object obj)
 					{
-						StartupViewModel.<<get_DownloadUpdateCommand>b__53_0>d <<get_DownloadUpdateCommand>b__53_0>d;
-						<<get_DownloadUpdateCommand>b__53_0>d.<>t__builder = AsyncVoidMethodBuilder.Create();
-						<<get_DownloadUpdateCommand>b__53_0>d.<>4__this = this;
-						<<get_DownloadUpdateCommand>b__53_0>d.<>1__state = -1;
-						<<get_DownloadUpdateCommand>b__53_0>d.<>t__builder.Start<StartupViewModel.<<get_DownloadUpdateCommand>b__53_0>d>(ref <<get_DownloadUpdateCommand>b__53_0>d);
+						StartupViewModel.get_DownloadUpdateCommand_b__53_0_d get_DownloadUpdateCommand_b__53_0_d;
+						get_DownloadUpdateCommand_b__53_0_d._t__builder = AsyncVoidMethodBuilder.Create();
+						get_DownloadUpdateCommand_b__53_0_d._4__this = this;
+						get_DownloadUpdateCommand_b__53_0_d._1__state = -1;
+						get_DownloadUpdateCommand_b__53_0_d._t__builder.Start<StartupViewModel.get_DownloadUpdateCommand_b__53_0_d>(ref get_DownloadUpdateCommand_b__53_0_d);
 					}, null));
 				}
 				return result;
@@ -289,11 +289,11 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 				{
 					result = (this._downloadConfigurationCommand = new RelayCommand(delegate(object obj)
 					{
-						StartupViewModel.<<get_DownloadConfigurationCommand>b__56_0>d <<get_DownloadConfigurationCommand>b__56_0>d;
-						<<get_DownloadConfigurationCommand>b__56_0>d.<>t__builder = AsyncVoidMethodBuilder.Create();
-						<<get_DownloadConfigurationCommand>b__56_0>d.<>4__this = this;
-						<<get_DownloadConfigurationCommand>b__56_0>d.<>1__state = -1;
-						<<get_DownloadConfigurationCommand>b__56_0>d.<>t__builder.Start<StartupViewModel.<<get_DownloadConfigurationCommand>b__56_0>d>(ref <<get_DownloadConfigurationCommand>b__56_0>d);
+						StartupViewModel.get_DownloadConfigurationCommand_b__56_0_d get_DownloadConfigurationCommand_b__56_0_d;
+						get_DownloadConfigurationCommand_b__56_0_d._t__builder = AsyncVoidMethodBuilder.Create();
+						get_DownloadConfigurationCommand_b__56_0_d._4__this = this;
+						get_DownloadConfigurationCommand_b__56_0_d._1__state = -1;
+						get_DownloadConfigurationCommand_b__56_0_d._t__builder.Start<StartupViewModel.get_DownloadConfigurationCommand_b__56_0_d>(ref get_DownloadConfigurationCommand_b__56_0_d);
 					}, null));
 				}
 				return result;
@@ -313,7 +313,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 					{
 						try
 						{
-							StartupViewModel.<>c.smethod_0(<Module>.smethod_6<string>(-1159392939));
+							StartupViewModel._c_.smethod_0(_Module_.smethod_6<string>(-1159392939));
 						}
 						catch
 						{
@@ -327,23 +327,23 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 		// Token: 0x06000CFD RID: 3325 RVA: 0x00043FB4 File Offset: 0x000421B4
 		private Task ProcessUpdates()
 		{
-			StartupViewModel.<ProcessUpdates>d__60 <ProcessUpdates>d__;
-			<ProcessUpdates>d__.<>t__builder = AsyncTaskMethodBuilder.Create();
-			<ProcessUpdates>d__.<>4__this = this;
-			<ProcessUpdates>d__.<>1__state = -1;
-			<ProcessUpdates>d__.<>t__builder.Start<StartupViewModel.<ProcessUpdates>d__60>(ref <ProcessUpdates>d__);
-			return <ProcessUpdates>d__.<>t__builder.Task;
+			StartupViewModel.ProcessUpdates_d__60 ProcessUpdates_d__;
+			ProcessUpdates_d__._t__builder = AsyncTaskMethodBuilder.Create();
+			ProcessUpdates_d__._4__this = this;
+			ProcessUpdates_d__._1__state = -1;
+			ProcessUpdates_d__._t__builder.Start<StartupViewModel.ProcessUpdates_d__60>(ref ProcessUpdates_d__);
+			return ProcessUpdates_d__._t__builder.Task;
 		}
 
 		// Token: 0x06000CFE RID: 3326 RVA: 0x00043FF8 File Offset: 0x000421F8
 		private Task ProcessConfiguration()
 		{
-			StartupViewModel.<ProcessConfiguration>d__61 <ProcessConfiguration>d__;
-			<ProcessConfiguration>d__.<>t__builder = AsyncTaskMethodBuilder.Create();
-			<ProcessConfiguration>d__.<>4__this = this;
-			<ProcessConfiguration>d__.<>1__state = -1;
-			<ProcessConfiguration>d__.<>t__builder.Start<StartupViewModel.<ProcessConfiguration>d__61>(ref <ProcessConfiguration>d__);
-			return <ProcessConfiguration>d__.<>t__builder.Task;
+			StartupViewModel.ProcessConfiguration_d__61 ProcessConfiguration_d__;
+			ProcessConfiguration_d__._t__builder = AsyncTaskMethodBuilder.Create();
+			ProcessConfiguration_d__._4__this = this;
+			ProcessConfiguration_d__._1__state = -1;
+			ProcessConfiguration_d__._t__builder.Start<StartupViewModel.ProcessConfiguration_d__61>(ref ProcessConfiguration_d__);
+			return ProcessConfiguration_d__._t__builder.Task;
 		}
 
 		// Token: 0x06000CFF RID: 3327 RVA: 0x0000DB6C File Offset: 0x0000BD6C
@@ -359,36 +359,36 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 		// Token: 0x06000D00 RID: 3328 RVA: 0x0004403C File Offset: 0x0004223C
 		public Task DownloadConfiguration()
 		{
-			StartupViewModel.<DownloadConfiguration>d__63 <DownloadConfiguration>d__;
-			<DownloadConfiguration>d__.<>t__builder = AsyncTaskMethodBuilder.Create();
-			<DownloadConfiguration>d__.<>4__this = this;
-			<DownloadConfiguration>d__.<>1__state = -1;
-			<DownloadConfiguration>d__.<>t__builder.Start<StartupViewModel.<DownloadConfiguration>d__63>(ref <DownloadConfiguration>d__);
-			return <DownloadConfiguration>d__.<>t__builder.Task;
+			StartupViewModel.DownloadConfiguration_d__63 DownloadConfiguration_d__;
+			DownloadConfiguration_d__._t__builder = AsyncTaskMethodBuilder.Create();
+			DownloadConfiguration_d__._4__this = this;
+			DownloadConfiguration_d__._1__state = -1;
+			DownloadConfiguration_d__._t__builder.Start<StartupViewModel.DownloadConfiguration_d__63>(ref DownloadConfiguration_d__);
+			return DownloadConfiguration_d__._t__builder.Task;
 		}
 
 		// Token: 0x06000D01 RID: 3329 RVA: 0x00044080 File Offset: 0x00042280
 		public Task DownloadModules()
 		{
-			StartupViewModel.<DownloadModules>d__64 <DownloadModules>d__;
-			<DownloadModules>d__.<>t__builder = AsyncTaskMethodBuilder.Create();
-			<DownloadModules>d__.<>4__this = this;
-			<DownloadModules>d__.<>1__state = -1;
-			<DownloadModules>d__.<>t__builder.Start<StartupViewModel.<DownloadModules>d__64>(ref <DownloadModules>d__);
-			return <DownloadModules>d__.<>t__builder.Task;
+			StartupViewModel.DownloadModules_d__64 DownloadModules_d__;
+			DownloadModules_d__._t__builder = AsyncTaskMethodBuilder.Create();
+			DownloadModules_d__._4__this = this;
+			DownloadModules_d__._1__state = -1;
+			DownloadModules_d__._t__builder.Start<StartupViewModel.DownloadModules_d__64>(ref DownloadModules_d__);
+			return DownloadModules_d__._t__builder.Task;
 		}
 
 		// Token: 0x06000D02 RID: 3330 RVA: 0x000440C4 File Offset: 0x000422C4
 		public Task UnpackConfiguration(string path, string extractPath)
 		{
-			StartupViewModel.<UnpackConfiguration>d__65 <UnpackConfiguration>d__;
-			<UnpackConfiguration>d__.<>t__builder = AsyncTaskMethodBuilder.Create();
-			<UnpackConfiguration>d__.<>4__this = this;
-			<UnpackConfiguration>d__.path = path;
-			<UnpackConfiguration>d__.extractPath = extractPath;
-			<UnpackConfiguration>d__.<>1__state = -1;
-			<UnpackConfiguration>d__.<>t__builder.Start<StartupViewModel.<UnpackConfiguration>d__65>(ref <UnpackConfiguration>d__);
-			return <UnpackConfiguration>d__.<>t__builder.Task;
+			StartupViewModel.UnpackConfiguration_d__65 UnpackConfiguration_d__;
+			UnpackConfiguration_d__._t__builder = AsyncTaskMethodBuilder.Create();
+			UnpackConfiguration_d__._4__this = this;
+			UnpackConfiguration_d__.path = path;
+			UnpackConfiguration_d__.extractPath = extractPath;
+			UnpackConfiguration_d__._1__state = -1;
+			UnpackConfiguration_d__._t__builder.Start<StartupViewModel.UnpackConfiguration_d__65>(ref UnpackConfiguration_d__);
+			return UnpackConfiguration_d__._t__builder.Task;
 		}
 
 		// Token: 0x06000D03 RID: 3331 RVA: 0x00044118 File Offset: 0x00042318
@@ -396,12 +396,12 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 		{
 			string[] array = new string[]
 			{
-				<Module>.smethod_3<string>(1937066207),
-				<Module>.smethod_3<string>(-1193718438),
-				<Module>.smethod_6<string>(633176638),
-				<Module>.smethod_6<string>(-854646412),
-				<Module>.smethod_2<string>(-328767974),
-				<Module>.smethod_5<string>(471068304)
+				_Module_.smethod_3<string>(1937066207),
+				_Module_.smethod_3<string>(-1193718438),
+				_Module_.smethod_6<string>(633176638),
+				_Module_.smethod_6<string>(-854646412),
+				_Module_.smethod_2<string>(-328767974),
+				_Module_.smethod_5<string>(471068304)
 			};
 			for (int i = 0; i < array.Length; i++)
 			{
@@ -419,12 +419,12 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 		{
 			foreach (string path in new string[]
 			{
-				<Module>.smethod_2<string>(-1346071367),
-				<Module>.smethod_5<string>(-441731465),
-				<Module>.smethod_4<string>(173166154),
-				<Module>.smethod_2<string>(1885357107),
-				<Module>.smethod_4<string>(-107552369),
-				<Module>.smethod_4<string>(245902946)
+				_Module_.smethod_2<string>(-1346071367),
+				_Module_.smethod_5<string>(-441731465),
+				_Module_.smethod_4<string>(173166154),
+				_Module_.smethod_2<string>(1885357107),
+				_Module_.smethod_4<string>(-107552369),
+				_Module_.smethod_4<string>(245902946)
 			})
 			{
 				if (File.Exists(path))
@@ -448,12 +448,12 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			HandyControl.Controls.MessageBox.Show(new MessageBoxInfo
 			{
 				Message = message,
-				Caption = ResourceHelper.GetResource<string>(<Module>.smethod_3<string>(-416025122)),
+				Caption = ResourceHelper.GetResource<string>(_Module_.smethod_3<string>(-416025122)),
 				Button = MessageBoxButton.OK,
-				IconBrushKey = <Module>.smethod_5<string>(1573819439),
-				IconKey = <Module>.smethod_6<string>(1292737040),
-				StyleKey = <Module>.smethod_6<string>(1294466825),
-				ConfirmContent = ResourceHelper.GetResource<string>(<Module>.smethod_5<string>(1193916707))
+				IconBrushKey = _Module_.smethod_5<string>(1573819439),
+				IconKey = _Module_.smethod_6<string>(1292737040),
+				StyleKey = _Module_.smethod_6<string>(1294466825),
+				ConfirmContent = ResourceHelper.GetResource<string>(_Module_.smethod_5<string>(1193916707))
 			});
 		}
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
 using Hackus_Mail_Checker_Reforged.Models;
 using Hackus_Mail_Checker_Reforged.Models.Enums;
@@ -46,7 +46,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._ignoreDomainFilters = value;
-				base.OnPropertyChanged(<Module>.smethod_3<string>(326775884));
+				base.OnPropertyChanged(_Module_.smethod_3<string>(326775884));
 			}
 		}
 
@@ -62,7 +62,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._rebruteDomainFilters = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(359990851));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(359990851));
 			}
 		}
 
@@ -78,7 +78,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._threads = value;
-				base.OnPropertyChanged(<Module>.smethod_6<string>(2142878159));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(2142878159));
 			}
 		}
 
@@ -94,7 +94,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._timeout = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(1373932328));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(1373932328));
 			}
 		}
 
@@ -110,7 +110,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._rebrute = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(-1438381101));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(-1438381101));
 			}
 		}
 
@@ -126,7 +126,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._useIgnoreDomainFilters = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(-1523039093));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(-1523039093));
 			}
 		}
 
@@ -142,7 +142,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._useRebruteDomainFilters = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(974931413));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(974931413));
 			}
 		}
 
@@ -158,7 +158,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._processMultipassword = value;
-				base.OnPropertyChanged(<Module>.smethod_3<string>(759722163));
+				base.OnPropertyChanged(_Module_.smethod_3<string>(759722163));
 			}
 		}
 
@@ -174,7 +174,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._saveRest = value;
-				base.OnPropertyChanged(<Module>.smethod_6<string>(2144607944));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(2144607944));
 			}
 		}
 
@@ -190,7 +190,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._saveRestDelay = value;
-				base.OnPropertyChanged(<Module>.smethod_3<string>(1642961672));
+				base.OnPropertyChanged(_Module_.smethod_3<string>(1642961672));
 			}
 		}
 
@@ -206,7 +206,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._startOnLoadedBase = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(1144446592));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(1144446592));
 			}
 		}
 
@@ -222,7 +222,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._rebruteImapWithPop3 = value;
-				base.OnPropertyChanged(<Module>.smethod_6<string>(-1260433178));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(-1260433178));
 			}
 		}
 
@@ -238,7 +238,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._usePop3Limit = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(920115474));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(920115474));
 			}
 		}
 
@@ -254,7 +254,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._pop3Limit = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(6535536));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(6535536));
 			}
 		}
 
@@ -270,7 +270,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._rebruteBlocked = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(-567704454));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(-567704454));
 			}
 		}
 
@@ -286,7 +286,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._checkFolderAccess = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(1104900779));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(1104900779));
 			}
 		}
 
@@ -302,7 +302,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._allowedProtocols = value;
-				base.OnPropertyChanged(<Module>.smethod_3<string>(880952412));
+				base.OnPropertyChanged(_Module_.smethod_3<string>(880952412));
 			}
 		}
 
@@ -318,7 +318,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._searchServer = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(-158171324));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(-158171324));
 			}
 		}
 
@@ -334,7 +334,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._useProxyToSearchServer = value;
-				base.OnPropertyChanged(<Module>.smethod_3<string>(1764191921));
+				base.OnPropertyChanged(_Module_.smethod_3<string>(1764191921));
 			}
 		}
 
@@ -350,7 +350,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._searchServerByMX = value;
-				base.OnPropertyChanged(<Module>.smethod_6<string>(1991674155));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(1991674155));
 			}
 		}
 
@@ -366,7 +366,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._guessSubdomainByDomain = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(688040986));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(688040986));
 			}
 		}
 
@@ -382,7 +382,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._guessSubdomainByMX = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(-1744369711));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(-1744369711));
 			}
 		}
 
@@ -398,7 +398,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._searchServerByAutoConfig = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(1955911162));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(1955911162));
 			}
 		}
 
@@ -414,7 +414,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._searchServerByAutoDiscover = value;
-				base.OnPropertyChanged(<Module>.smethod_6<string>(-968403880));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(-968403880));
 			}
 		}
 
@@ -430,7 +430,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._guessProtocolType = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(-1971278138));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(-1971278138));
 			}
 		}
 
@@ -446,7 +446,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._guessSocketType = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(-3081102));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(-3081102));
 			}
 		}
 
@@ -462,7 +462,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._configurationProviderType = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(-1668770971));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(-1668770971));
 			}
 		}
 
@@ -478,7 +478,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._configurationDatabasePath = value;
-				base.OnPropertyChanged(<Module>.smethod_3<string>(-81179824));
+				base.OnPropertyChanged(_Module_.smethod_3<string>(-81179824));
 			}
 		}
 
@@ -494,7 +494,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._notifyOnCompleted = value;
-				base.OnPropertyChanged(<Module>.smethod_6<string>(-825848801));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(-825848801));
 			}
 		}
 
@@ -510,7 +510,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._connectionExceptionRebrute = value;
-				base.OnPropertyChanged(<Module>.smethod_3<string>(-2047781818));
+				base.OnPropertyChanged(_Module_.smethod_3<string>(-2047781818));
 			}
 		}
 
@@ -526,7 +526,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._timeoutExceptionRebrute = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(1305184267));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(1305184267));
 			}
 		}
 

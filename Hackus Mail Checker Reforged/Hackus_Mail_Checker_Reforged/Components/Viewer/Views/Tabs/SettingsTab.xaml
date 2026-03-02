@@ -169,7 +169,7 @@
 									<hc:ButtonGroup
 										Margin="20,20,20,0"
 										VerticalAlignment="Center"
-										ThemeManager.RequestedAccentColor="#64FFD1"
+										hc:ThemeManager.RequestedAccentColor="#64FFD1"
 										Cursor="Hand">
 										<RadioButton
 											Height="35"
@@ -249,16 +249,16 @@
 											Grid.Column="1"
 											Margin="10,0,0,0"
 											VerticalAlignment="Center"
-											TitleElement.Title="{DynamicResource l_Login}"
-											TitleElement.TitlePlacement="Left"
+											hc:TitleElement.Title="{DynamicResource l_Login}"
+											hc:TitleElement.TitlePlacement="Left"
 											FontFamily="{StaticResource Roboto-Regular}"
 											Text="{Binding ViewerSettings.Username}" />
 										<hc:TextBox
 											Grid.Column="2"
 											Margin="10,0,20,0"
 											VerticalAlignment="Center"
-											TitleElement.Title="{DynamicResource l_Password}"
-											TitleElement.TitlePlacement="Left"
+											hc:TitleElement.Title="{DynamicResource l_Password}"
+											hc:TitleElement.TitlePlacement="Left"
 											FontFamily="{StaticResource Roboto-Regular}"
 											Text="{Binding ViewerSettings.Password}" />
 									</Grid>

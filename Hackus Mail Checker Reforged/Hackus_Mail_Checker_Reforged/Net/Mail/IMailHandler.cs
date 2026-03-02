@@ -21,6 +21,6 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		void Dispose();
 
 		// Token: 0x060007DB RID: 2011
-		OperationResult SelectFolder(Folder folder);
+		OperationResult SelectFolder(IMAP.Folder folder);
 	}
 }

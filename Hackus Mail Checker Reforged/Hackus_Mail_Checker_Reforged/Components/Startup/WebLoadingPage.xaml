@@ -17,7 +17,7 @@
 				Height="150"
 				Margin="0,0,0,90"
 				VerticalAlignment="Bottom"
-				ThemeManager.RequestedAccentColor="#64FFD1"
+				hc:ThemeManager.RequestedAccentColor="#64FFD1"
 				FontFamily="{StaticResource Roboto-Regular}"
 				FontSize="16"
 				Value="{Binding WebLoader.Progress}" />

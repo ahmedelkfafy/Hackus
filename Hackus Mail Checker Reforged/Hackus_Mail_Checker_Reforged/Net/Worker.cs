@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 
 namespace Hackus_Mail_Checker_Reforged.Net
@@ -35,105 +35,105 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling System.Void Hackus
 		// Token: 0x0400030D RID: 781
 		private static readonly string[] _onetDomains = new string[]
 		{
-			<Module>.smethod_4<string>(-78265922),
-			<Module>.smethod_5<string>(508818119),
-			<Module>.smethod_6<string>(274806776),
-			<Module>.smethod_4<string>(-514074667),
-			<Module>.smethod_2<string>(-1000828844),
-			<Module>.smethod_2<string>(215036795),
-			<Module>.smethod_2<string>(1879710567),
-			<Module>.smethod_4<string>(-431721237),
-			<Module>.smethod_5<string>(-1960549639),
-			<Module>.smethod_6<string>(1461951603),
-			<Module>.smethod_3<string>(180290520),
-			<Module>.smethod_6<string>(-463915394)
+			_Module_.smethod_4<string>(-78265922),
+			_Module_.smethod_5<string>(508818119),
+			_Module_.smethod_6<string>(274806776),
+			_Module_.smethod_4<string>(-514074667),
+			_Module_.smethod_2<string>(-1000828844),
+			_Module_.smethod_2<string>(215036795),
+			_Module_.smethod_2<string>(1879710567),
+			_Module_.smethod_4<string>(-431721237),
+			_Module_.smethod_5<string>(-1960549639),
+			_Module_.smethod_6<string>(1461951603),
+			_Module_.smethod_3<string>(180290520),
+			_Module_.smethod_6<string>(-463915394)
 		};
 
 		// Token: 0x0400030E RID: 782
 		private static readonly string[] _unitedInternetDomains = new string[]
 		{
-			<Module>.smethod_4<string>(51034421),
-			<Module>.smethod_6<string>(-1797074870),
-			<Module>.smethod_3<string>(-1224425190),
-			<Module>.smethod_5<string>(1379494766),
-			<Module>.smethod_5<string>(683669559),
-			<Module>.smethod_2<string>(130713464),
-			<Module>.smethod_6<string>(862324942)
+			_Module_.smethod_4<string>(51034421),
+			_Module_.smethod_6<string>(-1797074870),
+			_Module_.smethod_3<string>(-1224425190),
+			_Module_.smethod_5<string>(1379494766),
+			_Module_.smethod_5<string>(683669559),
+			_Module_.smethod_2<string>(130713464),
+			_Module_.smethod_6<string>(862324942)
 		};
 
 		// Token: 0x0400030F RID: 783
 		private static readonly string[] _mailRuDomains = new string[]
 		{
-			<Module>.smethod_2<string>(-1667243174),
-			<Module>.smethod_2<string>(-418737845),
-			<Module>.smethod_6<string>(-469104749),
-			<Module>.smethod_2<string>(2078272813),
-			<Module>.smethod_5<string>(1532489071),
-			<Module>.smethod_2<string>(280316175),
-			<Module>.smethod_2<string>(1528821504),
-			<Module>.smethod_2<string>(1912350257)
+			_Module_.smethod_2<string>(-1667243174),
+			_Module_.smethod_2<string>(-418737845),
+			_Module_.smethod_6<string>(-469104749),
+			_Module_.smethod_2<string>(2078272813),
+			_Module_.smethod_5<string>(1532489071),
+			_Module_.smethod_2<string>(280316175),
+			_Module_.smethod_2<string>(1528821504),
+			_Module_.smethod_2<string>(1912350257)
 		};
 
 		// Token: 0x04000310 RID: 784
 		private static readonly string[] _yandexDomains = new string[]
 		{
-			<Module>.smethod_3<string>(20577627),
-			<Module>.smethod_4<string>(-1564823974),
-			<Module>.smethod_3<string>(1184760278),
-			<Module>.smethod_3<string>(622873994)
+			_Module_.smethod_3<string>(20577627),
+			_Module_.smethod_4<string>(-1564823974),
+			_Module_.smethod_3<string>(1184760278),
+			_Module_.smethod_3<string>(622873994)
 		};
 
 		// Token: 0x04000311 RID: 785
 		private static readonly string[] _ramblerDomains = new string[]
 		{
-			<Module>.smethod_4<string>(-160619352),
-			<Module>.smethod_6<string>(1161273380),
-			<Module>.smethod_3<string>(-781841716),
-			<Module>.smethod_6<string>(-1652790006),
-			<Module>.smethod_2<string>(-250091183)
+			_Module_.smethod_4<string>(-160619352),
+			_Module_.smethod_6<string>(1161273380),
+			_Module_.smethod_3<string>(-781841716),
+			_Module_.smethod_6<string>(-1652790006),
+			_Module_.smethod_2<string>(-250091183)
 		};
 
 		// Token: 0x04000312 RID: 786
 		private static readonly string[] _protonDomains = new string[]
 		{
-			<Module>.smethod_4<string>(1137190245),
-			<Module>.smethod_3<string>(-1022374775),
-			<Module>.smethod_3<string>(-1584261059),
-			<Module>.smethod_2<string>(-1765162244)
+			_Module_.smethod_4<string>(1137190245),
+			_Module_.smethod_3<string>(-1022374775),
+			_Module_.smethod_3<string>(-1584261059),
+			_Module_.smethod_2<string>(-1765162244)
 		};
 
 		// Token: 0x04000313 RID: 787
 		private static readonly string[] _outlookDomains = new string[]
 		{
-			<Module>.smethod_4<string>(1839292556),
-			<Module>.smethod_4<string>(1050028496)
+			_Module_.smethod_4<string>(1839292556),
+			_Module_.smethod_4<string>(1050028496)
 		};
 
 		// Token: 0x04000314 RID: 788
 		private static readonly string[] _interiaDomains = new string[]
 		{
-			<Module>.smethod_3<string>(463161101),
-			<Module>.smethod_4<string>(1747322488),
-			<Module>.smethod_5<string>(1199875522),
-			<Module>.smethod_6<string>(-1065271840),
-			<Module>.smethod_5<string>(440070058),
-			<Module>.smethod_2<string>(-1781482089),
-			<Module>.smethod_6<string>(1305558244),
-			<Module>.smethod_6<string>(-27601232),
-			<Module>.smethod_5<string>(-1807555334),
-			<Module>.smethod_5<string>(434903997),
-			<Module>.smethod_2<string>(-1183071245),
-			<Module>.smethod_4<string>(91249257)
+			_Module_.smethod_3<string>(463161101),
+			_Module_.smethod_4<string>(1747322488),
+			_Module_.smethod_5<string>(1199875522),
+			_Module_.smethod_6<string>(-1065271840),
+			_Module_.smethod_5<string>(440070058),
+			_Module_.smethod_2<string>(-1781482089),
+			_Module_.smethod_6<string>(1305558244),
+			_Module_.smethod_6<string>(-27601232),
+			_Module_.smethod_5<string>(-1807555334),
+			_Module_.smethod_5<string>(434903997),
+			_Module_.smethod_2<string>(-1183071245),
+			_Module_.smethod_4<string>(91249257)
 		};
 
 		// Token: 0x04000315 RID: 789
 		private static readonly string[] _seznamDomains = new string[]
 		{
-			<Module>.smethod_5<string>(-704804199),
-			<Module>.smethod_5<string>(1157752400),
-			<Module>.smethod_4<string>(619028070),
-			<Module>.smethod_5<string>(-2034463761),
-			<Module>.smethod_2<string>(-1033468534)
+			_Module_.smethod_5<string>(-704804199),
+			_Module_.smethod_5<string>(1157752400),
+			_Module_.smethod_4<string>(619028070),
+			_Module_.smethod_5<string>(-2034463761),
+			_Module_.smethod_2<string>(-1033468534)
 		};
 	}
 }

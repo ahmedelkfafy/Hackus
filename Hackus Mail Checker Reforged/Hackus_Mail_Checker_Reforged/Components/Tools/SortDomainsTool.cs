@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,12 +19,12 @@ namespace Hackus_Mail_Checker_Reforged.Components.Tools
 		// Token: 0x06000C44 RID: 3140 RVA: 0x00041FC4 File Offset: 0x000401C4
 		public Task<bool> Run()
 		{
-			SortDomainsTool.<Run>d__3 <Run>d__;
-			<Run>d__.<>t__builder = AsyncTaskMethodBuilder<bool>.Create();
-			<Run>d__.<>4__this = this;
-			<Run>d__.<>1__state = -1;
-			<Run>d__.<>t__builder.Start<SortDomainsTool.<Run>d__3>(ref <Run>d__);
-			return <Run>d__.<>t__builder.Task;
+			SortDomainsTool.Run_d__3 Run_d__;
+			Run_d__._t__builder = AsyncTaskMethodBuilder<bool>.Create();
+			Run_d__._4__this = this;
+			Run_d__._1__state = -1;
+			Run_d__._t__builder.Start<SortDomainsTool.Run_d__3>(ref Run_d__);
+			return Run_d__._t__builder.Task;
 		}
 
 		// Token: 0x06000C45 RID: 3141 RVA: 0x00006655 File Offset: 0x00004855

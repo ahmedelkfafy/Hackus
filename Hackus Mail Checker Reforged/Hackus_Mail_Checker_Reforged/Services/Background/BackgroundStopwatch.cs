@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.Windows;
 using Hackus_Mail_Checker_Reforged.Models.Enums;
@@ -41,7 +41,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Background
 			{
 				Application.Current.Dispatcher.Invoke(delegate()
 				{
-					PagesManager.Instance.OpenPage(new CheckingDurationPage(BackgroundStopwatch.<>c.smethod_0(BackgroundStopwatch._stopwatch)), FrameType.MainOverlay);
+					PagesManager.Instance.OpenPage(new CheckingDurationPage(BackgroundStopwatch._c_.smethod_0(BackgroundStopwatch._stopwatch)), FrameType.MainOverlay);
 				});
 			}
 		}

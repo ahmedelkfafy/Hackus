@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -85,22 +85,22 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Message
 				}
 				if (SearchSettings.Instance.DownloadMode == DownloadMode.Plain)
 				{
-					if (this.AlternateViews.Any((Attachment v) => MailMessage.<>c.smethod_0(v.ContentType, <Module>.smethod_5<string>(93151217))))
+					if (this.AlternateViews.Any((Attachment v) => MailMessage._c_.smethod_0(v.ContentType, _Module_.smethod_5<string>(93151217))))
 					{
-						attachment = this.AlternateViews.FirstOrDefault((Attachment v) => MailMessage.<>c.smethod_0(v.ContentType, <Module>.smethod_5<string>(93151217)));
+						attachment = this.AlternateViews.FirstOrDefault((Attachment v) => MailMessage._c_.smethod_0(v.ContentType, _Module_.smethod_5<string>(93151217)));
 					}
 					else
 					{
-						attachment = this.AlternateViews.FirstOrDefault((Attachment v) => MailMessage.<>c.smethod_0(v.ContentType, <Module>.smethod_4<string>(1173908513)));
+						attachment = this.AlternateViews.FirstOrDefault((Attachment v) => MailMessage._c_.smethod_0(v.ContentType, _Module_.smethod_4<string>(1173908513)));
 					}
 				}
-				else if (this.AlternateViews.Any((Attachment v) => MailMessage.<>c.smethod_0(v.ContentType, <Module>.smethod_2<string>(642151244))))
+				else if (this.AlternateViews.Any((Attachment v) => MailMessage._c_.smethod_0(v.ContentType, _Module_.smethod_2<string>(642151244))))
 				{
-					attachment = this.AlternateViews.FirstOrDefault((Attachment v) => MailMessage.<>c.smethod_0(v.ContentType, <Module>.smethod_5<string>(473053949)));
+					attachment = this.AlternateViews.FirstOrDefault((Attachment v) => MailMessage._c_.smethod_0(v.ContentType, _Module_.smethod_5<string>(473053949)));
 				}
 				else
 				{
-					attachment = this.AlternateViews.FirstOrDefault((Attachment v) => MailMessage.<>c.smethod_0(v.ContentType, <Module>.smethod_6<string>(955020623)));
+					attachment = this.AlternateViews.FirstOrDefault((Attachment v) => MailMessage._c_.smethod_0(v.ContentType, _Module_.smethod_6<string>(955020623)));
 				}
 				if (!string.IsNullOrEmpty((string)attachment.Body))
 				{

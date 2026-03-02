@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Controls.Primitives;
 using System.Windows.Threading;
 
@@ -21,8 +21,8 @@ namespace Hackus_Mail_Checker_Reforged.UI.Models
 			time.Start();
 			time.Tick += delegate(object sender, EventArgs e)
 			{
-				PopupExtended.<>c__DisplayClass1_0.smethod_0(this, false);
-				PopupExtended.<>c__DisplayClass1_0.smethod_1(time);
+				PopupExtended._c__DisplayClass1_0.smethod_0(this, false);
+				PopupExtended._c__DisplayClass1_0.smethod_1(time);
 			};
 		}
 	}

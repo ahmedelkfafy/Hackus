@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Hackus_Mail_Checker_Reforged
 {
@@ -33,29 +33,29 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling System.Void Hackus
 		// Token: 0x0400003D RID: 61
 		private static string[] _filters = new string[]
 		{
-			<Module>.smethod_2<string>(582270494),
-			<Module>.smethod_4<string>(930432528),
-			<Module>.smethod_2<string>(-1215686144),
-			<Module>.smethod_2<string>(-832157391),
-			<Module>.smethod_5<string>(-1861201589),
-			<Module>.smethod_5<string>(1355010),
-			<Module>.smethod_4<string>(49198400),
-			<Module>.smethod_6<string>(1119045831),
-			<Module>.smethod_5<string>(-568499088),
-			<Module>.smethod_4<string>(-386610345),
-			<Module>.smethod_5<string>(-1328304552),
-			<Module>.smethod_6<string>(83105008),
-			<Module>.smethod_6<string>(-2138250857),
-			<Module>.smethod_3<string>(-987548601),
-			<Module>.smethod_6<string>(-1700206910),
-			<Module>.smethod_2<string>(334748713),
-			<Module>.smethod_5<string>(-637247149),
-			<Module>.smethod_3<string>(1340816701),
-			<Module>.smethod_2<string>(-214702596),
-			<Module>.smethod_6<string>(-662536302),
-			<Module>.smethod_5<string>(-1776955345),
-			<Module>.smethod_2<string>(-347985462),
-			<Module>.smethod_5<string>(-294301478)
+			_Module_.smethod_2<string>(582270494),
+			_Module_.smethod_4<string>(930432528),
+			_Module_.smethod_2<string>(-1215686144),
+			_Module_.smethod_2<string>(-832157391),
+			_Module_.smethod_5<string>(-1861201589),
+			_Module_.smethod_5<string>(1355010),
+			_Module_.smethod_4<string>(49198400),
+			_Module_.smethod_6<string>(1119045831),
+			_Module_.smethod_5<string>(-568499088),
+			_Module_.smethod_4<string>(-386610345),
+			_Module_.smethod_5<string>(-1328304552),
+			_Module_.smethod_6<string>(83105008),
+			_Module_.smethod_6<string>(-2138250857),
+			_Module_.smethod_3<string>(-987548601),
+			_Module_.smethod_6<string>(-1700206910),
+			_Module_.smethod_2<string>(334748713),
+			_Module_.smethod_5<string>(-637247149),
+			_Module_.smethod_3<string>(1340816701),
+			_Module_.smethod_2<string>(-214702596),
+			_Module_.smethod_6<string>(-662536302),
+			_Module_.smethod_5<string>(-1776955345),
+			_Module_.smethod_2<string>(-347985462),
+			_Module_.smethod_5<string>(-294301478)
 		};
 	}
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -34,7 +34,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			{
 				this._loadFromFile = value;
 				RelayCommand.Validate();
-				base.OnPropertyChanged(<Module>.smethod_5<string>(-1638664589));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(-1638664589));
 			}
 		}
 
@@ -51,7 +51,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			{
 				this._loadFromWeb = value;
 				RelayCommand.Validate();
-				base.OnPropertyChanged(<Module>.smethod_6<string>(1211437145));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(1211437145));
 			}
 		}
 
@@ -67,7 +67,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._localFilePath = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(-318069865));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(-318069865));
 			}
 		}
 
@@ -83,7 +83,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._fileName = value;
-				base.OnPropertyChanged(<Module>.smethod_6<string>(2099633534));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(2099633534));
 			}
 		}
 
@@ -99,7 +99,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._webTextSources = value;
-				base.OnPropertyChanged(<Module>.smethod_3<string>(153570918));
+				base.OnPropertyChanged(_Module_.smethod_3<string>(153570918));
 			}
 		}
 
@@ -115,7 +115,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._localProxyType = value;
-				base.OnPropertyChanged(<Module>.smethod_6<string>(1797225526));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(1797225526));
 			}
 		}
 
@@ -131,7 +131,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._useAutoUpdate = value;
-				base.OnPropertyChanged(<Module>.smethod_6<string>(-276385905));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(-276385905));
 			}
 		}
 
@@ -147,7 +147,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._UpdateDelay = value;
-				base.OnPropertyChanged(<Module>.smethod_6<string>(-721348992));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(-721348992));
 			}
 		}
 
@@ -163,7 +163,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._useAuthentication = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(176998475));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(176998475));
 			}
 		}
 
@@ -179,7 +179,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._login = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(329300501));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(329300501));
 			}
 		}
 
@@ -195,7 +195,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._password = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(-1500479806));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(-1500479806));
 			}
 		}
 
@@ -283,7 +283,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 					result = (this._selectFilePathCommand = new RelayCommand(delegate(object obj)
 					{
 						OpenFileDialog openFileDialog = new OpenFileDialog();
-						openFileDialog.Filter = <Module>.smethod_3<string>(182416367);
+						openFileDialog.Filter = _Module_.smethod_3<string>(182416367);
 						openFileDialog.RestoreDirectory = true;
 						bool? flag = openFileDialog.ShowDialog();
 						if (flag.GetValueOrDefault() & flag != null)
@@ -291,7 +291,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 							FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
 							if (!fileInfo.Exists)
 							{
-								this.SendSimpleErrorMessage(<Module>.smethod_5<string>(561671620));
+								this.SendSimpleErrorMessage(_Module_.smethod_5<string>(561671620));
 								return;
 							}
 							this.LocalFilePath = fileInfo.FullName;
@@ -318,11 +318,11 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 				{
 					result = (this._loadProxyCommand = new RelayCommand(delegate(object obj)
 					{
-						ProxyLoaderViewModel.<<get_LoadProxyCommand>b__62_0>d <<get_LoadProxyCommand>b__62_0>d;
-						<<get_LoadProxyCommand>b__62_0>d.<>t__builder = AsyncVoidMethodBuilder.Create();
-						<<get_LoadProxyCommand>b__62_0>d.<>4__this = this;
-						<<get_LoadProxyCommand>b__62_0>d.<>1__state = -1;
-						<<get_LoadProxyCommand>b__62_0>d.<>t__builder.Start<ProxyLoaderViewModel.<<get_LoadProxyCommand>b__62_0>d>(ref <<get_LoadProxyCommand>b__62_0>d);
+						ProxyLoaderViewModel.get_LoadProxyCommand_b__62_0_d get_LoadProxyCommand_b__62_0_d;
+						get_LoadProxyCommand_b__62_0_d._t__builder = AsyncVoidMethodBuilder.Create();
+						get_LoadProxyCommand_b__62_0_d._4__this = this;
+						get_LoadProxyCommand_b__62_0_d._1__state = -1;
+						get_LoadProxyCommand_b__62_0_d._t__builder.Start<ProxyLoaderViewModel.get_LoadProxyCommand_b__62_0_d>(ref get_LoadProxyCommand_b__62_0_d);
 					}, (object obj) => this.LoadFromFile || (this.LoadFromWeb && !string.IsNullOrEmpty(this.WebTextSources))));
 				}
 				return result;
@@ -361,12 +361,12 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			HandyControl.Controls.MessageBox.Show(new MessageBoxInfo
 			{
 				Message = text,
-				Caption = ResourceHelper.GetResource<string>(<Module>.smethod_2<string>(-1052487694)),
+				Caption = ResourceHelper.GetResource<string>(_Module_.smethod_2<string>(-1052487694)),
 				Button = MessageBoxButton.OK,
-				IconBrushKey = <Module>.smethod_2<string>(196017635),
-				IconKey = <Module>.smethod_6<string>(1292737040),
-				StyleKey = <Module>.smethod_6<string>(1294466825),
-				ConfirmContent = ResourceHelper.GetResource<string>(<Module>.smethod_4<string>(-1596646186))
+				IconBrushKey = _Module_.smethod_2<string>(196017635),
+				IconKey = _Module_.smethod_6<string>(1292737040),
+				StyleKey = _Module_.smethod_6<string>(1294466825),
+				ConfirmContent = ResourceHelper.GetResource<string>(_Module_.smethod_4<string>(-1596646186))
 			});
 		}
 

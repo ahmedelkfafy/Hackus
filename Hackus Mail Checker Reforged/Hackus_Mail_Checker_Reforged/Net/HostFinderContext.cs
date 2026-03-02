@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
@@ -286,12 +286,12 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				'.'
 			});
 			array = (from p in array
-			where HostFinderContext.<>c.smethod_0(p) > 1
+			where HostFinderContext._c_.smethod_0(p) > 1
 			select p).ToArray<string>();
 			int num = array.Length;
 			if (num >= 2)
 			{
-				list = this.GenerateServersByDomain(array[num - 2] + <Module>.smethod_3<string>(2035431732) + array[num - 1]);
+				list = this.GenerateServersByDomain(array[num - 2] + _Module_.smethod_3<string>(2035431732) + array[num - 1]);
 				return (from s in list
 				select new Server(this._domain, s.Hostname, s.Port, s.Protocol, s.Socket)).ToList<Server>();
 			}
@@ -319,7 +319,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 		// Token: 0x06000503 RID: 1283 RVA: 0x0001C214 File Offset: 0x0001A414
 		private Server FindCoincidence(string mx)
 		{
-			KeyValuePair<string, string> keyValuePair = HostFinderContext._recordCoincidences.FirstOrDefault((KeyValuePair<string, string> r) => HostFinderContext.<>c__DisplayClass21_0.smethod_0(mx, r.Key));
+			KeyValuePair<string, string> keyValuePair = HostFinderContext._recordCoincidences.FirstOrDefault((KeyValuePair<string, string> r) => HostFinderContext._c__DisplayClass21_0.smethod_0(mx, r.Key));
 			if (keyValuePair.Key == null)
 			{
 				return null;
@@ -337,7 +337,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 		// Token: 0x06000504 RID: 1284 RVA: 0x0001C288 File Offset: 0x0001A488
 		private string FindMXRecordByLookup()
 		{
-			NameServer nameServer = new NameServer(IPAddress.Parse(<Module>.smethod_6<string>(-932791104)));
+			NameServer nameServer = new NameServer(IPAddress.Parse(_Module_.smethod_6<string>(-932791104)));
 			LookupClient lookupClient = new LookupClient(new LookupClientOptions(new NameServer[]
 			{
 				nameServer
@@ -414,13 +414,13 @@ namespace Hackus_Mail_Checker_Reforged.Net
 						httpRequest.Proxy = proxy;
 						httpRequest.KeepAlive = false;
 						httpRequest.AllowAutoRedirect = false;
-						httpRequest.UserAgent = <Module>.smethod_2<string>(-2061593978);
-						httpRequest.AddUrlParam(<Module>.smethod_6<string>(-486098232), this._domain);
-						httpRequest.AddUrlParam(<Module>.smethod_6<string>(-1967002142), <Module>.smethod_3<string>(1386942965));
-						string text = httpRequest.Get(<Module>.smethod_5<string>(1100529352), null).ToString();
+						httpRequest.UserAgent = _Module_.smethod_2<string>(-2061593978);
+						httpRequest.AddUrlParam(_Module_.smethod_6<string>(-486098232), this._domain);
+						httpRequest.AddUrlParam(_Module_.smethod_6<string>(-1967002142), _Module_.smethod_3<string>(1386942965));
+						string text = httpRequest.Get(_Module_.smethod_5<string>(1100529352), null).ToString();
 						if (!string.IsNullOrEmpty(text))
 						{
-							Match match = Regex.Match(text, <Module>.smethod_3<string>(-17772745));
+							Match match = Regex.Match(text, _Module_.smethod_3<string>(-17772745));
 							if (!match.Success)
 							{
 								result = null;
@@ -467,30 +467,30 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					httpRequest.Proxy = proxyClient;
 					httpRequest.KeepAlive = false;
 					httpRequest.AllowAutoRedirect = false;
-					httpRequest.UserAgent = <Module>.smethod_4<string>(-966056653);
-					httpRequest.AddUrlParam(<Module>.smethod_4<string>(-1058026721), <Module>.smethod_4<string>(-84822525));
-					string text = httpRequest.Get(<Module>.smethod_6<string>(1877812712) + prefix + this._domain + <Module>.smethod_6<string>(-343543153), null).ToString();
+					httpRequest.UserAgent = _Module_.smethod_4<string>(-966056653);
+					httpRequest.AddUrlParam(_Module_.smethod_4<string>(-1058026721), _Module_.smethod_4<string>(-84822525));
+					string text = httpRequest.Get(_Module_.smethod_6<string>(1877812712) + prefix + this._domain + _Module_.smethod_6<string>(-343543153), null).ToString();
 					if (string.IsNullOrEmpty(text))
 					{
 						return null;
 					}
-					if (text.Contains(<Module>.smethod_5<string>(1248357596)))
+					if (text.Contains(_Module_.smethod_5<string>(1248357596)))
 					{
-						foreach (Match match in Regex.Matches(text, <Module>.smethod_2<string>(-364280516), RegexOptions.Singleline))
+						foreach (Match match in Regex.Matches(text, _Module_.smethod_2<string>(-364280516), RegexOptions.Singleline))
 						{
 							if (match.Success)
 							{
 								string value = match.Groups[1].Value;
-								if (value != <Module>.smethod_2<string>(302133814))
+								if (value != _Module_.smethod_2<string>(302133814))
 								{
 									string value2 = match.Groups[2].Value;
 									return new Server
 									{
 										Domain = this._domain,
-										Hostname = value2.Substring(<Module>.smethod_4<string>(438147969), <Module>.smethod_2<string>(-1495822824), 0, StringComparison.Ordinal, null),
-										Port = int.Parse(value2.Substring(<Module>.smethod_6<string>(398638587), <Module>.smethod_4<string>(-1053218402), 0, StringComparison.Ordinal, null)),
-										Socket = ((value2.ContainsIgnoreCase(<Module>.smethod_3<string>(1869936522)) || value2.ContainsIgnoreCase(<Module>.smethod_3<string>(1027107096))) ? Hackus_Mail_Checker_Reforged.Models.Enums.SocketType.SSL : Hackus_Mail_Checker_Reforged.Models.Enums.SocketType.Plain),
-										Protocol = (value.Contains(<Module>.smethod_5<string>(-1257967223)) ? Hackus_Mail_Checker_Reforged.Models.Enums.ProtocolType.IMAP : Hackus_Mail_Checker_Reforged.Models.Enums.ProtocolType.POP3)
+										Hostname = value2.Substring(_Module_.smethod_4<string>(438147969), _Module_.smethod_2<string>(-1495822824), 0, StringComparison.Ordinal, null),
+										Port = int.Parse(value2.Substring(_Module_.smethod_6<string>(398638587), _Module_.smethod_4<string>(-1053218402), 0, StringComparison.Ordinal, null)),
+										Socket = ((value2.ContainsIgnoreCase(_Module_.smethod_3<string>(1869936522)) || value2.ContainsIgnoreCase(_Module_.smethod_3<string>(1027107096))) ? Hackus_Mail_Checker_Reforged.Models.Enums.SocketType.SSL : Hackus_Mail_Checker_Reforged.Models.Enums.SocketType.Plain),
+										Protocol = (value.Contains(_Module_.smethod_5<string>(-1257967223)) ? Hackus_Mail_Checker_Reforged.Models.Enums.ProtocolType.IMAP : Hackus_Mail_Checker_Reforged.Models.Enums.ProtocolType.POP3)
 									};
 								}
 							}
@@ -498,7 +498,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					}
 					if (string.IsNullOrEmpty(prefix))
 					{
-						return this.FindServerByAutoConfig(<Module>.smethod_3<string>(-377608614), 0);
+						return this.FindServerByAutoConfig(_Module_.smethod_3<string>(-377608614), 0);
 					}
 				}
 			}
@@ -539,29 +539,29 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					httpRequest.Proxy = proxyClient;
 					httpRequest.KeepAlive = false;
 					httpRequest.AllowAutoRedirect = false;
-					httpRequest.UserAgent = <Module>.smethod_6<string>(-931061319);
-					string text = httpRequest.Get(<Module>.smethod_2<string>(1983127431) + prefix + this._domain + <Module>.smethod_3<string>(-939494898), null).ToString();
+					httpRequest.UserAgent = _Module_.smethod_6<string>(-931061319);
+					string text = httpRequest.Get(_Module_.smethod_2<string>(1983127431) + prefix + this._domain + _Module_.smethod_3<string>(-939494898), null).ToString();
 					if (string.IsNullOrEmpty(text))
 					{
 						return null;
 					}
-					if (text.Contains(<Module>.smethod_6<string>(-2125125286)))
+					if (text.Contains(_Module_.smethod_6<string>(-2125125286)))
 					{
-						foreach (object obj in Regex.Matches(text, <Module>.smethod_6<string>(-1382943546), RegexOptions.Singleline))
+						foreach (object obj in Regex.Matches(text, _Module_.smethod_6<string>(-1382943546), RegexOptions.Singleline))
 						{
 							Match match = (Match)obj;
 							if (match.Success)
 							{
 								string value = match.Groups[1].Value;
-								if (!value.Contains(<Module>.smethod_6<string>(245704798)))
+								if (!value.Contains(_Module_.smethod_6<string>(245704798)))
 								{
 									return new Server
 									{
 										Domain = this._domain,
-										Hostname = value.Substring(<Module>.smethod_3<string>(1710223629), <Module>.smethod_5<string>(345889949), 0, StringComparison.Ordinal, null),
-										Port = int.Parse(value.Substring(<Module>.smethod_6<string>(1876082927), <Module>.smethod_6<string>(1283375406), 0, StringComparison.Ordinal, null)),
-										Socket = (value.Contains(<Module>.smethod_6<string>(690667885)) ? Hackus_Mail_Checker_Reforged.Models.Enums.SocketType.SSL : Hackus_Mail_Checker_Reforged.Models.Enums.SocketType.Plain),
-										Protocol = (value.Contains(<Module>.smethod_3<string>(-818264649)) ? Hackus_Mail_Checker_Reforged.Models.Enums.ProtocolType.IMAP : Hackus_Mail_Checker_Reforged.Models.Enums.ProtocolType.POP3)
+										Hostname = value.Substring(_Module_.smethod_3<string>(1710223629), _Module_.smethod_5<string>(345889949), 0, StringComparison.Ordinal, null),
+										Port = int.Parse(value.Substring(_Module_.smethod_6<string>(1876082927), _Module_.smethod_6<string>(1283375406), 0, StringComparison.Ordinal, null)),
+										Socket = (value.Contains(_Module_.smethod_6<string>(690667885)) ? Hackus_Mail_Checker_Reforged.Models.Enums.SocketType.SSL : Hackus_Mail_Checker_Reforged.Models.Enums.SocketType.Plain),
+										Protocol = (value.Contains(_Module_.smethod_3<string>(-818264649)) ? Hackus_Mail_Checker_Reforged.Models.Enums.ProtocolType.IMAP : Hackus_Mail_Checker_Reforged.Models.Enums.ProtocolType.POP3)
 									};
 								}
 							}
@@ -569,7 +569,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					}
 					if (string.IsNullOrEmpty(prefix))
 					{
-						return this.FindServerByAutoDiscover(<Module>.smethod_4<string>(1121017004), 0);
+						return this.FindServerByAutoDiscover(_Module_.smethod_4<string>(1121017004), 0);
 					}
 				}
 			}
@@ -719,60 +719,60 @@ namespace Hackus_Mail_Checker_Reforged.Net
 		private static readonly Dictionary<string, string> _domainCoincidences = new Dictionary<string, string>
 		{
 			{
-				<Module>.smethod_4<string>(922651911),
-				<Module>.smethod_3<string>(-814409771)
+				_Module_.smethod_4<string>(922651911),
+				_Module_.smethod_3<string>(-814409771)
 			},
 			{
-				<Module>.smethod_3<string>(-1657239197),
-				<Module>.smethod_4<string>(-302420894)
+				_Module_.smethod_3<string>(-1657239197),
+				_Module_.smethod_4<string>(-302420894)
 			},
 			{
-				<Module>.smethod_3<string>(-571949273),
-				<Module>.smethod_6<string>(-805804090)
+				_Module_.smethod_3<string>(-571949273),
+				_Module_.smethod_6<string>(-805804090)
 			},
 			{
-				<Module>.smethod_4<string>(-1968110763),
-				<Module>.smethod_4<string>(-1004523205)
+				_Module_.smethod_4<string>(-1968110763),
+				_Module_.smethod_4<string>(-1004523205)
 			},
 			{
-				<Module>.smethod_4<string>(-1793787265),
-				<Module>.smethod_3<string>(109239821)
+				_Module_.smethod_4<string>(-1793787265),
+				_Module_.smethod_3<string>(109239821)
 			},
 			{
-				<Module>.smethod_2<string>(-630846248),
-				<Module>.smethod_6<string>(1712770428)
+				_Module_.smethod_2<string>(-630846248),
+				_Module_.smethod_6<string>(1712770428)
 			},
 			{
-				<Module>.smethod_5<string>(1791586755),
-				<Module>.smethod_2<string>(750941947)
+				_Module_.smethod_5<string>(1791586755),
+				_Module_.smethod_2<string>(750941947)
 			},
 			{
-				<Module>.smethod_5<string>(-1010394552),
-				<Module>.smethod_2<string>(1449995967)
+				_Module_.smethod_5<string>(-1010394552),
+				_Module_.smethod_2<string>(1449995967)
 			},
 			{
-				<Module>.smethod_5<string>(-1770200016),
-				<Module>.smethod_3<string>(-693179522)
+				_Module_.smethod_5<string>(-1770200016),
+				_Module_.smethod_3<string>(-693179522)
 			},
 			{
-				<Module>.smethod_5<string>(-667448881),
-				<Module>.smethod_6<string>(-2137233781)
+				_Module_.smethod_5<string>(-667448881),
+				_Module_.smethod_6<string>(-2137233781)
 			},
 			{
-				<Module>.smethod_6<string>(824574039),
-				<Module>.smethod_3<string>(-371826297)
+				_Module_.smethod_6<string>(824574039),
+				_Module_.smethod_3<string>(-371826297)
 			},
 			{
-				<Module>.smethod_3<string>(1073299496),
-				<Module>.smethod_5<string>(1569844389)
+				_Module_.smethod_3<string>(1073299496),
+				_Module_.smethod_5<string>(1569844389)
 			},
 			{
-				<Module>.smethod_3<string>(1956539005),
-				<Module>.smethod_4<string>(-1876140695)
+				_Module_.smethod_3<string>(1956539005),
+				_Module_.smethod_4<string>(-1876140695)
 			},
 			{
-				<Module>.smethod_5<string>(-1812323138),
-				<Module>.smethod_3<string>(-1174245640)
+				_Module_.smethod_5<string>(-1812323138),
+				_Module_.smethod_3<string>(-1174245640)
 			}
 		};
 
@@ -780,173 +780,173 @@ namespace Hackus_Mail_Checker_Reforged.Net
 		private static readonly Dictionary<string, string> _recordCoincidences = new Dictionary<string, string>
 		{
 			{
-				<Module>.smethod_2<string>(816221327),
-				<Module>.smethod_5<string>(-1923194321)
+				_Module_.smethod_2<string>(816221327),
+				_Module_.smethod_5<string>(-1923194321)
 			},
 			{
-				<Module>.smethod_2<string>(2064726656),
-				<Module>.smethod_4<string>(1009813660)
+				_Module_.smethod_2<string>(2064726656),
+				_Module_.smethod_4<string>(1009813660)
 			},
 			{
-				<Module>.smethod_2<string>(-1846711887),
-				<Module>.smethod_6<string>(-805804090)
+				_Module_.smethod_2<string>(-1846711887),
+				_Module_.smethod_6<string>(-805804090)
 			},
 			{
-				<Module>.smethod_6<string>(-216556139),
-				<Module>.smethod_6<string>(1712770428)
+				_Module_.smethod_6<string>(-216556139),
+				_Module_.smethod_6<string>(1712770428)
 			},
 			{
-				<Module>.smethod_4<string>(-1266008452),
-				<Module>.smethod_5<string>(203227766)
+				_Module_.smethod_4<string>(-1266008452),
+				_Module_.smethod_5<string>(203227766)
 			},
 			{
-				<Module>.smethod_6<string>(673370035),
-				<Module>.smethod_6<string>(2008259296)
+				_Module_.smethod_6<string>(673370035),
+				_Module_.smethod_6<string>(2008259296)
 			},
 			{
-				<Module>.smethod_3<string>(1875718839),
-				<Module>.smethod_5<string>(-287546149)
+				_Module_.smethod_3<string>(1875718839),
+				_Module_.smethod_5<string>(-287546149)
 			},
 			{
-				<Module>.smethod_5<string>(1685881633),
-				<Module>.smethod_6<string>(-2137233781)
+				_Module_.smethod_5<string>(1685881633),
+				_Module_.smethod_6<string>(-2137233781)
 			},
 			{
-				<Module>.smethod_5<string>(683669559),
-				<Module>.smethod_4<string>(515693080)
+				_Module_.smethod_5<string>(683669559),
+				_Module_.smethod_4<string>(515693080)
 			},
 			{
-				<Module>.smethod_5<string>(-746529064),
-				<Module>.smethod_5<string>(277141888)
+				_Module_.smethod_5<string>(-746529064),
+				_Module_.smethod_5<string>(277141888)
 			},
 			{
-				<Module>.smethod_4<string>(1193753796),
-				<Module>.smethod_5<string>(1569844389)
+				_Module_.smethod_4<string>(1193753796),
+				_Module_.smethod_5<string>(1569844389)
 			},
 			{
-				<Module>.smethod_5<string>(-1126431796),
-				<Module>.smethod_2<string>(-1264620888)
+				_Module_.smethod_5<string>(-1126431796),
+				_Module_.smethod_2<string>(-1264620888)
 			},
 			{
-				<Module>.smethod_4<string>(-273570980),
-				<Module>.smethod_2<string>(-296277030)
+				_Module_.smethod_4<string>(-273570980),
+				_Module_.smethod_2<string>(-296277030)
 			},
 			{
-				<Module>.smethod_2<string>(1784565185),
-				<Module>.smethod_2<string>(-296277030)
+				_Module_.smethod_2<string>(1784565185),
+				_Module_.smethod_2<string>(-296277030)
 			},
 			{
-				<Module>.smethod_6<string>(1723149138),
-				<Module>.smethod_6<string>(389989662)
+				_Module_.smethod_6<string>(1723149138),
+				_Module_.smethod_6<string>(389989662)
 			},
 			{
-				<Module>.smethod_6<string>(-1683621769),
-				<Module>.smethod_4<string>(-1939260849)
+				_Module_.smethod_6<string>(-1683621769),
+				_Module_.smethod_4<string>(-1939260849)
 			},
 			{
-				<Module>.smethod_5<string>(76858400),
-				<Module>.smethod_5<string>(-303044332)
+				_Module_.smethod_5<string>(76858400),
+				_Module_.smethod_5<string>(-303044332)
 			},
 			{
-				<Module>.smethod_6<string>(687208315),
-				<Module>.smethod_6<string>(94500794)
+				_Module_.smethod_6<string>(687208315),
+				_Module_.smethod_6<string>(94500794)
 			},
 			{
-				<Module>.smethod_6<string>(96230579),
-				<Module>.smethod_5<string>(-1822655260)
+				_Module_.smethod_6<string>(96230579),
+				_Module_.smethod_5<string>(-1822655260)
 			},
 			{
-				<Module>.smethod_3<string>(-335271092),
-				<Module>.smethod_4<string>(-1677775602)
+				_Module_.smethod_3<string>(-335271092),
+				_Module_.smethod_4<string>(-1677775602)
 			},
 			{
-				<Module>.smethod_5<string>(-328080003),
-				<Module>.smethod_6<string>(-2367166)
+				_Module_.smethod_5<string>(-328080003),
+				_Module_.smethod_6<string>(-2367166)
 			},
 			{
-				<Module>.smethod_6<string>(-2075978597),
-				<Module>.smethod_4<string>(7759550)
+				_Module_.smethod_6<string>(-2075978597),
+				_Module_.smethod_4<string>(7759550)
 			},
 			{
-				<Module>.smethod_4<string>(361214865),
-				<Module>.smethod_6<string>(1035303442)
+				_Module_.smethod_4<string>(361214865),
+				_Module_.smethod_6<string>(1035303442)
 			},
 			{
-				<Module>.smethod_4<string>(-1217313255),
-				<Module>.smethod_2<string>(-1066033851)
+				_Module_.smethod_4<string>(-1217313255),
+				_Module_.smethod_2<string>(-1066033851)
 			},
 			{
-				<Module>.smethod_4<string>(356406546),
-				<Module>.smethod_6<string>(2072974050)
+				_Module_.smethod_4<string>(356406546),
+				_Module_.smethod_6<string>(2072974050)
 			},
 			{
-				<Module>.smethod_4<string>(-2098547383),
-				<Module>.smethod_2<string>(432717365)
+				_Module_.smethod_4<string>(-2098547383),
+				_Module_.smethod_2<string>(432717365)
 			},
 			{
-				<Module>.smethod_4<string>(-781504510),
-				<Module>.smethod_3<string>(1200312062)
+				_Module_.smethod_4<string>(-781504510),
+				_Module_.smethod_3<string>(1200312062)
 			},
 			{
-				<Module>.smethod_6<string>(-1777030159),
-				<Module>.smethod_3<string>(76539494)
+				_Module_.smethod_6<string>(-1777030159),
+				_Module_.smethod_3<string>(76539494)
 			},
 			{
-				<Module>.smethod_4<string>(1242448993),
-				<Module>.smethod_4<string>(1329610742)
+				_Module_.smethod_4<string>(1242448993),
+				_Module_.smethod_4<string>(1329610742)
 			},
 			{
-				<Module>.smethod_6<string>(-1931693733),
-				<Module>.smethod_3<string>(-444936707)
+				_Module_.smethod_6<string>(-1931693733),
+				_Module_.smethod_3<string>(-444936707)
 			},
 			{
-				<Module>.smethod_3<string>(-1287766133),
-				<Module>.smethod_2<string>(-1865731047)
+				_Module_.smethod_3<string>(-1287766133),
+				_Module_.smethod_2<string>(-1865731047)
 			},
 			{
-				<Module>.smethod_6<string>(736355004),
-				<Module>.smethod_3<string>(-1247356050)
+				_Module_.smethod_6<string>(736355004),
+				_Module_.smethod_3<string>(-1247356050)
 			},
 			{
-				<Module>.smethod_6<string>(1031843872),
-				<Module>.smethod_6<string>(1033573657)
+				_Module_.smethod_6<string>(1031843872),
+				_Module_.smethod_6<string>(1033573657)
 			},
 			{
-				<Module>.smethod_2<string>(748242632),
-				<Module>.smethod_6<string>(1181318091)
+				_Module_.smethod_2<string>(748242632),
+				_Module_.smethod_6<string>(1181318091)
 			},
 			{
-				<Module>.smethod_5<string>(-1842524870),
-				<Module>.smethod_4<string>(-1318899961)
+				_Module_.smethod_5<string>(-1842524870),
+				_Module_.smethod_4<string>(-1318899961)
 			},
 			{
-				<Module>.smethod_5<string>(-359871003),
-				<Module>.smethod_2<string>(-448579056)
+				_Module_.smethod_5<string>(-359871003),
+				_Module_.smethod_2<string>(-448579056)
 			},
 			{
-				<Module>.smethod_5<string>(-1119676467),
-				<Module>.smethod_5<string>(-1499579199)
+				_Module_.smethod_5<string>(-1119676467),
+				_Module_.smethod_5<string>(-1499579199)
 			}
 		};
 
 		// Token: 0x040002B2 RID: 690
 		private static List<string> _imapPrefixes = new List<string>
 		{
-			<Module>.smethod_4<string>(171854403),
-			<Module>.smethod_4<string>(259016152),
-			<Module>.smethod_2<string>(666643407),
-			<Module>.smethod_6<string>(-1342445782),
-			<Module>.smethod_6<string>(140187913)
+			_Module_.smethod_4<string>(171854403),
+			_Module_.smethod_4<string>(259016152),
+			_Module_.smethod_2<string>(666643407),
+			_Module_.smethod_6<string>(-1342445782),
+			_Module_.smethod_6<string>(140187913)
 		};
 
 		// Token: 0x040002B3 RID: 691
 		private static List<string> _pop3Prefixes = new List<string>
 		{
-			<Module>.smethod_6<string>(-487828017),
-			<Module>.smethod_6<string>(-340083583),
-			<Module>.smethod_2<string>(1118150855),
-			<Module>.smethod_5<string>(1465728535),
-			<Module>.smethod_3<string>(1764125785)
+			_Module_.smethod_6<string>(-487828017),
+			_Module_.smethod_6<string>(-340083583),
+			_Module_.smethod_2<string>(1118150855),
+			_Module_.smethod_5<string>(1465728535),
+			_Module_.smethod_3<string>(1764125785)
 		};
 
 		// Token: 0x0200009A RID: 154

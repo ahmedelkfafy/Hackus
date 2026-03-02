@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.CodeDom.Compiler;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -41,7 +41,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.Views
 		// Token: 0x060000E0 RID: 224 RVA: 0x000069A6 File Offset: 0x00004BA6
 		private void OnScreenshot(object sender, MouseButtonEventArgs e)
 		{
-			(this.ScreenshotIconElement.TryFindResource(<Module>.smethod_5<string>(364964925)) as Storyboard).Begin(this.ScreenshotIconElement);
+			(this.ScreenshotIconElement.TryFindResource(_Module_.smethod_5<string>(364964925)) as Storyboard).Begin(this.ScreenshotIconElement);
 			this.GetPngImage(this.ResultStatisticsBorder, 1.0);
 		}
 
@@ -74,12 +74,12 @@ namespace Hackus_Mail_Checker_Reforged.UI.Views
 		private void GlobalSearchSettings_Selected(object sender, RoutedEventArgs e)
 		{
 			SideMenuItem sideMenuItem = e.OriginalSource as SideMenuItem;
-			if ((string)sideMenuItem.Header == <Module>.smethod_2<string>(1675724900))
+			if ((string)sideMenuItem.Header == _Module_.smethod_2<string>(1675724900))
 			{
 				PagesManager.Instance.OpenCachedPage(typeof(SearchSettingsPage), FrameType.MainSettings);
 				return;
 			}
-			if ((string)sideMenuItem.Header == <Module>.smethod_5<string>(897861962))
+			if ((string)sideMenuItem.Header == _Module_.smethod_5<string>(897861962))
 			{
 				PagesManager.Instance.OpenCachedPage(typeof(RequestsSettingsPage), FrameType.MainSettings);
 			}

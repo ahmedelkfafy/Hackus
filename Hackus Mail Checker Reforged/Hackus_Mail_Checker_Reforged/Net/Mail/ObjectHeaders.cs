@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text;
 
@@ -39,11 +39,11 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		{
 			get
 			{
-				return this.Headers[<Module>.smethod_6<string>(-1386707483)].Value ?? string.Empty;
+				return this.Headers[_Module_.smethod_6<string>(-1386707483)].Value ?? string.Empty;
 			}
 			set
 			{
-				this.Headers.Set(<Module>.smethod_6<string>(-1386707483), new Header(value));
+				this.Headers.Set(_Module_.smethod_6<string>(-1386707483), new Header(value));
 			}
 		}
 
@@ -54,14 +54,14 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		{
 			get
 			{
-				return this.Headers[<Module>.smethod_5<string>(1179211278)].Value.NotEmpty(new string[]
+				return this.Headers[_Module_.smethod_5<string>(1179211278)].Value.NotEmpty(new string[]
 				{
-					<Module>.smethod_5<string>(93151217)
+					_Module_.smethod_5<string>(93151217)
 				});
 			}
 			set
 			{
-				this.Headers.Set(<Module>.smethod_3<string>(1979536001), new Header(value));
+				this.Headers.Set(_Module_.smethod_3<string>(1979536001), new Header(value));
 			}
 		}
 
@@ -71,9 +71,9 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		{
 			get
 			{
-				return this.Headers[<Module>.smethod_3<string>(-954980546)][<Module>.smethod_2<string>(1452670491)].NotEmpty(new string[]
+				return this.Headers[_Module_.smethod_3<string>(-954980546)][_Module_.smethod_2<string>(1452670491)].NotEmpty(new string[]
 				{
-					this.Headers[<Module>.smethod_6<string>(-1106786680)][<Module>.smethod_4<string>(1869366484)]
+					this.Headers[_Module_.smethod_6<string>(-1106786680)][_Module_.smethod_4<string>(1869366484)]
 				});
 			}
 		}
@@ -110,11 +110,11 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		// Token: 0x0600077E RID: 1918 RVA: 0x0002E138 File Offset: 0x0002C338
 		internal void SetBody(string value)
 		{
-			if (this.ContentTransferEncoding.Is(<Module>.smethod_4<string>(-759910943)))
+			if (this.ContentTransferEncoding.Is(_Module_.smethod_4<string>(-759910943)))
 			{
 				value = Utils.DecodeQuotedPrintable(value, this.Encoding);
 			}
-			else if (this.ContentTransferEncoding.Is(<Module>.smethod_2<string>(1648508631)) && this.ContentType.StartsWith(<Module>.smethod_6<string>(-514079159), StringComparison.OrdinalIgnoreCase) && Utils.IsValidBase64String(ref value, false))
+			else if (this.ContentTransferEncoding.Is(_Module_.smethod_2<string>(1648508631)) && this.ContentType.StartsWith(_Module_.smethod_6<string>(-514079159), StringComparison.OrdinalIgnoreCase) && Utils.IsValidBase64String(ref value, false))
 			{
 				using (MemoryStream memoryStream = new MemoryStream(Convert.FromBase64String(value)))
 				{
@@ -131,7 +131,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		// Token: 0x0600077F RID: 1919 RVA: 0x0000AB1F File Offset: 0x00008D1F
 		internal void SetBody(byte[] data)
 		{
-			this.ContentTransferEncoding = <Module>.smethod_4<string>(-1563599960);
+			this.ContentTransferEncoding = _Module_.smethod_4<string>(-1563599960);
 			this.Body = Convert.ToBase64String(data);
 		}
 

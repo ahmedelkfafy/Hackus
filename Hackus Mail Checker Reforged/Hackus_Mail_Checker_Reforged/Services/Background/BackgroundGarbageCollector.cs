@@ -36,12 +36,6 @@ namespace Hackus_Mail_Checker_Reforged.Services.Background
 			GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true, true);
 		}
 
-		// Token: 0x06000490 RID: 1168 RVA: 0x00009684 File Offset: 0x00007884
-		void method_0()
-		{
-			base.Dispose();
-		}
-
 		// Token: 0x0400027C RID: 636
 		private static Timer _timer;
 	}

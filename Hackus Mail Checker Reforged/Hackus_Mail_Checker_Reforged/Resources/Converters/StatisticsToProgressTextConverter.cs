@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.Windows.Data;
 using Hackus_Mail_Checker_Reforged.Services.Managers;
@@ -13,27 +13,27 @@ namespace Hackus_Mail_Checker_Reforged.Resources.Converters
 		{
 			string text = StatisticsManager.Instance.CheckedStrings.ToString();
 			string text2 = StatisticsManager.Instance.LoadedStrings.ToString();
-			if (!(text2 == <Module>.smethod_5<string>(884747681)))
+			if (!(text2 == _Module_.smethod_5<string>(884747681)))
 			{
 				if (text.Length > 3 && text.Length < 7)
 				{
-					text = text.Substring(0, text.Length - 3) + <Module>.smethod_5<string>(8110339);
+					text = text.Substring(0, text.Length - 3) + _Module_.smethod_5<string>(8110339);
 				}
 				else if (text.Length > 6)
 				{
-					text = text.Substring(0, text.Length - 6) + <Module>.smethod_3<string>(-1697649280);
+					text = text.Substring(0, text.Length - 6) + _Module_.smethod_3<string>(-1697649280);
 				}
 				if (text2.Length > 3 && text2.Length < 7)
 				{
-					text2 = text2.Substring(0, text2.Length - 3) + <Module>.smethod_6<string>(-2133774211);
+					text2 = text2.Substring(0, text2.Length - 3) + _Module_.smethod_6<string>(-2133774211);
 				}
 				else if (text2.Length > 6)
 				{
-					text2 = text2.Substring(0, text2.Length - 6) + <Module>.smethod_6<string>(680289175);
+					text2 = text2.Substring(0, text2.Length - 6) + _Module_.smethod_6<string>(680289175);
 				}
-				return text + <Module>.smethod_4<string>(1711915971) + text2;
+				return text + _Module_.smethod_4<string>(1711915971) + text2;
 			}
-			return <Module>.smethod_3<string>(-1135762996);
+			return _Module_.smethod_3<string>(-1135762996);
 		}
 
 		// Token: 0x060004DA RID: 1242 RVA: 0x00009889 File Offset: 0x00007A89

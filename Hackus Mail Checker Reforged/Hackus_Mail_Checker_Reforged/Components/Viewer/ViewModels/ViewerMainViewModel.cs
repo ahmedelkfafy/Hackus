@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
 using Hackus_Mail_Checker_Reforged.UI.Models;
 using HandyControl.Controls;
@@ -30,7 +30,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels
 			set
 			{
 				this._tabs = value;
-				base.OnPropertyChanged(<Module>.smethod_6<string>(1743498216));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(1743498216));
 			}
 		}
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -44,13 +44,13 @@ namespace Hackus_Mail_Checker_Reforged.Services.Background
 		// Token: 0x06000493 RID: 1171 RVA: 0x0001A230 File Offset: 0x00018430
 		public static Task<bool> LoadManually(string proxyFilePath, string proxyUrls)
 		{
-			BackgroundProxyLoader.<LoadManually>d__4 <LoadManually>d__;
-			<LoadManually>d__.<>t__builder = AsyncTaskMethodBuilder<bool>.Create();
-			<LoadManually>d__.proxyFilePath = proxyFilePath;
-			<LoadManually>d__.proxyUrls = proxyUrls;
-			<LoadManually>d__.<>1__state = -1;
-			<LoadManually>d__.<>t__builder.Start<BackgroundProxyLoader.<LoadManually>d__4>(ref <LoadManually>d__);
-			return <LoadManually>d__.<>t__builder.Task;
+			BackgroundProxyLoader.LoadManually_d__4 LoadManually_d__;
+			LoadManually_d__._t__builder = AsyncTaskMethodBuilder<bool>.Create();
+			LoadManually_d__.proxyFilePath = proxyFilePath;
+			LoadManually_d__.proxyUrls = proxyUrls;
+			LoadManually_d__._1__state = -1;
+			LoadManually_d__._t__builder.Start<BackgroundProxyLoader.LoadManually_d__4>(ref LoadManually_d__);
+			return LoadManually_d__._t__builder.Task;
 		}
 
 		// Token: 0x06000494 RID: 1172 RVA: 0x0001A27C File Offset: 0x0001847C
@@ -87,23 +87,23 @@ namespace Hackus_Mail_Checker_Reforged.Services.Background
 		// Token: 0x06000495 RID: 1173 RVA: 0x0001A338 File Offset: 0x00018538
 		private static Task<List<Proxy>> GetFromFile(string filePath)
 		{
-			BackgroundProxyLoader.<GetFromFile>d__6 <GetFromFile>d__;
-			<GetFromFile>d__.<>t__builder = AsyncTaskMethodBuilder<List<Proxy>>.Create();
-			<GetFromFile>d__.filePath = filePath;
-			<GetFromFile>d__.<>1__state = -1;
-			<GetFromFile>d__.<>t__builder.Start<BackgroundProxyLoader.<GetFromFile>d__6>(ref <GetFromFile>d__);
-			return <GetFromFile>d__.<>t__builder.Task;
+			BackgroundProxyLoader.GetFromFile_d__6 GetFromFile_d__;
+			GetFromFile_d__._t__builder = AsyncTaskMethodBuilder<List<Proxy>>.Create();
+			GetFromFile_d__.filePath = filePath;
+			GetFromFile_d__._1__state = -1;
+			GetFromFile_d__._t__builder.Start<BackgroundProxyLoader.GetFromFile_d__6>(ref GetFromFile_d__);
+			return GetFromFile_d__._t__builder.Task;
 		}
 
 		// Token: 0x06000496 RID: 1174 RVA: 0x0001A37C File Offset: 0x0001857C
 		private static Task<List<Proxy>> GetFromUrl(string url)
 		{
-			BackgroundProxyLoader.<GetFromUrl>d__7 <GetFromUrl>d__;
-			<GetFromUrl>d__.<>t__builder = AsyncTaskMethodBuilder<List<Proxy>>.Create();
-			<GetFromUrl>d__.url = url;
-			<GetFromUrl>d__.<>1__state = -1;
-			<GetFromUrl>d__.<>t__builder.Start<BackgroundProxyLoader.<GetFromUrl>d__7>(ref <GetFromUrl>d__);
-			return <GetFromUrl>d__.<>t__builder.Task;
+			BackgroundProxyLoader.GetFromUrl_d__7 GetFromUrl_d__;
+			GetFromUrl_d__._t__builder = AsyncTaskMethodBuilder<List<Proxy>>.Create();
+			GetFromUrl_d__.url = url;
+			GetFromUrl_d__._1__state = -1;
+			GetFromUrl_d__._t__builder.Start<BackgroundProxyLoader.GetFromUrl_d__7>(ref GetFromUrl_d__);
+			return GetFromUrl_d__._t__builder.Task;
 		}
 
 		// Token: 0x06000497 RID: 1175 RVA: 0x0001A3C0 File Offset: 0x000185C0
@@ -131,12 +131,6 @@ namespace Hackus_Mail_Checker_Reforged.Services.Background
 				return new Proxy(array[0], port);
 			}
 			return new Proxy(array[0], port, array[2], array[3]);
-		}
-
-		// Token: 0x06000499 RID: 1177 RVA: 0x00009684 File Offset: 0x00007884
-		void method_0()
-		{
-			base.Dispose();
 		}
 
 		// Token: 0x0400027D RID: 637

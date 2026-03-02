@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Globalization;
@@ -186,7 +186,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		// Token: 0x06000791 RID: 1937 RVA: 0x0002E678 File Offset: 0x0002C878
 		public static string ToQuotedString(this string str)
 		{
-			return <Module>.smethod_4<string>(2069567598) + str.Replace(<Module>.smethod_2<string>(1722009911), <Module>.smethod_4<string>(142392482)).Replace(<Module>.smethod_3<string>(-953053107), <Module>.smethod_6<string>(-1543100842)).Replace(<Module>.smethod_4<string>(219937593), <Module>.smethod_5<string>(570016217)).Replace(<Module>.smethod_2<string>(1588727045), <Module>.smethod_4<string>(-939042760)) + <Module>.smethod_2<string>(1588727045);
+			return _Module_.smethod_4<string>(2069567598) + str.Replace(_Module_.smethod_2<string>(1722009911), _Module_.smethod_4<string>(142392482)).Replace(_Module_.smethod_3<string>(-953053107), _Module_.smethod_6<string>(-1543100842)).Replace(_Module_.smethod_4<string>(219937593), _Module_.smethod_5<string>(570016217)).Replace(_Module_.smethod_2<string>(1588727045), _Module_.smethod_4<string>(-939042760)) + _Module_.smethod_2<string>(1588727045);
 		}
 
 		// Token: 0x06000792 RID: 1938 RVA: 0x0002E704 File Offset: 0x0002C904
@@ -207,7 +207,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 			{
 				return false;
 			}
-			param = param.Replace(<Module>.smethod_2<string>(1020182203), string.Empty).Replace(<Module>.smethod_3<string>(-227532916), string.Empty);
+			param = param.Replace(_Module_.smethod_2<string>(1020182203), string.Empty).Replace(_Module_.smethod_3<string>(-227532916), string.Empty);
 			int num = param.Length;
 			int num2 = num % 4;
 			if (num2 != 0)
@@ -254,25 +254,25 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 				return string.Empty;
 			}
 			string text = encodedWords;
-			foreach (Match match in Regex.Matches(encodedWords, <Module>.smethod_3<string>(-1795882533)))
+			foreach (Match match in Regex.Matches(encodedWords, _Module_.smethod_3<string>(-1795882533)))
 			{
 				if (match.Success)
 				{
 					string value = match.Value;
-					string value2 = match.Groups[<Module>.smethod_4<string>(465161862)].Value;
-					string value3 = match.Groups[<Module>.smethod_3<string>(1977608562)].Value;
-					Encoding encoding = Utils.ParseCharsetToEncoding(match.Groups[<Module>.smethod_5<string>(-1828219578)].Value, @default);
+					string value2 = match.Groups[_Module_.smethod_4<string>(465161862)].Value;
+					string value3 = match.Groups[_Module_.smethod_3<string>(1977608562)].Value;
+					Encoding encoding = Utils.ParseCharsetToEncoding(match.Groups[_Module_.smethod_5<string>(-1828219578)].Value, @default);
 					string a = value3.ToUpperInvariant();
 					string newValue;
-					if (a == <Module>.smethod_2<string>(1036502048))
+					if (a == _Module_.smethod_2<string>(1036502048))
 					{
 						newValue = Utils.DecodeBase64(value2, encoding);
 					}
 					else
 					{
-						if (!(a == <Module>.smethod_2<string>(-728666154)))
+						if (!(a == _Module_.smethod_2<string>(-728666154)))
 						{
-							throw new ArgumentException(<Module>.smethod_6<string>(1610304771) + value3 + <Module>.smethod_6<string>(1165341684));
+							throw new ArgumentException(_Module_.smethod_6<string>(1610304771) + value3 + _Module_.smethod_6<string>(1165341684));
 						}
 						newValue = Utils.DecodeQuotedPrintable(value2, encoding);
 					}
@@ -290,19 +290,19 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 				return @default ?? Encoding.Default;
 			}
 			string text = characterSet.ToUpperInvariant();
-			if (!text.Contains(<Module>.smethod_6<string>(-1648721702)) && !text.Contains(<Module>.smethod_6<string>(-166088007)))
+			if (!text.Contains(_Module_.smethod_6<string>(-1648721702)) && !text.Contains(_Module_.smethod_6<string>(-166088007)))
 			{
 				return (from x in Encoding.GetEncodings()
-				where Utils.<>c__DisplayClass13_0.smethod_0(x).Is(characterSet)
-				select Utils.<>c.smethod_0(x)).FirstOrDefault<Encoding>() ?? (@default ?? Encoding.Default);
+				where Utils._c__DisplayClass13_0.smethod_0(x).Is(characterSet)
+				select Utils._c_.smethod_0(x)).FirstOrDefault<Encoding>() ?? (@default ?? Encoding.Default);
 			}
-			text = text.Replace(<Module>.smethod_3<string>(-454772310), "");
-			text = text.Replace(<Module>.smethod_6<string>(-1648721702), "");
-			text = text.Replace(<Module>.smethod_6<string>(2018333639), "");
+			text = text.Replace(_Module_.smethod_3<string>(-454772310), "");
+			text = text.Replace(_Module_.smethod_6<string>(-1648721702), "");
+			text = text.Replace(_Module_.smethod_6<string>(2018333639), "");
 			int codepageNumber = int.Parse(text, CultureInfo.InvariantCulture);
 			return (from x in Encoding.GetEncodings()
-			where Utils.<>c__DisplayClass13_1.smethod_0(x) == codepageNumber
-			select Utils.<>c.smethod_0(x)).FirstOrDefault<Encoding>() ?? (@default ?? Encoding.Default);
+			where Utils._c__DisplayClass13_1.smethod_0(x) == codepageNumber
+			select Utils._c_.smethod_0(x)).FirstOrDefault<Encoding>() ?? (@default ?? Encoding.Default);
 		}
 
 		// Token: 0x06000796 RID: 1942 RVA: 0x0002EAB4 File Offset: 0x0002CCB4
@@ -359,13 +359,13 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling System.String Hack
 		// Token: 0x06000799 RID: 1945 RVA: 0x0000ABE5 File Offset: 0x00008DE5
 		internal static string GetRFC2060Date(this DateTime date)
 		{
-			return date.ToString(<Module>.smethod_2<string>(-995231886), Utils._enUsCulture);
+			return date.ToString(_Module_.smethod_2<string>(-995231886), Utils._enUsCulture);
 		}
 
 		// Token: 0x0600079A RID: 1946 RVA: 0x0000ABFD File Offset: 0x00008DFD
 		internal static string GetRFC2822Date(this DateTime date)
 		{
-			return date.ToString(<Module>.smethod_2<string>(669441886), Utils._enUsCulture);
+			return date.ToString(_Module_.smethod_2<string>(669441886), Utils._enUsCulture);
 		}
 
 		// Token: 0x0600079B RID: 1947 RVA: 0x0000AC15 File Offset: 0x00008E15
@@ -563,7 +563,7 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling System.String Hack
 		}
 
 		// Token: 0x040003D2 RID: 978
-		private static CultureInfo _enUsCulture = CultureInfo.GetCultureInfo(<Module>.smethod_4<string>(1215959370));
+		private static CultureInfo _enUsCulture = CultureInfo.GetCultureInfo(_Module_.smethod_4<string>(1215959370));
 
 		// Token: 0x040003D3 RID: 979
 		private const char Base64Padding = '=';
@@ -640,45 +640,45 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling System.String Hack
 		// Token: 0x040003D5 RID: 981
 		private static readonly string[] BlockArguments = new string[]
 		{
-			<Module>.smethod_6<string>(871582601),
-			<Module>.smethod_5<string>(-851837809),
-			<Module>.smethod_5<string>(-2053933234),
-			<Module>.smethod_5<string>(188526097),
-			<Module>.smethod_5<string>(2051082696),
-			<Module>.smethod_3<string>(-93009002),
-			<Module>.smethod_4<string>(-845760941),
-			<Module>.smethod_6<string>(1316545688),
-			<Module>.smethod_5<string>(-1331084831),
-			<Module>.smethod_6<string>(-1497517698),
-			<Module>.smethod_3<string>(-52598919),
-			<Module>.smethod_3<string>(1392526874),
-			<Module>.smethod_3<string>(830640590),
-			<Module>.smethod_5<string>(-1906104990),
-			<Module>.smethod_4<string>(563252000),
-			<Module>.smethod_5<string>(-613402489),
-			<Module>.smethod_6<string>(-2095414574),
-			<Module>.smethod_5<string>(1059202744),
-			<Module>.smethod_2<string>(-1095875062)
+			_Module_.smethod_6<string>(871582601),
+			_Module_.smethod_5<string>(-851837809),
+			_Module_.smethod_5<string>(-2053933234),
+			_Module_.smethod_5<string>(188526097),
+			_Module_.smethod_5<string>(2051082696),
+			_Module_.smethod_3<string>(-93009002),
+			_Module_.smethod_4<string>(-845760941),
+			_Module_.smethod_6<string>(1316545688),
+			_Module_.smethod_5<string>(-1331084831),
+			_Module_.smethod_6<string>(-1497517698),
+			_Module_.smethod_3<string>(-52598919),
+			_Module_.smethod_3<string>(1392526874),
+			_Module_.smethod_3<string>(830640590),
+			_Module_.smethod_5<string>(-1906104990),
+			_Module_.smethod_4<string>(563252000),
+			_Module_.smethod_5<string>(-613402489),
+			_Module_.smethod_6<string>(-2095414574),
+			_Module_.smethod_5<string>(1059202744),
+			_Module_.smethod_2<string>(-1095875062)
 		};
 
 		// Token: 0x040003D6 RID: 982
 		private static readonly string[] TwoFactorArguments = new string[]
 		{
-			<Module>.smethod_3<string>(-2122885803),
-			<Module>.smethod_3<string>(911460756),
-			<Module>.smethod_4<string>(1788324805)
+			_Module_.smethod_3<string>(-2122885803),
+			_Module_.smethod_3<string>(911460756),
+			_Module_.smethod_4<string>(1788324805)
 		};
 
 		// Token: 0x040003D7 RID: 983
-		private static Regex rxTimeZoneName = new Regex(<Module>.smethod_3<string>(-212311812), RegexOptions.IgnoreCase | RegexOptions.Compiled);
+		private static Regex rxTimeZoneName = new Regex(_Module_.smethod_3<string>(-212311812), RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
 		// Token: 0x040003D8 RID: 984
-		private static Regex rxTimeZoneColon = new Regex(<Module>.smethod_3<string>(1232813981), RegexOptions.IgnoreCase | RegexOptions.Compiled);
+		private static Regex rxTimeZoneColon = new Regex(_Module_.smethod_3<string>(1232813981), RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
 		// Token: 0x040003D9 RID: 985
-		private static Regex rxTimeZoneMinutes = new Regex(<Module>.smethod_2<string>(1101930174), RegexOptions.Compiled);
+		private static Regex rxTimeZoneMinutes = new Regex(_Module_.smethod_2<string>(1101930174), RegexOptions.Compiled);
 
 		// Token: 0x040003DA RID: 986
-		private static Regex rxNegativeHours = new Regex(<Module>.smethod_4<string>(-593892332), RegexOptions.Compiled);
+		private static Regex rxNegativeHours = new Regex(_Module_.smethod_4<string>(-593892332), RegexOptions.Compiled);
 	}
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Hackus_Mail_Checker_Reforged.Models.Enums;
 using Hackus_Mail_Checker_Reforged.Services.Managers;
 using Hackus_Mail_Checker_Reforged.UI.Models;
@@ -38,7 +38,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._errorMessage = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(-1011983820));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(-1011983820));
 			}
 		}
 

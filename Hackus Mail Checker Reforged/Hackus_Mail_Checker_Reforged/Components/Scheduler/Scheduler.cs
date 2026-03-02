@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -11,6 +11,7 @@ using Hackus_Mail_Checker_Reforged.Components.Scheduler.Models;
 using Hackus_Mail_Checker_Reforged.Services.Settings;
 using Hackus_Mail_Checker_Reforged.Services.Shared;
 using Hackus_Mail_Checker_Reforged.UI.Models;
+using SchedulerNotification = Hackus_Mail_Checker_Reforged.Components.Scheduler.Models.Notification;
 
 namespace Hackus_Mail_Checker_Reforged.Components.Scheduler
 {
@@ -49,14 +50,14 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler
 			set
 			{
 				this._mails = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(1514250622));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(1514250622));
 			}
 		}
 
 		// Token: 0x1700028A RID: 650
 		// (get) Token: 0x06000D94 RID: 3476 RVA: 0x0000DEAF File Offset: 0x0000C0AF
 		// (set) Token: 0x06000D95 RID: 3477 RVA: 0x0000DEB7 File Offset: 0x0000C0B7
-		public ObservableCollection<Notification> Notifications
+		public ObservableCollection<SchedulerNotification> Notifications
 		{
 			get
 			{
@@ -65,7 +66,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler
 			set
 			{
 				this._notifications = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(470929222));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(470929222));
 			}
 		}
 
@@ -109,7 +110,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler
 			{
 				foreach (object obj in newItems)
 				{
-					Notification notification = (Notification)obj;
+					SchedulerNotification notification = (SchedulerNotification)obj;
 					Notifier.ShowSchedulerNotification(notification.Address, notification.Message);
 				}
 			}
@@ -153,7 +154,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler
 		}
 
 		// Token: 0x06000D9B RID: 3483 RVA: 0x00045E04 File Offset: 0x00044004
-		public void AddNotification(Notification notification)
+		public void AddNotification(SchedulerNotification notification)
 		{
 			object notificationsLocker = this._notificationsLocker;
 			lock (notificationsLocker)
@@ -240,6 +241,6 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler
 		private ObservableCollection<ScheduledMail> _mails = new ObservableCollection<ScheduledMail>();
 
 		// Token: 0x0400074A RID: 1866
-		private ObservableCollection<Notification> _notifications = new ObservableCollection<Notification>();
+		private ObservableCollection<SchedulerNotification> _notifications = new ObservableCollection<SchedulerNotification>();
 	}
 }

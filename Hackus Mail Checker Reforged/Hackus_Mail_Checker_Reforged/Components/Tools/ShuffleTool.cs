@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
@@ -21,18 +21,18 @@ namespace Hackus_Mail_Checker_Reforged.Components.Tools
 		// Token: 0x06000C57 RID: 3159 RVA: 0x000423A8 File Offset: 0x000405A8
 		public Task<bool> Run()
 		{
-			ShuffleTool.<Run>d__4 <Run>d__;
-			<Run>d__.<>t__builder = AsyncTaskMethodBuilder<bool>.Create();
-			<Run>d__.<>4__this = this;
-			<Run>d__.<>1__state = -1;
-			<Run>d__.<>t__builder.Start<ShuffleTool.<Run>d__4>(ref <Run>d__);
-			return <Run>d__.<>t__builder.Task;
+			ShuffleTool.Run_d__4 Run_d__;
+			Run_d__._t__builder = AsyncTaskMethodBuilder<bool>.Create();
+			Run_d__._4__this = this;
+			Run_d__._1__state = -1;
+			Run_d__._t__builder.Start<ShuffleTool.Run_d__4>(ref Run_d__);
+			return Run_d__._t__builder.Task;
 		}
 
 		// Token: 0x06000C58 RID: 3160 RVA: 0x0000D648 File Offset: 0x0000B848
 		public void OpenDirectory()
 		{
-			Process.Start(<Module>.smethod_4<string>(-753878610), <Module>.smethod_3<string>(1167347191) + this._savePath.FullName + <Module>.smethod_4<string>(2069567598));
+			Process.Start(_Module_.smethod_4<string>(-753878610), _Module_.smethod_3<string>(1167347191) + this._savePath.FullName + _Module_.smethod_4<string>(2069567598));
 		}
 
 		// Token: 0x040006A8 RID: 1704

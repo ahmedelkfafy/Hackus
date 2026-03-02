@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
@@ -55,7 +55,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._folders = value;
-				base.OnPropertyChanged(<Module>.smethod_3<string>(-1886141486));
+				base.OnPropertyChanged(_Module_.smethod_3<string>(-1886141486));
 			}
 		}
 
@@ -71,7 +71,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._messages = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(-538226644));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(-538226644));
 			}
 		}
 
@@ -87,7 +87,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._selectedMessages = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(710278685));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(710278685));
 			}
 		}
 
@@ -103,7 +103,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._searchedUids = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(1372741317));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(1372741317));
 			}
 		}
 
@@ -119,7 +119,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._mailbox = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(160827376));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(160827376));
 			}
 		}
 
@@ -135,7 +135,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._server = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(1409332705));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(1409332705));
 			}
 		}
 
@@ -151,7 +151,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._imap = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(43081755));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(43081755));
 			}
 		}
 
@@ -167,7 +167,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._selectedFolder = value;
-				base.OnPropertyChanged(<Module>.smethod_3<string>(-374018280));
+				base.OnPropertyChanged(_Module_.smethod_3<string>(-374018280));
 			}
 		}
 
@@ -183,7 +183,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._limit = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(298182448));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(298182448));
 			}
 		}
 
@@ -199,7 +199,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._reconnectLimit = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(367348827));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(367348827));
 			}
 		}
 
@@ -215,7 +215,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._maxPageCount = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(1963872317));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(1963872317));
 			}
 		}
 
@@ -231,9 +231,9 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._pageIndex = value;
-				base.OnPropertyChanged(<Module>.smethod_6<string>(999586691));
-				base.OnPropertyChanged(<Module>.smethod_2<string>(-1035994312));
-				base.OnPropertyChanged(<Module>.smethod_2<string>(1044847903));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(999586691));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(-1035994312));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(1044847903));
 			}
 		}
 
@@ -249,7 +249,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._searchQuery = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(1294920253));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(1294920253));
 			}
 		}
 
@@ -265,7 +265,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._savedSearchQuery = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(-1585445621));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(-1585445621));
 			}
 		}
 
@@ -281,7 +281,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._isImapBusy = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(2026841659));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(2026841659));
 			}
 		}
 
@@ -297,7 +297,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._isSmtpBusy = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(1646938927));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(1646938927));
 			}
 		}
 
@@ -313,7 +313,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._imapOperationStatus = value;
-				base.OnPropertyChanged(<Module>.smethod_6<string>(-481317219));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(-481317219));
 			}
 		}
 
@@ -329,7 +329,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._smtpOperationStatus = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(1077084829));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(1077084829));
 			}
 		}
 
@@ -345,8 +345,8 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._lastOperation = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(2118962539));
-				base.OnPropertyChanged(<Module>.smethod_5<string>(-2115131332));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(2118962539));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(-2115131332));
 			}
 		}
 
@@ -362,7 +362,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._isExtendedSelectionMode = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(1770315543));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(1770315543));
 			}
 		}
 
@@ -378,7 +378,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._message = value;
-				base.OnPropertyChanged(<Module>.smethod_6<string>(-1960491344));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(-1960491344));
 			}
 		}
 
@@ -394,7 +394,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._attachments = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(314893583));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(314893583));
 			}
 		}
 
@@ -410,7 +410,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._showMessageBody = value;
-				base.OnPropertyChanged(<Module>.smethod_3<string>(-1898036800));
+				base.OnPropertyChanged(_Module_.smethod_3<string>(-1898036800));
 			}
 		}
 
@@ -426,7 +426,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._showAttachments = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(1252153368));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(1252153368));
 			}
 		}
 
@@ -583,7 +583,6 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 				}
 				return this._updatePageCommand;
 			}
-		}
 		}
 
 		// Token: 0x06000ACB RID: 2763 RVA: 0x0003CF74 File Offset: 0x0003B174
@@ -806,22 +805,22 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			{
 				if (type == SearchType.Body)
 				{
-					stringBuilder.Append(<Module>.smethod_3<string>(-1576683575) + ImapUtils.ToQuotedString(searchQuery.Query));
+					stringBuilder.Append(_Module_.smethod_3<string>(-1576683575) + ImapUtils.ToQuotedString(searchQuery.Query));
 				}
 			}
 			else
 			{
-				stringBuilder.Append(<Module>.smethod_4<string>(-413536501) + ImapUtils.ToQuotedString(searchQuery.Query));
+				stringBuilder.Append(_Module_.smethod_4<string>(-413536501) + ImapUtils.ToQuotedString(searchQuery.Query));
 			}
 			if (searchQuery.DateFrom != null)
 			{
-				string str = searchQuery.DateFrom.Value.ToString(<Module>.smethod_4<string>(384120183), CultureInfo.CreateSpecificCulture(<Module>.smethod_4<string>(1215959370)));
-				stringBuilder.Append(<Module>.smethod_6<string>(1439360423) + str);
+				string str = searchQuery.DateFrom.Value.ToString(_Module_.smethod_4<string>(384120183), CultureInfo.CreateSpecificCulture(_Module_.smethod_4<string>(1215959370)));
+				stringBuilder.Append(_Module_.smethod_6<string>(1439360423) + str);
 			}
 			if (searchQuery.DateTo != null)
 			{
-				string str2 = searchQuery.DateTo.Value.ToString(<Module>.smethod_5<string>(1518185659), CultureInfo.CreateSpecificCulture(<Module>.smethod_5<string>(1510633816)));
-				stringBuilder.Append(<Module>.smethod_4<string>(-849345246) + str2);
+				string str2 = searchQuery.DateTo.Value.ToString(_Module_.smethod_5<string>(1518185659), CultureInfo.CreateSpecificCulture(_Module_.smethod_5<string>(1510633816)));
+				stringBuilder.Append(_Module_.smethod_4<string>(-849345246) + str2);
 			}
 			return stringBuilder.ToString();
 		}

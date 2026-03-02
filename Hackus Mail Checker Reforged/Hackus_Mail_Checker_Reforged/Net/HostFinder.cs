@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -101,7 +101,7 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling Hackus_Mail_Checke
 			int num = array.Length;
 			if (num >= 2)
 			{
-				list = HostFinder.GenerateServersByDomain(array[num - 2] + <Module>.smethod_6<string>(1711040643) + array[num - 1]);
+				list = HostFinder.GenerateServersByDomain(array[num - 2] + _Module_.smethod_6<string>(1711040643) + array[num - 1]);
 				return (from s in list
 				select new Server(domain, s.Hostname, s.Port, s.Protocol, s.Socket)).ToList<Server>();
 			}
@@ -111,23 +111,23 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling Hackus_Mail_Checke
 		// Token: 0x060004E9 RID: 1257 RVA: 0x0001B53C File Offset: 0x0001973C
 		private static List<Server> GenerateServersByDomain(string domain)
 		{
-			HostFinder.<>c__DisplayClass6_0 CS$<>8__locals1;
-			CS$<>8__locals1.domain = domain;
-			CS$<>8__locals1.servers = new List<Server>();
+			HostFinder._c__DisplayClass6_0 CS___8__locals1;
+			CS___8__locals1.domain = domain;
+			CS___8__locals1.servers = new List<Server>();
 			switch (CheckerSettings.Instance.GuessProtocolType)
 			{
 			case ExtendedProtocolType.Imap:
 				switch (CheckerSettings.Instance.GuessSocketType)
 				{
 				case ExtendedSocketType.Ssl:
-					HostFinder.smethod_0(true, ref CS$<>8__locals1);
+					HostFinder.smethod_0(true, ref CS___8__locals1);
 					break;
 				case ExtendedSocketType.Plain:
-					HostFinder.smethod_0(false, ref CS$<>8__locals1);
+					HostFinder.smethod_0(false, ref CS___8__locals1);
 					break;
 				case ExtendedSocketType.Both:
-					HostFinder.smethod_0(true, ref CS$<>8__locals1);
-					HostFinder.smethod_0(false, ref CS$<>8__locals1);
+					HostFinder.smethod_0(true, ref CS___8__locals1);
+					HostFinder.smethod_0(false, ref CS___8__locals1);
 					break;
 				}
 				break;
@@ -135,14 +135,14 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling Hackus_Mail_Checke
 				switch (CheckerSettings.Instance.GuessSocketType)
 				{
 				case ExtendedSocketType.Ssl:
-					HostFinder.smethod_1(true, ref CS$<>8__locals1);
+					HostFinder.smethod_1(true, ref CS___8__locals1);
 					break;
 				case ExtendedSocketType.Plain:
-					HostFinder.smethod_1(false, ref CS$<>8__locals1);
+					HostFinder.smethod_1(false, ref CS___8__locals1);
 					break;
 				case ExtendedSocketType.Both:
-					HostFinder.smethod_1(true, ref CS$<>8__locals1);
-					HostFinder.smethod_1(false, ref CS$<>8__locals1);
+					HostFinder.smethod_1(true, ref CS___8__locals1);
+					HostFinder.smethod_1(false, ref CS___8__locals1);
 					break;
 				}
 				break;
@@ -150,23 +150,23 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling Hackus_Mail_Checke
 				switch (CheckerSettings.Instance.GuessSocketType)
 				{
 				case ExtendedSocketType.Ssl:
-					HostFinder.smethod_0(true, ref CS$<>8__locals1);
-					HostFinder.smethod_1(true, ref CS$<>8__locals1);
+					HostFinder.smethod_0(true, ref CS___8__locals1);
+					HostFinder.smethod_1(true, ref CS___8__locals1);
 					break;
 				case ExtendedSocketType.Plain:
-					HostFinder.smethod_0(false, ref CS$<>8__locals1);
-					HostFinder.smethod_1(false, ref CS$<>8__locals1);
+					HostFinder.smethod_0(false, ref CS___8__locals1);
+					HostFinder.smethod_1(false, ref CS___8__locals1);
 					break;
 				case ExtendedSocketType.Both:
-					HostFinder.smethod_0(true, ref CS$<>8__locals1);
-					HostFinder.smethod_0(false, ref CS$<>8__locals1);
-					HostFinder.smethod_1(true, ref CS$<>8__locals1);
-					HostFinder.smethod_1(false, ref CS$<>8__locals1);
+					HostFinder.smethod_0(true, ref CS___8__locals1);
+					HostFinder.smethod_0(false, ref CS___8__locals1);
+					HostFinder.smethod_1(true, ref CS___8__locals1);
+					HostFinder.smethod_1(false, ref CS___8__locals1);
 					break;
 				}
 				break;
 			}
-			return CS$<>8__locals1.servers;
+			return CS___8__locals1.servers;
 		}
 
 		// Token: 0x060004EA RID: 1258 RVA: 0x000098E1 File Offset: 0x00007AE1
@@ -243,23 +243,23 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling Hackus_Mail_Checke
 
 		// Token: 0x060004EF RID: 1263 RVA: 0x0001BA64 File Offset: 0x00019C64
 		[CompilerGenerated]
-		internal static void smethod_0(bool ssl, ref HostFinder.<>c__DisplayClass6_0 <>c__DisplayClass6_0_0)
+		internal static void smethod_0(bool ssl, ref HostFinder._c__DisplayClass6_0 _c__DisplayClass6_0_0)
 		{
 			int port = ssl ? 993 : 143;
 			SocketType socket = ssl ? SocketType.SSL : SocketType.Plain;
-			<>c__DisplayClass6_0_0.servers.Add(new Server(<>c__DisplayClass6_0_0.domain, <Module>.smethod_3<string>(422883290) + <>c__DisplayClass6_0_0.domain, port, ProtocolType.IMAP, socket));
-			<>c__DisplayClass6_0_0.servers.Add(new Server(<>c__DisplayClass6_0_0.domain, <Module>.smethod_4<string>(259016152) + <>c__DisplayClass6_0_0.domain, port, ProtocolType.IMAP, socket));
+			_c__DisplayClass6_0_0.servers.Add(new Server(_c__DisplayClass6_0_0.domain, _Module_.smethod_3<string>(422883290) + _c__DisplayClass6_0_0.domain, port, ProtocolType.IMAP, socket));
+			_c__DisplayClass6_0_0.servers.Add(new Server(_c__DisplayClass6_0_0.domain, _Module_.smethod_4<string>(259016152) + _c__DisplayClass6_0_0.domain, port, ProtocolType.IMAP, socket));
 		}
 
 		// Token: 0x060004F0 RID: 1264 RVA: 0x0001BAE8 File Offset: 0x00019CE8
 		[CompilerGenerated]
-		internal static void smethod_1(bool ssl, ref HostFinder.<>c__DisplayClass6_0 <>c__DisplayClass6_0_0)
+		internal static void smethod_1(bool ssl, ref HostFinder._c__DisplayClass6_0 _c__DisplayClass6_0_0)
 		{
 			int port = ssl ? 995 : 110;
 			SocketType socket = ssl ? SocketType.SSL : SocketType.Plain;
-			<>c__DisplayClass6_0_0.servers.Add(new Server(<>c__DisplayClass6_0_0.domain, <Module>.smethod_5<string>(-2017772687) + <>c__DisplayClass6_0_0.domain, port, ProtocolType.POP3, socket));
-			<>c__DisplayClass6_0_0.servers.Add(new Server(<>c__DisplayClass6_0_0.domain, <Module>.smethod_6<string>(-340083583) + <>c__DisplayClass6_0_0.domain, port, ProtocolType.POP3, socket));
-			<>c__DisplayClass6_0_0.servers.Add(new Server(<>c__DisplayClass6_0_0.domain, <Module>.smethod_3<string>(-2146015071) + <>c__DisplayClass6_0_0.domain, port, ProtocolType.POP3, socket));
+			_c__DisplayClass6_0_0.servers.Add(new Server(_c__DisplayClass6_0_0.domain, _Module_.smethod_5<string>(-2017772687) + _c__DisplayClass6_0_0.domain, port, ProtocolType.POP3, socket));
+			_c__DisplayClass6_0_0.servers.Add(new Server(_c__DisplayClass6_0_0.domain, _Module_.smethod_6<string>(-340083583) + _c__DisplayClass6_0_0.domain, port, ProtocolType.POP3, socket));
+			_c__DisplayClass6_0_0.servers.Add(new Server(_c__DisplayClass6_0_0.domain, _Module_.smethod_3<string>(-2146015071) + _c__DisplayClass6_0_0.domain, port, ProtocolType.POP3, socket));
 		}
 
 		// Token: 0x0400029D RID: 669
@@ -272,52 +272,52 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling Hackus_Mail_Checke
 		private static Dictionary<string, string> DomainCoincidences = new Dictionary<string, string>
 		{
 			{
-				<Module>.smethod_4<string>(922651911),
-				<Module>.smethod_5<string>(1838875938)
+				_Module_.smethod_4<string>(922651911),
+				_Module_.smethod_5<string>(1838875938)
 			},
 			{
-				<Module>.smethod_6<string>(-1547985830),
-				<Module>.smethod_5<string>(1269021840)
+				_Module_.smethod_6<string>(-1547985830),
+				_Module_.smethod_5<string>(1269021840)
 			},
 			{
-				<Module>.smethod_5<string>(-1353340223),
-				<Module>.smethod_2<string>(-1297260578)
+				_Module_.smethod_5<string>(-1353340223),
+				_Module_.smethod_2<string>(-1297260578)
 			},
 			{
-				<Module>.smethod_4<string>(-1793787265),
-				<Module>.smethod_5<string>(-440540454)
+				_Module_.smethod_4<string>(-1793787265),
+				_Module_.smethod_5<string>(-440540454)
 			},
 			{
-				<Module>.smethod_3<string>(1273422472),
-				<Module>.smethod_6<string>(1712770428)
+				_Module_.smethod_3<string>(1273422472),
+				_Module_.smethod_6<string>(1712770428)
 			},
 			{
-				<Module>.smethod_6<string>(1860514862),
-				<Module>.smethod_6<string>(2008259296)
+				_Module_.smethod_6<string>(1860514862),
+				_Module_.smethod_6<string>(2008259296)
 			},
 			{
-				<Module>.smethod_4<string>(1973401218),
-				<Module>.smethod_4<string>(2060562967)
+				_Module_.smethod_4<string>(1973401218),
+				_Module_.smethod_4<string>(2060562967)
 			},
 			{
-				<Module>.smethod_3<string>(-1255065806),
-				<Module>.smethod_3<string>(-1536008948)
+				_Module_.smethod_3<string>(-1255065806),
+				_Module_.smethod_3<string>(-1536008948)
 			},
 			{
-				<Module>.smethod_5<string>(-857400247),
-				<Module>.smethod_6<string>(-1699189834)
+				_Module_.smethod_5<string>(-857400247),
+				_Module_.smethod_6<string>(-1699189834)
 			},
 			{
-				<Module>.smethod_5<string>(1949747121),
-				<Module>.smethod_6<string>(-810993445)
+				_Module_.smethod_5<string>(1949747121),
+				_Module_.smethod_6<string>(-810993445)
 			},
 			{
-				<Module>.smethod_4<string>(1193753796),
-				<Module>.smethod_4<string>(-1876140695)
+				_Module_.smethod_4<string>(1193753796),
+				_Module_.smethod_4<string>(-1876140695)
 			},
 			{
-				<Module>.smethod_4<string>(404489736),
-				<Module>.smethod_2<string>(-1264620888)
+				_Module_.smethod_4<string>(404489736),
+				_Module_.smethod_2<string>(-1264620888)
 			}
 		};
 
@@ -325,49 +325,57 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling Hackus_Mail_Checke
 		private static Dictionary<string, string> RecordCoincidences = new Dictionary<string, string>
 		{
 			{
-				<Module>.smethod_2<string>(816221327),
-				<Module>.smethod_6<string>(1563296209)
+				_Module_.smethod_2<string>(816221327),
+				_Module_.smethod_6<string>(1563296209)
 			},
 			{
-				<Module>.smethod_6<string>(-1106482313),
-				<Module>.smethod_3<string>(-814409771)
+				_Module_.smethod_6<string>(-1106482313),
+				_Module_.smethod_3<string>(-814409771)
 			},
 			{
-				<Module>.smethod_6<string>(376151382),
-				<Module>.smethod_3<string>(2075841815)
+				_Module_.smethod_6<string>(376151382),
+				_Module_.smethod_3<string>(2075841815)
 			},
 			{
-				<Module>.smethod_6<string>(-216556139),
-				<Module>.smethod_6<string>(1712770428)
+				_Module_.smethod_6<string>(-216556139),
+				_Module_.smethod_6<string>(1712770428)
 			},
 			{
-				<Module>.smethod_2<string>(650298771),
-				<Module>.smethod_5<string>(203227766)
+				_Module_.smethod_2<string>(650298771),
+				_Module_.smethod_5<string>(203227766)
 			},
 			{
-				<Module>.smethod_3<string>(-812482332),
-				<Module>.smethod_4<string>(-1798595584)
+				_Module_.smethod_3<string>(-812482332),
+				_Module_.smethod_4<string>(-1798595584)
 			},
 			{
-				<Module>.smethod_4<string>(1973401218),
-				<Module>.smethod_5<string>(-287546149)
+				_Module_.smethod_4<string>(1973401218),
+				_Module_.smethod_5<string>(-287546149)
 			},
 			{
-				<Module>.smethod_4<string>(51034421),
-				<Module>.smethod_4<string>(-481552711)
+				_Module_.smethod_4<string>(51034421),
+				_Module_.smethod_4<string>(-481552711)
 			},
 			{
-				<Module>.smethod_3<string>(351700319),
-				<Module>.smethod_3<string>(-371826297)
+				_Module_.smethod_3<string>(351700319),
+				_Module_.smethod_3<string>(-371826297)
 			},
 			{
-				<Module>.smethod_2<string>(117167307),
-				<Module>.smethod_4<string>(-1876140695)
+				_Module_.smethod_2<string>(117167307),
+				_Module_.smethod_4<string>(-1876140695)
 			},
 			{
-				<Module>.smethod_4<string>(-651067890),
-				<Module>.smethod_3<string>(-1174245640)
+				_Module_.smethod_4<string>(-651067890),
+				_Module_.smethod_3<string>(-1174245640)
 			}
 		};
+
+		// DisplayClass stub for decompiled closure
+		[System.Runtime.CompilerServices.CompilerGenerated]
+		internal struct _c__DisplayClass6_0
+		{
+			public string domain;
+			public System.Collections.Generic.List<Hackus_Mail_Checker_Reforged.Models.Server> servers;
+		}
 	}
 }

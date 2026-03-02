@@ -145,8 +145,8 @@
 		<hc:TabControl
 			Name="Tabs"
 			Grid.Row="1"
-			ThemeManager.RequestedAccentColor="#64FFDA"
-			ThemeManager.RequestedTheme="Dark"
+			hc:ThemeManager.RequestedAccentColor="#64FFDA"
+			hc:ThemeManager.RequestedTheme="Dark"
 			Background="#2C2C2C"
 			BorderThickness="0"
 			IsAnimationEnabled="True"
@@ -156,7 +156,7 @@
 			ShowContextMenu="False"
 			ShowScrollButton="True"
 			ItemsSource="{Binding Tabs}"
-			TabItem.Closed="Tabs_Closed">
+			hc:TabItem.Closed="Tabs_Closed">
 			<FrameworkElement.Resources>
 				<ResourceDictionary>
 					<Style

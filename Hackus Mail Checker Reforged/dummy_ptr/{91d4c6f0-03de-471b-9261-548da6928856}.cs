@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
 namespace dummy_ptr
 {
 	// Token: 0x020001F4 RID: 500
-	internal abstract class {91d4c6f0-03de-471b-9261-548da6928856}
+	internal abstract class _dummy_91d4c6f0_
 	{
 		// Token: 0x06000E6D RID: 3693
 		public abstract void m00005F();

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
 using Hackus_Mail_Checker_Reforged.Models;
 using Hackus_Mail_Checker_Reforged.UI.Models;
@@ -45,7 +45,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._requests = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(1589259968));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(1589259968));
 			}
 		}
 
@@ -61,7 +61,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._maxThreads = value;
-				base.OnPropertyChanged(<Module>.smethod_6<string>(-83667061));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(-83667061));
 			}
 		}
 
@@ -77,7 +77,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._delay = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(-2109388035));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(-2109388035));
 			}
 		}
 
@@ -93,7 +93,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._useProxy = value;
-				base.OnPropertyChanged(<Module>.smethod_3<string>(-2007371735));
+				base.OnPropertyChanged(_Module_.smethod_3<string>(-2007371735));
 			}
 		}
 
@@ -109,7 +109,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._enableNotifications = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(350261376));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(350261376));
 			}
 		}
 
@@ -125,7 +125,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._downloadMails = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(-1422395917));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(-1422395917));
 			}
 		}
 
@@ -141,7 +141,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._deleteMails = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(658446298));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(658446298));
 			}
 		}
 

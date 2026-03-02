@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.IO;
 using System.Net.Security;
@@ -76,14 +76,14 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 				{
 					try
 					{
-						if (MailClient.<>c__DisplayClass14_0.smethod_0(this.TcpClient) == null)
+						if (MailClient._c__DisplayClass14_0.smethod_0(this.TcpClient) == null)
 						{
 							this.TcpClient.DisposeObject(ar);
 							return;
 						}
-						MailClient.<>c__DisplayClass14_0.smethod_2(MailClient.<>c__DisplayClass14_0.smethod_1(ar));
+						MailClient._c__DisplayClass14_0.smethod_2(MailClient._c__DisplayClass14_0.smethod_1(ar));
 						localResult = null;
-						MailClient.<>c__DisplayClass14_0.smethod_3(this.TcpClient, ar);
+						MailClient._c__DisplayClass14_0.smethod_3(this.TcpClient, ar);
 					}
 					catch (NullReferenceException)
 					{
@@ -103,7 +103,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 					{
 						ThreadAbortException connectException = connectException2;
 					}
-					MailClient.<>c__DisplayClass14_0.smethod_4(connectDoneEvent);
+					MailClient._c__DisplayClass14_0.smethod_4(connectDoneEvent);
 				}, this.TcpClient);
 			}
 			catch

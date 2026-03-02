@@ -64,7 +64,7 @@
 					</Border>
 					<hc:TabControl
 						Margin="0,40,0,0"
-						ThemeManager.RequestedAccentColor="#64FFD1"
+						hc:ThemeManager.RequestedAccentColor="#64FFD1"
 						Style="{StaticResource TabControlInLine}">
 						<hc:TabItem
 							Header="{DynamicResource l_Requests}">

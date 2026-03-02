@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Hackus_Mail_Checker_Reforged.Net.Mail.Message;
@@ -21,7 +21,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._sender = value;
-				base.OnPropertyChanged(<Module>.smethod_6<string>(866801588));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(866801588));
 			}
 		}
 
@@ -37,7 +37,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._subject = value;
-				base.OnPropertyChanged(<Module>.smethod_3<string>(-1305046948));
+				base.OnPropertyChanged(_Module_.smethod_3<string>(-1305046948));
 			}
 		}
 
@@ -53,7 +53,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._body = value;
-				base.OnPropertyChanged(<Module>.smethod_3<string>(421021987));
+				base.OnPropertyChanged(_Module_.smethod_3<string>(421021987));
 			}
 		}
 
@@ -69,7 +69,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._checkDate = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(-351728098));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(-351728098));
 			}
 		}
 
@@ -85,7 +85,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._dateFrom = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(86395888));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(86395888));
 			}
 		}
 
@@ -101,7 +101,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._dateTo = value;
-				base.OnPropertyChanged(<Module>.smethod_6<string>(-1420286107));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(-1420286107));
 			}
 		}
 
@@ -117,7 +117,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._count = value;
-				base.OnPropertyChanged(<Module>.smethod_3<string>(-1574756136));
+				base.OnPropertyChanged(_Module_.smethod_3<string>(-1574756136));
 			}
 		}
 
@@ -156,7 +156,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			{
 				this.SavedMids = new HashSet<Mid>();
 			}
-			if (this.SavedMids.Any((Mid u) => Request.<>c__DisplayClass37_0.smethod_0(u.MID, mid.MID)))
+			if (this.SavedMids.Any((Mid u) => Request._c__DisplayClass37_0.smethod_0(u.MID, mid.MID)))
 			{
 				return;
 			}
@@ -170,7 +170,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			{
 				this.FindedMids = new HashSet<Mid>();
 			}
-			if (!this.FindedMids.Any((Mid u) => Request.<>c__DisplayClass38_0.smethod_0(u.MID, mid.MID)))
+			if (!this.FindedMids.Any((Mid u) => Request._c__DisplayClass38_0.smethod_0(u.MID, mid.MID)))
 			{
 				this.FindedMids.Add(mid);
 				return;
@@ -184,7 +184,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			{
 				this.CheckedFolders = new HashSet<string>();
 			}
-			if (!this.CheckedFolders.Any((string f) => Request.<>c__DisplayClass39_0.smethod_0(f, folder)))
+			if (!this.CheckedFolders.Any((string f) => Request._c__DisplayClass39_0.smethod_0(f, folder)))
 			{
 				this.CheckedFolders.Add(folder);
 				return;
@@ -242,15 +242,15 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			string text = "";
 			if (!string.IsNullOrWhiteSpace(this.Sender))
 			{
-				text = text + <Module>.smethod_5<string>(-1299295711) + this.Sender + <Module>.smethod_3<string>(1850728268);
+				text = text + _Module_.smethod_5<string>(-1299295711) + this.Sender + _Module_.smethod_3<string>(1850728268);
 			}
 			if (!string.IsNullOrWhiteSpace(this.Subject))
 			{
-				text += ((text == "") ? (<Module>.smethod_4<string>(-1163809739) + this.Subject + <Module>.smethod_2<string>(-152097740)) : (<Module>.smethod_3<string>(1877381734) + this.Subject + <Module>.smethod_5<string>(-1679198443)));
+				text += ((text == "") ? (_Module_.smethod_4<string>(-1163809739) + this.Subject + _Module_.smethod_2<string>(-152097740)) : (_Module_.smethod_3<string>(1877381734) + this.Subject + _Module_.smethod_5<string>(-1679198443)));
 			}
 			if (!string.IsNullOrWhiteSpace(this.Body))
 			{
-				text += ((text == "") ? (<Module>.smethod_2<string>(-1816771512) + this.Body + <Module>.smethod_5<string>(-1679198443)) : (<Module>.smethod_2<string>(-7819286) + this.Body + <Module>.smethod_4<string>(-1953073799)));
+				text += ((text == "") ? (_Module_.smethod_2<string>(-1816771512) + this.Body + _Module_.smethod_5<string>(-1679198443)) : (_Module_.smethod_2<string>(-7819286) + this.Body + _Module_.smethod_4<string>(-1953073799)));
 			}
 			return text;
 		}

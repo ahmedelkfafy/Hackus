@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Hackus_Mail_Checker_Reforged.Components.Viewer
 {
@@ -11,23 +11,23 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer
 			switch (language)
 			{
 			case TranslationLanguage.Auto:
-				return <Module>.smethod_4<string>(869848139);
+				return _Module_.smethod_4<string>(869848139);
 			case TranslationLanguage.English:
-				return <Module>.smethod_2<string>(-1746043920);
+				return _Module_.smethod_2<string>(-1746043920);
 			case TranslationLanguage.Russian:
-				return <Module>.smethod_6<string>(-423417630);
+				return _Module_.smethod_6<string>(-423417630);
 			case TranslationLanguage.Chinese:
-				return <Module>.smethod_5<string>(517562853);
+				return _Module_.smethod_5<string>(517562853);
 			case TranslationLanguage.German:
-				return <Module>.smethod_2<string>(625955354);
+				return _Module_.smethod_2<string>(625955354);
 			case TranslationLanguage.French:
-				return <Module>.smethod_6<string>(1872215015);
+				return _Module_.smethod_6<string>(1872215015);
 			case TranslationLanguage.Poland:
-				return <Module>.smethod_5<string>(-432193977);
+				return _Module_.smethod_5<string>(-432193977);
 			case TranslationLanguage.Spanish:
-				return <Module>.smethod_6<string>(-1680570541);
+				return _Module_.smethod_6<string>(-1680570541);
 			default:
-				return <Module>.smethod_3<string>(-208523070);
+				return _Module_.smethod_3<string>(-208523070);
 			}
 		}
 	}
