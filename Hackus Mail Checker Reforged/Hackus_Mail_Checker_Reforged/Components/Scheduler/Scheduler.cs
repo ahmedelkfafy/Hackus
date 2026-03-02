@@ -50,7 +50,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler
 			set
 			{
 				this._mails = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(1514250622));
+				base.OnPropertyChanged(nameof(Mails));
 			}
 		}
 
@@ -66,7 +66,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler
 			set
 			{
 				this._notifications = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(470929222));
+				base.OnPropertyChanged(nameof(Notifications));
 			}
 		}
 

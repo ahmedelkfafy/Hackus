@@ -42,7 +42,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Popups.ViewModels
 			set
 			{
 				this._createRequestGroupField = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(1073365632));
+				base.OnPropertyChanged(nameof(CreateRequestGroupField));
 			}
 		}
 
@@ -58,7 +58,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Popups.ViewModels
 			set
 			{
 				this._findRequestGroupField = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(-1449587395));
+				base.OnPropertyChanged(nameof(FindRequestGroupField));
 			}
 		}
 
@@ -74,7 +74,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Popups.ViewModels
 			set
 			{
 				this._createRequestField = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(672542803));
+				base.OnPropertyChanged(nameof(CreateRequestField));
 			}
 		}
 
@@ -90,7 +90,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Popups.ViewModels
 			set
 			{
 				this._findRequestField = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(-334364932));
+				base.OnPropertyChanged(nameof(FindRequestField));
 			}
 		}
 
@@ -106,7 +106,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Popups.ViewModels
 			set
 			{
 				this._selectedRequestTypeIndex = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(1274883212));
+				base.OnPropertyChanged(nameof(SelectedRequestTypeIndex));
 			}
 		}
 
@@ -122,7 +122,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Popups.ViewModels
 			set
 			{
 				this._selectedGroup = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(1957078455));
+				base.OnPropertyChanged(nameof(SelectedGroup));
 			}
 		}
 

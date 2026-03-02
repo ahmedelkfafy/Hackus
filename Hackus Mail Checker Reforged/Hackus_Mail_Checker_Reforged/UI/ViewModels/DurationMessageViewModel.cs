@@ -14,19 +14,19 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			string text = "";
 			if (duration.Days > 0)
 			{
-				text += string.Format(_Module_.smethod_5<string>(639162535), duration.Days);
+				text += string.Format("{0:00} d. ", duration.Days);
 			}
 			if (duration.Hours > 0)
 			{
-				text += string.Format(_Module_.smethod_2<string>(-619999406), duration.Hours);
+				text += string.Format("{0:00} h. ", duration.Hours);
 			}
 			if (duration.Minutes > 0)
 			{
-				text += string.Format(_Module_.smethod_4<string>(1390894875), duration.Minutes);
+				text += string.Format("{0:00} min. ", duration.Minutes);
 			}
 			if (duration.Seconds > 0)
 			{
-				text += string.Format(_Module_.smethod_3<string>(-2140166618), duration.Seconds);
+				text += string.Format("{0:00} s. ", duration.Seconds);
 			}
 			this.DurationMessage = text;
 		}
@@ -43,7 +43,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._durationMessage = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(-1646583575));
+				base.OnPropertyChanged(nameof(DurationMessage));
 			}
 		}
 

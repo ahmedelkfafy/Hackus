@@ -155,21 +155,21 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 			{
 				reader.ReadToEnd(maxLength, this.Encoding);
 			}
-			if ((string.IsNullOrWhiteSpace(this.Body) || this.ContentType.StartsWith(_Module_.smethod_6<string>(-53548007))) && this.AlternateViews.Count > 0)
+			if ((string.IsNullOrWhiteSpace(this.Body) || this.ContentType.StartsWith("multipart/")) && this.AlternateViews.Count > 0)
 			{
 				Attachment attachment2 = this.AlternateViews.GetTextView() ?? this.AlternateViews.GetHtmlView();
 				if (attachment2 != null)
 				{
 					this.Body = attachment2.Body;
-					this.ContentTransferEncoding = attachment2.Headers[_Module_.smethod_6<string>(-1386707483)].RawValue;
-					this.ContentType = attachment2.Headers[_Module_.smethod_4<string>(-425688904)].RawValue;
+					this.ContentTransferEncoding = attachment2.Headers["Content-Transfer-Encoding"].RawValue;
+					this.ContentType = attachment2.Headers["Content-Type"].RawValue;
 				}
 			}
 			this.Date = this.Headers.GetDate();
-			this.Sender = this.Headers.GetMailAddresses(_Module_.smethod_5<string>(201638498)).FirstOrDefault<MailAddress>();
-			this.From = this.Headers.GetMailAddresses(_Module_.smethod_2<string>(1934118314)).FirstOrDefault<MailAddress>();
-			this.MessageID = this.Headers[_Module_.smethod_4<string>(1791821373)].RawValue;
-			this.Subject = this.Headers[_Module_.smethod_3<string>(-1305046948)].RawValue;
+			this.Sender = this.Headers.GetMailAddresses("Sender").FirstOrDefault<MailAddress>();
+			this.From = this.Headers.GetMailAddresses("From").FirstOrDefault<MailAddress>();
+			this.MessageID = this.Headers["Message-ID"].RawValue;
+			this.Subject = this.Headers["Subject"].RawValue;
 		}
 
 		// Token: 0x06000761 RID: 1889 RVA: 0x0002DAEC File Offset: 0x0002BCEC
@@ -177,8 +177,8 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		{
 			bool flag = maxLength > 0;
 			string text = null;
-			string text2 = _Module_.smethod_6<string>(-208211581) + boundary;
-			string value = text2 + _Module_.smethod_4<string>(-503234015);
+			string text2 = "--" + boundary;
+			string value = text2 + "--";
 			int num = 0;
 			StringBuilder stringBuilder = new StringBuilder();
 			do
@@ -262,50 +262,50 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		// Token: 0x06000763 RID: 1891 RVA: 0x0002DCF4 File Offset: 0x0002BEF4
 		public virtual void Save(TextWriter txt)
 		{
-			txt.WriteLine(_Module_.smethod_2<string>(-1626431166), ((this.Date == DateTime.MinValue) ? DateTime.Now : this.Date).GetRFC2060Date());
+			txt.WriteLine("Date: {0}", ((this.Date == DateTime.MinValue) ? DateTime.Now : this.Date).GetRFC2060Date());
 			if (this.Sender != null)
 			{
-				txt.WriteLine(_Module_.smethod_3<string>(530555330), this.Sender);
+				txt.WriteLine("Sender: {0}", this.Sender);
 			}
 			if (this.From != null)
 			{
-				txt.WriteLine(_Module_.smethod_4<string>(-1118174577), this.From);
+				txt.WriteLine("From: {0}", this.From);
 			}
 			if (!string.IsNullOrEmpty(this.MessageID))
 			{
-				txt.WriteLine(_Module_.smethod_5<string>(-1675225273), this.MessageID);
+				txt.WriteLine("Message-ID: {0}", this.MessageID);
 			}
 			foreach (KeyValuePair<string, Header> keyValuePair in from x in this.Headers
 			where !MailMessage.SpecialHeaders.Contains(x.Key, MailMessage._c_.smethod_0())
 			select x)
 			{
-				txt.WriteLine(_Module_.smethod_3<string>(851908555), keyValuePair.Key, keyValuePair.Value);
+				txt.WriteLine("{0}: {1}", keyValuePair.Key, keyValuePair.Value);
 			}
-			txt.WriteLine(_Module_.smethod_3<string>(-1716989806), this.Subject);
+			txt.WriteLine("Subject: {0}", this.Subject);
 			string boundary = null;
 			if (this.Attachments.Any<Attachment>() || this.AlternateViews.Any<Attachment>())
 			{
-				boundary = string.Format(_Module_.smethod_3<string>(2016091206), Guid.NewGuid());
-				txt.WriteLine(_Module_.smethod_5<string>(-762425504), boundary);
+				boundary = string.Format("--boundary_{0}", Guid.NewGuid());
+				txt.WriteLine("Content-Type: multipart/mixed; boundary={0}", boundary);
 			}
 			txt.WriteLine();
 			if (boundary != null)
 			{
-				txt.WriteLine(_Module_.smethod_3<string>(1373384756) + boundary);
+				txt.WriteLine("--" + boundary);
 				txt.WriteLine();
 			}
 			txt.WriteLine(this.Body);
 			this.AlternateViews.Union(this.Attachments).ToList<Attachment>().ForEach(delegate(Attachment att)
 			{
-				MailMessage._c__DisplayClass48_0.smethod_1(txt, MailMessage._c__DisplayClass48_0.smethod_0(_Module_.smethod_3<string>(1373384756), boundary));
-				MailMessage._c__DisplayClass48_0.smethod_1(txt, MailMessage._c__DisplayClass48_0.smethod_2(_Module_.smethod_3<string>(-227532916), from h in att.Headers
-				select MailMessage._c_.smethod_1(_Module_.smethod_4<string>(-1553983322), h.Key, h.Value)));
+				MailMessage._c__DisplayClass48_0.smethod_1(txt, MailMessage._c__DisplayClass48_0.smethod_0("--", boundary));
+				MailMessage._c__DisplayClass48_0.smethod_1(txt, MailMessage._c__DisplayClass48_0.smethod_2("", from h in att.Headers
+				select MailMessage._c_.smethod_1("{0}: {1}", h.Key, h.Value)));
 				MailMessage._c__DisplayClass48_0.smethod_3(txt);
 				MailMessage._c__DisplayClass48_0.smethod_1(txt, att.Body);
 			});
 			if (boundary != null)
 			{
-				txt.WriteLine(_Module_.smethod_2<string>(1836199244) + boundary + _Module_.smethod_5<string>(34337021));
+				txt.WriteLine("--" + boundary + "--");
 			}
 		}
 
@@ -313,7 +313,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		private bool _HeadersOnly;
 
 		// Token: 0x040003C6 RID: 966
-		private static readonly string[] SpecialHeaders = _Module_.smethod_2<string>(1686596533).Split(new char[]
+		private static readonly string[] SpecialHeaders = "Date,To,Cc,Reply-To,Bcc,Sender,From,Message-ID,Importance,Subject".Split(new char[]
 		{
 			','
 		});

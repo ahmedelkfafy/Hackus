@@ -33,7 +33,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			{
 				this._loadFromFile = value;
 				RelayCommand.Validate();
-				base.OnPropertyChanged(_Module_.smethod_5<string>(-1638664589));
+				base.OnPropertyChanged(nameof(LoadFromFile));
 			}
 		}
 
@@ -50,7 +50,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			{
 				this._loadFromWeb = value;
 				RelayCommand.Validate();
-				base.OnPropertyChanged(_Module_.smethod_6<string>(1211437145));
+				base.OnPropertyChanged(nameof(LoadFromWeb));
 			}
 		}
 
@@ -66,7 +66,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._localFilePath = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(-318069865));
+				base.OnPropertyChanged(nameof(LocalFilePath));
 			}
 		}
 
@@ -82,7 +82,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._fileName = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(2099633534));
+				base.OnPropertyChanged(nameof(FileName));
 			}
 		}
 
@@ -98,7 +98,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._webTextSources = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(153570918));
+				base.OnPropertyChanged(nameof(WebTextSources));
 			}
 		}
 
@@ -114,7 +114,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._localProxyType = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(1797225526));
+				base.OnPropertyChanged(nameof(LocalProxyType));
 			}
 		}
 
@@ -130,7 +130,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._useAutoUpdate = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(-276385905));
+				base.OnPropertyChanged(nameof(UseAutoUpdate));
 			}
 		}
 
@@ -146,7 +146,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._UpdateDelay = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(-721348992));
+				base.OnPropertyChanged(nameof(UpdateDelay));
 			}
 		}
 
@@ -162,7 +162,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._useAuthentication = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(176998475));
+				base.OnPropertyChanged(nameof(UseAuthentication));
 			}
 		}
 
@@ -178,7 +178,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._login = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(329300501));
+				base.OnPropertyChanged(nameof(Login));
 			}
 		}
 
@@ -194,7 +194,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._password = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(-1500479806));
+				base.OnPropertyChanged(nameof(Password));
 			}
 		}
 
@@ -282,7 +282,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 					result = (this._selectFilePathCommand = new RelayCommand(delegate(object obj)
 					{
 						OpenFileDialog openFileDialog = new OpenFileDialog();
-						openFileDialog.Filter = _Module_.smethod_3<string>(182416367);
+						openFileDialog.Filter = "txt files (*.txt)|*.txt";
 						openFileDialog.RestoreDirectory = true;
 						bool? flag = openFileDialog.ShowDialog();
 						if (flag.GetValueOrDefault() & flag != null)
@@ -290,7 +290,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 							FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
 							if (!fileInfo.Exists)
 							{
-								this.SendSimpleErrorMessage(_Module_.smethod_5<string>(561671620));
+								this.SendSimpleErrorMessage("Файл по данному пути не найден");
 								return;
 							}
 							this.LocalFilePath = fileInfo.FullName;
@@ -355,12 +355,12 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			HandyControl.Controls.MessageBox.Show(new MessageBoxInfo
 			{
 				Message = text,
-				Caption = ResourceHelper.GetResource<string>(_Module_.smethod_2<string>(-1052487694)),
+				Caption = ResourceHelper.GetResource<string>("l_Error"),
 				Button = MessageBoxButton.OK,
-				IconBrushKey = _Module_.smethod_2<string>(196017635),
-				IconKey = _Module_.smethod_6<string>(1292737040),
-				StyleKey = _Module_.smethod_6<string>(1294466825),
-				ConfirmContent = ResourceHelper.GetResource<string>(_Module_.smethod_4<string>(-1596646186))
+				IconBrushKey = "AccentBrush",
+				IconKey = "ErrorGeometry",
+				StyleKey = "MessageBoxCustom",
+				ConfirmContent = ResourceHelper.GetResource<string>("l_OK")
 			});
 		}
 

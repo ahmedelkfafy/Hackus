@@ -59,7 +59,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			set
 			{
 				this._threads = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(-488624271));
+				base.OnPropertyChanged(nameof(Threads));
 			}
 		}
 
@@ -75,7 +75,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			set
 			{
 				this._state = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(267025275));
+				base.OnPropertyChanged(nameof(State));
 			}
 		}
 
@@ -212,7 +212,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			}
 			catch (Exception exception)
 			{
-				FileManager.LogUnhandledException(exception, _Module_.smethod_5<string>(-1131597857));
+				FileManager.LogUnhandledException(exception, "ThreadHandler");
 				this.ThreadCancelled(this, new ThreadCancelledEventArgs(Thread.CurrentThread));
 			}
 		}
@@ -232,7 +232,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		// Token: 0x06000472 RID: 1138 RVA: 0x000094FE File Offset: 0x000076FE
 		private void OnThreadsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
 		{
-			base.OnPropertyChanged(_Module_.smethod_4<string>(-2045655874));
+			base.OnPropertyChanged(nameof(Threads));
 			if (!this.Threads.Any<Thread>())
 			{
 				this.ThreadsCancelled(this, null);

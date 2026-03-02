@@ -38,7 +38,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._errorMessage = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(-1011983820));
+				base.OnPropertyChanged(nameof(ErrorMessage));
 			}
 		}
 

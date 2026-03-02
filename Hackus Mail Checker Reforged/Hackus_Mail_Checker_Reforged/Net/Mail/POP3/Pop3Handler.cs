@@ -211,7 +211,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.POP3
 						savedMessages.Add(mailMessage);
 						if (this.SearchSettings.ParseContacts)
 						{
-							Match match = Regex.Match(mailMessage.From, _Module_.smethod_4<string>(-1958406388));
+							Match match = Regex.Match(mailMessage.From, "<(.+)>");
 							if (match.Success)
 							{
 								ContactsHelper.AddContact(match.Groups[1].Value);

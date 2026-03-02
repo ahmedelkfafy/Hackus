@@ -28,7 +28,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.Models
 			set
 			{
 				this._filename = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(-1541218912));
+				base.OnPropertyChanged(nameof(Filename));
 			}
 		}
 
@@ -44,7 +44,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.Models
 			set
 			{
 				this._contentType = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(538227097));
+				base.OnPropertyChanged(nameof(ContentType));
 			}
 		}
 
@@ -60,7 +60,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.Models
 			set
 			{
 				this._size = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(-920485052));
+				base.OnPropertyChanged(nameof(Size));
 			}
 		}
 
@@ -76,7 +76,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.Models
 			set
 			{
 				this._innerAttachment = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(-1977027657));
+				base.OnPropertyChanged(nameof(InnerAttachment));
 			}
 		}
 
@@ -92,7 +92,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.Models
 			set
 			{
 				this._isSaved = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(1640978232));
+				base.OnPropertyChanged(nameof(IsSaved));
 			}
 		}
 

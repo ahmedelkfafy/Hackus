@@ -51,7 +51,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._address = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(-731926710));
+				base.OnPropertyChanged(nameof(Address));
 			}
 		}
 
@@ -67,7 +67,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._password = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(-1928335903));
+				base.OnPropertyChanged(nameof(Password));
 			}
 		}
 
@@ -83,7 +83,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._request = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(-1134872088));
+				base.OnPropertyChanged(nameof(Request));
 			}
 		}
 
@@ -99,7 +99,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._count = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(530817781));
+				base.OnPropertyChanged(nameof(Count));
 			}
 		}
 
@@ -115,7 +115,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._proxy = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(617979530));
+				base.OnPropertyChanged(nameof(Proxy));
 			}
 		}
 

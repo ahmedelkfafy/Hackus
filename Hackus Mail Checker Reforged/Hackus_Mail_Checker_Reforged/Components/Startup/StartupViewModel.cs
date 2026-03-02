@@ -45,7 +45,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._webLoader = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(2013179521));
+				base.OnPropertyChanged(nameof(WebLoader));
 			}
 		}
 
@@ -61,7 +61,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._username = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(-1795053037));
+				base.OnPropertyChanged(nameof(Username));
 			}
 		}
 
@@ -77,7 +77,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._password = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(-2024528016));
+				base.OnPropertyChanged(nameof(Password));
 			}
 		}
 
@@ -93,7 +93,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._isAuthorizing = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(1679524561));
+				base.OnPropertyChanged(nameof(IsAuthorizing));
 			}
 		}
 
@@ -109,7 +109,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._errorMessage = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(1945040507));
+				base.OnPropertyChanged(nameof(ErrorMessage));
 			}
 		}
 
@@ -125,7 +125,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._status = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(-2020302528));
+				base.OnPropertyChanged(nameof(Status));
 			}
 		}
 
@@ -141,7 +141,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._currentVersion = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(1816861895));
+				base.OnPropertyChanged(nameof(CurrentVersion));
 			}
 		}
 
@@ -157,7 +157,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._lastVersion = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(-1579685464));
+				base.OnPropertyChanged(nameof(LastVersion));
 			}
 		}
 
@@ -173,7 +173,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._hwid = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(2116559043));
+				base.OnPropertyChanged(nameof(Hwid));
 			}
 		}
 
@@ -196,7 +196,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 							});
 						});
 						Version version = Assembly.GetExecutingAssembly().GetName().Version;
-						this.CurrentVersion = string.Format(_Module_.smethod_6<string>(-1788529920), version.Major, version.Minor, version.Build);
+						this.CurrentVersion = string.Format("{0}.{1}.{2}", version.Major, version.Minor, version.Build);
 						PagesManager.Instance.OpenPage(new AuthenticationPage(this), FrameType.Startup);
 						ValueTuple<string, string> savedCredentials = Registry.GetSavedCredentials();
 						this.Username = savedCredentials.Item1;
@@ -300,7 +300,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 					{
 						try
 						{
-							StartupViewModel._c_.smethod_0(_Module_.smethod_6<string>(-1159392939));
+							StartupViewModel._c_.smethod_0("https://t.me/HackusOfficial");
 						}
 						catch
 						{
@@ -362,12 +362,12 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 		{
 			string[] array = new string[]
 			{
-				_Module_.smethod_3<string>(1937066207),
-				_Module_.smethod_3<string>(-1193718438),
-				_Module_.smethod_6<string>(633176638),
-				_Module_.smethod_6<string>(-854646412),
-				_Module_.smethod_2<string>(-328767974),
-				_Module_.smethod_5<string>(471068304)
+				"x64\\SQLite.Interop.dll",
+				"x86\\SQLite.Interop.dll",
+				"x64\\SQLite.Interop.dll",
+				"x86\\GoSrp.dll",
+				"x64\\GoSrp.dll",
+				"System.Data.SQLite.dll"
 			};
 			for (int i = 0; i < array.Length; i++)
 			{
@@ -385,12 +385,12 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 		{
 			foreach (string path in new string[]
 			{
-				_Module_.smethod_2<string>(-1346071367),
-				_Module_.smethod_5<string>(-441731465),
-				_Module_.smethod_4<string>(173166154),
-				_Module_.smethod_2<string>(1885357107),
-				_Module_.smethod_4<string>(-107552369),
-				_Module_.smethod_4<string>(245902946)
+				"x64\\SQLite.Interop.dll",
+				"x86\\SQLite.Interop.dll",
+				"x64\\SQLite.Interop.dll",
+				"x86\\GoSrp.dll",
+				"x64\\GoSrp.dll",
+				"System.Data.SQLite.dll"
 			})
 			{
 				if (File.Exists(path))
@@ -414,12 +414,12 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			HandyControl.Controls.MessageBox.Show(new MessageBoxInfo
 			{
 				Message = message,
-				Caption = ResourceHelper.GetResource<string>(_Module_.smethod_3<string>(-416025122)),
+				Caption = ResourceHelper.GetResource<string>("l_Error"),
 				Button = MessageBoxButton.OK,
-				IconBrushKey = _Module_.smethod_5<string>(1573819439),
-				IconKey = _Module_.smethod_6<string>(1292737040),
-				StyleKey = _Module_.smethod_6<string>(1294466825),
-				ConfirmContent = ResourceHelper.GetResource<string>(_Module_.smethod_5<string>(1193916707))
+				IconBrushKey = "DangerBrush",
+				IconKey = "ErrorGeometry",
+				StyleKey = "MessageBoxCustom",
+				ConfirmContent = ResourceHelper.GetResource<string>("l_Close")
 			});
 		}
 

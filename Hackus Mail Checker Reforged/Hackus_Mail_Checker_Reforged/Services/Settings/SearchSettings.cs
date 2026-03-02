@@ -46,7 +46,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._requests = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(1897553056));
+				base.OnPropertyChanged(nameof(Requests));
 			}
 		}
 
@@ -62,7 +62,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._requestGroups = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(963700017));
+				base.OnPropertyChanged(nameof(RequestGroups));
 			}
 		}
 
@@ -78,7 +78,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._folders = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(-533819503));
+				base.OnPropertyChanged(nameof(Folders));
 			}
 		}
 
@@ -94,7 +94,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._attachmentFilters = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(1795958182));
+				base.OnPropertyChanged(nameof(AttachmentFilters));
 			}
 		}
 
@@ -110,7 +110,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._search = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(2016064082));
+				base.OnPropertyChanged(nameof(Search));
 			}
 		}
 
@@ -126,7 +126,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._useSearchLimit = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(723166958));
+				base.OnPropertyChanged(nameof(UseSearchLimit));
 			}
 		}
 
@@ -142,7 +142,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._searchLimit = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(846201352));
+				base.OnPropertyChanged(nameof(SearchLimit));
 			}
 		}
 
@@ -158,7 +158,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._checkDate = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(466298620));
+				base.OnPropertyChanged(nameof(CheckDate));
 			}
 		}
 
@@ -174,7 +174,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._dateFrom = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(-827578586));
+				base.OnPropertyChanged(nameof(DateFrom));
 			}
 		}
 
@@ -190,7 +190,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._dateTo = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(-739661742));
+				base.OnPropertyChanged(nameof(DateTo));
 			}
 		}
 
@@ -206,7 +206,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._downloadLetters = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(201690757));
+				base.OnPropertyChanged(nameof(DownloadLetters));
 			}
 		}
 
@@ -222,7 +222,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._downloadLettersLimit = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(208362237));
+				base.OnPropertyChanged(nameof(DownloadLettersLimit));
 			}
 		}
 
@@ -238,7 +238,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._downloadIntoSingleFile = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(1687262369));
+				base.OnPropertyChanged(nameof(DownloadIntoSingleFile));
 			}
 		}
 
@@ -254,7 +254,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._deleteWhenDownloaded = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(650882830));
+				base.OnPropertyChanged(nameof(DeleteWhenDownloaded));
 			}
 		}
 
@@ -270,7 +270,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._downloadMode = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(1733965450));
+				base.OnPropertyChanged(nameof(DownloadMode));
 			}
 		}
 
@@ -286,7 +286,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._foldersMode = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(-1905602616));
+				base.OnPropertyChanged(nameof(FoldersMode));
 			}
 		}
 
@@ -302,7 +302,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._searchAttachments = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(-1125509948));
+				base.OnPropertyChanged(nameof(SearchAttachments));
 			}
 		}
 
@@ -318,7 +318,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._searchAttachmentsMode = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(-942015058));
+				base.OnPropertyChanged(nameof(SearchAttachmentsMode));
 			}
 		}
 
@@ -334,7 +334,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._parseContacts = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(1886959755));
+				base.OnPropertyChanged(nameof(ParseContacts));
 			}
 		}
 
@@ -350,7 +350,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._useAttachmentFilters = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(-355499576));
+				base.OnPropertyChanged(nameof(UseAttachmentFilters));
 			}
 		}
 
@@ -366,7 +366,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 		// Token: 0x040001DA RID: 474
 		private ObservableCollection<Folder> _folders = new ObservableCollection<Folder>
 		{
-			new Folder(_Module_.smethod_4<string>(-521243277))
+			new Folder("INBOX")
 		};
 
 		// Token: 0x040001DB RID: 475

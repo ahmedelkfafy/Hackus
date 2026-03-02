@@ -20,7 +20,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Models
 			set
 			{
 				this._address = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(1587104857));
+				base.OnPropertyChanged(nameof(Address));
 			}
 		}
 
@@ -36,7 +36,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Models
 			set
 			{
 				this._password = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(-2024528016));
+				base.OnPropertyChanged(nameof(Password));
 			}
 		}
 
@@ -52,7 +52,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Models
 			set
 			{
 				this._status = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(1417505023));
+				base.OnPropertyChanged(nameof(Status));
 			}
 		}
 
@@ -68,7 +68,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Models
 			set
 			{
 				this._lastExecuted = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(-1590869042));
+				base.OnPropertyChanged(nameof(LastExecuted));
 			}
 		}
 
@@ -100,7 +100,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Models
 		public static ScheduledMail GetFromString(string value)
 		{
 			string[] array;
-			if (value.Contains(_Module_.smethod_3<string>(-1905482012)))
+			if (value.Contains(":"))
 			{
 				array = value.Split(new char[]
 				{
@@ -109,7 +109,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Models
 			}
 			else
 			{
-				if (!value.Contains(_Module_.smethod_4<string>(90200717)))
+				if (!value.Contains(";"))
 				{
 					return null;
 				}

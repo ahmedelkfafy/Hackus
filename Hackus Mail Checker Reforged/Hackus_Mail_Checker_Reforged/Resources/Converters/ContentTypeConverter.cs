@@ -16,27 +16,27 @@ namespace Hackus_Mail_Checker_Reforged.Resources.Converters
 			{
 				return DependencyProperty.UnsetValue;
 			}
-			if (text.ContainsIgnoreCase(_Module_.smethod_4<string>(-1861715738)))
+			if (text.ContainsIgnoreCase("image"))
 			{
-				return _Module_.smethod_6<string>(1419011345);
+				return "Image";
 			}
-			if (text.ContainsIgnoreCase(_Module_.smethod_5<string>(994824230)))
+			if (text.ContainsIgnoreCase("audio"))
 			{
-				return _Module_.smethod_5<string>(-1057683735);
+				return "Audio";
 			}
-			if (text.ContainsIgnoreCase(_Module_.smethod_5<string>(804872864)))
+			if (text.ContainsIgnoreCase("zip"))
 			{
-				return _Module_.smethod_3<string>(-52400511);
+				return "Zip";
 			}
-			if (text.ContainsIgnoreCase(_Module_.smethod_6<string>(-1245577822)))
+			if (text.ContainsIgnoreCase("video"))
 			{
-				return _Module_.smethod_4<string>(1639179179);
+				return "Video";
 			}
-			if (text.ContainsIgnoreCase(_Module_.smethod_2<string>(-250041601)))
+			if (text.ContainsIgnoreCase("pdf"))
 			{
-				return _Module_.smethod_5<string>(-334835332);
+				return "Pdf";
 			}
-			return _Module_.smethod_4<string>(-1338745244);
+			return "File";
 		}
 
 		// Token: 0x060004CB RID: 1227 RVA: 0x0001AF2C File Offset: 0x0001912C

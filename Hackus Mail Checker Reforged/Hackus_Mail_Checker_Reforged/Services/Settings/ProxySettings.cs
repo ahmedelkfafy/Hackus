@@ -44,7 +44,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._useProxy = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(-233141280));
+				base.OnPropertyChanged(nameof(UseProxy));
 			}
 		}
 
@@ -60,7 +60,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._proxyType = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(193318320));
+				base.OnPropertyChanged(nameof(ProxyType));
 			}
 		}
 
@@ -76,7 +76,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._useAuthentication = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(-1184879036));
+				base.OnPropertyChanged(nameof(UseAuthentication));
 			}
 		}
 
@@ -92,7 +92,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._login = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(-1156029122));
+				base.OnPropertyChanged(nameof(Login));
 			}
 		}
 
@@ -108,7 +108,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._password = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(-1433986953));
+				base.OnPropertyChanged(nameof(Password));
 			}
 		}
 
@@ -124,7 +124,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._useAutoUpdate = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(829457829));
+				base.OnPropertyChanged(nameof(UseAutoUpdate));
 			}
 		}
 
@@ -140,7 +140,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._UpdateDelay = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(1131525718));
+				base.OnPropertyChanged(nameof(UpdateDelay));
 			}
 		}
 
@@ -156,7 +156,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._webLinks = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(-843189084));
+				base.OnPropertyChanged(nameof(WebLinks));
 			}
 		}
 
@@ -172,7 +172,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Settings
 			set
 			{
 				this._useWebSources = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(345565894));
+				base.OnPropertyChanged(nameof(UseWebSources));
 			}
 		}
 

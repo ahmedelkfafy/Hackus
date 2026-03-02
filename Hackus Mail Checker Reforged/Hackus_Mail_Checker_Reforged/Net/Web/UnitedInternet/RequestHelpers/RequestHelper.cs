@@ -32,11 +32,11 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
 		// Token: 0x06000660 RID: 1632 RVA: 0x0002B62C File Offset: 0x0002982C
 		public static RequestHelper Get(string domain)
 		{
-			if (domain == _Module_.smethod_3<string>(-2067254616) || domain == _Module_.smethod_6<string>(-25871447))
+			if (domain == "gmx.com" || domain == "gmx.us")
 			{
 				return new GmxComRequestHelper();
 			}
-			if (!(domain == _Module_.smethod_2<string>(-995331050)))
+			if (!(domain == "web.de"))
 			{
 				return new GmxNetRequestHelper();
 			}

@@ -37,7 +37,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._filteredServers = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(261985572));
+				base.OnPropertyChanged(nameof(FilteredServers));
 			}
 		}
 
@@ -53,7 +53,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._editServer = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(-1339674714));
+				base.OnPropertyChanged(nameof(EditServer));
 			}
 		}
 
@@ -69,7 +69,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._selectedServer = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(2088188867));
+				base.OnPropertyChanged(nameof(SelectedServer));
 			}
 		}
 
@@ -85,7 +85,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._searchQuery = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(-456435205));
+				base.OnPropertyChanged(nameof(SearchQuery));
 			}
 		}
 
@@ -101,7 +101,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._searchType = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(-1018321489));
+				base.OnPropertyChanged(nameof(SearchType));
 			}
 		}
 
@@ -117,7 +117,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._login = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(-1156029122));
+				base.OnPropertyChanged(nameof(Login));
 			}
 		}
 
@@ -133,7 +133,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._password = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(-1500479806));
+				base.OnPropertyChanged(nameof(Password));
 			}
 		}
 
@@ -149,7 +149,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			set
 			{
 				this._isLoading = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(1577805830));
+				base.OnPropertyChanged(nameof(IsLoading));
 			}
 		}
 
@@ -220,12 +220,12 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 					{
 						if (string.IsNullOrWhiteSpace(this.EditServer.Domain) || string.IsNullOrWhiteSpace(this.EditServer.Hostname))
 						{
-							this.SendSimpleErrorMessage(this.Resource(_Module_.smethod_5<string>(-1524216613)));
+							this.SendSimpleErrorMessage(this.Resource("l_FillInAllTheFields"));
 							return;
 						}
 						if (ConfigurationManager.Instance.Configuration.FindInDatabase(this.EditServer.Domain.ToLower()) != null)
 						{
-							this.SendSimpleErrorMessage(this.Resource(_Module_.smethod_3<string>(-1458977524)));
+							this.SendSimpleErrorMessage(this.Resource("l_ThereIsAlreadyRecord"));
 							return;
 						}
 						ConfigurationManager.Instance.Configuration.Add(this.EditServer);
@@ -250,7 +250,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 					{
 						if (string.IsNullOrWhiteSpace(this.EditServer.Domain) || string.IsNullOrWhiteSpace(this.EditServer.Hostname))
 						{
-							this.SendSimpleErrorMessage(this.Resource(_Module_.smethod_4<string>(-1858131433)));
+							this.SendSimpleErrorMessage(this.Resource("l_FillInAllTheFields"));
 							return;
 						}
 						Server server = ConfigurationManager.Instance.Configuration.FindInDatabase(this.EditServer.Domain.ToLower());
@@ -261,7 +261,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 							this.EditServer = new Server();
 							return;
 						}
-						this.SendSimpleErrorMessage(this.Resource(_Module_.smethod_3<string>(-294794873)));
+						this.SendSimpleErrorMessage(this.Resource("l_ThereIsNoRecord"));
 					}, null));
 				}
 				return result;
@@ -380,12 +380,12 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			HandyControl.Controls.MessageBox.Show(new MessageBoxInfo
 			{
 				Message = text,
-				Caption = ResourceHelper.GetResource<string>(_Module_.smethod_3<string>(-416025122)),
+				Caption = ResourceHelper.GetResource<string>("l_Error"),
 				Button = MessageBoxButton.OK,
-				IconBrushKey = _Module_.smethod_6<string>(-1669070780),
-				IconKey = _Module_.smethod_6<string>(1292737040),
-				StyleKey = _Module_.smethod_2<string>(-1218410250),
-				ConfirmContent = ResourceHelper.GetResource<string>(_Module_.smethod_2<string>(862431965))
+				IconBrushKey = "AccentBrush",
+				IconKey = "ErrorGeometry",
+				StyleKey = "MessageBoxCustom",
+				ConfirmContent = ResourceHelper.GetResource<string>("l_OK")
 			});
 		}
 
@@ -395,12 +395,12 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 			HandyControl.Controls.MessageBox.Show(new MessageBoxInfo
 			{
 				Message = text,
-				Caption = ResourceHelper.GetResource<string>(_Module_.smethod_5<string>(1857950914)),
+				Caption = ResourceHelper.GetResource<string>("l_Success"),
 				Button = MessageBoxButton.OK,
-				IconBrushKey = _Module_.smethod_3<string>(-1499387607),
-				IconKey = _Module_.smethod_5<string>(1098145450),
-				StyleKey = _Module_.smethod_5<string>(375297047),
-				ConfirmContent = ResourceHelper.GetResource<string>(_Module_.smethod_5<string>(-1867162284))
+				IconBrushKey = "SuccessBrush",
+				IconKey = "SuccessGeometry",
+				StyleKey = "MessageBoxCustom",
+				ConfirmContent = ResourceHelper.GetResource<string>("l_OK")
 			});
 		}
 

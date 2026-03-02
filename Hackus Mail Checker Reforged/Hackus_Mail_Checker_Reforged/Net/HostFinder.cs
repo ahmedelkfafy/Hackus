@@ -101,7 +101,7 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling Hackus_Mail_Checke
 			int num = array.Length;
 			if (num >= 2)
 			{
-				list = HostFinder.GenerateServersByDomain(array[num - 2] + _Module_.smethod_6<string>(1711040643) + array[num - 1]);
+				list = HostFinder.GenerateServersByDomain(array[num - 2] + "." + array[num - 1]);
 				return (from s in list
 				select new Server(domain, s.Hostname, s.Port, s.Protocol, s.Socket)).ToList<Server>();
 			}
@@ -247,8 +247,8 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling Hackus_Mail_Checke
 		{
 			int port = ssl ? 993 : 143;
 			SocketType socket = ssl ? SocketType.SSL : SocketType.Plain;
-			_c__DisplayClass6_0_0.servers.Add(new Server(_c__DisplayClass6_0_0.domain, _Module_.smethod_3<string>(422883290) + _c__DisplayClass6_0_0.domain, port, ProtocolType.IMAP, socket));
-			_c__DisplayClass6_0_0.servers.Add(new Server(_c__DisplayClass6_0_0.domain, _Module_.smethod_4<string>(259016152) + _c__DisplayClass6_0_0.domain, port, ProtocolType.IMAP, socket));
+			_c__DisplayClass6_0_0.servers.Add(new Server(_c__DisplayClass6_0_0.domain, "imap." + _c__DisplayClass6_0_0.domain, port, ProtocolType.IMAP, socket));
+			_c__DisplayClass6_0_0.servers.Add(new Server(_c__DisplayClass6_0_0.domain, "mail." + _c__DisplayClass6_0_0.domain, port, ProtocolType.IMAP, socket));
 		}
 
 		// Token: 0x060004F0 RID: 1264 RVA: 0x0001BAE8 File Offset: 0x00019CE8
@@ -257,9 +257,9 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling Hackus_Mail_Checke
 		{
 			int port = ssl ? 995 : 110;
 			SocketType socket = ssl ? SocketType.SSL : SocketType.Plain;
-			_c__DisplayClass6_0_0.servers.Add(new Server(_c__DisplayClass6_0_0.domain, _Module_.smethod_5<string>(-2017772687) + _c__DisplayClass6_0_0.domain, port, ProtocolType.POP3, socket));
-			_c__DisplayClass6_0_0.servers.Add(new Server(_c__DisplayClass6_0_0.domain, _Module_.smethod_6<string>(-340083583) + _c__DisplayClass6_0_0.domain, port, ProtocolType.POP3, socket));
-			_c__DisplayClass6_0_0.servers.Add(new Server(_c__DisplayClass6_0_0.domain, _Module_.smethod_3<string>(-2146015071) + _c__DisplayClass6_0_0.domain, port, ProtocolType.POP3, socket));
+			_c__DisplayClass6_0_0.servers.Add(new Server(_c__DisplayClass6_0_0.domain, "pop." + _c__DisplayClass6_0_0.domain, port, ProtocolType.POP3, socket));
+			_c__DisplayClass6_0_0.servers.Add(new Server(_c__DisplayClass6_0_0.domain, "pop3." + _c__DisplayClass6_0_0.domain, port, ProtocolType.POP3, socket));
+			_c__DisplayClass6_0_0.servers.Add(new Server(_c__DisplayClass6_0_0.domain, "mail." + _c__DisplayClass6_0_0.domain, port, ProtocolType.POP3, socket));
 		}
 
 		// Token: 0x0400029D RID: 669
@@ -272,52 +272,52 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling Hackus_Mail_Checke
 		private static Dictionary<string, string> DomainCoincidences = new Dictionary<string, string>
 		{
 			{
-				_Module_.smethod_4<string>(922651911),
-				_Module_.smethod_5<string>(1838875938)
+				"yahoo.",
+				"imap.mail.yahoo.com"
 			},
 			{
-				_Module_.smethod_6<string>(-1547985830),
-				_Module_.smethod_5<string>(1269021840)
+				"gmail.com",
+				"imap.gmail.com"
 			},
 			{
-				_Module_.smethod_5<string>(-1353340223),
-				_Module_.smethod_2<string>(-1297260578)
+				"aol.",
+				"imap.aol.com"
 			},
 			{
-				_Module_.smethod_4<string>(-1793787265),
-				_Module_.smethod_5<string>(-440540454)
+				"hotmail.",
+				"outlook.office365.com"
 			},
 			{
-				_Module_.smethod_3<string>(1273422472),
-				_Module_.smethod_6<string>(1712770428)
+				"live.com",
+				"outlook.office365.com"
 			},
 			{
-				_Module_.smethod_6<string>(1860514862),
-				_Module_.smethod_6<string>(2008259296)
+				"att.",
+				"imap.mail.att.net"
 			},
 			{
-				_Module_.smethod_4<string>(1973401218),
-				_Module_.smethod_4<string>(2060562967)
+				"wp.pl",
+				"imap.wp.pl"
 			},
 			{
-				_Module_.smethod_3<string>(-1255065806),
-				_Module_.smethod_3<string>(-1536008948)
+				"gmx.",
+				"imap.gmx.com"
 			},
 			{
-				_Module_.smethod_5<string>(-857400247),
-				_Module_.smethod_6<string>(-1699189834)
+				"freenet.",
+				"mx.freenet.de"
 			},
 			{
-				_Module_.smethod_5<string>(1949747121),
-				_Module_.smethod_6<string>(-810993445)
+				"wanadoo.fr",
+				"imap.orange.fr"
 			},
 			{
-				_Module_.smethod_4<string>(1193753796),
-				_Module_.smethod_4<string>(-1876140695)
+				"orange.fr",
+				"imap.orange.fr"
 			},
 			{
-				_Module_.smethod_4<string>(404489736),
-				_Module_.smethod_2<string>(-1264620888)
+				"yandex.",
+				"imap.yandex.com"
 			}
 		};
 
@@ -325,48 +325,48 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling Hackus_Mail_Checke
 		private static Dictionary<string, string> RecordCoincidences = new Dictionary<string, string>
 		{
 			{
-				_Module_.smethod_2<string>(816221327),
-				_Module_.smethod_6<string>(1563296209)
+				"mx-aol",
+				"imap.aol.com"
 			},
 			{
-				_Module_.smethod_6<string>(-1106482313),
-				_Module_.smethod_3<string>(-814409771)
+				"yahoo",
+				"imap.mail.yahoo.com"
 			},
 			{
-				_Module_.smethod_6<string>(376151382),
-				_Module_.smethod_3<string>(2075841815)
+				"google",
+				"imap.gmail.com"
 			},
 			{
-				_Module_.smethod_6<string>(-216556139),
-				_Module_.smethod_6<string>(1712770428)
+				"outlook",
+				"outlook.office365.com"
 			},
 			{
-				_Module_.smethod_2<string>(650298771),
-				_Module_.smethod_5<string>(203227766)
+				"secureserver",
+				"imap.secureserver.net"
 			},
 			{
-				_Module_.smethod_3<string>(-812482332),
-				_Module_.smethod_4<string>(-1798595584)
+				"prodigy.net",
+				"imap.mail.att.net"
 			},
 			{
-				_Module_.smethod_4<string>(1973401218),
-				_Module_.smethod_5<string>(-287546149)
+				"wp.pl",
+				"imap.wp.pl"
 			},
 			{
-				_Module_.smethod_4<string>(51034421),
-				_Module_.smethod_4<string>(-481552711)
+				"gmx.net",
+				"imap.gmx.com"
 			},
 			{
-				_Module_.smethod_3<string>(351700319),
-				_Module_.smethod_3<string>(-371826297)
+				"freenet.de",
+				"mx.freenet.de"
 			},
 			{
-				_Module_.smethod_2<string>(117167307),
-				_Module_.smethod_4<string>(-1876140695)
+				"orange.fr",
+				"imap.orange.fr"
 			},
 			{
-				_Module_.smethod_4<string>(-651067890),
-				_Module_.smethod_3<string>(-1174245640)
+				"yandex",
+				"imap.yandex.com"
 			}
 		};
 

@@ -21,7 +21,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._sender = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(866801588));
+				base.OnPropertyChanged(nameof(Sender));
 			}
 		}
 
@@ -37,7 +37,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._subject = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(-1305046948));
+				base.OnPropertyChanged(nameof(Subject));
 			}
 		}
 
@@ -53,7 +53,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._body = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(421021987));
+				base.OnPropertyChanged(nameof(Body));
 			}
 		}
 
@@ -69,7 +69,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._checkDate = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(-351728098));
+				base.OnPropertyChanged(nameof(CheckDate));
 			}
 		}
 
@@ -85,7 +85,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._dateFrom = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(86395888));
+				base.OnPropertyChanged(nameof(DateFrom));
 			}
 		}
 
@@ -101,7 +101,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._dateTo = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(-1420286107));
+				base.OnPropertyChanged(nameof(DateTo));
 			}
 		}
 
@@ -117,7 +117,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._count = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(-1574756136));
+				base.OnPropertyChanged(nameof(Count));
 			}
 		}
 
@@ -242,15 +242,15 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			string text = "";
 			if (!string.IsNullOrWhiteSpace(this.Sender))
 			{
-				text = text + _Module_.smethod_5<string>(-1299295711) + this.Sender + _Module_.smethod_3<string>(1850728268);
+				text = text + "[" + this.Sender + "]";
 			}
 			if (!string.IsNullOrWhiteSpace(this.Subject))
 			{
-				text += ((text == "") ? (_Module_.smethod_4<string>(-1163809739) + this.Subject + _Module_.smethod_2<string>(-152097740)) : (_Module_.smethod_3<string>(1877381734) + this.Subject + _Module_.smethod_5<string>(-1679198443)));
+				text += ((text == "") ? ("[" + this.Subject + "]") : (" — [" + this.Subject + "]"));
 			}
 			if (!string.IsNullOrWhiteSpace(this.Body))
 			{
-				text += ((text == "") ? (_Module_.smethod_2<string>(-1816771512) + this.Body + _Module_.smethod_5<string>(-1679198443)) : (_Module_.smethod_2<string>(-7819286) + this.Body + _Module_.smethod_4<string>(-1953073799)));
+				text += ((text == "") ? ("[" + this.Body + "]") : (" — [" + this.Body + "]"));
 			}
 			return text;
 		}

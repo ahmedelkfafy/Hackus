@@ -13,55 +13,55 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 			Encoding result;
 			try
 			{
-				if (!name.Contains(_Module_.smethod_2<string>(38391352)) && !name.Contains(_Module_.smethod_3<string>(-131491646)))
+				if (!name.Contains("ansi") && !name.Contains("ansix3"))
 				{
-					if (!name.Contains(_Module_.smethod_4<string>(1333282784)) && !name.Contains(_Module_.smethod_2<string>(-927228400)))
+					if (!name.Contains("cp932") && !name.Contains("shiftjis"))
 					{
-						if (!name.Contains(_Module_.smethod_4<string>(810312290)))
+						if (!name.Contains("cp1250"))
 						{
-							if (!name.Contains(_Module_.smethod_4<string>(897474039)))
+							if (!name.Contains("ascii"))
 							{
-								if (name.Contains(_Module_.smethod_4<string>(984635788)))
+								if (name.Contains("cp1252"))
 								{
 									result = Encoding.GetEncoding(1252);
 								}
-								else if (!name.Contains(_Module_.smethod_6<string>(270226155)) && !name.Contains(_Module_.smethod_5<string>(-376161940)))
+								else if (!name.Contains("utf-8") && !name.Contains("utf8"))
 								{
-									if (name.Contains(_Module_.smethod_3<string>(-1214854131)))
+									if (name.Contains("ksc5601-1987"))
 									{
 										result = Encoding.GetEncoding(949);
 									}
-									else if (name.Contains(_Module_.smethod_4<string>(892665720)))
+									else if (name.Contains("cp-850"))
 									{
 										result = Encoding.GetEncoding(850);
 									}
-									else if (!name.Contains(_Module_.smethod_4<string>(-1736611707)))
+									else if (!name.Contains("cp936"))
 									{
-										if (name.Contains(_Module_.smethod_4<string>(-1649449958)))
+										if (name.Contains("cp874"))
 										{
 											result = Encoding.GetEncoding(874);
 										}
-										else if (!name.Contains(_Module_.smethod_4<string>(-1562288209)) && !name.Contains(_Module_.smethod_4<string>(544018724)))
+										else if (!name.Contains("8859-15") && !name.Contains("885915"))
 										{
-											if (!name.Contains(_Module_.smethod_2<string>(304957084)) && !name.Contains(_Module_.smethod_2<string>(1553462413)))
+											if (!name.Contains("8859-13") && !name.Contains("885913"))
 											{
-												if (!name.Contains(_Module_.smethod_4<string>(-1910935205)) && !name.Contains(_Module_.smethod_5<string>(689632134)))
+												if (!name.Contains("8859-9") && !name.Contains("88599"))
 												{
-													if (!name.Contains(_Module_.smethod_6<string>(1012407895)) && !name.Contains(_Module_.smethod_5<string>(-228333696)))
+													if (!name.Contains("8859-8") && !name.Contains("88598"))
 													{
-														if (!name.Contains(_Module_.smethod_4<string>(1778708167)) && !name.Contains(_Module_.smethod_4<string>(1865869916)))
+														if (!name.Contains("8859-7") && !name.Contains("88597"))
 														{
-															if (!name.Contains(_Module_.smethod_5<string>(1064368805)) && !name.Contains(_Module_.smethod_5<string>(-1368041892)))
+															if (!name.Contains("8859-6") && !name.Contains("88596"))
 															{
-																if (!name.Contains(_Module_.smethod_5<string>(114611975)) && !name.Contains(_Module_.smethod_4<string>(1517222920)))
+																if (!name.Contains("8859-5") && !name.Contains("88595"))
 																{
-																	if (!name.Contains(_Module_.smethod_4<string>(-1112054507)) && !name.Contains(_Module_.smethod_6<string>(1154962974)))
+																	if (!name.Contains("8859-4") && !name.Contains("88594"))
 																	{
-																		if (!name.Contains(_Module_.smethod_3<string>(953798278)) && !name.Contains(_Module_.smethod_2<string>(1852667835)))
+																		if (!name.Contains("8859-3") && !name.Contains("88593"))
 																		{
-																			if (!name.Contains(_Module_.smethod_4<string>(-1204024575)) && !name.Contains(_Module_.smethod_3<string>(1837037787)))
+																			if (!name.Contains("8859-2") && !name.Contains("88592"))
 																			{
-																				if (!name.Contains(_Module_.smethod_5<string>(2130162879)) && !name.Contains(_Module_.smethod_2<string>(-1743245441)))
+																				if (!name.Contains("8859-1") && !name.Contains("88591"))
 																				{
 																					result = Encoding.GetEncoding(name);
 																				}
@@ -164,13 +164,13 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 			{
 				return string.Empty;
 			}
-			if (name.StartsWith(_Module_.smethod_3<string>(-1574690000)))
+			if (name.StartsWith("charset="))
 			{
-				name = name.Replace(_Module_.smethod_4<string>(723150541), "");
+				name = name.Replace("charset=", "");
 			}
-			if (name.EndsWith(_Module_.smethod_3<string>(151378935)))
+			if (name.EndsWith("http-equivContent-Type"))
 			{
-				name = name.Replace(_Module_.smethod_4<string>(-1465509822), "");
+				name = name.Replace("http-equivContent-Type", "");
 			}
 			foreach (string text in EncodingHelper._replacements)
 			{
@@ -185,12 +185,12 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		// Token: 0x040003F3 RID: 1011
 		private static readonly string[] _replacements = new string[]
 		{
-			_Module_.smethod_6<string>(-324211151),
-			_Module_.smethod_2<string>(204313908),
-			_Module_.smethod_2<string>(-2045323715),
-			_Module_.smethod_4<string>(1338091103),
-			_Module_.smethod_5<string>(1111656108),
-			_Module_.smethod_6<string>(820097393)
+			"_",
+			"$ESC",
+			"'",
+			"3d\"",
+			"\"",
+			" "
 		};
 	}
 }

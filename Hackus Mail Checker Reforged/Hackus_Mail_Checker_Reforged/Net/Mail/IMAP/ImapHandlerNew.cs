@@ -146,7 +146,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 			case FoldersMode.Inbox:
 				list = new List<Folder>
 				{
-					Folder.Parse(_Module_.smethod_6<string>(2132499449))
+					Folder.Parse("INBOX")
 				};
 				break;
 			case FoldersMode.All:
@@ -160,12 +160,12 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 			{
 				list = new List<Folder>
 				{
-					Folder.Parse(_Module_.smethod_2<string>(-1971847226))
+					Folder.Parse("INBOX")
 				};
 			}
 			if (!list.Any<Folder>())
 			{
-				list.Add(Folder.Parse(_Module_.smethod_4<string>(-521243277)));
+				list.Add(Folder.Parse("INBOX"));
 			}
 			this._allFolders = list;
 			return list;
@@ -187,7 +187,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 			}
 			return new List<Folder>
 			{
-				Folder.Parse(_Module_.smethod_6<string>(2132499449))
+				Folder.Parse("INBOX")
 			};
 		}
 
@@ -303,7 +303,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 							if (ex.Message != null)
 							{
 								string text = ex.Message.ToLower();
-								if (text.Contains(_Module_.smethod_3<string>(-704876428)) || text.Contains(_Module_.smethod_6<string>(-1690236542)))
+								if (text.Contains("mailbox") || text.Contains("select"))
 								{
 									goto IL_1AC2;
 								}
@@ -404,7 +404,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 															}
 															catch (Exception ex2)
 															{
-																if (ex2.Message == null || !ex2.Message.Contains(_Module_.smethod_5<string>(1891727559)))
+																if (ex2.Message == null || !ex2.Message.Contains("UID"))
 																{
 																	throw;
 																}
@@ -424,7 +424,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 																	}
 																	catch (Exception ex3)
 																	{
-																		if (ex3.Message == null || !ex3.Message.Contains(_Module_.smethod_4<string>(-401647309)))
+																		if (ex3.Message == null || !ex3.Message.Contains("UID"))
 																		{
 																			throw;
 																		}
@@ -483,7 +483,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 															}
 															catch (Exception ex4)
 															{
-																if (ex4.Message == null || !ex4.Message.Contains(_Module_.smethod_6<string>(2021793209)))
+																if (ex4.Message == null || !ex4.Message.Contains("UID"))
 																{
 																	throw;
 																}
@@ -507,7 +507,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 																	}
 																	catch (Exception ex5)
 																	{
-																		if (ex5.Message == null || !ex5.Message.Contains(_Module_.smethod_3<string>(207274666)))
+																		if (ex5.Message == null || !ex5.Message.Contains("UID"))
 																		{
 																			throw;
 																		}
@@ -557,7 +557,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 														}
 														catch (Exception ex6)
 														{
-															if (ex6.Message == null || !ex6.Message.Contains(_Module_.smethod_5<string>(1891727559)))
+															if (ex6.Message == null || !ex6.Message.Contains("UID"))
 															{
 																throw;
 															}
@@ -616,7 +616,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 															}
 															catch (Exception ex7)
 															{
-																if (ex7.Message == null || !ex7.Message.Contains(_Module_.smethod_2<string>(802576006)))
+																if (ex7.Message == null || !ex7.Message.Contains("UID"))
 																{
 																	throw;
 																}
@@ -640,7 +640,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 																	}
 																	catch (Exception ex8)
 																	{
-																		if (ex8.Message == null || !ex8.Message.Contains(_Module_.smethod_4<string>(-401647309)))
+																		if (ex8.Message == null || !ex8.Message.Contains("UID"))
 																		{
 																			throw;
 																		}
@@ -695,7 +695,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 															}
 															catch (Exception ex9)
 															{
-																if (ex9.Message == null || !ex9.Message.Contains(_Module_.smethod_2<string>(802576006)))
+																if (ex9.Message == null || !ex9.Message.Contains("UID"))
 																{
 																	throw;
 																}
@@ -713,7 +713,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 																}
 																catch (Exception ex10)
 																{
-																	if (ex10.Message == null || !ex10.Message.Contains(_Module_.smethod_3<string>(207274666)))
+																	if (ex10.Message == null || !ex10.Message.Contains("UID"))
 																	{
 																		throw;
 																	}
@@ -777,7 +777,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 															}
 															catch (Exception ex11)
 															{
-																if (ex11.Message == null || !ex11.Message.Contains(_Module_.smethod_2<string>(802576006)))
+																if (ex11.Message == null || !ex11.Message.Contains("UID"))
 																{
 																	throw;
 																}
@@ -795,7 +795,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 																}
 																catch (Exception ex12)
 																{
-																	if (ex12.Message == null || !ex12.Message.Contains(_Module_.smethod_5<string>(1891727559)))
+																	if (ex12.Message == null || !ex12.Message.Contains("UID"))
 																	{
 																		throw;
 																	}
@@ -857,7 +857,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 														}
 														catch (Exception ex13)
 														{
-															if (ex13.Message == null || !ex13.Message.Contains(_Module_.smethod_5<string>(1891727559)))
+															if (ex13.Message == null || !ex13.Message.Contains("UID"))
 															{
 																throw;
 															}
@@ -875,7 +875,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 															}
 															catch (Exception ex14)
 															{
-																if (ex14.Message == null || !ex14.Message.Contains(_Module_.smethod_2<string>(802576006)))
+																if (ex14.Message == null || !ex14.Message.Contains("UID"))
 																{
 																	throw;
 																}
@@ -971,7 +971,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 									{
 										num4 = 1;
 									}
-									string[] array4 = this._imapClient.FetchFromHeaders(string.Format(_Module_.smethod_2<string>(-1006202683), num4, num3));
+									string[] array4 = this._imapClient.FetchFromHeaders(string.Format("{0}:{1}", num4, num3));
 									if (array4.Any<string>())
 									{
 										list.AddRange(array4);
@@ -1031,7 +1031,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 									{
 										num8 = 1;
 									}
-									AttachmentMessageInfo[] array5 = this._imapClient.FetchAttachmentMessagesInfo(string.Format(_Module_.smethod_6<string>(66824234), num8, num7));
+									AttachmentMessageInfo[] array5 = this._imapClient.FetchAttachmentMessagesInfo(string.Format("{0}:{1}", num8, num7));
 									if (array5 != null && array5.Any<AttachmentMessageInfo>())
 									{
 										list2.AddRange(array5);

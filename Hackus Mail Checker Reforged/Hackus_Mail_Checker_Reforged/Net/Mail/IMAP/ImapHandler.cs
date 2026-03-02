@@ -155,7 +155,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 			case FoldersMode.Inbox:
 				list = new List<Folder>
 				{
-					Folder.Parse(_Module_.smethod_3<string>(-762368918))
+					Folder.Parse("INBOX")
 				};
 				break;
 			case FoldersMode.All:
@@ -169,12 +169,12 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 			{
 				list = new List<Folder>
 				{
-					Folder.Parse(_Module_.smethod_3<string>(-762368918))
+					Folder.Parse("INBOX")
 				};
 			}
 			if (!list.Any<Folder>())
 			{
-				list.Add(Folder.Parse(_Module_.smethod_6<string>(2132499449)));
+				list.Add(Folder.Parse("INBOX"));
 			}
 			this._allFolders = list;
 			return list;
@@ -196,7 +196,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 			}
 			return new List<Folder>
 			{
-				Folder.Parse(_Module_.smethod_3<string>(-762368918))
+				Folder.Parse("INBOX")
 			};
 		}
 
@@ -507,11 +507,11 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 			}
 			if (request.Sender != null)
 			{
-				if (string.IsNullOrEmpty(message.Headers[_Module_.smethod_3<string>(-2078753114)]))
+				if (string.IsNullOrEmpty(message.Headers["From"]))
 				{
 					return false;
 				}
-				Match match = Regex.Match(message.Headers[_Module_.smethod_5<string>(-503726077)], _Module_.smethod_3<string>(1864021933));
+				Match match = Regex.Match(message.Headers["From"], "<(.+?)>");
 				if (!match.Success)
 				{
 					return false;

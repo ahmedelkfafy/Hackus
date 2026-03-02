@@ -49,7 +49,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._messages = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(-1364324253));
+				base.OnPropertyChanged(nameof(Messages));
 			}
 		}
 
@@ -65,7 +65,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._attachments = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(-223475279));
+				base.OnPropertyChanged(nameof(Messages));
 			}
 		}
 
@@ -81,7 +81,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._selectedMessages = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(1261770006));
+				base.OnPropertyChanged(nameof(SelectedMessages));
 			}
 		}
 
@@ -97,7 +97,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._mailbox = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(992838585));
+				base.OnPropertyChanged(nameof(Mailbox));
 			}
 		}
 
@@ -113,7 +113,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._server = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(413798310));
+				base.OnPropertyChanged(nameof(Server));
 			}
 		}
 
@@ -129,7 +129,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._pop3 = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(-1284541984));
+				base.OnPropertyChanged(nameof(Pop3));
 			}
 		}
 
@@ -145,7 +145,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._limit = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(-2104776208));
+				base.OnPropertyChanged(nameof(Limit));
 			}
 		}
 
@@ -161,7 +161,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._reconnectLimit = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(367348827));
+				base.OnPropertyChanged(nameof(ReconnectLimit));
 			}
 		}
 
@@ -177,7 +177,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._maxPageCount = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(-1770412128));
+				base.OnPropertyChanged(nameof(MaxPageCount));
 			}
 		}
 
@@ -193,9 +193,9 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._pageIndex = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(1594299212));
-				base.OnPropertyChanged(_Module_.smethod_6<string>(-333572785));
-				base.OnPropertyChanged(_Module_.smethod_5<string>(734139158));
+				base.OnPropertyChanged(nameof(PageIndex));
+				base.OnPropertyChanged(nameof(PageIndex));
+				base.OnPropertyChanged(nameof(PageIndex));
 			}
 		}
 
@@ -211,7 +211,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._isPop3Busy = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(-1965364893));
+				base.OnPropertyChanged(nameof(IsPop3Busy));
 			}
 		}
 
@@ -227,7 +227,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._pop3OperationStatus = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(1767716119));
+				base.OnPropertyChanged(nameof(Pop3OperationStatus));
 			}
 		}
 
@@ -243,7 +243,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._message = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(-1960491344));
+				base.OnPropertyChanged(nameof(Message));
 			}
 		}
 
@@ -259,7 +259,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._showMessageBody = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(-1561064195));
+				base.OnPropertyChanged(nameof(ShowMessageBody));
 			}
 		}
 
@@ -275,7 +275,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._showAttachments = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(1252153368));
+				base.OnPropertyChanged(nameof(ShowAttachments));
 			}
 		}
 

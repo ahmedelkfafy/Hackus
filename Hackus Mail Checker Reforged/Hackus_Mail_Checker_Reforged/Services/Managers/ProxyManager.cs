@@ -57,7 +57,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 				{
 					if (this.ProxySettings.UseAuthentication)
 					{
-						text = string.Format(_Module_.smethod_3<string>(-546958702), new object[]
+						text = string.Format("{0}:{1}:{2}:{3}", new object[]
 						{
 							proxy.Host,
 							proxy.Port,
@@ -67,12 +67,12 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 					}
 					else
 					{
-						text = string.Format(_Module_.smethod_5<string>(56194156), proxy.Host, proxy.Port);
+						text = string.Format("{0}:{1}", proxy.Host, proxy.Port);
 					}
 				}
 				else
 				{
-					text = string.Format(_Module_.smethod_6<string>(2140435665), new object[]
+					text = string.Format("{0}:{1}:{2}:{3}", new object[]
 					{
 						proxy.Host,
 						proxy.Port,

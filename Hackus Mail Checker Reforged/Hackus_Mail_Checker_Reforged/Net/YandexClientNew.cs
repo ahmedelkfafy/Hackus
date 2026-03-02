@@ -115,7 +115,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 							{
 								break;
 							}
-							ValueTuple<OperationResult, string> valueTuple = CaptchaHelpers.CreateInstance().SolveCaptcha(Convert.ToBase64String(item5.ToArray()), _Module_.smethod_2<string>(2116311133), false);
+							ValueTuple<OperationResult, string> valueTuple = CaptchaHelpers.CreateInstance().SolveCaptcha(Convert.ToBase64String(item5.ToArray()), "ru", false);
 							OperationResult item6 = valueTuple.Item1;
 							string item7 = valueTuple.Item2;
 							if (item6 == OperationResult.Error)
@@ -146,22 +146,22 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					}
 				}
 			}
-			StatisticsManager.Instance.AddErrorDetails(this._mailbox.Address, _Module_.smethod_5<string>(-316158613));
+			StatisticsManager.Instance.AddErrorDetails(this._mailbox.Address, "Can't get csrf token");
 			return csrfToken;
 			Block_8:
-			StatisticsManager.Instance.AddErrorDetails(this._mailbox.Address, _Module_.smethod_2<string>(-979085578));
+			StatisticsManager.Instance.AddErrorDetails(this._mailbox.Address, "Can't get captcha image");
 			return item4;
 			IL_16A:
-			StatisticsManager.Instance.AddErrorDetails(this._mailbox.Address, _Module_.smethod_3<string>(-1795816397));
+			StatisticsManager.Instance.AddErrorDetails(this._mailbox.Address, "Can't submit captcha answer");
 			return operationResult2;
 			IL_18B:
-			StatisticsManager.Instance.AddErrorDetails(this._mailbox.Address, _Module_.smethod_6<string>(395587359));
+			StatisticsManager.Instance.AddErrorDetails(this._mailbox.Address, "Can't get captcha link");
 			return OperationResult.Error;
 			IL_1B1:
-			StatisticsManager.Instance.AddBadDetails(this._mailbox.Address, _Module_.smethod_2<string>(147008518));
+			StatisticsManager.Instance.AddBadDetails(this._mailbox.Address, "User doesn't exist");
 			return trackId;
 			IL_1D3:
-			StatisticsManager.Instance.AddErrorDetails(this._mailbox.Address, _Module_.smethod_4<string>(-678781527));
+			StatisticsManager.Instance.AddErrorDetails(this._mailbox.Address, "Can't get trackId");
 			return trackId;
 		}
 
@@ -174,7 +174,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					Match match = Regex.Match(httpRequest.Post(_Module_.smethod_4<string>(-1032236842)).ToString(), _Module_.smethod_5<string>(1282532498));
+					Match match = Regex.Match(httpRequest.Post("https://passport.yandex.ru/registration-validations/auth/accounts").ToString(), "\"csrf\":\"(.+?)\"");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
@@ -210,15 +210,15 @@ namespace Hackus_Mail_Checker_Reforged.Net
 						})[0];
 						FormUrlEncodedContent formUrlEncodedContent = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>
 						{
-							new KeyValuePair<string, string>(_Module_.smethod_2<string>(413574250), this._csrfToken),
-							new KeyValuePair<string, string>(_Module_.smethod_6<string>(-1978702295), value)
+							new KeyValuePair<string, string>("csrf_token", this._csrfToken),
+							new KeyValuePair<string, string>("login", value)
 						}, false, null);
-						string text = httpRequest.Post(_Module_.smethod_6<string>(1723557480), formUrlEncodedContent).ToString();
-						if (text.Contains(_Module_.smethod_2<string>(-369803101)))
+						string text = httpRequest.Post("https://passport.yandex.ru/registration-validations/auth/multi_step/start", formUrlEncodedContent).ToString();
+						if (text.Contains("can_register"))
 						{
 							return OperationResult.Bad;
 						}
-						Match match = Regex.Match(text, _Module_.smethod_3<string>(-1915119207));
+						Match match = Regex.Match(text, "\"track_id\":\"(.+?)\"");
 						if (!match.Success)
 						{
 							return OperationResult.Error;
@@ -252,31 +252,31 @@ namespace Hackus_Mail_Checker_Reforged.Net
 						httpRequest.AllowAutoRedirect = false;
 						FormUrlEncodedContent formUrlEncodedContent = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>
 						{
-							new KeyValuePair<string, string>(_Module_.smethod_2<string>(413574250), this._csrfToken),
-							new KeyValuePair<string, string>(_Module_.smethod_2<string>(-46006352), this._mailbox.Password),
-							new KeyValuePair<string, string>(_Module_.smethod_4<string>(-499649710), this._trackId)
+							new KeyValuePair<string, string>("csrf_token", this._csrfToken),
+							new KeyValuePair<string, string>("password", this._mailbox.Password),
+							new KeyValuePair<string, string>("track_id", this._trackId)
 						}, false, null);
-						string text = httpRequest.Post(_Module_.smethod_2<string>(-119557214), formUrlEncodedContent).ToString();
-						if (text.Contains(_Module_.smethod_6<string>(-1008901644)))
+						string text = httpRequest.Post("https://passport.yandex.ru/registration-validations/auth/multi_step/commit_password", formUrlEncodedContent).ToString();
+						if (text.Contains("captcha"))
 						{
 							return OperationResult.Captcha;
 						}
 						if (text.ContainsOne(new string[]
 						{
-							_Module_.smethod_2<string>(446213940),
-							_Module_.smethod_6<string>(2046722908)
+							"change_password",
+							"auth_challenge"
 						}))
 						{
 							return OperationResult.Blocked;
 						}
-						if (text.Contains(_Module_.smethod_3<string>(1969964942)))
+						if (text.Contains("not_matched"))
 						{
 							return OperationResult.Bad;
 						}
 						if (!text.ContainsOne(new string[]
 						{
-							_Module_.smethod_2<string>(-617324882),
-							_Module_.smethod_2<string>(-1582944634)
+							"passport.yandex.ru/profile",
+							"{\"status\":\"ok\"}"
 						}))
 						{
 							return OperationResult.Error;
@@ -306,21 +306,21 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					using (HttpRequest httpRequest = new HttpRequest())
 					{
 						this.SetHeaders(httpRequest);
-						httpRequest.AddHeader(_Module_.smethod_4<string>(-1488415140), _Module_.smethod_6<string>(-1495379571));
+						httpRequest.AddHeader("X-Requested-With", "XMLHttpRequest");
 						httpRequest.AllowAutoRedirect = false;
 						FormUrlEncodedContent formUrlEncodedContent = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>
 						{
-							new KeyValuePair<string, string>(_Module_.smethod_4<string>(1422717087), this._csrfToken),
-							new KeyValuePair<string, string>(_Module_.smethod_2<string>(-1368062543), this._trackId)
+							new KeyValuePair<string, string>("csrf_token", this._csrfToken),
+							new KeyValuePair<string, string>("track_id", this._trackId)
 						}, false, null);
-						string input = httpRequest.Post(_Module_.smethod_6<string>(270330130), formUrlEncodedContent).ToString();
-						Match match = Regex.Match(input, _Module_.smethod_3<string>(1488898824));
+						string input = httpRequest.Post("https://passport.yandex.ru/registration-validations/textcaptcha", formUrlEncodedContent).ToString();
+						Match match = Regex.Match(input, "\"image_url\":\"(.+?)\"");
 						if (!match.Success)
 						{
 							return new ValueTuple<OperationResult, string, string>(OperationResult.Error, null, null);
 						}
 						string value = match.Groups[1].Value;
-						match = Regex.Match(input, _Module_.smethod_5<string>(-2004262029));
+						match = Regex.Match(input, "\"key\":\"(.+?)\"");
 						if (!match.Success)
 						{
 							return new ValueTuple<OperationResult, string, string>(OperationResult.Error, null, null);
@@ -382,15 +382,15 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					{
 						this.SetHeaders(httpRequest);
 						httpRequest.AllowAutoRedirect = false;
-						httpRequest.AddHeader(_Module_.smethod_3<string>(-121656043), _Module_.smethod_3<string>(1323469750));
+						httpRequest.AddHeader("X-Requested-With", "XMLHttpRequest");
 						FormUrlEncodedContent formUrlEncodedContent = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>
 						{
-							new KeyValuePair<string, string>(_Module_.smethod_4<string>(1422717087), this._csrfToken),
-							new KeyValuePair<string, string>(_Module_.smethod_4<string>(-499649710), this._trackId),
-							new KeyValuePair<string, string>(_Module_.smethod_2<string>(-1599264479), answer),
-							new KeyValuePair<string, string>(_Module_.smethod_3<string>(-477703170), key)
+							new KeyValuePair<string, string>("csrf_token", this._csrfToken),
+							new KeyValuePair<string, string>("track_id", this._trackId),
+							new KeyValuePair<string, string>("answer", answer),
+							new KeyValuePair<string, string>("key", key)
 						}, false, null);
-						if (httpRequest.Post(_Module_.smethod_2<string>(481577736), formUrlEncodedContent).ToString().Contains(_Module_.smethod_2<string>(-168516749)))
+						if (httpRequest.Post("https://passport.yandex.ru/registration-validations/checkHuman", formUrlEncodedContent).ToString().Contains("ok"))
 						{
 							return OperationResult.Ok;
 						}
@@ -417,11 +417,11 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					httpRequest.AddHeader(_Module_.smethod_3<string>(-121656043), _Module_.smethod_3<string>(1323469750));
-					StringBuilder stringBuilder = new StringBuilder(_Module_.smethod_6<string>(-1956215090));
+					httpRequest.AddHeader("X-Requested-With", "XMLHttpRequest");
+					StringBuilder stringBuilder = new StringBuilder("{\"models\":[{\"name\":\"abook-contacts\",\"params\":{ },\"meta\":{\"requestAttempt\":1}}],\"_ckey\":\"");
 					stringBuilder.Append(this._ckey);
-					stringBuilder.Append(_Module_.smethod_4<string>(-1163285469));
-					foreach (object obj in Regex.Matches(httpRequest.Post(_Module_.smethod_3<string>(-316062838), stringBuilder.ToString(), _Module_.smethod_5<string>(-1722116199)).ToString(), _Module_.smethod_3<string>(1429214351)))
+					stringBuilder.Append("\",\"_product\":\"RUS\",\"_service\":\"LIZA\",\"_version\":\"67.1.0\"}");
+					foreach (object obj in Regex.Matches(httpRequest.Post("https://mail.yandex.ru/web-api/models/liza1", stringBuilder.ToString(), "application/json").ToString(), "\"value\":\"(.+?)\""))
 					{
 						FileManager.SaveContact(((Match)obj).Groups[1].Value);
 					}
@@ -653,7 +653,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					using (HttpRequest httpRequest = new HttpRequest())
 					{
 						this.SetHeaders(httpRequest);
-						string input = httpRequest.Get(_Module_.smethod_3<string>(-2001721690), null).ToString();
+						string input = httpRequest.Get("https://mail.yandex.ru/lite/inbox", null).ToString();
 						string text;
 						if (httpRequest == null)
 						{
@@ -673,11 +673,11 @@ namespace Hackus_Mail_Checker_Reforged.Net
 							}
 						}
 						string text2 = text;
-						if (text2 != null && text2.Contains(_Module_.smethod_4<string>(308323356)))
+						if (text2 != null && text2.Contains("captcha"))
 						{
 							return OperationResult.Captcha;
 						}
-						Match match = Regex.Match(input, _Module_.smethod_5<string>(-1582236175));
+						Match match = Regex.Match(input, "name=\"_ckey\" value=\"(.+?)\"");
 						if (match.Success)
 						{
 							this._ckey = match.Groups[1].Value;
@@ -795,17 +795,17 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					{
 						this.SetHeaders(httpRequest);
 						httpRequest.AllowAutoRedirect = false;
-						httpRequest.AddHeader(_Module_.smethod_4<string>(-1488415140), _Module_.smethod_3<string>(1323469750));
-						StringBuilder stringBuilder = new StringBuilder(_Module_.smethod_5<string>(1952925657));
+						httpRequest.AddHeader("X-Requested-With", "XMLHttpRequest");
+						StringBuilder stringBuilder = new StringBuilder("{\"models\":[{\"name\":\"messages\",\"params\":{\"sort_type\":\"date\",\"attaches\":\"yes\",\"search\":\"search\"}}],\"_ckey\":\"");
 						stringBuilder.Append(this._ckey);
-						stringBuilder.Append(_Module_.smethod_6<string>(-477040965));
-						string input = httpRequest.Post(_Module_.smethod_6<string>(268600345), stringBuilder.ToString(), _Module_.smethod_3<string>(-1143472752)).ToString();
+						stringBuilder.Append("\",\"_product\":\"RUS\",\"_service\":\"LIZA\",\"_version\":\"67.1.0\",\"_messages_per_page\":\"50\"}");
+						string input = httpRequest.Post("https://mail.yandex.ru/web-api/models/liza1", stringBuilder.ToString(), "application/json").ToString();
 						leftAttachmentMessages = new Queue<Uid>();
-						if (!Regex.Match(input, _Module_.smethod_3<string>(1331113370)).Success)
+						if (!Regex.Match(input, "\"status\":\"ok\"").Success)
 						{
 							return OperationResult.Ok;
 						}
-						foreach (object obj in Regex.Matches(input, _Module_.smethod_3<string>(-1518728133)))
+						foreach (object obj in Regex.Matches(input, "mid\":\"(.+?)\""))
 						{
 							Match match = (Match)obj;
 							leftAttachmentMessages.Enqueue(new Uid(match.Groups[1].Value));
@@ -841,7 +841,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 		{
 			Request request = new Request
 			{
-				Sender = _Module_.smethod_4<string>(-1085740358)
+				Sender = "noreply@id.yandex.ru"
 			};
 			request.FindedUids = new HashSet<Uid>();
 			if (this.Search(request) == OperationResult.Ok)
@@ -861,31 +861,31 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					httpRequest.AddHeader(_Module_.smethod_6<string>(578231860), _Module_.smethod_2<string>(-415939366));
-					StringBuilder stringBuilder = new StringBuilder(_Module_.smethod_6<string>(1071628927));
+					httpRequest.AddHeader("X-Requested-With", "XMLHttpRequest");
+					StringBuilder stringBuilder = new StringBuilder("[");
 					for (int i = 0; i < uids.Count; i++)
 					{
-						stringBuilder.Append(_Module_.smethod_6<string>(-77460630));
+						stringBuilder.Append("\"");
 						stringBuilder.Append(uids[i].UID);
 						if (i == uids.Count - 1)
 						{
-							stringBuilder.Append(_Module_.smethod_4<string>(2069567598));
+							stringBuilder.Append("\"");
 						}
 						else
 						{
-							stringBuilder.Append(_Module_.smethod_4<string>(-200222181));
+							stringBuilder.Append("\", ");
 						}
 					}
-					stringBuilder.Append(_Module_.smethod_5<string>(-1679198443));
+					stringBuilder.Append("]");
 					string text = string.Concat(new string[]
 					{
-						_Module_.smethod_4<string>(1107728324),
+						"{\"models\":[{\"name\":\"do-messages\",\"params\":{\"movefile\":\"3\",\"action\":\"delete\",\"with_sent\":\"0\",\"tids\":",
 						stringBuilder.ToString(),
-						_Module_.smethod_3<string>(2014229903),
+						"}}],\"_ckey\":\"",
 						this._ckey,
-						_Module_.smethod_3<string>(1931482298)
+						"\",\"_product\":\"RUS\",\"_service\":\"LIZA\",\"_version\":\"67.1.0\"}"
 					});
-					if (httpRequest.Post(_Module_.smethod_6<string>(268600345), text, _Module_.smethod_6<string>(-989874009)).ToString().Contains(_Module_.smethod_2<string>(-516681706)))
+					if (httpRequest.Post("https://mail.yandex.ru/web-api/models/liza1", text, "application/json").ToString().Contains("\"status\":\"ok\""))
 					{
 						result = OperationResult.Ok;
 					}
@@ -916,31 +916,31 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					httpRequest.AddHeader(_Module_.smethod_5<string>(-818853918), _Module_.smethod_2<string>(-415939366));
-					StringBuilder stringBuilder = new StringBuilder(_Module_.smethod_2<string>(-1816771512));
+					httpRequest.AddHeader("X-Requested-With", "XMLHttpRequest");
+					StringBuilder stringBuilder = new StringBuilder("[");
 					for (int i = 0; i < uids.Count; i++)
 					{
-						stringBuilder.Append(_Module_.smethod_6<string>(-77460630));
+						stringBuilder.Append("\"");
 						stringBuilder.Append(uids[i].UID);
 						if (i != uids.Count - 1)
 						{
-							stringBuilder.Append(_Module_.smethod_5<string>(-1869149809));
+							stringBuilder.Append("\", ");
 						}
 						else
 						{
-							stringBuilder.Append(_Module_.smethod_2<string>(1588727045));
+							stringBuilder.Append("\"");
 						}
 					}
-					stringBuilder.Append(_Module_.smethod_6<string>(-261530549));
+					stringBuilder.Append("]");
 					string text = string.Concat(new string[]
 					{
-						_Module_.smethod_6<string>(-1665915577),
+						"{\"models\":[{\"name\":\"do-messages\",\"params\":{\"movefile\":\"3\",\"action\":\"delete\",\"with_sent\":\"0\",\"ids\":",
 						stringBuilder.ToString(),
-						_Module_.smethod_2<string>(-1498621303),
+						"}}],\"_ckey\":\"",
 						this._ckey,
-						_Module_.smethod_3<string>(1931482298)
+						"\",\"_product\":\"RUS\",\"_service\":\"LIZA\",\"_version\":\"67.1.0\"}"
 					});
-					if (httpRequest.Post(_Module_.smethod_3<string>(-316062838), text, _Module_.smethod_5<string>(-1722116199)).ToString().Contains(_Module_.smethod_4<string>(1369213571)))
+					if (httpRequest.Post("https://mail.yandex.ru/web-api/models/liza1", text, "application/json").ToString().Contains("\"status\":\"ok\""))
 					{
 						result = OperationResult.Ok;
 					}
@@ -971,20 +971,20 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				{
 					this.SetHeaders(httpRequest);
 					httpRequest.AllowAutoRedirect = false;
-					httpRequest.AddHeader(_Module_.smethod_3<string>(-121656043), _Module_.smethod_4<string>(1140862287));
-					string input = httpRequest.Post(_Module_.smethod_6<string>(268600345), this.BuildSearchQuery(searchRequest), _Module_.smethod_6<string>(-989874009)).ToString();
-					Match match = Regex.Match(input, _Module_.smethod_6<string>(1739125545));
+					httpRequest.AddHeader("X-Requested-With", "XMLHttpRequest");
+					string input = httpRequest.Post("https://mail.yandex.ru/web-api/models/liza1", this.BuildSearchQuery(searchRequest), "application/json").ToString();
+					Match match = Regex.Match(input, "\"status\":\"ok\"");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
-					match = Regex.Match(input, _Module_.smethod_3<string>(746031682));
+					match = Regex.Match(input, "\"total-found\":(.+?),");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
 					searchRequest.Count = int.Parse(match.Groups[1].Value);
-					foreach (object obj in Regex.Matches(input, _Module_.smethod_3<string>(-1518728133)))
+					foreach (object obj in Regex.Matches(input, "mid\":\"(.+?)\""))
 					{
 						Match match2 = (Match)obj;
 						searchRequest.FindedUids.Add(new Uid(match2.Groups[1].Value));
@@ -1012,45 +1012,45 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					httpRequest.AddHeader(_Module_.smethod_4<string>(-1488415140), _Module_.smethod_2<string>(-415939366));
+					httpRequest.AddHeader("X-Requested-With", "XMLHttpRequest");
 					string text = string.Concat(new string[]
 					{
-						_Module_.smethod_2<string>(1760023440),
+						"{\"models\":[{\"name\":\"message-body\",\"params\":{\"ids\":\"",
 						uid.UID.ToString(),
-						_Module_.smethod_6<string>(1740142621),
+						"\"}}],\"_ckey\":\"",
 						this._ckey,
-						_Module_.smethod_2<string>(780783158)
+						"\",\"_product\":\"RUS\",\"_service\":\"LIZA\",\"_version\":\"67.1.0\"}"
 					});
-					string text2 = httpRequest.Post(_Module_.smethod_6<string>(268600345), text, _Module_.smethod_3<string>(-1143472752)).ToString();
-					Match match = Regex.Match(text2, _Module_.smethod_2<string>(212312689));
+					string text2 = httpRequest.Post("https://mail.yandex.ru/web-api/models/liza1", text, "application/json").ToString();
+					Match match = Regex.Match(text2, "\"timestamp\":(.+?),");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
 					long unixTimeStamp = long.Parse(match.Groups[1].Value);
 					message.Date = DateHelpers.UnixTimeStampToDateInMilliseconds(unixTimeStamp);
-					match = Regex.Match(text2, _Module_.smethod_3<string>(-1461103371));
+					match = Regex.Match(text2, "\"content\":\"(.+?)\",\"length\"");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
-					message.AlternateViews.Add(new Attachment(_Module_.smethod_5<string>(473053949), match.Groups[1].Value));
-					match = Regex.Match(text2, _Module_.smethod_2<string>(1496256187));
+					message.AlternateViews.Add(new Attachment("text/html", match.Groups[1].Value));
+					match = Regex.Match(text2, "\"email\":\"(.+?)\"");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
 					message.From = match.Groups[1].Value;
-					message.Subject = _Module_.smethod_2<string>(1743703595);
+					message.Subject = "NONE";
 					if (downloadAttachments)
 					{
 						try
 						{
-							if (text2.Contains(_Module_.smethod_3<string>(1429148215)))
+							if (text2.Contains("\"attachment\":[]"))
 							{
 								return OperationResult.Ok;
 							}
-							match = Regex.Match(text2, _Module_.smethod_5<string>(-1264326175));
+							match = Regex.Match(text2, "\"attachment\":(\\[.+?\\])");
 							if (match.Success)
 							{
 								AttachmentInfo[] array = JsonConvert.DeserializeObject<AttachmentInfo[]>(match.Groups[1].Value);
@@ -1096,10 +1096,10 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				{
 					this.SetHeaders(httpRequest);
 					httpRequest.AllowAutoRedirect = true;
-					httpRequest.AddUrlParam(_Module_.smethod_4<string>(-1760129032), attachmentInfo.Name);
-					httpRequest.AddUrlParam(_Module_.smethod_2<string>(-1019872795), attachmentInfo.Hid);
-					httpRequest.AddUrlParam(_Module_.smethod_4<string>(2026816997), attachmentInfo.Ids);
-					MemoryStream memoryStream = httpRequest.Get(_Module_.smethod_6<string>(1291719964) + attachmentInfo.Name, null).ToMemoryStream();
+					httpRequest.AddUrlParam("name", attachmentInfo.Name);
+					httpRequest.AddUrlParam("hid", attachmentInfo.Hid);
+					httpRequest.AddUrlParam("ids", attachmentInfo.Ids);
+					MemoryStream memoryStream = httpRequest.Get("https://mail.yandex.ru/message_part/" + attachmentInfo.Name, null).ToMemoryStream();
 					if (memoryStream != null && memoryStream.Length != 0L && httpRequest.Response.IsOK)
 					{
 						return new Attachment
@@ -1131,9 +1131,9 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					httpRequest.AddHeader(_Module_.smethod_2<string>(1798185715), _Module_.smethod_4<string>(1140862287));
-					string text = _Module_.smethod_2<string>(544157801) + this._ckey + _Module_.smethod_4<string>(-1163285469);
-					if (httpRequest.Post(_Module_.smethod_3<string>(-316062838), text, _Module_.smethod_5<string>(-1722116199)).ToString().Contains(_Module_.smethod_4<string>(1369213571)))
+					httpRequest.AddHeader("X-Requested-With", "XMLHttpRequest");
+					string text = "{\"models\":[{\"name\":\"do-settings\",\"params\":{\"params\":\"{\\\"enable_imap\\\":true,\\\"enable_imap_auth_plain\\\":true,\\\"enable_pop\\\":true,\\\"fid\\\":[\\\"1\\\"]}\"}},{\"name\":\"settings\",\"params\":{\"list\":\"enable_imap,enable_imap_auth_plain,enable_pop,fid\",\"actual\":\"true\",\"withoutSigns\":\"true\"}}],\"_ckey\":\"" + this._ckey + "\",\"_product\":\"RUS\",\"_service\":\"LIZA\",\"_version\":\"67.1.0\"}";
+					if (httpRequest.Post("https://mail.yandex.ru/web-api/models/liza1", text, "application/json").ToString().Contains("\"status\":\"ok\""))
 					{
 						result = OperationResult.Ok;
 					}
@@ -1157,37 +1157,37 @@ namespace Hackus_Mail_Checker_Reforged.Net
 		// Token: 0x060005CE RID: 1486 RVA: 0x00026D10 File Offset: 0x00024F10
 		private string BuildSearchQuery(Request request)
 		{
-			StringBuilder stringBuilder = new StringBuilder(_Module_.smethod_6<string>(252319571));
+			StringBuilder stringBuilder = new StringBuilder("{\"models\":[{\"name\":\"messages\",\"params\":{\"sort_type\":\"date\",");
 			if (request.Sender != null)
 			{
-				stringBuilder.Append(_Module_.smethod_6<string>(1289990179) + request.Sender + _Module_.smethod_2<string>(-764203487));
+				stringBuilder.Append("\"hdr_from\":\"" + request.Sender + "\",");
 			}
 			if (request.Body != null)
 			{
-				stringBuilder.Append(_Module_.smethod_4<string>(144752773) + request.Body + _Module_.smethod_6<string>(1115281894));
-				stringBuilder.Append(_Module_.smethod_5<string>(603396485));
+				stringBuilder.Append("\"request\":\"" + request.Body + "\",");
+				stringBuilder.Append("\"scope\":\"body_text\",");
 			}
 			else if (request.Subject != null)
 			{
-				stringBuilder.Append(_Module_.smethod_5<string>(983299217) + request.Subject + _Module_.smethod_5<string>(-1407782992));
-				stringBuilder.Append(_Module_.smethod_6<string>(-486402599));
+				stringBuilder.Append("\"request\":\"" + request.Subject + "\",");
+				stringBuilder.Append("\"scope\":\"hdr_subject\",");
 			}
-			stringBuilder.Append(_Module_.smethod_2<string>(-951869309));
+			stringBuilder.Append("\"search\":\"search\"}}],\"_ckey\":\"");
 			stringBuilder.Append(this._ckey);
-			stringBuilder.Append(_Module_.smethod_2<string>(-636344042));
+			stringBuilder.Append("\",\"_product\":\"RUS\",\"_service\":\"LIZA\",\"_version\":\"67.1.0\",\"_messages_per_page\":\"");
 			stringBuilder.Append(SearchSettings.Instance.DownloadLetters ? SearchSettings.Instance.DownloadLettersLimit : 1);
-			stringBuilder.Append(_Module_.smethod_5<string>(1961668511));
+			stringBuilder.Append("\"}");
 			if (!request.CheckDate)
 			{
 				if (SearchSettings.Instance.CheckDate)
 				{
 					if (SearchSettings.Instance.DateFrom != null)
 					{
-						stringBuilder.Append(_Module_.smethod_6<string>(-367351801) + SearchSettings.Instance.DateFrom.Value.ToString(_Module_.smethod_4<string>(1645735782)) + _Module_.smethod_2<string>(-764203487));
+						stringBuilder.Append("\"from\":\"" + SearchSettings.Instance.DateFrom.Value.ToString("yyyyMMdd") + "\",");
 					}
 					if (SearchSettings.Instance.DateTo != null)
 					{
-						stringBuilder.Append(_Module_.smethod_3<string>(1592715986) + SearchSettings.Instance.DateTo.Value.ToString(_Module_.smethod_6<string>(-196103086)) + _Module_.smethod_4<string>(347314178));
+						stringBuilder.Append("\"to\":\"" + SearchSettings.Instance.DateTo.Value.ToString("yyyyMMdd") + "\",");
 					}
 				}
 			}
@@ -1195,11 +1195,11 @@ namespace Hackus_Mail_Checker_Reforged.Net
 			{
 				if (request.DateFrom != null)
 				{
-					stringBuilder.Append(_Module_.smethod_4<string>(-1758992755) + request.DateFrom.Value.ToString(_Module_.smethod_6<string>(-196103086)) + _Module_.smethod_6<string>(1115281894));
+					stringBuilder.Append("\"from\":\"" + request.DateFrom.Value.ToString("yyyyMMdd") + "\",");
 				}
 				if (request.DateTo != null)
 				{
-					stringBuilder.Append(_Module_.smethod_3<string>(1592715986) + request.DateTo.Value.ToString(_Module_.smethod_6<string>(-196103086)) + _Module_.smethod_2<string>(-764203487));
+					stringBuilder.Append("\"to\":\"" + request.DateTo.Value.ToString("yyyyMMdd") + "\",");
 				}
 			}
 			return stringBuilder.ToString();
@@ -1222,7 +1222,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 			request.ConnectTimeout = CheckerSettings.Instance.Timeout * 1000;
 			request.Cookies = this._cookies;
 			request.Proxy = this._proxyClient;
-			request.UserAgent = _Module_.smethod_4<string>(1820059280);
+			request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.167 YaBrowser/22.7.3.822 Yowser/2.5 Safari/537.36";
 		}
 
 		// Token: 0x060005D1 RID: 1489 RVA: 0x00009AC8 File Offset: 0x00007CC8

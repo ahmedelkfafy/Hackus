@@ -12,7 +12,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
 		{
 			get
 			{
-				return _Module_.smethod_4<string>(51034421);
+				return "gmx.net";
 			}
 		}
 
@@ -22,7 +22,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
 		{
 			get
 			{
-				return _Module_.smethod_3<string>(201492349);
+				return "https://login.gmx.net/login";
 			}
 		}
 
@@ -32,7 +32,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
 		{
 			get
 			{
-				return _Module_.smethod_4<string>(1394479180);
+				return "https://navigator.gmx.net/login";
 			}
 		}
 
@@ -42,7 +42,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
 		{
 			get
 			{
-				return _Module_.smethod_2<string>(-1188494666);
+				return "3c.gmx.net";
 			}
 		}
 
@@ -52,17 +52,17 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
 		{
 			get
 			{
-				return _Module_.smethod_2<string>(476179106);
+				return "navigator.gmx.net";
 			}
 		}
 
 		// Token: 0x06000658 RID: 1624 RVA: 0x0002B5A0 File Offset: 0x000297A0
 		public override void SetLoginParameters(IList<KeyValuePair<string, string>> parameters)
 		{
-			parameters.Add(new KeyValuePair<string, string>(_Module_.smethod_2<string>(2116335924), _Module_.smethod_6<string>(1843625354)));
-			parameters.Add(new KeyValuePair<string, string>(_Module_.smethod_4<string>(22708777), _Module_.smethod_2<string>(225933219)));
-			parameters.Add(new KeyValuePair<string, string>(_Module_.smethod_6<string>(504563814), _Module_.smethod_4<string>(-2116032375)));
-			parameters.Add(new KeyValuePair<string, string>(_Module_.smethod_5<string>(-1284195785), _Module_.smethod_2<string>(-206555069)));
+			parameters.Add(new KeyValuePair<string, string>("service", "freemail"));
+			parameters.Add(new KeyValuePair<string, string>("successURL", "https://navigator.gmx.net/login"));
+			parameters.Add(new KeyValuePair<string, string>("loginFailedURL", "https://www.gmx.net/login/?status=login-failed"));
+			parameters.Add(new KeyValuePair<string, string>("loginErrorURL", "https://www.gmx.net/login/error/loginerror"));
 		}
 
 		// Token: 0x04000349 RID: 841

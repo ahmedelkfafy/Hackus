@@ -28,6 +28,6 @@ namespace Hackus_Mail_Checker_Reforged.UI.Models
 		}
 
 		// Token: 0x0400019F RID: 415
-		public static readonly DependencyProperty DataProperty = DependencyProperty.Register(_Module_.smethod_2<string>(-742385848), typeof(object), typeof(BindingProxy), new UIPropertyMetadata(null));
+		public static readonly DependencyProperty DataProperty = DependencyProperty.Register("Data", typeof(object), typeof(BindingProxy), new UIPropertyMetadata(null));
 	}
 }

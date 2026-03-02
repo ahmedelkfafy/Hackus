@@ -19,20 +19,20 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.Proton
 		// Token: 0x06000670 RID: 1648 RVA: 0x0002B728 File Offset: 0x00029928
 		public static void Invoke()
 		{
-			GoSrpInvoker.BinaryPath = (Environment.Is64BitOperatingSystem ? _Module_.smethod_6<string>(1112839400) : _Module_.smethod_6<string>(-806108457));
+			GoSrpInvoker.BinaryPath = (Environment.Is64BitOperatingSystem ? "x64//GoSrp.dll" : "x86//GoSrp.dll");
 			if (!File.Exists(GoSrpInvoker.BinaryPath))
 			{
-				FileManager.LogUnhandledException(new Exception(_Module_.smethod_3<string>(-670182526)), _Module_.smethod_3<string>(-1513011952));
+				FileManager.LogUnhandledException(new Exception("No file GoSrp.dll"), "GoSrpInvoker");
 				Process.GetCurrentProcess().Kill();
 				return;
 			}
-			Environment.SetEnvironmentVariable(_Module_.smethod_2<string>(1664828476), _Module_.smethod_3<string>(-348829301));
+			Environment.SetEnvironmentVariable("GODEBUG", "cgocheck=0");
 			if (GoSrpInvoker.LoadLibrary(GoSrpInvoker.BinaryPath) == IntPtr.Zero)
 			{
-				GoSrpInvoker.BinaryPath = (Environment.Is64BitOperatingSystem ? _Module_.smethod_6<string>(-806108457) : _Module_.smethod_3<string>(-2115308319));
+				GoSrpInvoker.BinaryPath = (Environment.Is64BitOperatingSystem ? "x86//GoSrp.dll" : "x64//GoSrp.dll");
 				if (GoSrpInvoker.LoadLibrary(GoSrpInvoker.BinaryPath) == IntPtr.Zero)
 				{
-					FileManager.LogUnhandledException(new Exception(_Module_.smethod_2<string>(1798111342)), _Module_.smethod_3<string>(-1513011952));
+					FileManager.LogUnhandledException(new Exception("No file GoSrp.dll"), "GoSrpInvoker");
 					Process.GetCurrentProcess().Kill();
 					return;
 				}
@@ -80,7 +80,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.Proton
 				{
 					ushort count = binaryReader.ReadUInt16();
 					byte[] bytes = binaryReader.ReadBytes((int)count);
-					File.AppendAllText(_Module_.smethod_3<string>(-910715585), _Module_.smethod_6<string>(-1996712854) + Encoding.UTF8.GetString(bytes) + Environment.NewLine);
+					File.AppendAllText("Error.txt", "go-srp: " + Encoding.UTF8.GetString(bytes) + Environment.NewLine);
 					return null;
 				}
 				if (b == 1)

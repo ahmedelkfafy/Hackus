@@ -11,23 +11,23 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer
 			switch (language)
 			{
 			case TranslationLanguage.Auto:
-				return _Module_.smethod_4<string>(869848139);
+				return "auto";
 			case TranslationLanguage.English:
-				return _Module_.smethod_2<string>(-1746043920);
+				return "en";
 			case TranslationLanguage.Russian:
-				return _Module_.smethod_6<string>(-423417630);
+				return "ru";
 			case TranslationLanguage.Chinese:
-				return _Module_.smethod_5<string>(517562853);
+				return "zh";
 			case TranslationLanguage.German:
-				return _Module_.smethod_2<string>(625955354);
+				return "de";
 			case TranslationLanguage.French:
-				return _Module_.smethod_6<string>(1872215015);
+				return "fr";
 			case TranslationLanguage.Poland:
-				return _Module_.smethod_5<string>(-432193977);
+				return "pl";
 			case TranslationLanguage.Spanish:
-				return _Module_.smethod_6<string>(-1680570541);
+				return "es";
 			default:
-				return _Module_.smethod_3<string>(-208523070);
+				return "auto";
 			}
 		}
 	}

@@ -26,7 +26,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Tools
 		// Token: 0x06000C63 RID: 3171 RVA: 0x0000D6A9 File Offset: 0x0000B8A9
 		public void OpenDirectory()
 		{
-			Process.Start(_Module_.smethod_2<string>(843412805), _Module_.smethod_3<string>(1167347191) + this._savePath.FullName + _Module_.smethod_6<string>(-77460630));
+			Process.Start("explorer.exe", "/select, \"" + this._savePath.FullName + "\"");
 		}
 
 		// Token: 0x040006B3 RID: 1715

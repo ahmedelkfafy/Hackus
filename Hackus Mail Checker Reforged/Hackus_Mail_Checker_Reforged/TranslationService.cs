@@ -13,8 +13,8 @@ namespace Hackus_Mail_Checker_Reforged
 		// Token: 0x060000B6 RID: 182 RVA: 0x00011C04 File Offset: 0x0000FE04
 		static TranslationService()
 		{
-			TranslationService._httpClient.BaseAddress = new Uri(_Module_.smethod_4<string>(1303121119));
-			TranslationService._httpClient.DefaultRequestHeaders.Add(_Module_.smethod_3<string>(-1674520012), BackgroundAuthenticator.Instance.Token);
+			TranslationService._httpClient.BaseAddress = new Uri("https://hackus.shop");
+			TranslationService._httpClient.DefaultRequestHeaders.Add("Authorization", BackgroundAuthenticator.Instance.Token);
 			TranslationService._httpClient.Timeout = TimeSpan.FromSeconds(30.0);
 		}
 
@@ -28,9 +28,9 @@ namespace Hackus_Mail_Checker_Reforged
 		private static string RepairHtml(string html)
 		{
 			StringBuilder stringBuilder = new StringBuilder();
-			stringBuilder.Append(_Module_.smethod_3<string>(-229394219));
+			stringBuilder.Append("<html><head><meta http-equiv='Content-Type' content='text/html;charset=UTF-8'></head>");
 			stringBuilder.Append(html);
-			stringBuilder.Append(_Module_.smethod_2<string>(1319412416));
+			stringBuilder.Append("</html>");
 			return stringBuilder.ToString();
 		}
 

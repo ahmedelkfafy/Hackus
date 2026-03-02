@@ -291,7 +291,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 			int num = array.Length;
 			if (num >= 2)
 			{
-				list = this.GenerateServersByDomain(array[num - 2] + _Module_.smethod_3<string>(2035431732) + array[num - 1]);
+				list = this.GenerateServersByDomain(array[num - 2] + "." + array[num - 1]);
 				return (from s in list
 				select new Server(this._domain, s.Hostname, s.Port, s.Protocol, s.Socket)).ToList<Server>();
 			}
@@ -337,7 +337,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 		// Token: 0x06000504 RID: 1284 RVA: 0x0001C288 File Offset: 0x0001A488
 		private string FindMXRecordByLookup()
 		{
-			NameServer nameServer = new NameServer(IPAddress.Parse(_Module_.smethod_6<string>(-932791104)));
+			NameServer nameServer = new NameServer(IPAddress.Parse("208.67.220.220"));
 			LookupClient lookupClient = new LookupClient(new LookupClientOptions(new NameServer[]
 			{
 				nameServer
@@ -414,13 +414,13 @@ namespace Hackus_Mail_Checker_Reforged.Net
 						httpRequest.Proxy = proxy;
 						httpRequest.KeepAlive = false;
 						httpRequest.AllowAutoRedirect = false;
-						httpRequest.UserAgent = _Module_.smethod_2<string>(-2061593978);
-						httpRequest.AddUrlParam(_Module_.smethod_6<string>(-486098232), this._domain);
-						httpRequest.AddUrlParam(_Module_.smethod_6<string>(-1967002142), _Module_.smethod_3<string>(1386942965));
-						string text = httpRequest.Get(_Module_.smethod_5<string>(1100529352), null).ToString();
+						httpRequest.UserAgent = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)";
+						httpRequest.AddUrlParam("name", this._domain);
+						httpRequest.AddUrlParam("type", "mx");
+						string text = httpRequest.Get("https://dns.google/resolve", null).ToString();
 						if (!string.IsNullOrEmpty(text))
 						{
-							Match match = Regex.Match(text, _Module_.smethod_3<string>(-17772745));
+							Match match = Regex.Match(text, "\"Answer\":\\[{(.+?)\"data\":\"(.+?) (.+?).\"");
 							if (!match.Success)
 							{
 								result = null;
@@ -467,30 +467,30 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					httpRequest.Proxy = proxyClient;
 					httpRequest.KeepAlive = false;
 					httpRequest.AllowAutoRedirect = false;
-					httpRequest.UserAgent = _Module_.smethod_4<string>(-966056653);
-					httpRequest.AddUrlParam(_Module_.smethod_4<string>(-1058026721), _Module_.smethod_4<string>(-84822525));
-					string text = httpRequest.Get(_Module_.smethod_6<string>(1877812712) + prefix + this._domain + _Module_.smethod_6<string>(-343543153), null).ToString();
+					httpRequest.UserAgent = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)";
+					httpRequest.AddUrlParam("emailaddress", "@admin");
+					string text = httpRequest.Get("http://" + prefix + this._domain + "/mail/config-v1.1.xml", null).ToString();
 					if (string.IsNullOrEmpty(text))
 					{
 						return null;
 					}
-					if (text.Contains(_Module_.smethod_5<string>(1248357596)))
+					if (text.Contains("<incomingServer"))
 					{
-						foreach (Match match in Regex.Matches(text, _Module_.smethod_2<string>(-364280516), RegexOptions.Singleline))
+						foreach (Match match in Regex.Matches(text, "<incomingServer type=\"(.*?)\">(.*?)<\\/incomingServer>", RegexOptions.Singleline))
 						{
 							if (match.Success)
 							{
 								string value = match.Groups[1].Value;
-								if (value != _Module_.smethod_2<string>(302133814))
+								if (value != "smtp")
 								{
 									string value2 = match.Groups[2].Value;
 									return new Server
 									{
 										Domain = this._domain,
-										Hostname = value2.Substring(_Module_.smethod_4<string>(438147969), _Module_.smethod_2<string>(-1495822824), 0, StringComparison.Ordinal, null),
-										Port = int.Parse(value2.Substring(_Module_.smethod_6<string>(398638587), _Module_.smethod_4<string>(-1053218402), 0, StringComparison.Ordinal, null)),
-										Socket = ((value2.ContainsIgnoreCase(_Module_.smethod_3<string>(1869936522)) || value2.ContainsIgnoreCase(_Module_.smethod_3<string>(1027107096))) ? Hackus_Mail_Checker_Reforged.Models.Enums.SocketType.SSL : Hackus_Mail_Checker_Reforged.Models.Enums.SocketType.Plain),
-										Protocol = (value.Contains(_Module_.smethod_5<string>(-1257967223)) ? Hackus_Mail_Checker_Reforged.Models.Enums.ProtocolType.IMAP : Hackus_Mail_Checker_Reforged.Models.Enums.ProtocolType.POP3)
+										Hostname = value2.Substring("<hostname>", "</hostname>", 0, StringComparison.Ordinal, null),
+										Port = int.Parse(value2.Substring("<port>", "</port>", 0, StringComparison.Ordinal, null)),
+										Socket = ((value2.ContainsIgnoreCase("<Socket>SSL</Socket>") || value2.ContainsIgnoreCase("<socketType>SSL</socketType>")) ? Hackus_Mail_Checker_Reforged.Models.Enums.SocketType.SSL : Hackus_Mail_Checker_Reforged.Models.Enums.SocketType.Plain),
+										Protocol = (value.Contains("imap") ? Hackus_Mail_Checker_Reforged.Models.Enums.ProtocolType.IMAP : Hackus_Mail_Checker_Reforged.Models.Enums.ProtocolType.POP3)
 									};
 								}
 							}
@@ -498,7 +498,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					}
 					if (string.IsNullOrEmpty(prefix))
 					{
-						return this.FindServerByAutoConfig(_Module_.smethod_3<string>(-377608614), 0);
+						return this.FindServerByAutoConfig("autoconfig.", 0);
 					}
 				}
 			}
@@ -539,29 +539,29 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					httpRequest.Proxy = proxyClient;
 					httpRequest.KeepAlive = false;
 					httpRequest.AllowAutoRedirect = false;
-					httpRequest.UserAgent = _Module_.smethod_6<string>(-931061319);
-					string text = httpRequest.Get(_Module_.smethod_2<string>(1983127431) + prefix + this._domain + _Module_.smethod_3<string>(-939494898), null).ToString();
+					httpRequest.UserAgent = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)";
+					string text = httpRequest.Get("http://" + prefix + this._domain + "/autodiscover/autodiscover.xml", null).ToString();
 					if (string.IsNullOrEmpty(text))
 					{
 						return null;
 					}
-					if (text.Contains(_Module_.smethod_6<string>(-2125125286)))
+					if (text.Contains("<Protocol>"))
 					{
-						foreach (object obj in Regex.Matches(text, _Module_.smethod_6<string>(-1382943546), RegexOptions.Singleline))
+						foreach (object obj in Regex.Matches(text, "<Protocol>(.*?)<\\/Protocol>", RegexOptions.Singleline))
 						{
 							Match match = (Match)obj;
 							if (match.Success)
 							{
 								string value = match.Groups[1].Value;
-								if (!value.Contains(_Module_.smethod_6<string>(245704798)))
+								if (!value.Contains("<Type>SMTP</Type>"))
 								{
 									return new Server
 									{
 										Domain = this._domain,
-										Hostname = value.Substring(_Module_.smethod_3<string>(1710223629), _Module_.smethod_5<string>(345889949), 0, StringComparison.Ordinal, null),
-										Port = int.Parse(value.Substring(_Module_.smethod_6<string>(1876082927), _Module_.smethod_6<string>(1283375406), 0, StringComparison.Ordinal, null)),
-										Socket = (value.Contains(_Module_.smethod_6<string>(690667885)) ? Hackus_Mail_Checker_Reforged.Models.Enums.SocketType.SSL : Hackus_Mail_Checker_Reforged.Models.Enums.SocketType.Plain),
-										Protocol = (value.Contains(_Module_.smethod_3<string>(-818264649)) ? Hackus_Mail_Checker_Reforged.Models.Enums.ProtocolType.IMAP : Hackus_Mail_Checker_Reforged.Models.Enums.ProtocolType.POP3)
+										Hostname = value.Substring("<Server>", "</Server>", 0, StringComparison.Ordinal, null),
+										Port = int.Parse(value.Substring("<Port>", "</Port>", 0, StringComparison.Ordinal, null)),
+										Socket = (value.Contains("<SSL>on</SSL>") ? Hackus_Mail_Checker_Reforged.Models.Enums.SocketType.SSL : Hackus_Mail_Checker_Reforged.Models.Enums.SocketType.Plain),
+										Protocol = (value.Contains("<Type>IMAP</Type>") ? Hackus_Mail_Checker_Reforged.Models.Enums.ProtocolType.IMAP : Hackus_Mail_Checker_Reforged.Models.Enums.ProtocolType.POP3)
 									};
 								}
 							}
@@ -569,7 +569,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					}
 					if (string.IsNullOrEmpty(prefix))
 					{
-						return this.FindServerByAutoDiscover(_Module_.smethod_4<string>(1121017004), 0);
+						return this.FindServerByAutoDiscover("autodiscover.", 0);
 					}
 				}
 			}
@@ -719,60 +719,60 @@ namespace Hackus_Mail_Checker_Reforged.Net
 		private static readonly Dictionary<string, string> _domainCoincidences = new Dictionary<string, string>
 		{
 			{
-				_Module_.smethod_4<string>(922651911),
-				_Module_.smethod_3<string>(-814409771)
+				"yahoo.",
+				"imap.mail.yahoo.com"
 			},
 			{
-				_Module_.smethod_3<string>(-1657239197),
-				_Module_.smethod_4<string>(-302420894)
+				"gmail.com",
+				"imap.gmail.com"
 			},
 			{
-				_Module_.smethod_3<string>(-571949273),
-				_Module_.smethod_6<string>(-805804090)
+				"google",
+				"imap.gmail.com"
 			},
 			{
-				_Module_.smethod_4<string>(-1968110763),
-				_Module_.smethod_4<string>(-1004523205)
+				"aol.",
+				"imap.aol.com"
 			},
 			{
-				_Module_.smethod_4<string>(-1793787265),
-				_Module_.smethod_3<string>(109239821)
+				"hotmail.",
+				"outlook.office365.com"
 			},
 			{
-				_Module_.smethod_2<string>(-630846248),
-				_Module_.smethod_6<string>(1712770428)
+				"live.com",
+				"outlook.office365.com"
 			},
 			{
-				_Module_.smethod_5<string>(1791586755),
-				_Module_.smethod_2<string>(750941947)
+				"office365",
+				"outlook.office365.com"
 			},
 			{
-				_Module_.smethod_5<string>(-1010394552),
-				_Module_.smethod_2<string>(1449995967)
+				"att.",
+				"imap.mail.att.net"
 			},
 			{
-				_Module_.smethod_5<string>(-1770200016),
-				_Module_.smethod_3<string>(-693179522)
+				"wp.pl",
+				"imap.wp.pl"
 			},
 			{
-				_Module_.smethod_5<string>(-667448881),
-				_Module_.smethod_6<string>(-2137233781)
+				"gmx.",
+				"imap.gmx.com"
 			},
 			{
-				_Module_.smethod_6<string>(824574039),
-				_Module_.smethod_3<string>(-371826297)
+				"freenet.",
+				"mx.freenet.de"
 			},
 			{
-				_Module_.smethod_3<string>(1073299496),
-				_Module_.smethod_5<string>(1569844389)
+				"wanadoo.fr",
+				"imap.orange.fr"
 			},
 			{
-				_Module_.smethod_3<string>(1956539005),
-				_Module_.smethod_4<string>(-1876140695)
+				"orange.fr",
+				"imap.orange.fr"
 			},
 			{
-				_Module_.smethod_5<string>(-1812323138),
-				_Module_.smethod_3<string>(-1174245640)
+				"yandex.",
+				"imap.yandex.com"
 			}
 		};
 
@@ -780,173 +780,173 @@ namespace Hackus_Mail_Checker_Reforged.Net
 		private static readonly Dictionary<string, string> _recordCoincidences = new Dictionary<string, string>
 		{
 			{
-				_Module_.smethod_2<string>(816221327),
-				_Module_.smethod_5<string>(-1923194321)
+				"mx-aol",
+				"imap.aol.com"
 			},
 			{
-				_Module_.smethod_2<string>(2064726656),
-				_Module_.smethod_4<string>(1009813660)
+				"yahoo",
+				"imap.mail.yahoo.com"
 			},
 			{
-				_Module_.smethod_2<string>(-1846711887),
-				_Module_.smethod_6<string>(-805804090)
+				"google",
+				"imap.gmail.com"
 			},
 			{
-				_Module_.smethod_6<string>(-216556139),
-				_Module_.smethod_6<string>(1712770428)
+				"outlook",
+				"outlook.office365.com"
 			},
 			{
-				_Module_.smethod_4<string>(-1266008452),
-				_Module_.smethod_5<string>(203227766)
+				"secureserver",
+				"imap.secureserver.net"
 			},
 			{
-				_Module_.smethod_6<string>(673370035),
-				_Module_.smethod_6<string>(2008259296)
+				"prodigy.net",
+				"imap.mail.att.net"
 			},
 			{
-				_Module_.smethod_3<string>(1875718839),
-				_Module_.smethod_5<string>(-287546149)
+				"wp.pl",
+				"imap.wp.pl"
 			},
 			{
-				_Module_.smethod_5<string>(1685881633),
-				_Module_.smethod_6<string>(-2137233781)
+				"gmx.net",
+				"imap.gmx.com"
 			},
 			{
-				_Module_.smethod_5<string>(683669559),
-				_Module_.smethod_4<string>(515693080)
+				"web.de",
+				"imap.web.de"
 			},
 			{
-				_Module_.smethod_5<string>(-746529064),
-				_Module_.smethod_5<string>(277141888)
+				"freenet.de",
+				"mx.freenet.de"
 			},
 			{
-				_Module_.smethod_4<string>(1193753796),
-				_Module_.smethod_5<string>(1569844389)
+				"orange.fr",
+				"imap.orange.fr"
 			},
 			{
-				_Module_.smethod_5<string>(-1126431796),
-				_Module_.smethod_2<string>(-1264620888)
+				"yandex",
+				"imap.yandex.com"
 			},
 			{
-				_Module_.smethod_4<string>(-273570980),
-				_Module_.smethod_2<string>(-296277030)
+				"kundenserver.de",
+				"imap.1und1.de"
 			},
 			{
-				_Module_.smethod_2<string>(1784565185),
-				_Module_.smethod_2<string>(-296277030)
+				"schlund.de",
+				"imap.1und1.de"
 			},
 			{
-				_Module_.smethod_6<string>(1723149138),
-				_Module_.smethod_6<string>(389989662)
+				"1and1.co.uk",
+				"imap.1und1.co.uk"
 			},
 			{
-				_Module_.smethod_6<string>(-1683621769),
-				_Module_.smethod_4<string>(-1939260849)
+				"1and1.de",
+				"imap.1und1.de"
 			},
 			{
-				_Module_.smethod_5<string>(76858400),
-				_Module_.smethod_5<string>(-303044332)
+				"1and1.com",
+				"imap.1und1.com"
 			},
 			{
-				_Module_.smethod_6<string>(687208315),
-				_Module_.smethod_6<string>(94500794)
+				"1and1.fr",
+				"imap.1und1.fr"
 			},
 			{
-				_Module_.smethod_6<string>(96230579),
-				_Module_.smethod_5<string>(-1822655260)
+				"1and1.es",
+				"imap.1und1.es"
 			},
 			{
-				_Module_.smethod_3<string>(-335271092),
-				_Module_.smethod_4<string>(-1677775602)
+				"1and1.mx",
+				"imap.1und1.mx"
 			},
 			{
-				_Module_.smethod_5<string>(-328080003),
-				_Module_.smethod_6<string>(-2367166)
+				"1and1.at",
+				"imap.1und1.at"
 			},
 			{
-				_Module_.smethod_6<string>(-2075978597),
-				_Module_.smethod_4<string>(7759550)
+				"1and1.ca",
+				"imap.1und1.ca"
 			},
 			{
-				_Module_.smethod_4<string>(361214865),
-				_Module_.smethod_6<string>(1035303442)
+				"1and1.ro",
+				"imap.1und1.ro"
 			},
 			{
-				_Module_.smethod_4<string>(-1217313255),
-				_Module_.smethod_2<string>(-1066033851)
+				"163.com",
+				"imap.163.com"
 			},
 			{
-				_Module_.smethod_4<string>(356406546),
-				_Module_.smethod_6<string>(2072974050)
+				"nicmail.ru",
+				"mail.nicmail.ru"
 			},
 			{
-				_Module_.smethod_4<string>(-2098547383),
-				_Module_.smethod_2<string>(432717365)
+				"mail.dk",
+				"imap.mail.dk"
 			},
 			{
-				_Module_.smethod_4<string>(-781504510),
-				_Module_.smethod_3<string>(1200312062)
+				"lcn.com",
+				"imap.lcn.com"
 			},
 			{
-				_Module_.smethod_6<string>(-1777030159),
-				_Module_.smethod_3<string>(76539494)
+				"gosecure.net",
+				"mail.gosecure.net"
 			},
 			{
-				_Module_.smethod_4<string>(1242448993),
-				_Module_.smethod_4<string>(1329610742)
+				"zoho.com",
+				"imap.zoho.com"
 			},
 			{
-				_Module_.smethod_6<string>(-1931693733),
-				_Module_.smethod_3<string>(-444936707)
+				"hostinger.com",
+				"imap.hostinger.com"
 			},
 			{
-				_Module_.smethod_3<string>(-1287766133),
-				_Module_.smethod_2<string>(-1865731047)
+				"everyone.net",
+				"imap.everyone.net"
 			},
 			{
-				_Module_.smethod_6<string>(736355004),
-				_Module_.smethod_3<string>(-1247356050)
+				"privateemail.com",
+				"mail.privateemail.com"
 			},
 			{
-				_Module_.smethod_6<string>(1031843872),
-				_Module_.smethod_6<string>(1033573657)
+				"netvigator.com",
+				"imap.netvigator.com"
 			},
 			{
-				_Module_.smethod_2<string>(748242632),
-				_Module_.smethod_6<string>(1181318091)
+				"simply.com",
+				"imap.simply.com"
 			},
 			{
-				_Module_.smethod_5<string>(-1842524870),
-				_Module_.smethod_4<string>(-1318899961)
+				"transip.email",
+				"imap.transip.email"
 			},
 			{
-				_Module_.smethod_5<string>(-359871003),
-				_Module_.smethod_2<string>(-448579056)
+				"biz.rr.com",
+				"mail.twc.com"
 			},
 			{
-				_Module_.smethod_5<string>(-1119676467),
-				_Module_.smethod_5<string>(-1499579199)
+				"onlne.net",
+				"imap.online.net"
 			}
 		};
 
 		// Token: 0x040002B2 RID: 690
 		private static List<string> _imapPrefixes = new List<string>
 		{
-			_Module_.smethod_4<string>(171854403),
-			_Module_.smethod_4<string>(259016152),
-			_Module_.smethod_2<string>(666643407),
-			_Module_.smethod_6<string>(-1342445782),
-			_Module_.smethod_6<string>(140187913)
+			"imap.",
+			"mail.",
+			"mx.",
+			"imap4.",
+			"email."
 		};
 
 		// Token: 0x040002B3 RID: 691
 		private static List<string> _pop3Prefixes = new List<string>
 		{
-			_Module_.smethod_6<string>(-487828017),
-			_Module_.smethod_6<string>(-340083583),
-			_Module_.smethod_2<string>(1118150855),
-			_Module_.smethod_5<string>(1465728535),
-			_Module_.smethod_3<string>(1764125785)
+			"pop.",
+			"pop3.",
+			"mail.",
+			"email.",
+			"mx."
 		};
 
 		// Token: 0x0200009A RID: 154

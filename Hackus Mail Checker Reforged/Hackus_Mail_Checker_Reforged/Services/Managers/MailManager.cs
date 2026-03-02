@@ -49,7 +49,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			set
 			{
 				this._searchQuery = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(422498998));
+				base.OnPropertyChanged(nameof(SearchQuery));
 			}
 		}
 
@@ -75,7 +75,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			set
 			{
 				this._mailboxResults = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(1419643292));
+				base.OnPropertyChanged(nameof(MailboxResults));
 			}
 		}
 

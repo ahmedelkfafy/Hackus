@@ -16,7 +16,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 			if (!stream.CanRead)
 			{
 				stream.DisposeObject();
-				throw new IOException(_Module_.smethod_3<string>(2010242753));
+				throw new IOException("The stream could not be read.");
 			}
 			if (stream.CanTimeout)
 			{
@@ -51,7 +51,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 				return memoryStream.ToArray();
 				IL_7C:
 				stream.DisposeObject();
-				throw new IOException(_Module_.smethod_6<string>(-1996104120));
+				throw new IOException("The stream could not be read.");
 				IL_92:
 				result = memoryStream.ToArray();
 			}
@@ -64,7 +64,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 			if (!stream.CanRead)
 			{
 				stream.DisposeObject();
-				throw new IOException(_Module_.smethod_6<string>(-1996104120));
+				throw new IOException("The stream could not be read.");
 			}
 			if (stream.CanTimeout)
 			{
@@ -93,7 +93,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 				return memoryStream.ToArray();
 				IL_71:
 				stream.DisposeObject();
-				throw new IOException(_Module_.smethod_3<string>(2010242753));
+				throw new IOException("The stream could not be read.");
 				IL_90:
 				result = memoryStream.ToArray();
 			}
@@ -187,7 +187,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 										{
 											if (ex is NullReferenceException || ex is ObjectDisposedException)
 											{
-												innerException = StreamHelper._c__DisplayClass6_0.smethod_3(_Module_.smethod_5<string>(-16128818), ex);
+												innerException = StreamHelper._c__DisplayClass6_0.smethod_3("The stream could not be read.", ex);
 												return;
 											}
 											innerException = ex;
@@ -203,22 +203,22 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 						if (memoryStream.Length != (long)MaxBufferLength)
 						{
 							stream.DisposeObject(asyncResult);
-							throw new IOException(_Module_.smethod_2<string>(-1762264601));
+							throw new IOException("The stream could not be read.");
 						}
 						return memoryStream.ToArray();
 						IL_160:
 						stream.DisposeObject(asyncResult);
-						throw new IOException(_Module_.smethod_2<string>(-1762264601));
+						throw new IOException("The stream could not be read.");
 						IL_17C:
 						stream.DisposeObject(asyncResult);
-						throw new TimeoutException(_Module_.smethod_2<string>(1433800077));
+						throw new TimeoutException("Reading stream timeout has expired.");
 						IL_198:
 						stream.DisposeObject(asyncResult);
 						if (!(innerException is IOException) && !(innerException is SocketException))
 						{
 							throw innerException;
 						}
-						throw new IOException(_Module_.smethod_3<string>(-1401485034) + innerException.Message);
+						throw new IOException("The stream could not be read: " + innerException.Message);
 						IL_1E5:
 						result = memoryStream.ToArray();
 					}
@@ -226,14 +226,14 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 					{
 						stream.DisposeObject(asyncResult);
 						NotSupportedException innerException3;
-						throw new IOException(_Module_.smethod_5<string>(-16128818), innerException3);
+						throw new IOException("The stream could not be read.", innerException3);
 					}
 					catch (EndOfStreamException innerException2)
 					{
 						if (memoryStream.Length != (long)MaxBufferLength)
 						{
 							stream.DisposeObject(asyncResult);
-							throw new IOException(_Module_.smethod_6<string>(-1996104120), innerException2);
+							throw new IOException("The stream could not be read.", innerException2);
 						}
 						result = memoryStream.ToArray();
 					}
@@ -241,7 +241,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 				return result;
 			}
 			stream.DisposeObject();
-			throw new IOException(_Module_.smethod_5<string>(-16128818));
+			throw new IOException("The stream could not be read.");
 		}
 
 		// Token: 0x060007F8 RID: 2040 RVA: 0x000314E0 File Offset: 0x0002F6E0
@@ -250,7 +250,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 			if (!stream.CanRead)
 			{
 				stream.DisposeObject();
-				throw new IOException(_Module_.smethod_4<string>(-322178440));
+				throw new IOException("The stream could not be read.");
 			}
 			if (stream.CanTimeout)
 			{
@@ -270,7 +270,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 						if (memoryStream.Length <= 0L)
 						{
 							stream.DisposeObject();
-							throw new IOException(_Module_.smethod_6<string>(-1996104120));
+							throw new IOException("The stream could not be read.");
 						}
 						return Encoding.UTF8.GetString(memoryStream.ToArray());
 					}
@@ -291,7 +291,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 				return Encoding.UTF8.GetString(memoryStream.ToArray());
 				IL_96:
 				stream.DisposeObject();
-				throw new IOException(_Module_.smethod_4<string>(-322178440));
+				throw new IOException("The stream could not be read.");
 			}
 			string result;
 			return result;
@@ -322,7 +322,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 					goto IL_AA;
 					IL_63:
 					stream.DisposeObject();
-					throw StreamHelper.ReadLines_d__8.smethod_2(_Module_.smethod_4<string>(-322178440));
+					throw StreamHelper.ReadLines_d__8.smethod_2("The stream could not be read.");
 					IL_7E:
 					int num;
 					if (num != 1)
@@ -355,7 +355,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 			if (!stream.CanRead)
 			{
 				stream.DisposeObject();
-				throw new IOException(_Module_.smethod_4<string>(-322178440));
+				throw new IOException("The stream could not be read.");
 			}
 			if (stream.CanTimeout)
 			{
@@ -375,7 +375,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 			if (!stream.CanRead)
 			{
 				stream.DisposeObject();
-				throw new IOException(_Module_.smethod_5<string>(-16128818));
+				throw new IOException("The stream could not be read.");
 			}
 			if (stream.CanTimeout)
 			{
@@ -395,7 +395,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 			if (!stream.CanRead)
 			{
 				stream.DisposeObject();
-				throw new IOException(_Module_.smethod_2<string>(-1762264601));
+				throw new IOException("The stream could not be read.");
 			}
 			if (stream.CanTimeout)
 			{
@@ -437,7 +437,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 										{
 											if (ex is NullReferenceException || ex is ObjectDisposedException)
 											{
-												innerException = StreamHelper._c__DisplayClass11_0.smethod_3(_Module_.smethod_5<string>(-16128818));
+												innerException = StreamHelper._c__DisplayClass11_0.smethod_3("The stream could not be read.");
 												return;
 											}
 											innerException = ex;
@@ -522,7 +522,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 					return Encoding.UTF8.GetString(memoryStream.ToArray());
 					IL_23A:
 					stream.DisposeObject(asyncResult);
-					throw new IOException(_Module_.smethod_3<string>(2010242753));
+					throw new IOException("The stream could not be read.");
 					IL_256:
 					return Encoding.UTF8.GetString(memoryStream.ToArray());
 					IL_284:
@@ -533,31 +533,31 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 					if (memoryStream.Length <= 0L || !Sck.WaitAvailableData(500, 50))
 					{
 						stream.DisposeObject(asyncResult);
-						throw new IOException(_Module_.smethod_3<string>(2010242753));
+						throw new IOException("The stream could not be read.");
 					}
 					return Encoding.UTF8.GetString(memoryStream.ToArray());
 					IL_2EE:
 					stream.DisposeObject(asyncResult);
-					throw new IOException(_Module_.smethod_4<string>(1082026182));
+					throw new IOException("Reading stream timeout has expired.");
 					IL_30A:
 					stream.DisposeObject(asyncResult);
 					if (!(innerException is IOException) && !(innerException is SocketException))
 					{
 						throw innerException;
 					}
-					throw new IOException(_Module_.smethod_3<string>(2010242753));
+					throw new IOException("The stream could not be read.");
 				}
 				catch (NotSupportedException)
 				{
 					stream.DisposeObject(asyncResult);
-					throw new IOException(_Module_.smethod_2<string>(-1762264601));
+					throw new IOException("The stream could not be read.");
 				}
 				catch (EndOfStreamException)
 				{
 					if (memoryStream.Length <= 0L)
 					{
 						stream.DisposeObject(asyncResult);
-						throw new IOException(_Module_.smethod_3<string>(2010242753));
+						throw new IOException("The stream could not be read.");
 					}
 					return Encoding.UTF8.GetString(memoryStream.ToArray());
 				}
@@ -572,7 +572,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 			if (!stream.CanRead)
 			{
 				stream.DisposeObject();
-				throw new IOException(_Module_.smethod_2<string>(-1762264601));
+				throw new IOException("The stream could not be read.");
 			}
 			if (stream.CanTimeout)
 			{
@@ -594,7 +594,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 						if (memoryStream.Length <= 0L)
 						{
 							stream.DisposeObject();
-							throw new IOException(_Module_.smethod_2<string>(-1762264601));
+							throw new IOException("The stream could not be read.");
 						}
 						return Encoding.UTF8.GetString(memoryStream.ToArray());
 					}
@@ -672,14 +672,14 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 					return Encoding.UTF8.GetString(memoryStream.ToArray());
 				}
 				stream.DisposeObject();
-				throw new IOException(_Module_.smethod_5<string>(-16128818));
+				throw new IOException("The stream could not be read.");
 				Block_16:
 				goto IL_1F5;
 				Block_17:
 				return Encoding.UTF8.GetString(memoryStream.ToArray());
 				IL_1CB:
 				stream.DisposeObject();
-				throw new IOException(_Module_.smethod_6<string>(-1996104120));
+				throw new IOException("The stream could not be read.");
 				IL_1F5:
 				return Encoding.UTF8.GetString(memoryStream.ToArray());
 				IL_209:
