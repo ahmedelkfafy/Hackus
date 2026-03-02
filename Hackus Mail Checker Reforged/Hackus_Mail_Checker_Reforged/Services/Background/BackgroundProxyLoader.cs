@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Hackus_Mail_Checker_Reforged.Models;
@@ -42,15 +41,44 @@ namespace Hackus_Mail_Checker_Reforged.Services.Background
 		}
 
 		// Token: 0x06000493 RID: 1171 RVA: 0x0001A230 File Offset: 0x00018430
-		public static Task<bool> LoadManually(string proxyFilePath, string proxyUrls)
+		public static async Task<bool> LoadManually(string proxyFilePath, string proxyUrls)
 		{
-			BackgroundProxyLoader.LoadManually_d__4 LoadManually_d__;
-			LoadManually_d__._t__builder = AsyncTaskMethodBuilder<bool>.Create();
-			LoadManually_d__.proxyFilePath = proxyFilePath;
-			LoadManually_d__.proxyUrls = proxyUrls;
-			LoadManually_d__._1__state = -1;
-			LoadManually_d__._t__builder.Start<BackgroundProxyLoader.LoadManually_d__4>(ref LoadManually_d__);
-			return LoadManually_d__._t__builder.Task;
+			List<Proxy> list = new List<Proxy>();
+			try
+			{
+				if (!string.IsNullOrEmpty(proxyFilePath))
+				{
+					List<Proxy> fromFile = await BackgroundProxyLoader.GetFromFile(proxyFilePath);
+					list.AddRange(fromFile);
+				}
+				if (!string.IsNullOrEmpty(proxyUrls))
+				{
+					using (StringReader reader = new StringReader(proxyUrls))
+					{
+						string url;
+						while ((url = reader.ReadLine()) != null)
+						{
+							try
+							{
+								List<Proxy> fromUrl = await BackgroundProxyLoader.GetFromUrl(url);
+								list.AddRange(fromUrl);
+							}
+							catch
+							{
+							}
+						}
+					}
+				}
+				if (list.Any<Proxy>())
+				{
+					ProxyManager.Instance.UploadProxies(list);
+					return true;
+				}
+			}
+			catch
+			{
+			}
+			return false;
 		}
 
 		// Token: 0x06000494 RID: 1172 RVA: 0x0001A27C File Offset: 0x0001847C
@@ -85,25 +113,51 @@ namespace Hackus_Mail_Checker_Reforged.Services.Background
 		}
 
 		// Token: 0x06000495 RID: 1173 RVA: 0x0001A338 File Offset: 0x00018538
-		private static Task<List<Proxy>> GetFromFile(string filePath)
+		private static async Task<List<Proxy>> GetFromFile(string filePath)
 		{
-			BackgroundProxyLoader.GetFromFile_d__6 GetFromFile_d__;
-			GetFromFile_d__._t__builder = AsyncTaskMethodBuilder<List<Proxy>>.Create();
-			GetFromFile_d__.filePath = filePath;
-			GetFromFile_d__._1__state = -1;
-			GetFromFile_d__._t__builder.Start<BackgroundProxyLoader.GetFromFile_d__6>(ref GetFromFile_d__);
-			return GetFromFile_d__._t__builder.Task;
+			List<Proxy> list = new List<Proxy>();
+			try
+			{
+				string[] lines = await Task.Run(() => File.ReadAllLines(filePath));
+				foreach (string line in lines)
+				{
+					Proxy proxy = BackgroundProxyLoader.GetProxyFromString(line);
+					if (proxy != null)
+					{
+						list.Add(proxy);
+					}
+				}
+			}
+			catch
+			{
+			}
+			return list;
 		}
 
 		// Token: 0x06000496 RID: 1174 RVA: 0x0001A37C File Offset: 0x0001857C
-		private static Task<List<Proxy>> GetFromUrl(string url)
+		private static async Task<List<Proxy>> GetFromUrl(string url)
 		{
-			BackgroundProxyLoader.GetFromUrl_d__7 GetFromUrl_d__;
-			GetFromUrl_d__._t__builder = AsyncTaskMethodBuilder<List<Proxy>>.Create();
-			GetFromUrl_d__.url = url;
-			GetFromUrl_d__._1__state = -1;
-			GetFromUrl_d__._t__builder.Start<BackgroundProxyLoader.GetFromUrl_d__7>(ref GetFromUrl_d__);
-			return GetFromUrl_d__._t__builder.Task;
+			List<Proxy> list = new List<Proxy>();
+			try
+			{
+				string content = await BackgroundProxyLoader._httpClient.GetStringAsync(url);
+				using (StringReader reader = new StringReader(content))
+				{
+					string line;
+					while ((line = reader.ReadLine()) != null)
+					{
+						Proxy proxy = BackgroundProxyLoader.GetProxyFromString(line);
+						if (proxy != null)
+						{
+							list.Add(proxy);
+						}
+					}
+				}
+			}
+			catch
+			{
+			}
+			return list;
 		}
 
 		// Token: 0x06000497 RID: 1175 RVA: 0x0001A3C0 File Offset: 0x000185C0

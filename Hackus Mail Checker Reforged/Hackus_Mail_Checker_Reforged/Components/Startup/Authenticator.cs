@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,26 +15,38 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 	internal static class Authenticator
 	{
 		// Token: 0x06000C8A RID: 3210 RVA: 0x00042A54 File Offset: 0x00040C54
-		public static Task Login(string username, string password)
+		public static async Task Login(string username, string password)
 		{
-			Authenticator.Login_d__0 Login_d__;
-			Login_d__._t__builder = AsyncTaskMethodBuilder.Create();
-			Login_d__.username = username;
-			Login_d__.password = password;
-			Login_d__._1__state = -1;
-			Login_d__._t__builder.Start<Authenticator.Login_d__0>(ref Login_d__);
-			return Login_d__._t__builder.Task;
+			try
+			{
+				EncryptionKeyResponse encryptionKeyResponse = await Authenticator.GetEncryptionKeyAsync(username);
+				if (encryptionKeyResponse == null || !encryptionKeyResponse.IsValid())
+				{
+					return;
+				}
+				string hwid = await Authenticator.GetHWID();
+				string serializedCredentials = JsonConvert.SerializeObject(new { username, password });
+				string credentials = Authenticator.EncryptRsa(serializedCredentials, encryptionKeyResponse.Key);
+				string loginResponseJson = await Authenticator.GetLoginResponseAsync(credentials, encryptionKeyResponse.Guid);
+				if (loginResponseJson == null)
+				{
+					return;
+				}
+				LoginResponse loginResponse = Authenticator.DecryptLoginResponse(loginResponseJson, serializedCredentials);
+				if (loginResponse != null && loginResponse.IsValid())
+				{
+					BackgroundAuthenticator.Instance.SetProperties(username, loginResponse.Token, loginResponse.Key, loginResponse.DatabasePath, loginResponse.DatabaseVersion);
+				}
+			}
+			catch
+			{
+			}
 		}
 
 		// Token: 0x06000C8B RID: 3211 RVA: 0x00042AA0 File Offset: 0x00040CA0
-		private static Task<EncryptionKeyResponse> GetEncryptionKeyAsync(string username)
+		private static async Task<EncryptionKeyResponse> GetEncryptionKeyAsync(string username)
 		{
-			Authenticator.GetEncryptionKeyAsync_d__1 GetEncryptionKeyAsync_d__;
-			GetEncryptionKeyAsync_d__._t__builder = AsyncTaskMethodBuilder<EncryptionKeyResponse>.Create();
-			GetEncryptionKeyAsync_d__.username = username;
-			GetEncryptionKeyAsync_d__._1__state = -1;
-			GetEncryptionKeyAsync_d__._t__builder.Start<Authenticator.GetEncryptionKeyAsync_d__1>(ref GetEncryptionKeyAsync_d__);
-			return GetEncryptionKeyAsync_d__._t__builder.Task;
+			return await Task.Run(() => Authenticator.GetEncryptionKey(username));
 		}
 
 		// Token: 0x06000C8C RID: 3212 RVA: 0x00042AE4 File Offset: 0x00040CE4
@@ -58,15 +69,9 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling Hackus_Mail_Checke
 		}
 
 		// Token: 0x06000C8D RID: 3213 RVA: 0x00042C14 File Offset: 0x00040E14
-		private static Task<string> GetLoginResponseAsync(string credentials, string guid)
+		private static async Task<string> GetLoginResponseAsync(string credentials, string guid)
 		{
-			Authenticator.GetLoginResponseAsync_d__3 GetLoginResponseAsync_d__;
-			GetLoginResponseAsync_d__._t__builder = AsyncTaskMethodBuilder<string>.Create();
-			GetLoginResponseAsync_d__.credentials = credentials;
-			GetLoginResponseAsync_d__.guid = guid;
-			GetLoginResponseAsync_d__._1__state = -1;
-			GetLoginResponseAsync_d__._t__builder.Start<Authenticator.GetLoginResponseAsync_d__3>(ref GetLoginResponseAsync_d__);
-			return GetLoginResponseAsync_d__._t__builder.Task;
+			return await Task.Run(() => Authenticator.GetLoginResponse(credentials, guid));
 		}
 
 		// Token: 0x06000C8E RID: 3214 RVA: 0x00042C60 File Offset: 0x00040E60
@@ -108,23 +113,15 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling Hackus_Mail_Checke
 		}
 
 		// Token: 0x06000C90 RID: 3216 RVA: 0x00042DFC File Offset: 0x00040FFC
-		private static Task<string> GetHWID()
+		private static async Task<string> GetHWID()
 		{
-			Authenticator.GetHWID_d__6 GetHWID_d__;
-			GetHWID_d__._t__builder = AsyncTaskMethodBuilder<string>.Create();
-			GetHWID_d__._1__state = -1;
-			GetHWID_d__._t__builder.Start<Authenticator.GetHWID_d__6>(ref GetHWID_d__);
-			return GetHWID_d__._t__builder.Task;
+			return await Task.Run(() => HWID.Value());
 		}
 
 		// Token: 0x06000C91 RID: 3217 RVA: 0x00042E38 File Offset: 0x00041038
-		public static Task<VersionResponse> GetLastVersionAsync()
+		public static async Task<VersionResponse> GetLastVersionAsync()
 		{
-			Authenticator.GetLastVersionAsync_d__7 GetLastVersionAsync_d__;
-			GetLastVersionAsync_d__._t__builder = AsyncTaskMethodBuilder<VersionResponse>.Create();
-			GetLastVersionAsync_d__._1__state = -1;
-			GetLastVersionAsync_d__._t__builder.Start<Authenticator.GetLastVersionAsync_d__7>(ref GetLastVersionAsync_d__);
-			return GetLastVersionAsync_d__._t__builder.Task;
+			return await Task.Run(() => Authenticator.GetLastVersion());
 		}
 
 		// Token: 0x06000C92 RID: 3218 RVA: 0x00042E74 File Offset: 0x00041074
