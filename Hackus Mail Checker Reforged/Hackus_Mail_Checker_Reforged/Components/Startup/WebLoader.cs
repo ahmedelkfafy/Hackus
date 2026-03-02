@@ -2,7 +2,6 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Net;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Hackus_Mail_Checker_Reforged.UI.Models;
 
@@ -29,7 +28,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._speed = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(-365831698));
+				base.OnPropertyChanged(nameof(Speed));
 			}
 		}
 
@@ -45,7 +44,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._progress = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(-976444071));
+				base.OnPropertyChanged(nameof(Progress));
 			}
 		}
 
@@ -55,16 +54,24 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 		public bool IsError { get; set; }
 
 		// Token: 0x06000D7E RID: 3454 RVA: 0x000458A4 File Offset: 0x00043AA4
-		public Task Download(Uri uri, string filePath)
+		public async Task Download(Uri uri, string filePath)
 		{
-			WebLoader.Download_d__15 Download_d__;
-			Download_d__._t__builder = AsyncTaskMethodBuilder.Create();
-			Download_d__._4__this = this;
-			Download_d__.uri = uri;
-			Download_d__.filePath = filePath;
-			Download_d__._1__state = -1;
-			Download_d__._t__builder.Start<WebLoader.Download_d__15>(ref Download_d__);
-			return Download_d__._t__builder.Task;
+			using (var client = new WebClient())
+			{
+				client.DownloadProgressChanged += Changed;
+				client.DownloadFileCompleted += Completed;
+
+				_stopwatch.Start();
+
+				try
+				{
+					await client.DownloadFileTaskAsync(uri, filePath);
+				}
+				catch (Exception)
+				{
+					IsError = true;
+				}
+			}
 		}
 
 		// Token: 0x06000D7F RID: 3455 RVA: 0x0000DDB4 File Offset: 0x0000BFB4
@@ -81,11 +88,8 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 		private void Changed(object sender, DownloadProgressChangedEventArgs e)
 		{
 			this.Progress = (double)e.ProgressPercentage;
-			this.Speed = string.Format(_Module_.smethod_3<string>(486158097), ((double)e.BytesReceived / 1024.0 / this._stopwatch.Elapsed.TotalSeconds).ToString(_Module_.smethod_5<string>(1215375585)));
+			this.Speed = string.Format("{0:0.00} KB/s", (double)e.BytesReceived / 1024.0 / this._stopwatch.Elapsed.TotalSeconds);
 		}
-
-		// Token: 0x04000736 RID: 1846
-		private WebClient _client;
 
 		// Token: 0x04000737 RID: 1847
 		private Stopwatch _stopwatch;
