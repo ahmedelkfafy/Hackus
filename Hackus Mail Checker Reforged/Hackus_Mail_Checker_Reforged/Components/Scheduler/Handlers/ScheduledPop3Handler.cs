@@ -186,7 +186,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 								Scheduler.Instance.AddNotification(new Notification
 								{
 									Address = this._mailbox.Address,
-									Message = ScheduledPop3Handler._c__DisplayClass12_0.smethod_0(_Module_.smethod_5<string>(-1781723149), finded, request),
+									Message = ScheduledPop3Handler._c__DisplayClass12_0.smethod_0("New messages ({0}, {1}) were found on the account", finded, request),
 									Time = DateTime.Now
 								});
 							});

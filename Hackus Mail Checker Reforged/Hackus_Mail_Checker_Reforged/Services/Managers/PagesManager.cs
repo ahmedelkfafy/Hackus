@@ -149,12 +149,12 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			HandyControl.Controls.MessageBox.Show(new MessageBoxInfo
 			{
 				Message = text,
-				Caption = _Module_.smethod_3<string>(-1430198211),
+				Caption = "Успех",
 				Button = MessageBoxButton.OK,
-				IconBrushKey = _Module_.smethod_6<string>(-1964559648),
-				IconKey = _Module_.smethod_2<string>(729149099),
-				StyleKey = _Module_.smethod_5<string>(375297047),
-				ConfirmContent = _Module_.smethod_3<string>(-1992084495)
+				IconBrushKey = "SuccessBrush",
+				IconKey = "SuccessGeometry",
+				StyleKey = "MessageBoxCustom",
+				ConfirmContent = "Понятно"
 			});
 		}
 

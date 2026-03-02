@@ -78,7 +78,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 						{
 							continue;
 						}
-						ValueTuple<OperationResult, string> valueTuple = CaptchaHelpers.CreateInstance().SolveCaptcha(this._orderValue.Replace(_Module_.smethod_6<string>(1057486280), _Module_.smethod_6<string>(-1706108974)), _Module_.smethod_4<string>(-1357454250), true);
+						ValueTuple<OperationResult, string> valueTuple = CaptchaHelpers.CreateInstance().SolveCaptcha(this._orderValue.Replace("\\/", "/"), "ru", true);
 						OperationResult item = valueTuple.Item1;
 						string item2 = valueTuple.Item2;
 						if (item == OperationResult.Error)
@@ -135,24 +135,24 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					this.SetHeaders(httpRequest);
 					string text = string.Concat(new string[]
 					{
-						_Module_.smethod_6<string>(-275673196),
+						"{\"method\":\"Rambler::Id::create_session\",\"params\":[{\"short_session\":0,\"via\":{\"project\":\"mail\",\"type\":\"embed\"},\"utm\":{\"referer\":\"https://mail.rambler.ru/\"},\"login\":\"",
 						this._mailbox.Address,
-						_Module_.smethod_4<string>(56367010),
+						"\",\"password\":\"",
 						this._mailbox.Password,
-						_Module_.smethod_4<string>(-1609322859)
+						"\",\"encrypted\":0}],\"rpc\":\"2.0\"}"
 					});
-					string text2 = httpRequest.Post(_Module_.smethod_6<string>(-1760036676), text, _Module_.smethod_5<string>(-1722116199)).ToString();
-					if (text2.Contains(_Module_.smethod_3<string>(1315693858)))
+					string text2 = httpRequest.Post("https://id.rambler.ru/jsonrpc", text, "application/json").ToString();
+					if (text2.Contains("Rate limit exceed"))
 					{
 						result = OperationResult.Captcha;
 					}
-					else if (text2.Contains(_Module_.smethod_6<string>(609063623)))
+					else if (text2.Contains("incorrect password"))
 					{
 						result = OperationResult.Bad;
 					}
-					else if (!text2.Contains(_Module_.smethod_2<string>(633879762)) && !text2.Contains(_Module_.smethod_2<string>(84428453)) && !text2.Contains(_Module_.smethod_5<string>(1592892535)))
+					else if (!text2.Contains("Suspicious session credentials") && !text2.Contains("hijacked") && !text2.Contains("unblock"))
 					{
-						if (!text2.Contains(_Module_.smethod_3<string>(-329554911)))
+						if (!text2.Contains("rsid"))
 						{
 							StatisticsManager.Instance.AddErrorDetails(this._mailbox.Address, text2);
 							result = OperationResult.Error;
@@ -194,26 +194,26 @@ namespace Hackus_Mail_Checker_Reforged.Net
 							this.SetHeaders(httpRequest);
 							string text = string.Concat(new string[]
 							{
-								_Module_.smethod_2<string>(818846269),
+								"{\"method\":\"Rambler::Id::create_web_session\",\"params\":[{\"login\":\"",
 								this._mailbox.Address,
-								_Module_.smethod_3<string>(-1895910953),
+								"\",\"password\":\"",
 								this._mailbox.Password,
-								_Module_.smethod_3<string>(-851031112),
+								"\",\"__rlPassId\":\"",
 								this._passId,
-								_Module_.smethod_4<string>(211457232),
+								"\",\"__rlPassValue\":\"",
 								this._passValue,
-								_Module_.smethod_2<string>(-1278315791)
+								"\"}],\"rpc\":\"2.0\"}"
 							});
-							string text2 = httpRequest.Post(_Module_.smethod_2<string>(484277051), text, _Module_.smethod_5<string>(-1722116199)).ToString();
-							if (text2.Contains(_Module_.smethod_3<string>(472864432)))
+							string text2 = httpRequest.Post("https://id.rambler.ru/jsonrpc", text, "application/json").ToString();
+							if (text2.Contains("incorrect password"))
 							{
 								return OperationResult.Bad;
 							}
-							if (text2.Contains(_Module_.smethod_6<string>(1498989797)) || text2.Contains(_Module_.smethod_2<string>(84428453)) || text2.Contains(_Module_.smethod_5<string>(1592892535)))
+							if (text2.Contains("Suspicious session credentials") || text2.Contains("hijacked") || text2.Contains("unblock"))
 							{
 								return OperationResult.Blocked;
 							}
-							if (!text2.Contains(_Module_.smethod_6<string>(-729285208)))
+							if (!text2.Contains("rsid"))
 							{
 								StatisticsManager.Instance.AddErrorDetails(this._mailbox.Address, text2);
 								return OperationResult.Error;
@@ -245,15 +245,15 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					using (HttpRequest httpRequest = new HttpRequest())
 					{
 						this.SetHeaders(httpRequest);
-						string text = _Module_.smethod_2<string>(802526424);
-						string input = httpRequest.Post(_Module_.smethod_6<string>(-1760036676), text, _Module_.smethod_5<string>(-1722116199)).ToString();
-						Match match = Regex.Match(input, _Module_.smethod_6<string>(452670264));
+						string text = "{\"method\":\"Rambler::Common::create_rpc_order\",\"params\":[{\"method\":\"Rambler::Common::create_rate_limit_pass_token\",\"useBase64\":1,\"key\":\"AllowedRedirectDomains\"}],\"rpc\":\"2.0\"}";
+						string input = httpRequest.Post("https://id.rambler.ru/jsonrpc", text, "application/json").ToString();
+						Match match = Regex.Match(input, "\"orderId\":\"(.+?)\"");
 						if (!match.Success)
 						{
 							return OperationResult.Error;
 						}
 						this._orderId = match.Groups[1].Value;
-						match = Regex.Match(input, _Module_.smethod_5<string>(-765604040));
+						match = Regex.Match(input, "\"orderValue.b64\":\"(.+?)\"");
 						if (match.Success)
 						{
 							this._orderValue = match.Groups[1].Value;
@@ -288,29 +288,29 @@ namespace Hackus_Mail_Checker_Reforged.Net
 							this.SetHeaders(httpRequest);
 							string text = string.Concat(new string[]
 							{
-								_Module_.smethod_2<string>(-829507658),
+								"{\"method\":\"Rambler::Common::create_rate_limit_pass_token\",\"params\":[{\"method\":\"Rambler::Id::create_web_session\",\"__rpcOrderId\":\"",
 								this._orderId,
-								_Module_.smethod_5<string>(1841259840),
+								"\",\"__rpcOrderValue\":\"",
 								this._orderValue,
-								_Module_.smethod_6<string>(626361473),
+								"\",\"parameters\":{\"login\":\"",
 								this._mailbox.Address,
-								_Module_.smethod_2<string>(-182137279),
+								"\",\"password\":\"",
 								this._mailbox.Password,
-								_Module_.smethod_2<string>(-628221306)
+								"\"}}],\"rpc\":\"2.0\"}"
 							});
-							string text2 = httpRequest.Post(_Module_.smethod_2<string>(484277051), text, _Module_.smethod_3<string>(-1143472752)).ToString();
-							if (text2.Contains(_Module_.smethod_5<string>(1994254145)))
+							string text2 = httpRequest.Post("https://id.rambler.ru/jsonrpc", text, "application/json").ToString();
+							if (text2.Contains("reissue order"))
 							{
 								return OperationResult.HttpError;
 							}
-							Match match = Regex.Match(text2, _Module_.smethod_5<string>(-1008010650));
+							Match match = Regex.Match(text2, "\"passId\":\"(.+?)\"");
 							if (!match.Success)
 							{
 								Console.WriteLine(text2);
 								return OperationResult.Error;
 							}
 							this._passId = match.Groups[1].Value;
-							match = Regex.Match(text2, _Module_.smethod_5<string>(664594583));
+							match = Regex.Match(text2, "\"passValue\":\"(.+?)\"");
 							if (!match.Success)
 							{
 								return OperationResult.Error;
@@ -341,8 +341,8 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					string text = _Module_.smethod_5<string>(474643217);
-					foreach (object obj in Regex.Matches(httpRequest.Post(_Module_.smethod_3<string>(1631264766), text, _Module_.smethod_4<string>(-423852883)).ToString(), _Module_.smethod_5<string>(437686156)))
+					string text = "{\"method\":\"Rambler::Mail::get_contacts\",\"rpc\":\"2.0\"}";
+					foreach (object obj in Regex.Matches(httpRequest.Post("https://mail.rambler.ru/api/v2", text, "application/json").ToString(), "\"email\": \"(.+?)\""))
 					{
 						FileManager.SaveContact(((Match)obj).Groups[1].Value);
 					}
@@ -610,14 +610,14 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					using (HttpRequest httpRequest = new HttpRequest())
 					{
 						this.SetHeaders(httpRequest);
-						string text = _Module_.smethod_6<string>(1956061379);
-						string input = httpRequest.Post(_Module_.smethod_6<string>(777565477), text, _Module_.smethod_4<string>(-423852883)).ToString();
+						string text = "{\"method\":\"Rambler::Mail::get_folder_messages\",\"params\":[{\"folder.offset\":0,\"folder.elements\":30,\"folder.sortorder\":\"D\",\"filter\":{\"text\":\"\",\"attachment\":1}}],\"rpc\":\"2.0\"}";
+						string input = httpRequest.Post("https://mail.rambler.ru/api/v2", text, "application/json").ToString();
 						leftAttachmentMessages = new Queue<Uid>();
-						if (!Regex.Match(input, _Module_.smethod_3<string>(-920220508)).Success)
+						if (!Regex.Match(input, "\"status\":\"OK\"").Success)
 						{
 							return OperationResult.Ok;
 						}
-						foreach (object obj in Regex.Matches(input, _Module_.smethod_5<string>(1498314169)))
+						foreach (object obj in Regex.Matches(input, "\"uid\":(.+?),"))
 						{
 							Match match = (Match)obj;
 							leftAttachmentMessages.Enqueue(new Uid(match.Groups[1].Value));
@@ -657,19 +657,19 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					string input = httpRequest.Post(_Module_.smethod_2<string>(603964178), this.BuildSearchQuery(searchRequest), _Module_.smethod_6<string>(-989874009)).ToString();
-					Match match = Regex.Match(input, _Module_.smethod_2<string>(-51454564));
+					string input = httpRequest.Post("https://mail.rambler.ru/api/v2", this.BuildSearchQuery(searchRequest), "application/json").ToString();
+					Match match = Regex.Match(input, "\"status\":\"OK\"");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
-					match = Regex.Match(input, _Module_.smethod_5<string>(1118411437));
+					match = Regex.Match(input, "\"total_elements\":(.+?),");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
 					searchRequest.Count = int.Parse(match.Groups[1].Value);
-					foreach (object obj in Regex.Matches(input, _Module_.smethod_6<string>(31924167)))
+					foreach (object obj in Regex.Matches(input, "\"uid\":(.+?),"))
 					{
 						Match match2 = (Match)obj;
 						searchRequest.FindedUids.Add(new Uid(match2.Groups[1].Value));
@@ -697,36 +697,36 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					string text = _Module_.smethod_5<string>(-1693901992) + uid.UID.ToString() + _Module_.smethod_5<string>(986081376);
-					string input = httpRequest.Post(_Module_.smethod_2<string>(-1942006015), text, _Module_.smethod_3<string>(-1143472752)).ToString();
-					Match match = Regex.Match(input, _Module_.smethod_3<string>(1448554877));
+					string text = "{\"method\":\"Rambler::Mail::render_message\",\"params\":[{\"folder.name\":\"INBOX\",\"message.uid\":\"" + uid.UID.ToString() + "\"}],\"rpc\":\"2.0\"}";
+					string input = httpRequest.Post("https://mail.rambler.ru/rpc", text, "application/json").ToString();
+					Match match = Regex.Match(input, "\"subject\":(.+?),");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
 					message.Subject = match.Groups[1].Value;
-					match = Regex.Match(input, _Module_.smethod_3<string>(-1818945665));
+					match = Regex.Match(input, "\"rdate\":(.+?),");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
 					long unixTimeStamp = long.Parse(match.Groups[1].Value);
 					message.Date = DateHelpers.UnixTimeStampToDate(unixTimeStamp);
-					match = Regex.Match(input, _Module_.smethod_5<string>(1962463145));
+					match = Regex.Match(input, "\"html\":\"(.+?)\",\"lines\"");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
-					message.AlternateViews.Add(new Attachment(_Module_.smethod_3<string>(-1751551436), match.Groups[1].Value));
-					match = Regex.Match(input, _Module_.smethod_6<string>(-711987358));
+					message.AlternateViews.Add(new Attachment("text/html", match.Groups[1].Value));
+					match = Regex.Match(input, "\"from\":\\[.+?,\"(.+?)\",\"(.+?)\"\\]");
 					if (match.Success)
 					{
-						message.From = match.Groups[1].Value + _Module_.smethod_6<string>(176209031) + match.Groups[2].Value;
+						message.From = match.Groups[1].Value + "@" + match.Groups[2].Value;
 						if (downloadAttachments)
 						{
 							try
 							{
-								match = Regex.Match(input, _Module_.smethod_6<string>(-1895672615));
+								match = Regex.Match(input, "\"attachments\":(.+?),\"attachments");
 								if (match.Success)
 								{
 									AttachmentInfo[] array = JsonConvert.DeserializeObject<AttachmentInfo[]>(match.Groups[1].Value);
@@ -772,7 +772,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					MemoryStream memoryStream = httpRequest.Get(_Module_.smethod_6<string>(-1007476226) + attachmentInfo.Url, null).ToMemoryStream();
+					MemoryStream memoryStream = httpRequest.Get("https://mail.rambler.ru" + attachmentInfo.Url, null).ToMemoryStream();
 					if (memoryStream != null && memoryStream.Length != 0L)
 					{
 						return new Attachment
@@ -804,33 +804,33 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					StringBuilder stringBuilder = new StringBuilder(_Module_.smethod_3<string>(-1882352744));
+					StringBuilder stringBuilder = new StringBuilder("[");
 					for (int i = 0; i < uids.Count; i++)
 					{
 						stringBuilder.Append(uids[i].UID);
 						if (i != uids.Count - 1)
 						{
-							stringBuilder.Append(_Module_.smethod_6<string>(-569432279));
+							stringBuilder.Append(",");
 						}
 					}
-					stringBuilder.Append(_Module_.smethod_4<string>(-1953073799));
+					stringBuilder.Append("]");
 					string text;
 					if (destination == MoveDestination.Trash)
 					{
-						text = _Module_.smethod_6<string>(-2050336189) + stringBuilder.ToString() + _Module_.smethod_2<string>(421721777);
+						text = "{\"method\":\"Rambler::Mail::move_message\",\"params\":[{\"old.folder.name\":\"INBOX\",\"new.folder.name\":\"Trash\",\"message.uid\":" + stringBuilder.ToString() + "}],\"rpc\":\"2.0\"}";
 					}
 					else
 					{
-						text = _Module_.smethod_2<string>(-1792403304) + stringBuilder.ToString() + _Module_.smethod_5<string>(1313528864);
+						text = "{\"method\":\"Rambler::Mail::delete_message\",\"params\":[{\"folder.name\":\"Trash\",\"message.uid\":" + stringBuilder.ToString() + "}],\"rpc\":\"2.0\"}";
 					}
-					string text2 = httpRequest.Post(_Module_.smethod_4<string>(1649320087), text, _Module_.smethod_2<string>(1371120848)).ToString();
-					if (!text2.Contains(_Module_.smethod_5<string>(1592097901)))
+					string text2 = httpRequest.Post("https://mail.rambler.ru/api/v2", text, "application/json").ToString();
+					if (!text2.Contains("\"status\":\"OK\""))
 					{
 						result = OperationResult.Bad;
 					}
 					else
 					{
-						Match match = Regex.Match(text2, _Module_.smethod_2<string>(-394295264));
+						Match match = Regex.Match(text2, "\"destination\\.uid\":\\[(.+?)\\]");
 						if (match.Success)
 						{
 							uids.Clear();
@@ -874,29 +874,29 @@ namespace Hackus_Mail_Checker_Reforged.Net
 			request.ConnectTimeout = CheckerSettings.Instance.Timeout * 1000;
 			request.Cookies = this._cookies;
 			request.Proxy = this._proxyClient;
-			request.UserAgent = _Module_.smethod_5<string>(1482021352);
+			request.UserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_3_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) GSA/50.0.197507736 Mobile/17D50 Safari/604.1";
 		}
 
 		// Token: 0x0600058E RID: 1422 RVA: 0x000235CC File Offset: 0x000217CC
 		private string BuildSearchQuery(Request request)
 		{
-			StringBuilder stringBuilder = new StringBuilder(_Module_.smethod_6<string>(223625935));
+			StringBuilder stringBuilder = new StringBuilder("{\"method\":\"Rambler::Mail::get_folder_messages\",\"params\":[{\"folder.name\":\"INBOX\",\"folder.offset\":0,\"folder.elements\":");
 			stringBuilder.Append(SearchSettings.Instance.DownloadLetters ? SearchSettings.Instance.DownloadLettersLimit : 1);
-			stringBuilder.Append(_Module_.smethod_4<string>(1572386983));
+			stringBuilder.Append(",\"folder.sortorder\":\"D\",\"filter\":{");
 			if (request.Sender != null)
 			{
-				stringBuilder.Append(_Module_.smethod_5<string>(1024627705) + request.Sender + _Module_.smethod_6<string>(1115281894));
+				stringBuilder.Append("\"from\":\"" + request.Sender + "\",");
 			}
 			if (request.Body == null)
 			{
 				if (request.Subject != null)
 				{
-					stringBuilder.Append(_Module_.smethod_2<string>(68133399) + request.Subject + _Module_.smethod_5<string>(-1407782992));
+					stringBuilder.Append("\"text\":\"" + request.Subject + "\",");
 				}
 			}
 			else
 			{
-				stringBuilder.Append(_Module_.smethod_6<string>(1263026328) + request.Body + _Module_.smethod_6<string>(1115281894));
+				stringBuilder.Append("\"text\":\"" + request.Body + "\",");
 			}
 			if (!request.CheckDate)
 			{
@@ -904,11 +904,11 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				{
 					if (SearchSettings.Instance.DateFrom != null)
 					{
-						stringBuilder.Append(string.Format(_Module_.smethod_6<string>(-958329537), DateHelpers.DateToUnixTimeStamp(SearchSettings.Instance.DateFrom.Value)));
+						stringBuilder.Append(string.Format("\"after\":{0},", DateHelpers.DateToUnixTimeStamp(SearchSettings.Instance.DateFrom.Value)));
 					}
 					if (SearchSettings.Instance.DateTo != null)
 					{
-						stringBuilder.Append(string.Format(_Module_.smethod_2<string>(-1313654796), DateHelpers.DateToUnixTimeStamp(SearchSettings.Instance.DateTo.Value)));
+						stringBuilder.Append(string.Format("\"before\":{0},", DateHelpers.DateToUnixTimeStamp(SearchSettings.Instance.DateTo.Value)));
 					}
 				}
 			}
@@ -916,15 +916,15 @@ namespace Hackus_Mail_Checker_Reforged.Net
 			{
 				if (request.DateFrom != null)
 				{
-					stringBuilder.Append(string.Format(_Module_.smethod_3<string>(842337496), DateHelpers.DateToUnixTimeStamp(request.DateFrom.Value)));
+					stringBuilder.Append(string.Format("\"after\":{0},", DateHelpers.DateToUnixTimeStamp(request.DateFrom.Value)));
 				}
 				if (request.DateTo != null)
 				{
-					stringBuilder.Append(string.Format(_Module_.smethod_4<string>(-2107639751), DateHelpers.DateToUnixTimeStamp(request.DateTo.Value)));
+					stringBuilder.Append(string.Format("\"before\":{0},", DateHelpers.DateToUnixTimeStamp(request.DateTo.Value)));
 				}
 			}
 			stringBuilder.Remove(stringBuilder.Length - 1, 1);
-			stringBuilder.Append(_Module_.smethod_3<string>(1725577005));
+			stringBuilder.Append("}}],\"rpc\":\"2.0\"}");
 			return stringBuilder.ToString();
 		}
 

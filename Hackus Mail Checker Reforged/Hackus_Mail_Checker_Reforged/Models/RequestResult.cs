@@ -25,7 +25,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._count = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(-1226958529));
+				base.OnPropertyChanged(nameof(Count));
 			}
 		}
 
@@ -41,7 +41,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._request = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(994142225));
+				base.OnPropertyChanged(nameof(Request));
 			}
 		}
 

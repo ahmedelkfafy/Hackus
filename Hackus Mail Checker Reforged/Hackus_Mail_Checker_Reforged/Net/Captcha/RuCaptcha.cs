@@ -19,13 +19,13 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					httpRequest.AddUrlParam(_Module_.smethod_5<string>(1530899803), WebSettings.Instance.CaptchaSolvationKey);
-					httpRequest.AddUrlParam(_Module_.smethod_5<string>(1334194988), _Module_.smethod_4<string>(1387398307));
-					string text = httpRequest.Post(_Module_.smethod_3<string>(415041262)).ToString();
+					httpRequest.AddUrlParam("key", WebSettings.Instance.CaptchaSolvationKey);
+					httpRequest.AddUrlParam("action", "getbalance");
+					string text = httpRequest.Post("http://rucaptcha.com/res.php").ToString();
 					try
 					{
 						double.Parse(text);
-						return new ValueTuple<OperationResult, string>(OperationResult.Ok, text + _Module_.smethod_3<string>(-708731306));
+						return new ValueTuple<OperationResult, string>(OperationResult.Ok, text + " ₽");
 					}
 					catch
 					{
@@ -89,19 +89,19 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 					using (HttpRequest httpRequest = new HttpRequest())
 					{
 						this.SetHeaders(httpRequest);
-						httpRequest.AddParam(_Module_.smethod_4<string>(1461183639), WebSettings.Instance.CaptchaSolvationKey);
-						httpRequest.AddParam(_Module_.smethod_6<string>(696161607), _Module_.smethod_2<string>(1648508631));
-						httpRequest.AddParam(_Module_.smethod_3<string>(736394487), base64);
+						httpRequest.AddParam("key", WebSettings.Instance.CaptchaSolvationKey);
+						httpRequest.AddParam("method", "base64");
+						httpRequest.AddParam("body", base64);
 						if (lang != null)
 						{
-							httpRequest.AddParam(_Module_.smethod_2<string>(-203682217), lang);
+							httpRequest.AddParam("lang", lang);
 						}
 						if (onlyLetters)
 						{
-							httpRequest.AddParam(_Module_.smethod_4<string>(-1416202618), 2);
+							httpRequest.AddParam("numeric", 2);
 						}
-						string text = httpRequest.Post(_Module_.smethod_3<string>(1900577138)).ToString();
-						if (text.Contains(_Module_.smethod_6<string>(781329414)))
+						string text = httpRequest.Post("http://rucaptcha.com/in.php").ToString();
+						if (text.Contains("OK"))
 						{
 							string[] array = text.Split(new char[]
 							{
@@ -109,7 +109,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 							});
 							return new ValueTuple<OperationResult, string>(OperationResult.Ok, array[1]);
 						}
-						if (!text.Contains(_Module_.smethod_4<string>(1935022403)) && !text.Contains(_Module_.smethod_5<string>(-1883056844)))
+						if (!text.Contains("MAX_USER_TURN") && !text.Contains("ERROR_NO_SLOT_AVAILABLE"))
 						{
 							return new ValueTuple<OperationResult, string>(OperationResult.Error, null);
 						}
@@ -134,12 +134,12 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 					using (HttpRequest httpRequest = new HttpRequest())
 					{
 						this.SetHeaders(httpRequest);
-						httpRequest.AddParam(_Module_.smethod_2<string>(-350759150), WebSettings.Instance.CaptchaSolvationKey);
-						httpRequest.AddParam(_Module_.smethod_3<string>(-989674448), _Module_.smethod_2<string>(-1939058790));
-						httpRequest.AddParam(_Module_.smethod_3<string>(1475208343), siteKey);
-						httpRequest.AddParam(_Module_.smethod_2<string>(1806457197), pageUrl);
-						string text = httpRequest.Post(_Module_.smethod_3<string>(1900577138)).ToString();
-						if (text.Contains(_Module_.smethod_2<string>(-1735172287)))
+						httpRequest.AddParam("key", WebSettings.Instance.CaptchaSolvationKey);
+						httpRequest.AddParam("method", "userrecaptcha");
+						httpRequest.AddParam("googlekey", siteKey);
+						httpRequest.AddParam("pageurl", pageUrl);
+						string text = httpRequest.Post("http://rucaptcha.com/in.php").ToString();
+						if (text.Contains("OK"))
 						{
 							string[] array = text.Split(new char[]
 							{
@@ -147,7 +147,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 							});
 							return new ValueTuple<OperationResult, string>(OperationResult.Ok, array[1]);
 						}
-						if (!text.Contains(_Module_.smethod_6<string>(-1525906967)) && !text.Contains(_Module_.smethod_6<string>(695448898)))
+						if (!text.Contains("MAX_USER_TURN") && !text.Contains("ERROR_NO_SLOT_AVAILABLE"))
 						{
 							return new ValueTuple<OperationResult, string>(OperationResult.Error, null);
 						}
@@ -172,12 +172,12 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 					using (HttpRequest httpRequest = new HttpRequest())
 					{
 						this.SetHeaders(httpRequest);
-						httpRequest.AddParam(_Module_.smethod_2<string>(-350759150), WebSettings.Instance.CaptchaSolvationKey);
-						httpRequest.AddParam(_Module_.smethod_5<string>(1867092025), _Module_.smethod_3<string>(-1655576302));
-						httpRequest.AddParam(_Module_.smethod_2<string>(8500559), siteKey);
-						httpRequest.AddParam(_Module_.smethod_5<string>(892299524), pageUrl);
-						string text = httpRequest.Post(_Module_.smethod_2<string>(1877159998)).ToString();
-						if (text.Contains(_Module_.smethod_6<string>(781329414)))
+						httpRequest.AddParam("key", WebSettings.Instance.CaptchaSolvationKey);
+						httpRequest.AddParam("method", "hcaptcha");
+						httpRequest.AddParam("siteKey", siteKey);
+						httpRequest.AddParam("pageurl", pageUrl);
+						string text = httpRequest.Post("http://rucaptcha.com/in.php").ToString();
+						if (text.Contains("OK"))
 						{
 							string[] array = text.Split(new char[]
 							{
@@ -185,7 +185,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 							});
 							return new ValueTuple<OperationResult, string>(OperationResult.Ok, array[1]);
 						}
-						if (!text.Contains(_Module_.smethod_5<string>(359402487)) && !text.Contains(_Module_.smethod_2<string>(-557270595)))
+						if (!text.Contains("MAX_USER_TURN") && !text.Contains("ERROR_NO_SLOT_AVAILABLE"))
 						{
 							return new ValueTuple<OperationResult, string>(OperationResult.Error, null);
 						}
@@ -214,11 +214,11 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 					using (HttpRequest httpRequest = new HttpRequest())
 					{
 						this.SetHeaders(httpRequest);
-						httpRequest.AddUrlParam(_Module_.smethod_5<string>(1530899803), WebSettings.Instance.CaptchaSolvationKey);
-						httpRequest.AddUrlParam(_Module_.smethod_4<string>(-975585554), _Module_.smethod_4<string>(971434845));
-						httpRequest.AddUrlParam(_Module_.smethod_6<string>(772680489), id);
-						string text = httpRequest.Get(_Module_.smethod_4<string>(598134247), null).ToString();
-						if (text.Contains(_Module_.smethod_6<string>(781329414)))
+						httpRequest.AddUrlParam("key", WebSettings.Instance.CaptchaSolvationKey);
+						httpRequest.AddUrlParam("action", "get");
+						httpRequest.AddUrlParam("id", id);
+						string text = httpRequest.Get("http://rucaptcha.com/res.php", null).ToString();
+						if (text.Contains("OK"))
 						{
 							string[] array = text.Split(new char[]
 							{
@@ -226,7 +226,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 							});
 							return new ValueTuple<OperationResult, string>(OperationResult.Ok, array[1]);
 						}
-						if (!text.Contains(_Module_.smethod_6<string>(549434249)))
+						if (!text.Contains("CAPCHA_NOT_READY"))
 						{
 							return new ValueTuple<OperationResult, string>(OperationResult.Error, null);
 						}

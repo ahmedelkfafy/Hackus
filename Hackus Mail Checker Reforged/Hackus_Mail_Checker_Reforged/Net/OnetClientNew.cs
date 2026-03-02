@@ -78,23 +78,23 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					httpRequest.AllowAutoRedirect = false;
 					string text = string.Concat(new string[]
 					{
-						_Module_.smethod_5<string>(881170888),
+						"{\"id\":\"login_application\",\"jsonrpc\":\"2.0\",\"method\":\"login_application\",\"params\":{\"password\":\"",
 						this._mailbox.Password,
-						_Module_.smethod_2<string>(-459574644),
+						"\",\"client_id\":\"accountmanager.android.mobile-apps.onetapi.pl\",\"portal_id\":1,\"remember_me\":1,\"login\":\"",
 						this._mailbox.Address,
-						_Module_.smethod_3<string>(-379602189)
+						"\",\"grant_type\":\"password\"}}"
 					});
-					string text2 = httpRequest.Post(_Module_.smethod_3<string>(-1503374757), text, _Module_.smethod_6<string>(-989874009)).ToString();
-					if (!text2.Contains(_Module_.smethod_4<string>(1000809029)))
+					string text2 = httpRequest.Post("https://log-in.authorisation.onetapi.pl", text, "application/json").ToString();
+					if (!text2.Contains("access_token"))
 					{
-						if (text2.ContainsIgnoreCase(_Module_.smethod_6<string>(2060561188)))
+						if (text2.ContainsIgnoreCase("invalid password"))
 						{
 							return OperationResult.Bad;
 						}
 					}
 					else
 					{
-						Match match = Regex.Match(text2, _Module_.smethod_3<string>(-901078390));
+						Match match = Regex.Match(text2, "\"access_token\": \"(.+?)\"");
 						if (match.Success)
 						{
 							this._accessToken = match.Groups[1].Value;
@@ -180,17 +180,17 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					{
 						this.SetHeaders(httpRequest);
 						httpRequest.AllowAutoRedirect = false;
-						httpRequest.AddHeader(_Module_.smethod_6<string>(-1684638845), _Module_.smethod_2<string>(1338381994) + this._accessToken);
-						string text = _Module_.smethod_2<string>(-8042405);
-						string text2 = httpRequest.Post(_Module_.smethod_6<string>(871686576), text, _Module_.smethod_6<string>(-989874009)).ToString();
-						if (text2.Contains(_Module_.smethod_4<string>(1000809029)))
+						httpRequest.AddHeader("Authorization", "Bearer " + this._accessToken);
+						string text = "{\"id\":\"access_token_refresh\",\"jsonrpc\":\"2.0\",\"method\":\"access_token_refresh\",\"params\":{\"master_app_id\":\"accountmanager.android.mobile-apps.onetapi.pl\",\"client_secret\":\"\",\"client_id\":\"mail.android.mobile-apps.onetapi.pl\",\"portal_id\":1}}";
+						string text2 = httpRequest.Post("https://log-session.authorisation.onetapi.pl", text, "application/json").ToString();
+						if (text2.Contains("access_token"))
 						{
-							Match match = Regex.Match(text2, _Module_.smethod_3<string>(-901078390));
+							Match match = Regex.Match(text2, "\"access_token\": \"(.+?)\"");
 							if (match.Success)
 							{
 								this._accessToken = match.Groups[1].Value;
-								this._cookies.Add(_Module_.smethod_3<string>(1910280469), this._accessToken);
-								this._cookies.Add(_Module_.smethod_5<string>(1567062230), _Module_.smethod_4<string>(269157060));
+								this._cookies.Add("onet_token", this._accessToken);
+								this._cookies.Add("X-Onet-App", "mail.android.mobile-apps.onetapi.pl");
 								return OperationResult.Ok;
 							}
 						}
@@ -217,9 +217,9 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					httpRequest.AddHeader(_Module_.smethod_6<string>(-1207114210), _Module_.smethod_3<string>(1258069096));
+					httpRequest.AddHeader("x-app-name", "1");
 					httpRequest.AllowAutoRedirect = false;
-					foreach (object obj in Regex.Matches(httpRequest.Get(_Module_.smethod_3<string>(-1180094093), null).ToString(), _Module_.smethod_3<string>(1429214351)))
+					foreach (object obj in Regex.Matches(httpRequest.Get("https://api.kontakty.onet.pl/api/contacts", null).ToString(), "\"value\":\"(.+?)\""))
 					{
 						FileManager.SaveContact(((Match)obj).Groups[1].Value);
 					}
@@ -331,14 +331,14 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				{
 					this.SetHeaders(httpRequest);
 					httpRequest.AllowAutoRedirect = false;
-					httpRequest.AddUrlParam(_Module_.smethod_4<string>(-1314179379), _Module_.smethod_3<string>(-1701570294));
-					httpRequest.AddUrlParam(_Module_.smethod_5<string>(390396973), _Module_.smethod_4<string>(2863494));
-					httpRequest.AddUrlParam(_Module_.smethod_5<string>(1683099474), 1);
-					httpRequest.AddUrlParam(_Module_.smethod_6<string>(1015971440), 1);
-					httpRequest.AddUrlParam(_Module_.smethod_4<string>(1436617774), _Module_.smethod_4<string>(1274271205));
-					httpRequest.AddUrlParam(_Module_.smethod_5<string>(791758583), 100);
-					httpRequest.AddUrlParam(_Module_.smethod_3<string>(978921121), (searchRequest.Sender == null) ? searchRequest.Subject : searchRequest.Sender);
-					string text = httpRequest.Get(_Module_.smethod_2<string>(1591351987), null).ToString();
+					httpRequest.AddUrlParam("sort", "date");
+					httpRequest.AddUrlParam("sortDir", "desc");
+					httpRequest.AddUrlParam("withLabels", 1);
+					httpRequest.AddUrlParam("withTotalCount", 1);
+					httpRequest.AddUrlParam("page", "1");
+					httpRequest.AddUrlParam("limit", 100);
+					httpRequest.AddUrlParam("searchQuery", (searchRequest.Sender == null) ? searchRequest.Subject : searchRequest.Sender);
+					string text = httpRequest.Get("https://api.poczta.onet.pl/api/mail", null).ToString();
 					SearchResponse searchResponse = null;
 					try
 					{
@@ -390,26 +390,26 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				{
 					this.SetHeaders(httpRequest);
 					httpRequest.AllowAutoRedirect = false;
-					string input = httpRequest.Get(_Module_.smethod_6<string>(449210694) + uid.UID.ToString(), null).ToString();
-					Match match = Regex.Match(input, _Module_.smethod_4<string>(-21090364));
+					string input = httpRequest.Get("https://api.poczta.onet.pl/api/mail/" + uid.UID.ToString(), null).ToString();
+					Match match = Regex.Match(input, "\"subject\":(.+?),");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
 					message.Subject = match.Groups[1].Value;
-					match = Regex.Match(input, _Module_.smethod_2<string>(1324786255));
+					match = Regex.Match(input, "\"received_date\":\"(.+?)\",");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
 					message.Date = DateTime.Parse(match.Groups[1].Value);
-					match = Regex.Match(input, _Module_.smethod_4<string>(-229771839));
+					match = Regex.Match(input, "\"html\":\"(.+?)\",\".+?\":");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
-					message.AlternateViews.Add(new Attachment(_Module_.smethod_3<string>(-1751551436), match.Groups[1].Value));
-					match = Regex.Match(input, _Module_.smethod_4<string>(-902324492));
+					message.AlternateViews.Add(new Attachment("text/html", match.Groups[1].Value));
+					match = Regex.Match(input, "\"email\":\"(.+?)\"");
 					if (match.Success)
 					{
 						message.From = match.Groups[1].Value;
@@ -445,8 +445,8 @@ namespace Hackus_Mail_Checker_Reforged.Net
 			request.ConnectTimeout = CheckerSettings.Instance.Timeout * 1000;
 			request.Cookies = this._cookies;
 			request.Proxy = this._proxyClient;
-			request.UserAgent = _Module_.smethod_4<string>(-931874150);
-			request.AddHeader(_Module_.smethod_6<string>(-2097040384), _Module_.smethod_4<string>(1532696417));
+			request.UserAgent = "Dalvik/2.1.0 (Linux; U; Android 5.1.1; G011A Build/LMY48Z) Mobile DreamLab pl.onet.mail/1.3.958";
+			request.AddHeader("X-Onet-App", "accountmanager.android.mobile-apps.onetapi.pl");
 		}
 
 		// Token: 0x0600056C RID: 1388 RVA: 0x00009AC8 File Offset: 0x00007CC8

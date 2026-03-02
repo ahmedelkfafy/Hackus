@@ -12,7 +12,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
 		{
 			get
 			{
-				return _Module_.smethod_4<string>(428531331);
+				return "web.de";
 			}
 		}
 
@@ -22,7 +22,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
 		{
 			get
 			{
-				return _Module_.smethod_2<string>(-1147707449);
+				return "https://login.web.de/login";
 			}
 		}
 
@@ -32,7 +32,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
 		{
 			get
 			{
-				return _Module_.smethod_5<string>(1675151254);
+				return "https://navigator.web.de/login";
 			}
 		}
 
@@ -42,7 +42,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
 		{
 			get
 			{
-				return _Module_.smethod_2<string>(1632188786);
+				return "3c.web.de";
 			}
 		}
 
@@ -52,18 +52,18 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
 		{
 			get
 			{
-				return _Module_.smethod_4<string>(-953467717);
+				return "navigator.web.de";
 			}
 		}
 
 		// Token: 0x06000667 RID: 1639 RVA: 0x0002B680 File Offset: 0x00029880
 		public override void SetLoginParameters(IList<KeyValuePair<string, string>> parameters)
 		{
-			parameters.Add(new KeyValuePair<string, string>(_Module_.smethod_4<string>(-1850962823), _Module_.smethod_5<string>(-36000308)));
-			parameters.Add(new KeyValuePair<string, string>(_Module_.smethod_5<string>(-1307243931), _Module_.smethod_6<string>(-1697764416)));
-			parameters.Add(new KeyValuePair<string, string>(_Module_.smethod_5<string>(-899126992), _Module_.smethod_6<string>(-2140997718)));
-			parameters.Add(new KeyValuePair<string, string>(_Module_.smethod_5<string>(-1284195785), _Module_.smethod_5<string>(1258291461)));
-			parameters.Add(new KeyValuePair<string, string>(_Module_.smethod_3<string>(2139248894), _Module_.smethod_3<string>(-429649467)));
+			parameters.Add(new KeyValuePair<string, string>("service", "freemail"));
+			parameters.Add(new KeyValuePair<string, string>("successURL", "https://navigator.web.de/login"));
+			parameters.Add(new KeyValuePair<string, string>("loginFailedURL", "https://web.de/logoutlounge/?status=login-failed"));
+			parameters.Add(new KeyValuePair<string, string>("loginErrorURL", "https://navigator.web.de/loginerror"));
+			parameters.Add(new KeyValuePair<string, string>("server", "https://freemail.web.de"));
 		}
 
 		// Token: 0x0400034E RID: 846

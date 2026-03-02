@@ -12,7 +12,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
 		{
 			get
 			{
-				return _Module_.smethod_5<string>(-673013199);
+				return "gmx.com";
 			}
 		}
 
@@ -22,7 +22,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
 		{
 			get
 			{
-				return _Module_.smethod_6<string>(1982008154);
+				return "https://login.gmx.com/login";
 			}
 		}
 
@@ -42,7 +42,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
 		{
 			get
 			{
-				return _Module_.smethod_3<string>(-241091125);
+				return "3c-bs.gmx.com";
 			}
 		}
 
@@ -52,17 +52,17 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
 		{
 			get
 			{
-				return _Module_.smethod_6<string>(-682581013);
+				return "navigator-bs.gmx.com";
 			}
 		}
 
 		// Token: 0x06000651 RID: 1617 RVA: 0x0002B514 File Offset: 0x00029714
 		public override void SetLoginParameters(IList<KeyValuePair<string, string>> parameters)
 		{
-			parameters.Add(new KeyValuePair<string, string>(_Module_.smethod_6<string>(-1858634421), _Module_.smethod_2<string>(-2053471242)));
-			parameters.Add(new KeyValuePair<string, string>(_Module_.smethod_5<string>(-1307243931), _Module_.smethod_4<string>(1559186040)));
-			parameters.Add(new KeyValuePair<string, string>(_Module_.smethod_2<string>(726424993), _Module_.smethod_3<string>(1565797976)));
-			parameters.Add(new KeyValuePair<string, string>(_Module_.smethod_2<string>(-756006378), _Module_.smethod_2<string>(1324835837)));
+			parameters.Add(new KeyValuePair<string, string>("service", "mailint"));
+			parameters.Add(new KeyValuePair<string, string>("successURL", "https://$(clientName)-$(dataCenter).gmx.com/login"));
+			parameters.Add(new KeyValuePair<string, string>("loginFailedURL", "https://www.gmx.com/logout/?ls=wd"));
+			parameters.Add(new KeyValuePair<string, string>("loginErrorURL", "https://www.gmx.com/logout/?ls=te"));
 		}
 
 		// Token: 0x04000344 RID: 836

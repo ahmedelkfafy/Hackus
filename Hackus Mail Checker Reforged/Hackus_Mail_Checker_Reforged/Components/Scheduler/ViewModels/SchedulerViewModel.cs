@@ -73,7 +73,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.ViewModels
 			set
 			{
 				this._isWorking = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(-1037860423));
+				base.OnPropertyChanged(nameof(IsWorking));
 			}
 		}
 
@@ -89,7 +89,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.ViewModels
 			set
 			{
 				this._address = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(-731926710));
+				base.OnPropertyChanged(nameof(Address));
 			}
 		}
 
@@ -105,7 +105,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.ViewModels
 			set
 			{
 				this._password = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(-1500479806));
+				base.OnPropertyChanged(nameof(Password));
 			}
 		}
 
@@ -121,7 +121,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.ViewModels
 			set
 			{
 				this._existedRequests = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(-608929445));
+				base.OnPropertyChanged(nameof(ExistedRequests));
 			}
 		}
 
@@ -137,7 +137,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.ViewModels
 			set
 			{
 				this._selectedRequestTypeIndex = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(1274883212));
+				base.OnPropertyChanged(nameof(SelectedRequestTypeIndex));
 			}
 		}
 
@@ -153,7 +153,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.ViewModels
 			set
 			{
 				this._createRequestField = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(-893236362));
+				base.OnPropertyChanged(nameof(CreateRequestField));
 			}
 		}
 
@@ -169,7 +169,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.ViewModels
 			set
 			{
 				this._findRequestField = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(-1736065788));
+				base.OnPropertyChanged(nameof(FindRequestField));
 			}
 		}
 
@@ -190,12 +190,12 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.ViewModels
 						}
 						if (this.SchedulerSettings.UseProxy && !ProxyManager.Instance.Any())
 						{
-							this.SendSimpleErrorMessage(ResourceHelper.GetResource<string>(_Module_.smethod_2<string>(1471912770)));
+							this.SendSimpleErrorMessage(ResourceHelper.GetResource<string>("l_YouNeedToLoadProxies"));
 							return;
 						}
 						if (!this.Scheduler.Mails.Any<ScheduledMail>())
 						{
-							this.SendSimpleErrorMessage(ResourceHelper.GetResource<string>(_Module_.smethod_3<string>(1009561737)));
+							this.SendSimpleErrorMessage(ResourceHelper.GetResource<string>("l_YouNeedToLoadAccounts"));
 							return;
 						}
 						if (this.SchedulerSettings.Requests.Any<Request>())
@@ -204,7 +204,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.ViewModels
 							this.IsWorking = true;
 							return;
 						}
-						this.SendSimpleErrorMessage(ResourceHelper.GetResource<string>(_Module_.smethod_4<string>(-1657230575)));
+						this.SendSimpleErrorMessage(ResourceHelper.GetResource<string>("l_YouNeedToAddRequests"));
 					}, null));
 				}
 				return result;
@@ -247,15 +247,15 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.ViewModels
 					{
 						if (string.IsNullOrWhiteSpace(this.Address) || string.IsNullOrWhiteSpace(this.Password))
 						{
-							this.SendSimpleErrorMessage(ResourceHelper.GetResource<string>(_Module_.smethod_3<string>(-616148098)));
+							this.SendSimpleErrorMessage(ResourceHelper.GetResource<string>("l_FillInAllTheFields"));
 							return;
 						}
 						if (this.Scheduler.Mails.FirstOrDefault((ScheduledMail m) => m.Address.EqualsIgnoreCase(this.Address)) != null)
 						{
-							this.SendSimpleErrorMessage(_Module_.smethod_3<string>(-957040257));
+							this.SendSimpleErrorMessage("This account has been already added to scheduler");
 							return;
 						}
-						ScheduledMail fromString = ScheduledMail.GetFromString(this.Address + _Module_.smethod_6<string>(1827648947) + this.Password);
+						ScheduledMail fromString = ScheduledMail.GetFromString(this.Address + ":" + this.Password);
 						if (fromString == null)
 						{
 							return;
@@ -617,7 +617,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.ViewModels
 					result = (this._openResultsFolderCommand = new RelayCommand(delegate(object obj)
 					{
 						DirectoryInfo fileSystemInfo_ = SchedulerViewModel._c_.smethod_0(SchedulerFileManager.ResultsPath);
-						SchedulerViewModel._c_.smethod_2(_Module_.smethod_4<string>(-753878610), SchedulerViewModel._c_.smethod_1(fileSystemInfo_));
+						SchedulerViewModel._c_.smethod_2("explorer.exe", SchedulerViewModel._c_.smethod_1(fileSystemInfo_));
 					}, null));
 				}
 				return result;
@@ -660,12 +660,12 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.ViewModels
 			HandyControl.Controls.MessageBox.Show(new MessageBoxInfo
 			{
 				Message = text,
-				Caption = ResourceHelper.GetResource<string>(_Module_.smethod_4<string>(161013751)),
+				Caption = ResourceHelper.GetResource<string>("l_Error"),
 				Button = MessageBoxButton.OK,
-				IconBrushKey = _Module_.smethod_5<string>(-917405454),
-				IconKey = _Module_.smethod_5<string>(-1297308186),
-				StyleKey = _Module_.smethod_5<string>(375297047),
-				ConfirmContent = ResourceHelper.GetResource<string>(_Module_.smethod_3<string>(-656558181))
+				IconBrushKey = "AccentBrush",
+				IconKey = "ErrorGeometry",
+				StyleKey = "MessageBoxCustom",
+				ConfirmContent = ResourceHelper.GetResource<string>("l_OK")
 			});
 		}
 

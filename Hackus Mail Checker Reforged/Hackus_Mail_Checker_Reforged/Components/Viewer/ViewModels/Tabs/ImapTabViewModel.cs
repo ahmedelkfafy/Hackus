@@ -55,7 +55,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._folders = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(-1886141486));
+				base.OnPropertyChanged(nameof(Folders));
 			}
 		}
 
@@ -71,7 +71,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._messages = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(-538226644));
+				base.OnPropertyChanged(nameof(Messages));
 			}
 		}
 
@@ -87,7 +87,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._selectedMessages = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(710278685));
+				base.OnPropertyChanged(nameof(SelectedMessages));
 			}
 		}
 
@@ -103,7 +103,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._searchedUids = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(1372741317));
+				base.OnPropertyChanged(nameof(SearchedUids));
 			}
 		}
 
@@ -119,7 +119,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._mailbox = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(160827376));
+				base.OnPropertyChanged(nameof(Mailbox));
 			}
 		}
 
@@ -135,7 +135,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._server = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(1409332705));
+				base.OnPropertyChanged(nameof(Server));
 			}
 		}
 
@@ -151,7 +151,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._imap = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(43081755));
+				base.OnPropertyChanged(nameof(Imap));
 			}
 		}
 
@@ -167,7 +167,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._selectedFolder = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(-374018280));
+				base.OnPropertyChanged(nameof(SelectedFolder));
 			}
 		}
 
@@ -183,7 +183,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._limit = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(298182448));
+				base.OnPropertyChanged(nameof(Limit));
 			}
 		}
 
@@ -199,7 +199,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._reconnectLimit = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(367348827));
+				base.OnPropertyChanged(nameof(ReconnectLimit));
 			}
 		}
 
@@ -215,7 +215,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._maxPageCount = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(1963872317));
+				base.OnPropertyChanged(nameof(MaxPageCount));
 			}
 		}
 
@@ -231,9 +231,9 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._pageIndex = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(999586691));
-				base.OnPropertyChanged(_Module_.smethod_2<string>(-1035994312));
-				base.OnPropertyChanged(_Module_.smethod_2<string>(1044847903));
+				base.OnPropertyChanged(nameof(PageIndex));
+				base.OnPropertyChanged(nameof(PageIndex));
+				base.OnPropertyChanged(nameof(PageIndex));
 			}
 		}
 
@@ -249,7 +249,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._searchQuery = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(1294920253));
+				base.OnPropertyChanged(nameof(SearchQuery));
 			}
 		}
 
@@ -265,7 +265,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._savedSearchQuery = value;
-				base.OnPropertyChanged(_Module_.smethod_2<string>(-1585445621));
+				base.OnPropertyChanged(nameof(SavedSearchQuery));
 			}
 		}
 
@@ -281,7 +281,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._isImapBusy = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(2026841659));
+				base.OnPropertyChanged(nameof(IsImapBusy));
 			}
 		}
 
@@ -297,7 +297,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._isSmtpBusy = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(1646938927));
+				base.OnPropertyChanged(nameof(IsSmtpBusy));
 			}
 		}
 
@@ -313,7 +313,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._imapOperationStatus = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(-481317219));
+				base.OnPropertyChanged(nameof(ImapOperationStatus));
 			}
 		}
 
@@ -329,7 +329,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._smtpOperationStatus = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(1077084829));
+				base.OnPropertyChanged(nameof(SmtpOperationStatus));
 			}
 		}
 
@@ -345,8 +345,8 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._lastOperation = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(2118962539));
-				base.OnPropertyChanged(_Module_.smethod_5<string>(-2115131332));
+				base.OnPropertyChanged(nameof(LastOperation));
+				base.OnPropertyChanged(nameof(LastOperation));
 			}
 		}
 
@@ -362,7 +362,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._isExtendedSelectionMode = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(1770315543));
+				base.OnPropertyChanged(nameof(IsExtendedSelectionMode));
 			}
 		}
 
@@ -378,7 +378,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._message = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(-1960491344));
+				base.OnPropertyChanged(nameof(Message));
 			}
 		}
 
@@ -394,7 +394,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._attachments = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(314893583));
+				base.OnPropertyChanged(nameof(Message));
 			}
 		}
 
@@ -410,7 +410,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._showMessageBody = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(-1898036800));
+				base.OnPropertyChanged(nameof(ShowMessageBody));
 			}
 		}
 
@@ -426,7 +426,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._showAttachments = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(1252153368));
+				base.OnPropertyChanged(nameof(ShowAttachments));
 			}
 		}
 
@@ -805,22 +805,22 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			{
 				if (type == SearchType.Body)
 				{
-					stringBuilder.Append(_Module_.smethod_3<string>(-1576683575) + ImapUtils.ToQuotedString(searchQuery.Query));
+					stringBuilder.Append("BODY " + ImapUtils.ToQuotedString(searchQuery.Query));
 				}
 			}
 			else
 			{
-				stringBuilder.Append(_Module_.smethod_4<string>(-413536501) + ImapUtils.ToQuotedString(searchQuery.Query));
+				stringBuilder.Append("FROM " + ImapUtils.ToQuotedString(searchQuery.Query));
 			}
 			if (searchQuery.DateFrom != null)
 			{
-				string str = searchQuery.DateFrom.Value.ToString(_Module_.smethod_4<string>(384120183), CultureInfo.CreateSpecificCulture(_Module_.smethod_4<string>(1215959370)));
-				stringBuilder.Append(_Module_.smethod_6<string>(1439360423) + str);
+				string str = searchQuery.DateFrom.Value.ToString("dd-MMM-yyyy", CultureInfo.CreateSpecificCulture("en-US"));
+				stringBuilder.Append(" SINCE " + str);
 			}
 			if (searchQuery.DateTo != null)
 			{
-				string str2 = searchQuery.DateTo.Value.ToString(_Module_.smethod_5<string>(1518185659), CultureInfo.CreateSpecificCulture(_Module_.smethod_5<string>(1510633816)));
-				stringBuilder.Append(_Module_.smethod_4<string>(-849345246) + str2);
+				string str2 = searchQuery.DateTo.Value.ToString("dd-MMM-yyyy", CultureInfo.CreateSpecificCulture("en-US"));
+				stringBuilder.Append(" BEFORE " + str2);
 			}
 			return stringBuilder.ToString();
 		}

@@ -44,18 +44,18 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Settings
 						{
 							return;
 						}
-						if (!(name == _Module_.smethod_5<string>(-113887600)))
+						if (!(name == "SearchByContentItem"))
 						{
 							return;
 						}
-						this.SearchRequestFormControl.Content = base.Resources[_Module_.smethod_3<string>(-44624619)];
+						this.SearchRequestFormControl.Content = base.Resources["AddSearchRequestByContentControl"];
 						return;
 					}
 					else
 					{
-						if (name == _Module_.smethod_2<string>(745493735))
+						if (name == "SearchBySenderAndSubjectItem")
 						{
-							this.SearchRequestFormControl.Content = base.Resources[_Module_.smethod_2<string>(1194301868)];
+							this.SearchRequestFormControl.Content = base.Resources["AddSearchRequestBySenderAndSubjectControl"];
 							return;
 						}
 						return;
@@ -63,9 +63,9 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Settings
 				}
 				else if (num == 3884550458U)
 				{
-					if (name == _Module_.smethod_6<string>(1793765956))
+					if (name == "SearchBySenderItem")
 					{
-						this.SearchRequestFormControl.Content = base.Resources[_Module_.smethod_5<string>(-762821881)];
+						this.SearchRequestFormControl.Content = base.Resources["AddSearchRequestBySenderControl"];
 						return;
 					}
 					return;
@@ -76,9 +76,9 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Settings
 					{
 						return;
 					}
-					if (name == _Module_.smethod_3<string>(-406387927))
+					if (name == "SearchBySenderAndContentItem")
 					{
-						this.SearchRequestFormControl.Content = base.Resources[_Module_.smethod_6<string>(-578793913)];
+						this.SearchRequestFormControl.Content = base.Resources["AddSearchRequestBySenderAndContentControl"];
 						return;
 					}
 					return;
@@ -86,9 +86,9 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Settings
 			}
 			else if (num == 640711487U)
 			{
-				if (name == _Module_.smethod_6<string>(1795495741))
+				if (name == "SearchBySenderAndSubjectAndContentItem")
 				{
-					this.SearchRequestFormControl.Content = base.Resources[_Module_.smethod_5<string>(894285169)];
+					this.SearchRequestFormControl.Content = base.Resources["AddSearchRequestBySenderAndSubjectAndContentControl"];
 					return;
 				}
 				return;
@@ -99,18 +99,18 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Settings
 				{
 					return;
 				}
-				if (!(name == _Module_.smethod_3<string>(1560214067)))
+				if (!(name == "SearchBySubjectItem"))
 				{
 					return;
 				}
-				this.SearchRequestFormControl.Content = base.Resources[_Module_.smethod_5<string>(909783352)];
+				this.SearchRequestFormControl.Content = base.Resources["AddSearchRequestBySubjectControl"];
 				return;
 			}
 			else
 			{
-				if (name == _Module_.smethod_6<string>(907299352))
+				if (name == "SearchBySubjectAndContentItem")
 				{
-					this.SearchRequestFormControl.Content = base.Resources[_Module_.smethod_4<string>(1691458681)];
+					this.SearchRequestFormControl.Content = base.Resources["AddSearchRequestBySubjectAndContentControl"];
 					return;
 				}
 				return;

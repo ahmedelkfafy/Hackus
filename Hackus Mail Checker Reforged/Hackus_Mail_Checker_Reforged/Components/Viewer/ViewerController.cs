@@ -80,12 +80,12 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer
 		{
 			HandyControl.Controls.TabItem tabItem = new HandyControl.Controls.TabItem
 			{
-				Header = ResourceHelper.GetResource<string>(_Module_.smethod_2<string>(-339664398)),
+				Header = ResourceHelper.GetResource<string>("l_NewTab"),
 				Content = new EmptyTab()
 			};
-			tabItem.SetValue(IconElement.GeometryProperty, ResourceHelper.GetResource<Geometry>(_Module_.smethod_2<string>(908840931)));
+			tabItem.SetValue(IconElement.GeometryProperty, ResourceHelper.GetResource<Geometry>("LayersGeometry"));
 			tabItem.SetValue(IconElement.HeightProperty, 12.0);
-			tabItem.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(_Module_.smethod_3<string>(1277012806)));
+			tabItem.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#181818"));
 			this._viewerViewModel.Tabs.Add(tabItem);
 			tabItem.IsSelected = true;
 		}
@@ -95,12 +95,12 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer
 		{
 			HandyControl.Controls.TabItem tabItem = new HandyControl.Controls.TabItem
 			{
-				Header = ResourceHelper.GetResource<string>(_Module_.smethod_3<string>(-1894181922)),
+				Header = ResourceHelper.GetResource<string>("l_NewTab"),
 				Content = new EmptyTab(mailboxResult)
 			};
-			tabItem.SetValue(IconElement.GeometryProperty, ResourceHelper.GetResource<Geometry>(_Module_.smethod_3<string>(-168112987)));
+			tabItem.SetValue(IconElement.GeometryProperty, ResourceHelper.GetResource<Geometry>("LayersGeometry"));
 			tabItem.SetValue(IconElement.HeightProperty, 12.0);
-			tabItem.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(_Module_.smethod_2<string>(-1305284150)));
+			tabItem.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#181818"));
 			this._viewerViewModel.Tabs.Add(tabItem);
 			tabItem.IsSelected = true;
 		}
@@ -110,12 +110,12 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer
 		{
 			HandyControl.Controls.TabItem tabItem = new HandyControl.Controls.TabItem
 			{
-				Header = ResourceHelper.GetResource<string>(_Module_.smethod_5<string>(290654426)),
+				Header = ResourceHelper.GetResource<string>("l_Settings"),
 				Content = new SettingsTab()
 			};
-			tabItem.SetValue(IconElement.GeometryProperty, ResourceHelper.GetResource<Geometry>(_Module_.smethod_6<string>(245296456)));
+			tabItem.SetValue(IconElement.GeometryProperty, ResourceHelper.GetResource<Geometry>("SettingsGeometry"));
 			tabItem.SetValue(IconElement.HeightProperty, 12.0);
-			tabItem.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(_Module_.smethod_3<string>(1277012806)));
+			tabItem.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#181818"));
 			this._viewerViewModel.Tabs.Add(tabItem);
 			tabItem.IsSelected = true;
 		}
@@ -128,9 +128,9 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer
 				Header = (mailbox.Address ?? ""),
 				Content = new ImapTab(mailbox, server, client)
 			};
-			tabItem.SetValue(IconElement.GeometryProperty, ResourceHelper.GetResource<Geometry>(_Module_.smethod_3<string>(-408646046)));
+			tabItem.SetValue(IconElement.GeometryProperty, ResourceHelper.GetResource<Geometry>("EnvelopeGeometry"));
 			tabItem.SetValue(IconElement.HeightProperty, 12.0);
-			tabItem.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(_Module_.smethod_4<string>(-1057326977)));
+			tabItem.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#181818"));
 			this._viewerViewModel.Tabs.Add(tabItem);
 			tabItem.IsSelected = true;
 		}
@@ -143,9 +143,9 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer
 				Header = (mailbox.Address ?? ""),
 				Content = new Pop3Tab(mailbox, server, client)
 			};
-			tabItem.SetValue(IconElement.GeometryProperty, ResourceHelper.GetResource<Geometry>(_Module_.smethod_4<string>(-1149297045)));
+			tabItem.SetValue(IconElement.GeometryProperty, ResourceHelper.GetResource<Geometry>("EnvelopeGeometry"));
 			tabItem.SetValue(IconElement.HeightProperty, 12.0);
-			tabItem.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(_Module_.smethod_6<string>(95822237)));
+			tabItem.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#181818"));
 			this._viewerViewModel.Tabs.Add(tabItem);
 			tabItem.IsSelected = true;
 		}
@@ -155,12 +155,12 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer
 		{
 			HandyControl.Controls.TabItem tabItem = new HandyControl.Controls.TabItem
 			{
-				Header = ResourceHelper.GetResource<string>(_Module_.smethod_6<string>(393040890)),
+				Header = ResourceHelper.GetResource<string>("l_Tools"),
 				Content = new ToolsTab()
 			};
-			tabItem.SetValue(IconElement.GeometryProperty, ResourceHelper.GetResource<Geometry>(_Module_.smethod_6<string>(1875674585)));
+			tabItem.SetValue(IconElement.GeometryProperty, ResourceHelper.GetResource<Geometry>("AppsAddGeometry"));
 			tabItem.SetValue(IconElement.HeightProperty, 12.0);
-			tabItem.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(_Module_.smethod_2<string>(-1305284150)));
+			tabItem.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#181818"));
 			this._viewerViewModel.Tabs.Add(tabItem);
 			tabItem.IsSelected = true;
 		}

@@ -25,37 +25,37 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Overlays
 		// Token: 0x06000299 RID: 665 RVA: 0x00007A39 File Offset: 0x00005C39
 		private void WebBorder_MouseEnter(object sender, MouseEventArgs e)
 		{
-			(this.GlobeIconElement.TryFindResource(_Module_.smethod_2<string>(-1776009086)) as Storyboard).Begin(this.GlobeIconElement);
+			(this.GlobeIconElement.TryFindResource("GlobeIconEnterStoryboard") as Storyboard).Begin(this.GlobeIconElement);
 		}
 
 		// Token: 0x0600029A RID: 666 RVA: 0x00007A60 File Offset: 0x00005C60
 		private void WebBorder_MouseLeave(object sender, MouseEventArgs e)
 		{
-			(this.GlobeIconElement.TryFindResource(_Module_.smethod_3<string>(1286980681)) as Storyboard).Begin(this.GlobeIconElement);
+			(this.GlobeIconElement.TryFindResource("GlobeIconLeaveStoryboard") as Storyboard).Begin(this.GlobeIconElement);
 		}
 
 		// Token: 0x0600029B RID: 667 RVA: 0x00007A87 File Offset: 0x00005C87
 		private void FolderBorder_MouseEnter(object sender, MouseEventArgs e)
 		{
-			(this.FolderIconElement.TryFindResource(_Module_.smethod_5<string>(1611172877)) as Storyboard).Begin(this.FolderIconElement);
+			(this.FolderIconElement.TryFindResource("FolderIconEnterStoryboard") as Storyboard).Begin(this.FolderIconElement);
 		}
 
 		// Token: 0x0600029C RID: 668 RVA: 0x00007AAE File Offset: 0x00005CAE
 		private void FolderBorder_MouseLeave(object sender, MouseEventArgs e)
 		{
-			(this.FolderIconElement.TryFindResource(_Module_.smethod_2<string>(-1210237932)) as Storyboard).Begin(this.FolderIconElement);
+			(this.FolderIconElement.TryFindResource("FolderIconLeaveStoryboard") as Storyboard).Begin(this.FolderIconElement);
 		}
 
 		// Token: 0x0600029D RID: 669 RVA: 0x00007AD5 File Offset: 0x00005CD5
 		private void WebCloseBorder_MouseEnter(object sender, MouseEventArgs e)
 		{
-			(this.WebBorderElement.TryFindResource(_Module_.smethod_5<string>(91561949)) as Storyboard).Begin(this.WebBorderElement);
+			(this.WebBorderElement.TryFindResource("IncreaseRedBorderStoryboard") as Storyboard).Begin(this.WebBorderElement);
 		}
 
 		// Token: 0x0600029E RID: 670 RVA: 0x00007AFC File Offset: 0x00005CFC
 		private void WebCloseBorder_MouseLeave(object sender, MouseEventArgs e)
 		{
-			(this.WebBorderElement.TryFindResource(_Module_.smethod_4<string>(74464009)) as Storyboard).Begin(this.WebBorderElement);
+			(this.WebBorderElement.TryFindResource("DecreaseRedBorderStoryboard") as Storyboard).Begin(this.WebBorderElement);
 		}
 
 		// Token: 0x0600029F RID: 671 RVA: 0x00007B23 File Offset: 0x00005D23
@@ -67,13 +67,13 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Overlays
 		// Token: 0x060002A0 RID: 672 RVA: 0x00007B35 File Offset: 0x00005D35
 		private void FileCloseBorder_MouseEnter(object sender, MouseEventArgs e)
 		{
-			(this.FileBorderElement.TryFindResource(_Module_.smethod_2<string>(1254133036)) as Storyboard).Begin(this.FileBorderElement);
+			(this.FileBorderElement.TryFindResource("IncreaseRedBorderStoryboard") as Storyboard).Begin(this.FileBorderElement);
 		}
 
 		// Token: 0x060002A1 RID: 673 RVA: 0x00007B5C File Offset: 0x00005D5C
 		private void FileCloseBorder_MouseLeave(object sender, MouseEventArgs e)
 		{
-			(this.FileBorderElement.TryFindResource(_Module_.smethod_6<string>(-688483077)) as Storyboard).Begin(this.FileBorderElement);
+			(this.FileBorderElement.TryFindResource("DecreaseRedBorderStoryboard") as Storyboard).Begin(this.FileBorderElement);
 		}
 
 		// Token: 0x060002A2 RID: 674 RVA: 0x00007B83 File Offset: 0x00005D83

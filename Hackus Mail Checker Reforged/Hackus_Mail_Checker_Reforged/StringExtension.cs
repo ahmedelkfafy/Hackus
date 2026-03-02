@@ -47,7 +47,7 @@ namespace Hackus_Mail_Checker_Reforged
 		// Token: 0x06000069 RID: 105 RVA: 0x0001080C File Offset: 0x0000EA0C
 		public static string ToPlainText(this string html)
 		{
-			return Regex.Replace(Regex.Replace(Regex.Unescape(Regex.Replace(Regex.Replace(Regex.Replace(html, _Module_.smethod_4<string>(557743937), string.Empty, RegexOptions.Compiled), _Module_.smethod_2<string>(-97739575), string.Empty, RegexOptions.Compiled), _Module_.smethod_6<string>(-808550951), string.Empty, RegexOptions.Compiled)), _Module_.smethod_6<string>(-2141710427), _Module_.smethod_2<string>(1849819774)), _Module_.smethod_4<string>(2136272057), _Module_.smethod_2<string>(-364305307)).Replace(_Module_.smethod_3<string>(-1106851411), string.Empty);
+			return Regex.Replace(Regex.Replace(Regex.Unescape(Regex.Replace(Regex.Replace(Regex.Replace(html, "<style(.|", string.Empty, RegexOptions.Compiled), "<script(.|", string.Empty, RegexOptions.Compiled), "<(.|\\n)*?>", string.Empty, RegexOptions.Compiled)), "[ \\t]{3,}", " "), "[\\s]{2,}", "").Replace("&nbsp;", string.Empty);
 		}
 
 		// Token: 0x0600006A RID: 106 RVA: 0x000108A4 File Offset: 0x0000EAA4

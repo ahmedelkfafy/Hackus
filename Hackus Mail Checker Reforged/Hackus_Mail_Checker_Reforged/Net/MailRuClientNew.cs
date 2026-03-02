@@ -84,19 +84,19 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					using (HttpRequest httpRequest = new HttpRequest())
 					{
 						this.SetHeaders(httpRequest);
-						httpRequest.UserAgent = _Module_.smethod_2<string>(544232174);
-						httpRequest.AddParam(_Module_.smethod_2<string>(-1803175773), this._mailbox.Address);
-						httpRequest.AddParam(_Module_.smethod_3<string>(274735031), _Module_.smethod_4<string>(1092779097));
-						httpRequest.AddParam(_Module_.smethod_2<string>(-46006352), this._mailbox.Password);
-						httpRequest.AddParam(_Module_.smethod_2<string>(1251458512), _Module_.smethod_6<string>(-1622366585));
-						string text = httpRequest.Post(_Module_.smethod_4<string>(124383220)).ToString();
-						if (!text.Contains(_Module_.smethod_2<string>(-720593000)))
+						httpRequest.UserAgent = "Android 3.10.0.7353 4.4.2:GT-I9506:ru.mail.cloud::null";
+						httpRequest.AddParam("username", this._mailbox.Address);
+						httpRequest.AddParam("client_id", "cloud-android");
+						httpRequest.AddParam("password", this._mailbox.Password);
+						httpRequest.AddParam("grant_type", "password");
+						string text = httpRequest.Post("https://o2.mail.ru/token").ToString();
+						if (!text.Contains("access_token"))
 						{
-							if (text.Contains(_Module_.smethod_6<string>(-722061701)))
+							if (text.Contains("invalid username or password"))
 							{
 								result = OperationResult.Bad;
 							}
-							else if (!text.Contains(_Module_.smethod_6<string>(-1313039437)))
+							else if (!text.Contains("user is blocked"))
 							{
 								StatisticsManager.Instance.AddErrorDetails(this._mailbox.Address, text);
 								result = OperationResult.Error;
@@ -151,7 +151,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 						{
 							continue;
 						}
-						ValueTuple<OperationResult, string> valueTuple2 = CaptchaHelpers.CreateInstance().SolveRecaptchaV2Proxyless(item3, _Module_.smethod_6<string>(-1758002524));
+						ValueTuple<OperationResult, string> valueTuple2 = CaptchaHelpers.CreateInstance().SolveRecaptchaV2Proxyless(item3, "https://account.mail.ru");
 						OperationResult item4 = valueTuple2.Item1;
 						string item5 = valueTuple2.Item2;
 						if (item4 == OperationResult.Error)
@@ -206,7 +206,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					{
 						continue;
 					}
-					ValueTuple<OperationResult, string> valueTuple4 = CaptchaHelpers.CreateInstance().SolveCaptcha(Convert.ToBase64String(item7.ToArray()), _Module_.smethod_4<string>(123771213), false);
+					ValueTuple<OperationResult, string> valueTuple4 = CaptchaHelpers.CreateInstance().SolveCaptcha(Convert.ToBase64String(item7.ToArray()), "en", false);
 					OperationResult item8 = valueTuple4.Item1;
 					string item9 = valueTuple4.Item2;
 					if (item8 == OperationResult.Error)
@@ -262,38 +262,38 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					{
 						this.SetHeaders(httpRequest);
 						httpRequest.AllowAutoRedirect = false;
-						httpRequest.AddParam(_Module_.smethod_3<string>(-1580207773), this._mailbox.Address);
-						httpRequest.AddParam(_Module_.smethod_3<string>(-1433986953), this._mailbox.Password);
+						httpRequest.AddParam("Login", this._mailbox.Address);
+						httpRequest.AddParam("Password", this._mailbox.Password);
 						if (reCaptchaToken != null)
 						{
-							httpRequest.AddParam(_Module_.smethod_3<string>(-312141824), reCaptchaToken);
+							httpRequest.AddParam("g-recaptcha-response", reCaptchaToken);
 						}
-						string location = httpRequest.Post(_Module_.smethod_4<string>(-805546105)).Location;
-						if (location.Contains(_Module_.smethod_5<string>(1660845962)))
+						string location = httpRequest.Post("https://aj-https.mail.ru/cgi-bin/auth").Location;
+						if (location.Contains("user/login?login"))
 						{
 							return new ValueTuple<OperationResult, string>(OperationResult.TwoFactor, location);
 						}
-						if (location.Contains(_Module_.smethod_3<string>(-200548770)))
+						if (location.Contains("recaptcha"))
 						{
 							return new ValueTuple<OperationResult, string>(OperationResult.ReCaptcha, location);
 						}
-						if (location.Contains(_Module_.smethod_4<string>(1562246075)))
+						if (location.Contains("fail"))
 						{
 							return new ValueTuple<OperationResult, string>(OperationResult.Bad, location);
 						}
 						if (location.ContainsOne(new string[]
 						{
-							_Module_.smethod_6<string>(1525240939),
-							_Module_.smethod_6<string>(932533418)
+							"recovery",
+							"ukey"
 						}))
 						{
 							return new ValueTuple<OperationResult, string>(OperationResult.Blocked, location);
 						}
-						if (location.Contains(_Module_.smethod_4<string>(-1159001420)))
+						if (location.Contains("inbox"))
 						{
 							return new ValueTuple<OperationResult, string>(OperationResult.Ok, location);
 						}
-						StatisticsManager.Instance.AddErrorDetails(this._mailbox.Address, _Module_.smethod_6<string>(934263203) + location);
+						StatisticsManager.Instance.AddErrorDetails(this._mailbox.Address, "location=" + location);
 						return new ValueTuple<OperationResult, string>(OperationResult.Error, null);
 					}
 				}
@@ -319,7 +319,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					using (HttpRequest httpRequest = new HttpRequest())
 					{
 						this.SetHeaders(httpRequest);
-						Match match = Regex.Match(httpRequest.Get(location, null).ToString(), _Module_.smethod_6<string>(-398896273));
+						Match match = Regex.Match(httpRequest.Get(location, null).ToString(), "recaptchaSitekey\":\"(.+?)\"");
 						if (!match.Success)
 						{
 							return new ValueTuple<OperationResult, string>(OperationResult.Error, null);
@@ -350,7 +350,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					{
 						this.SetHeaders(httpRequest);
 						httpRequest.AllowAutoRedirect = false;
-						if (!httpRequest.Get(_Module_.smethod_6<string>(1229752071), null).ToString().Contains(_Module_.smethod_6<string>(-1008901644)))
+						if (!httpRequest.Get("https://account.mail.ru/api/v1/user/copper", null).ToString().Contains("captcha"))
 						{
 							return OperationResult.TwoFactor;
 						}
@@ -379,7 +379,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					using (HttpRequest httpRequest = new HttpRequest())
 					{
 						this.SetHeaders(httpRequest);
-						MemoryStream memoryStream = httpRequest.Get(_Module_.smethod_2<string>(712878836), null).ToMemoryStream();
+						MemoryStream memoryStream = httpRequest.Get("https://c.mail.ru/c/6", null).ToMemoryStream();
 						if (memoryStream != null && memoryStream.Length != 0L)
 						{
 							return new ValueTuple<OperationResult, MemoryStream>(OperationResult.Ok, memoryStream);
@@ -410,23 +410,23 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					{
 						this.SetHeaders(httpRequest);
 						httpRequest.AllowAutoRedirect = false;
-						httpRequest.AddParam(_Module_.smethod_3<string>(-79318521), _Module_.smethod_2<string>(1444572546) + answer.ToLower() + _Module_.smethod_4<string>(-1851487093));
-						httpRequest.AddParam(_Module_.smethod_6<string>(631855195), _Module_.smethod_6<string>(-701304281));
-						string text = httpRequest.Post(_Module_.smethod_4<string>(-1861103731)).ToString();
-						if (!text.Contains(_Module_.smethod_4<string>(2007671458)))
+						httpRequest.AddParam("fields", "{\"captcha\":\"" + answer.ToLower() + "\"}");
+						httpRequest.AddParam("htmlencoded", "false");
+						string text = httpRequest.Post("https://account.mail.ru/api/v1/user/copper").ToString();
+						if (!text.Contains("OK"))
 						{
-							if (text.Contains(_Module_.smethod_4<string>(-1323708280)))
+							if (text.Contains("429"))
 							{
 								return new ValueTuple<OperationResult, string>(OperationResult.Blocked, null);
 							}
-							if (text.Contains(_Module_.smethod_5<string>(-1040596284)))
+							if (text.Contains("invalid"))
 							{
 								return new ValueTuple<OperationResult, string>(OperationResult.HttpError, null);
 							}
 						}
 						else
 						{
-							Match match = Regex.Match(text, _Module_.smethod_6<string>(1043952367));
+							Match match = Regex.Match(text, "\"url\":\"(.+?)\"");
 							if (match.Success)
 							{
 								return new ValueTuple<OperationResult, string>(OperationResult.Ok, match.Groups[1].Value);
@@ -459,7 +459,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 						this.SetHeaders(httpRequest);
 						httpRequest.AllowAutoRedirect = false;
 						string text = WebUtility.UrlDecode(Regex.Unescape(url));
-						if (!httpRequest.Get(text, null).Location.Contains(_Module_.smethod_3<string>(401747597)))
+						if (!httpRequest.Get(text, null).Location.Contains("inbox"))
 						{
 							return OperationResult.Error;
 						}
@@ -486,8 +486,8 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					httpRequest.AddUrlParam(_Module_.smethod_3<string>(1117564457), this._mailbox.Address);
-					Match match = Regex.Match(httpRequest.Get(_Module_.smethod_4<string>(1305569147), null).ToString(), _Module_.smethod_4<string>(250011521));
+					httpRequest.AddUrlParam("email", this._mailbox.Address);
+					Match match = Regex.Match(httpRequest.Get("https://touch.mail.ru/api/v1/tokens", null).ToString(), "\"token\":\"(.+?)\"");
 					if (match.Success)
 					{
 						this._searchToken = match.Groups[1].Value;
@@ -517,9 +517,9 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					this.SetHeaders(httpRequest);
 					FormUrlEncodedContent formUrlEncodedContent = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>
 					{
-						new KeyValuePair<string, string>(_Module_.smethod_2<string>(-2034377709), _Module_.smethod_3<string>(603798012) + this._mailbox.Address + _Module_.smethod_5<string>(1507851657) + this._searchToken)
+						new KeyValuePair<string, string>("__urlp", "/k8s/ab/smart?fields=[\"emails\"]&filter={\"flags\":{\"has_mailbox\":null}}&email=" + this._mailbox.Address + "&htmlencoded=false&token=" + this._searchToken)
 					}, false, null);
-					foreach (object obj in Regex.Matches(httpRequest.Post(_Module_.smethod_5<string>(1476060657), formUrlEncodedContent).ToString(), _Module_.smethod_5<string>(716255193)))
+					foreach (object obj in Regex.Matches(httpRequest.Post("https://touch.mail.ru/api/v1", formUrlEncodedContent).ToString(), "emails\\\":\\[\\\"(.+?)\\\"\\]"))
 					{
 						FileManager.SaveContact(((Match)obj).Groups[1].Value);
 					}
@@ -836,20 +836,20 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					using (HttpRequest httpRequest = new HttpRequest())
 					{
 						this.SetHeaders(httpRequest);
-						httpRequest.AddUrlParam(_Module_.smethod_6<string>(-1094373818), this._searchToken);
-						httpRequest.AddUrlParam(_Module_.smethod_2<string>(1629539053), 1);
-						httpRequest.AddUrlParam(_Module_.smethod_5<string>(1629054962), 1);
-						httpRequest.AddUrlParam(_Module_.smethod_4<string>(-2132205616), _Module_.smethod_4<string>(316715980));
-						httpRequest.AddUrlParam(_Module_.smethod_3<string>(1889210912), _Module_.smethod_4<string>(316715980));
-						httpRequest.AddUrlParam(_Module_.smethod_6<string>(1963284886), _Module_.smethod_4<string>(1274271205));
-						httpRequest.AddUrlParam(_Module_.smethod_2<string>(-1582845470), this._mailbox.Address);
-						string input = httpRequest.Get(_Module_.smethod_5<string>(109444034), null).ToString();
+						httpRequest.AddUrlParam("token", this._searchToken);
+						httpRequest.AddUrlParam("json", 1);
+						httpRequest.AddUrlParam("ajax_call", 1);
+						httpRequest.AddUrlParam("q_query", "*");
+						httpRequest.AddUrlParam("q_folder", "*");
+						httpRequest.AddUrlParam("q_attach", "1");
+						httpRequest.AddUrlParam("x-email", this._mailbox.Address);
+						string input = httpRequest.Get("https://touch.mail.ru/cgi-bin/gosearch", null).ToString();
 						leftAttachmentMessages = new Queue<Uid>();
-						if (!Regex.Match(input, _Module_.smethod_4<string>(-117868751)).Success)
+						if (!Regex.Match(input, "\"status\":\"OK\"").Success)
 						{
 							return OperationResult.Ok;
 						}
-						foreach (object obj in Regex.Matches(input, _Module_.smethod_2<string>(2029387651)))
+						foreach (object obj in Regex.Matches(input, "id\":\"(.+?)\""))
 						{
 							Match match = (Match)obj;
 							leftAttachmentMessages.Enqueue(new Uid(match.Groups[1].Value));
@@ -890,19 +890,19 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				{
 					this.SetHeaders(httpRequest);
 					this.SetSearchHeaders(httpRequest, searchRequest);
-					string input = httpRequest.Get(_Module_.smethod_2<string>(-334340141), null).ToString();
-					Match match = Regex.Match(input, _Module_.smethod_5<string>(1592097901));
+					string input = httpRequest.Get("https://touch.mail.ru/cgi-bin/gosearch", null).ToString();
+					Match match = Regex.Match(input, "\"status\":\"OK\"");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
-					match = Regex.Match(input, _Module_.smethod_6<string>(482380976));
+					match = Regex.Match(input, "\"count\":(.+?)\\,");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
 					searchRequest.Count = int.Parse(match.Groups[1].Value);
-					foreach (object obj in Regex.Matches(input, _Module_.smethod_4<string>(932880556)))
+					foreach (object obj in Regex.Matches(input, "id\":\"(.+?)\""))
 					{
 						Match match2 = (Match)obj;
 						searchRequest.FindedUids.Add(new Uid(match2.Groups[1].Value));
@@ -930,30 +930,30 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					httpRequest.AddUrlParam(_Module_.smethod_4<string>(240394883), uid.UID);
-					httpRequest.AddUrlParam(_Module_.smethod_6<string>(598989280), this._mailbox.Address);
-					httpRequest.AddUrlParam(_Module_.smethod_3<string>(-1418633577), this._searchToken);
-					string input = httpRequest.Get(_Module_.smethod_4<string>(-1512456735), null).ToString();
-					Match match = Regex.Match(input, _Module_.smethod_5<string>(-122630454));
+					httpRequest.AddUrlParam("id", uid.UID);
+					httpRequest.AddUrlParam("email", this._mailbox.Address);
+					httpRequest.AddUrlParam("token", this._searchToken);
+					string input = httpRequest.Get("https://touch.mail.ru/api/v1/messages/message", null).ToString();
+					Match match = Regex.Match(input, "\"subject\":(.+?),");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
 					message.Subject = match.Groups[1].Value;
-					match = Regex.Match(input, _Module_.smethod_5<string>(1549974779));
+					match = Regex.Match(input, "\"date\":(.+?),");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
 					long unixTimeStamp = long.Parse(match.Groups[1].Value);
 					message.Date = DateHelpers.UnixTimeStampToDate(unixTimeStamp);
-					match = Regex.Match(input, _Module_.smethod_2<string>(-135777895));
+					match = Regex.Match(input, "\"html\":\"(.+?)\",\"text");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
-					message.AlternateViews.Add(new Attachment(_Module_.smethod_5<string>(473053949), match.Groups[1].Value));
-					MatchCollection matchCollection = Regex.Matches(input, _Module_.smethod_4<string>(-902324492));
+					message.AlternateViews.Add(new Attachment("text/html", match.Groups[1].Value));
+					MatchCollection matchCollection = Regex.Matches(input, "\"email\":\"(.+?)\"");
 					if (matchCollection.Count > 2 && matchCollection[1].Success)
 					{
 						message.From = matchCollection[1].Groups[1].Value;
@@ -961,7 +961,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 						{
 							try
 							{
-								match = Regex.Match(input, _Module_.smethod_5<string>(30363851));
+								match = Regex.Match(input, "\\\"attaches\\\":\\{.+?\\\"list\\\":(.+?)\\},\\\"date");
 								if (match.Success)
 								{
 									AttachmentInfo[] array = JsonConvert.DeserializeObject<AttachmentInfo[]>(match.Groups[1].Value);
@@ -1003,7 +1003,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 		{
 			Request request = new Request
 			{
-				Sender = _Module_.smethod_3<string>(-1039523318)
+				Sender = "security@id.mail.ru"
 			};
 			request.FindedUids = new HashSet<Uid>();
 			if (this.Search(request) == OperationResult.Ok)
@@ -1023,31 +1023,31 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					StringBuilder stringBuilder = new StringBuilder(_Module_.smethod_6<string>(1071628927));
+					StringBuilder stringBuilder = new StringBuilder("[");
 					for (int i = 0; i < uids.Count; i++)
 					{
-						stringBuilder.Append(_Module_.smethod_5<string>(1111656108));
+						stringBuilder.Append("\"");
 						stringBuilder.Append(uids[i].UID);
 						if (i != uids.Count - 1)
 						{
-							stringBuilder.Append(_Module_.smethod_3<string>(2131671410));
+							stringBuilder.Append("\", ");
 						}
 						else
 						{
-							stringBuilder.Append(_Module_.smethod_3<string>(1298413043));
+							stringBuilder.Append("\"");
 						}
 					}
-					stringBuilder.Append(_Module_.smethod_3<string>(1850728268));
+					stringBuilder.Append("]");
 					FormUrlEncodedContent formUrlEncodedContent = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>
 					{
-						new KeyValuePair<string, string>(_Module_.smethod_4<string>(1300760828), (destination == MoveDestination.Trash) ? _Module_.smethod_6<string>(-11320458) : _Module_.smethod_6<string>(-113786115)),
-						new KeyValuePair<string, string>(_Module_.smethod_2<string>(340122552), stringBuilder.ToString()),
-						new KeyValuePair<string, string>(_Module_.smethod_5<string>(1487982047), _Module_.smethod_2<string>(-1874002529)),
-						new KeyValuePair<string, string>(_Module_.smethod_3<string>(1117564457), this._mailbox.Address),
-						new KeyValuePair<string, string>(_Module_.smethod_3<string>(803920988), _Module_.smethod_5<string>(1771717145)),
-						new KeyValuePair<string, string>(_Module_.smethod_6<string>(-1094373818), this._searchToken)
+						new KeyValuePair<string, string>("__urlp", (destination == MoveDestination.Trash) ? "/messages/move" : "/messages/remove"),
+						new KeyValuePair<string, string>("ids", stringBuilder.ToString()),
+						new KeyValuePair<string, string>("folder", "500002"),
+						new KeyValuePair<string, string>("email", this._mailbox.Address),
+						new KeyValuePair<string, string>("htmlencoded", "false"),
+						new KeyValuePair<string, string>("token", this._searchToken)
 					}, false, null);
-					if (httpRequest.Post(_Module_.smethod_5<string>(1476060657), formUrlEncodedContent).ToString().Contains(_Module_.smethod_2<string>(-625497200)))
+					if (httpRequest.Post("https://touch.mail.ru/api/v1", formUrlEncodedContent).ToString().Contains("\"status\":200"))
 					{
 						result = OperationResult.Ok;
 					}
@@ -1113,45 +1113,45 @@ namespace Hackus_Mail_Checker_Reforged.Net
 			request.ReadWriteTimeout = CheckerSettings.Instance.Timeout * 1000;
 			request.Cookies = this._cookies;
 			request.Proxy = this._proxyClient;
-			request.UserAgent = _Module_.smethod_4<string>(-486361030);
+			request.UserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_3_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) GSA/50.0.197507736 Mobile/17D50 Safari/604.1";
 		}
 
 		// Token: 0x06000555 RID: 1365 RVA: 0x00020624 File Offset: 0x0001E824
 		private void SetSearchHeaders(HttpRequest request, Request searchRequest)
 		{
 			int num = SearchSettings.Instance.DownloadLetters ? SearchSettings.Instance.DownloadLettersLimit : 1;
-			request.AddUrlParam(_Module_.smethod_6<string>(-1094373818), this._searchToken);
-			request.AddUrlParam(_Module_.smethod_3<string>(1005971403), 1);
-			request.AddUrlParam(_Module_.smethod_5<string>(1629054962), 1);
-			request.AddUrlParam(_Module_.smethod_5<string>(-1399834772), 1);
-			request.AddUrlParam(_Module_.smethod_4<string>(-466515747), _Module_.smethod_5<string>(918127949));
-			request.AddUrlParam(_Module_.smethod_4<string>(-1653209737), num);
-			request.AddUrlParam(_Module_.smethod_5<string>(-1753112565), this._mailbox.Address);
+			request.AddUrlParam("token", this._searchToken);
+			request.AddUrlParam("json", 1);
+			request.AddUrlParam("ajax_call", 1);
+			request.AddUrlParam("page", 1);
+			request.AddUrlParam("q_folder", "all");
+			request.AddUrlParam("count", num);
+			request.AddUrlParam("x-email", this._mailbox.Address);
 			if (searchRequest.Sender != null)
 			{
-				request.AddUrlParam(_Module_.smethod_5<string>(-2084136846), searchRequest.Sender);
+				request.AddUrlParam("q_from", searchRequest.Sender);
 			}
 			if (searchRequest.Subject != null)
 			{
-				request.AddUrlParam(_Module_.smethod_6<string>(1914546539), searchRequest.Subject);
+				request.AddUrlParam("q_subj", searchRequest.Subject);
 			}
 			if (searchRequest.Body != null)
 			{
-				request.AddUrlParam(_Module_.smethod_5<string>(1249152230), searchRequest.Body);
+				request.AddUrlParam("q_query", searchRequest.Body);
 			}
 			if (searchRequest.CheckDate)
 			{
 				if (searchRequest.DateFrom != null)
 				{
-					request.AddUrlParam(_Module_.smethod_6<string>(1321839018), searchRequest.DateFrom.Value.Day);
-					request.AddUrlParam(_Module_.smethod_5<string>(1451024986), searchRequest.DateFrom.Value.Month);
-					request.AddUrlParam(_Module_.smethod_6<string>(2064020758), searchRequest.DateFrom.Value.Year);
+					request.AddUrlParam("ddb", searchRequest.DateFrom.Value.Day);
+					request.AddUrlParam("dmb", searchRequest.DateFrom.Value.Month);
+					request.AddUrlParam("dyb", searchRequest.DateFrom.Value.Year);
 				}
 				if (searchRequest.DateTo != null)
 				{
-					request.AddUrlParam(_Module_.smethod_2<string>(-1340871065), searchRequest.DateTo.Value.Day);
-					request.AddUrlParam(_Module_.smethod_2<string>(-508534179), searchRequest.DateTo.Value.Month);
-					request.AddUrlParam(_Module_.smethod_4<string>(1847685180), searchRequest.DateTo.Value.Year);
+					request.AddUrlParam("dde", searchRequest.DateTo.Value.Day);
+					request.AddUrlParam("dme", searchRequest.DateTo.Value.Month);
+					request.AddUrlParam("dye", searchRequest.DateTo.Value.Year);
 					return;
 				}
 			}
@@ -1159,15 +1159,15 @@ namespace Hackus_Mail_Checker_Reforged.Net
 			{
 				if (SearchSettings.Instance.DateFrom != null)
 				{
-					request.AddUrlParam(_Module_.smethod_4<string>(186803630), SearchSettings.Instance.DateFrom.Value.Day);
-					request.AddUrlParam(_Module_.smethod_4<string>(-868753996), SearchSettings.Instance.DateFrom.Value.Month);
-					request.AddUrlParam(_Module_.smethod_4<string>(1673361682), SearchSettings.Instance.DateFrom.Value.Year);
+					request.AddUrlParam("ddb", SearchSettings.Instance.DateFrom.Value.Day);
+					request.AddUrlParam("dmb", SearchSettings.Instance.DateFrom.Value.Month);
+					request.AddUrlParam("dyb", SearchSettings.Instance.DateFrom.Value.Year);
 				}
 				if (SearchSettings.Instance.DateTo != null)
 				{
-					request.AddUrlParam(_Module_.smethod_5<string>(1071122254), SearchSettings.Instance.DateTo.Value.Day);
-					request.AddUrlParam(_Module_.smethod_4<string>(884097622), SearchSettings.Instance.DateTo.Value.Month);
-					request.AddUrlParam(_Module_.smethod_5<string>(691219522), SearchSettings.Instance.DateTo.Value.Year);
+					request.AddUrlParam("dde", SearchSettings.Instance.DateTo.Value.Day);
+					request.AddUrlParam("dme", SearchSettings.Instance.DateTo.Value.Month);
+					request.AddUrlParam("dye", SearchSettings.Instance.DateTo.Value.Year);
 				}
 			}
 		}

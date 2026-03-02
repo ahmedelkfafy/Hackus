@@ -18,7 +18,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Models
 			set
 			{
 				this._address = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(95536999));
+				base.OnPropertyChanged(nameof(Address));
 			}
 		}
 
@@ -34,7 +34,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Models
 			set
 			{
 				this._message = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(470273670));
+				base.OnPropertyChanged(nameof(Message));
 			}
 		}
 
@@ -50,7 +50,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Models
 			set
 			{
 				this._time = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(-831966319));
+				base.OnPropertyChanged(nameof(Time));
 			}
 		}
 

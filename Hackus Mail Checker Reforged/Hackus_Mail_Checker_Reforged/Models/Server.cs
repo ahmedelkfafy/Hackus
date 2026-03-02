@@ -35,7 +35,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._domain = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(-1749812650));
+				base.OnPropertyChanged(nameof(Domain));
 			}
 		}
 
@@ -51,7 +51,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._hostname = value;
-				base.OnPropertyChanged(_Module_.smethod_5<string>(90370938));
+				base.OnPropertyChanged(nameof(Hostname));
 			}
 		}
 
@@ -67,7 +67,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._port = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(1623621146));
+				base.OnPropertyChanged(nameof(Port));
 			}
 		}
 
@@ -83,7 +83,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._protocol = value;
-				base.OnPropertyChanged(_Module_.smethod_4<string>(-74506143));
+				base.OnPropertyChanged(nameof(Protocol));
 			}
 		}
 
@@ -99,14 +99,14 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._socket = value;
-				base.OnPropertyChanged(_Module_.smethod_3<string>(-1534346053));
+				base.OnPropertyChanged(nameof(Socket));
 			}
 		}
 
 		// Token: 0x060009F7 RID: 2551 RVA: 0x0003ADD8 File Offset: 0x00038FD8
 		public static Server GetFromString(string line)
 		{
-			Match match = Regex.Match(line, _Module_.smethod_2<string>(1556211310));
+			Match match = Regex.Match(line, "\\[DOMAIN\\](.+?)\\[\\/DOMAIN\\]\\[SERVER\\](.+?)\\[\\/SERVER\\]\\[TYPE\\](.+?)\\[\\/TYPE\\]\\[PORT\\](.+?)\\[\\/PORT\\]\\[SSL\\](.+?)\\[\\/SSL\\]");
 			if (!match.Success)
 			{
 				return null;
@@ -119,8 +119,8 @@ namespace Hackus_Mail_Checker_Reforged.Models
 					Domain = match.Groups[1].Value,
 					Hostname = match.Groups[2].Value,
 					Port = port,
-					Protocol = ((match.Groups[3].Value == _Module_.smethod_2<string>(1123723022)) ? ProtocolType.IMAP : ProtocolType.POP3),
-					Socket = ((match.Groups[5].Value == _Module_.smethod_2<string>(816196536)) ? SocketType.SSL : SocketType.Plain)
+					Protocol = ((match.Groups[3].Value == "IMAP") ? ProtocolType.IMAP : ProtocolType.POP3),
+					Socket = ((match.Groups[5].Value == "1") ? SocketType.SSL : SocketType.Plain)
 				};
 			}
 			return null;

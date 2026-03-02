@@ -18,7 +18,7 @@ namespace Hackus_Mail_Checker_Reforged.Helpers
 				{
 					rngcryptoServiceProvider.GetBytes(array);
 					uint num = BitConverter.ToUInt32(array, 0);
-					stringBuilder.Append(_Module_.smethod_3<string>(-289343236)[(int)(num % (uint)_Module_.smethod_4<string>(622787849).Length)]);
+					stringBuilder.Append("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"[(int)(num % (uint)"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".Length)]);
 				}
 			}
 			return stringBuilder.ToString();

@@ -20,22 +20,22 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					string text = _Module_.smethod_3<string>(211063408) + WebSettings.Instance.CaptchaSolvationKey + _Module_.smethod_5<string>(1961668511);
-					string text2 = httpRequest.Post(_Module_.smethod_3<string>(1656189201), text, _Module_.smethod_2<string>(1371120848)).ToString();
-					if (text2.Contains(_Module_.smethod_3<string>(-2036481728)) || text2.Contains(_Module_.smethod_4<string>(1140338017)))
+					string text = "{\"clientKey\":\"" + WebSettings.Instance.CaptchaSolvationKey + "\"}";
+					string text2 = httpRequest.Post("http://api.anti-captcha.com/getBalance", text, "application/json").ToString();
+					if (text2.Contains("\"errorId\":0") || text2.Contains("\"errorId\": 0"))
 					{
-						Match match = Regex.Match(text2, _Module_.smethod_5<string>(643137585));
+						Match match = Regex.Match(text2, "\"balance\":(.+?)}");
 						if (match.Success)
 						{
-							return new ValueTuple<OperationResult, string>(OperationResult.Ok, match.Groups[1].Value + _Module_.smethod_4<string>(1401823264));
+							return new ValueTuple<OperationResult, string>(OperationResult.Ok, match.Groups[1].Value + " USD");
 						}
 					}
-					Match match2 = Regex.Match(text2, _Module_.smethod_2<string>(-538251435));
+					Match match2 = Regex.Match(text2, "\"errorDescription\":\"(.+?)\"");
 					if (match2.Success)
 					{
 						return new ValueTuple<OperationResult, string>(OperationResult.Error, match2.Groups[1].Value);
 					}
-					return new ValueTuple<OperationResult, string>(OperationResult.Error, _Module_.smethod_2<string>(-1503871187));
+					return new ValueTuple<OperationResult, string>(OperationResult.Error, "Unknown error");
 				}
 			}
 			catch
@@ -49,9 +49,9 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 		{
 			if (lang == null)
 			{
-				lang = _Module_.smethod_3<string>(-1051087952);
+				lang = "en";
 			}
-			string lang2 = (lang == _Module_.smethod_3<string>(-10129125)) ? _Module_.smethod_5<string>(-1256376075) : lang;
+			string lang2 = (lang == "ru") ? "rn" : lang;
 			ValueTuple<OperationResult, string> valueTuple = this.SendCaptchaRequest(base64, lang2, onlyLetters);
 			OperationResult item = valueTuple.Item1;
 			string item2 = valueTuple.Item2;
@@ -101,20 +101,20 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 						this.SetHeaders(httpRequest);
 						string text = string.Concat(new string[]
 						{
-							_Module_.smethod_2<string>(1409307914),
+							"{\"languagePool\":\"",
 							lang,
-							_Module_.smethod_5<string>(-2016181539),
+							"\",\"clientKey\":\"",
 							WebSettings.Instance.CaptchaSolvationKey,
-							_Module_.smethod_5<string>(-723479038),
+							"\",\"task\":{\"type\":\"ImageToTextTask\",\"body\":\"",
 							base64,
-							_Module_.smethod_3<string>(1255943249),
+							"\",\"numeric\":",
 							(onlyLetters ? 2 : 0).ToString(),
-							_Module_.smethod_2<string>(-1104022589)
+							"}}"
 						});
-						string text2 = httpRequest.Post(_Module_.smethod_3<string>(413113823), text, _Module_.smethod_6<string>(-989874009)).ToString();
-						if (text2.Contains(_Module_.smethod_5<string>(2130957513)))
+						string text2 = httpRequest.Post("http://api.anti-captcha.com/createTask", text, "application/json").ToString();
+						if (text2.Contains("\"errorId\":0"))
 						{
-							Match match = Regex.Match(text2, _Module_.smethod_6<string>(-1671208907));
+							Match match = Regex.Match(text2, "\"taskId\":(.+?)}");
 							if (match.Success)
 							{
 								return new ValueTuple<OperationResult, string>(OperationResult.Ok, match.Groups[1].Value);
@@ -143,18 +143,18 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 						this.SetHeaders(httpRequest);
 						string text = string.Concat(new string[]
 						{
-							_Module_.smethod_3<string>(211063408),
+							"{\"clientKey\":\"",
 							WebSettings.Instance.CaptchaSolvationKey,
-							_Module_.smethod_3<string>(-1834431313),
+							"\",\"task\":{\"type\":\"RecaptchaV2TaskProxyless\",\"websiteURL\":\"",
 							pageUrl,
-							_Module_.smethod_6<string>(1587817566),
+							"\",\"websiteKey\":\"",
 							siteKey,
-							_Module_.smethod_6<string>(-485793865)
+							"\"}}"
 						});
-						string text2 = httpRequest.Post(_Module_.smethod_4<string>(1576146762), text, _Module_.smethod_4<string>(-423852883)).ToString();
-						if (text2.Contains(_Module_.smethod_3<string>(-2036481728)))
+						string text2 = httpRequest.Post("http://api.anti-captcha.com/createTask", text, "application/json").ToString();
+						if (text2.Contains("\"errorId\":0"))
 						{
-							Match match = Regex.Match(text2, _Module_.smethod_4<string>(-1421010937));
+							Match match = Regex.Match(text2, "\"taskId\":(.+?)}");
 							if (match.Success)
 							{
 								return new ValueTuple<OperationResult, string>(OperationResult.Ok, match.Groups[1].Value);
@@ -183,20 +183,20 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 						this.SetHeaders(httpRequest);
 						string text = string.Concat(new string[]
 						{
-							_Module_.smethod_6<string>(263307015),
+							"{\"clientKey\":\"",
 							WebSettings.Instance.CaptchaSolvationKey,
-							_Module_.smethod_3<string>(1377173498),
+							"\",\"task\":{\"type\":\"HCaptchaTaskProxyless\",\"websiteURL\":\"",
 							pageUrl,
-							_Module_.smethod_6<string>(1587817566),
+							"\",\"websiteKey\":\"",
 							siteKey,
-							_Module_.smethod_3<string>(1417583581),
+							"\",\"userAgent\":\"",
 							userAgent,
-							_Module_.smethod_6<string>(-485793865)
+							"\"}}"
 						});
-						string text2 = httpRequest.Post(_Module_.smethod_6<string>(-776093378), text, _Module_.smethod_6<string>(-989874009)).ToString();
-						if (text2.Contains(_Module_.smethod_4<string>(167133821)))
+						string text2 = httpRequest.Post("http://api.anti-captcha.com/createTask", text, "application/json").ToString();
+						if (text2.Contains("\"errorId\":0"))
 						{
-							Match match = Regex.Match(text2, _Module_.smethod_2<string>(1711237442));
+							Match match = Regex.Match(text2, "\"taskId\":(.+?)}");
 							if (match.Success)
 							{
 								return new ValueTuple<OperationResult, string>(OperationResult.Ok, match.Groups[1].Value);
@@ -229,27 +229,27 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 						this.SetHeaders(httpRequest);
 						string text = string.Concat(new string[]
 						{
-							_Module_.smethod_5<string>(-644398855),
+							"{\"clientKey\":\"",
 							WebSettings.Instance.CaptchaSolvationKey,
-							_Module_.smethod_2<string>(-652490350),
+							"\",\"taskId\":",
 							id,
-							_Module_.smethod_3<string>(-1035668440)
+							"}"
 						});
-						string text2 = httpRequest.Post(_Module_.smethod_3<string>(-1994144206), text, _Module_.smethod_6<string>(-989874009)).ToString();
-						if (text2.Contains(_Module_.smethod_4<string>(-1677687865)))
+						string text2 = httpRequest.Post("http://api.anti-captcha.com/getTaskResult", text, "application/json").ToString();
+						if (text2.Contains("\"status\":\"ready\""))
 						{
-							Match match = Regex.Match(text2, _Module_.smethod_2<string>(362088937));
+							Match match = Regex.Match(text2, "\"gRecaptchaResponse\":\"(.+?)\"");
 							if (match.Success)
 							{
 								return new ValueTuple<OperationResult, string>(OperationResult.Ok, match.Groups[1].Value);
 							}
-							match = Regex.Match(text2, _Module_.smethod_3<string>(936517463));
+							match = Regex.Match(text2, "\"text\":\"(.+?)\"");
 							if (match.Success)
 							{
 								return new ValueTuple<OperationResult, string>(OperationResult.Ok, match.Groups[1].Value);
 							}
 						}
-						else if (text2.Contains(_Module_.smethod_6<string>(-1970157345)))
+						else if (text2.Contains("\"status\":\"processing\""))
 						{
 							Thread.Sleep(10000);
 							goto IL_143;

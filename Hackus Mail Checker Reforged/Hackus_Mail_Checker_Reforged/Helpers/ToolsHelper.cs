@@ -14,11 +14,11 @@ namespace Hackus_Mail_Checker_Reforged.Helpers
 			string directoryName = Path.GetDirectoryName(path);
 			string str = Path.GetFileNameWithoutExtension(path);
 			string extension = Path.GetExtension(path);
-			str = str + _Module_.smethod_4<string>(2127355163) + command;
+			str = str + "_" + command;
 			int num = 1;
 			while (File.Exists(path))
 			{
-				path = Path.Combine(directoryName, str + _Module_.smethod_4<string>(-405843621) + num.ToString() + extension);
+				path = Path.Combine(directoryName, str + " " + num.ToString() + extension);
 				num++;
 			}
 			return new FileInfo(path);

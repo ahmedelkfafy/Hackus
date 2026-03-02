@@ -86,7 +86,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 			request.ConnectTimeout = CheckerSettings.Instance.Timeout * 1000;
 			request.Cookies = this._cookies;
 			request.Proxy = this._proxyClient;
-			request.UserAgent = _Module_.smethod_3<string>(1998876527);
+			request.UserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_3_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) GSA/50.0.197507736 Mobile/17D50 Safari/604.1";
 		}
 
 		// Token: 0x0600059E RID: 1438 RVA: 0x00009C78 File Offset: 0x00007E78

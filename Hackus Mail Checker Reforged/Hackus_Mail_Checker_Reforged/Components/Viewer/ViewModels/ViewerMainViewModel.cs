@@ -30,7 +30,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels
 			set
 			{
 				this._tabs = value;
-				base.OnPropertyChanged(_Module_.smethod_6<string>(1743498216));
+				base.OnPropertyChanged(nameof(Tabs));
 			}
 		}
 

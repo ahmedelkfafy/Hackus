@@ -42,27 +42,27 @@ namespace Hackus_Mail_Checker_Reforged.Services.Background
 			if (StatisticsManager.Instance.LastCheckedStrings > 0 && StatisticsManager.Instance.Speed > 0)
 			{
 				TimeSpan timeSpan = TimeSpan.FromMinutes((double)((MailManager.Instance.Count() - StatisticsManager.Instance.LastCheckedStrings) / StatisticsManager.Instance.Speed));
-				string text = ResourceHelper.GetResource<string>(_Module_.smethod_4<string>(1818310996)) + _Module_.smethod_5<string>(-1400629406);
+				string text = ResourceHelper.GetResource<string>("l_EstimatedCompletionTime") + ": ";
 				if (timeSpan.Days > 0)
 				{
-					text += string.Format(_Module_.smethod_3<string>(-454507766), timeSpan.Days);
+					text += string.Format("{0:00} d. ", timeSpan.Days);
 				}
 				if (timeSpan.Hours > 0)
 				{
-					text += string.Format(_Module_.smethod_4<string>(-2114808361), timeSpan.Hours);
+					text += string.Format("{0:00} h. ", timeSpan.Hours);
 				}
 				if (timeSpan.Minutes > 0)
 				{
-					text += string.Format(_Module_.smethod_5<string>(-120642929), timeSpan.Minutes);
+					text += string.Format("{0:00} min. ", timeSpan.Minutes);
 				}
 				if (timeSpan.Seconds > 0)
 				{
-					text += string.Format(_Module_.smethod_2<string>(-1585619158), timeSpan.Seconds);
+					text += string.Format("{0:00} s. ", timeSpan.Seconds);
 				}
 				StatisticsManager.Instance.EstimatedCompletionTime = text;
 				return;
 			}
-			StatisticsManager.Instance.EstimatedCompletionTime = ResourceHelper.GetResource<string>(_Module_.smethod_5<string>(-640823942)) + _Module_.smethod_2<string>(-649890199);
+			StatisticsManager.Instance.EstimatedCompletionTime = ResourceHelper.GetResource<string>("l_EstimatedCompletionTime") + ": ∞";
 		}
 
 		// Token: 0x04000299 RID: 665

@@ -96,7 +96,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 								{
 									continue;
 								}
-								ValueTuple<OperationResult, string> valueTuple = CaptchaHelpers.CreateInstance().SolveCaptcha(Convert.ToBase64String(item2.ToArray()), _Module_.smethod_3<string>(-1051087952), false);
+								ValueTuple<OperationResult, string> valueTuple = CaptchaHelpers.CreateInstance().SolveCaptcha(Convert.ToBase64String(item2.ToArray()), "en", false);
 								operationResult2 = valueTuple.Item1;
 								captchaAnswer = valueTuple.Item2;
 								if (operationResult2 == OperationResult.Error)
@@ -146,27 +146,27 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					string text = httpRequest.Get(_Module_.smethod_5<string>(-454449369), null).ToString();
-					Match match = Regex.Match(text, _Module_.smethod_3<string>(1558220492));
+					string text = httpRequest.Get("https://poczta.interia.pl/logowanie", null).ToString();
+					Match match = Regex.Match(text, "\"client_id\":\"(.+?)\"");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
 					this._clientId = match.Groups[1].Value;
-					match = Regex.Match(text, _Module_.smethod_6<string>(1782674537));
+					match = Regex.Match(text, "\"crc\":\"(.+?)\"");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
 					this._crc = match.Groups[1].Value;
-					match = Regex.Match(text, _Module_.smethod_3<string>(-2134450437));
+					match = Regex.Match(text, "\"code_challenge\":\"(.+?)\"");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
 					this._codeChallenge = match.Groups[1].Value;
 					this._deviceUid = Guid.NewGuid().ToString();
-					if (text.Contains(_Module_.smethod_3<string>(-970267786)))
+					if (text.Contains("\"captcha\":{\"required\":true"))
 					{
 						return OperationResult.Captcha;
 					}
@@ -193,14 +193,14 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				{
 					this.SetHeaders(httpRequest);
 					httpRequest.AllowAutoRedirect = false;
-					string input = httpRequest.Get(_Module_.smethod_3<string>(-2094040354), null).ToString();
-					Match match = Regex.Match(input, _Module_.smethod_5<string>(-1852856992));
+					string input = httpRequest.Get("https://poczta.interia.pl/logowanie/getEnigmaJS", null).ToString();
+					Match match = Regex.Match(input, "\"uid\":\"(.+?)\"");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
 					captchaUid = match.Groups[1].Value;
-					match = Regex.Match(input, _Module_.smethod_6<string>(1043952367));
+					match = Regex.Match(input, "\"url\":\"(.+?)\"");
 					if (match.Success)
 					{
 						captchaUrl = Regex.Unescape(match.Groups[1].Value);
@@ -263,40 +263,40 @@ namespace Hackus_Mail_Checker_Reforged.Net
 						httpRequest.AllowAutoRedirect = false;
 						List<KeyValuePair<string, string>> list = new List<KeyValuePair<string, string>>
 						{
-							new KeyValuePair<string, string>(_Module_.smethod_4<string>(-771887872), this._mailbox.Address),
-							new KeyValuePair<string, string>(_Module_.smethod_6<string>(-1622366585), this._mailbox.Password),
-							new KeyValuePair<string, string>(_Module_.smethod_4<string>(-1294858366), this._clientId),
-							new KeyValuePair<string, string>(_Module_.smethod_2<string>(-1427794547), this._codeChallenge),
-							new KeyValuePair<string, string>(_Module_.smethod_2<string>(653047668), this._crc),
-							new KeyValuePair<string, string>(_Module_.smethod_5<string>(1645347779), _Module_.smethod_6<string>(1186507446)),
-							new KeyValuePair<string, string>(_Module_.smethod_3<string>(1760270907), _Module_.smethod_3<string>(-1370513738)),
-							new KeyValuePair<string, string>(_Module_.smethod_3<string>(-1651456880), _Module_.smethod_4<string>(893801997)),
-							new KeyValuePair<string, string>(_Module_.smethod_2<string>(-1378835012), _Module_.smethod_4<string>(613083474)),
-							new KeyValuePair<string, string>(_Module_.smethod_6<string>(1038763012), _Module_.smethod_5<string>(-415504783)),
-							new KeyValuePair<string, string>(_Module_.smethod_3<string>(676908422), _Module_.smethod_3<string>(-1891989939)),
-							new KeyValuePair<string, string>(_Module_.smethod_2<string>(-1261871991), _Module_.smethod_5<string>(-1209088772)),
-							new KeyValuePair<string, string>(_Module_.smethod_2<string>(1518024244), _Module_.smethod_3<string>(-1811169773)),
-							new KeyValuePair<string, string>(_Module_.smethod_6<string>(324257832), this._deviceUid)
+							new KeyValuePair<string, string>("email", this._mailbox.Address),
+							new KeyValuePair<string, string>("password", this._mailbox.Password),
+							new KeyValuePair<string, string>("client_id", this._clientId),
+							new KeyValuePair<string, string>("code_challenge", this._codeChallenge),
+							new KeyValuePair<string, string>("crc", this._crc),
+							new KeyValuePair<string, string>("webmailSelect", "touchMail"),
+							new KeyValuePair<string, string>("code_challenge_method", "S256"),
+							new KeyValuePair<string, string>("grant_type", "password"),
+							new KeyValuePair<string, string>("response_type", "code"),
+							new KeyValuePair<string, string>("isMobilePhone", "1"),
+							new KeyValuePair<string, string>("referer", "https%3A%2F%2Fpoczta.interia.pl%2F"),
+							new KeyValuePair<string, string>("redirect_uri", "https://poczta.interia.pl/logowanie/sso/login"),
+							new KeyValuePair<string, string>("scope", "email basic login"),
+							new KeyValuePair<string, string>("device_uid", this._deviceUid)
 						};
 						if (captchaUid != null && captchaAnswer != null)
 						{
-							list.Add(new KeyValuePair<string, string>(_Module_.smethod_5<string>(-418286942), _Module_.smethod_6<string>(1064709787)));
-							list.Add(new KeyValuePair<string, string>(_Module_.smethod_6<string>(-1599879380), captchaUid));
-							list.Add(new KeyValuePair<string, string>(_Module_.smethod_3<string>(486422641), captchaAnswer));
+							list.Add(new KeyValuePair<string, string>("captcha", "[object Object]"));
+							list.Add(new KeyValuePair<string, string>("captcha[id]", captchaUid));
+							list.Add(new KeyValuePair<string, string>("captcha[input]", captchaAnswer));
 						}
 						else
 						{
-							list.Add(new KeyValuePair<string, string>(_Module_.smethod_4<string>(308323356), ""));
+							list.Add(new KeyValuePair<string, string>("captcha", ""));
 						}
 						FormUrlEncodedContent formUrlEncodedContent = new FormUrlEncodedContent(list, false, null);
-						httpRequest.Post(_Module_.smethod_5<string>(114610095), formUrlEncodedContent).ToString();
+						httpRequest.Post("https://auth.interia.pl/auth", formUrlEncodedContent).ToString();
 						string location = httpRequest.Response.Location;
-						if (location.Contains(_Module_.smethod_2<string>(1942340214)))
+						if (location.Contains("sso/login?code="))
 						{
 							this._ssoUrl = location;
 							return OperationResult.Ok;
 						}
-						if (location.Contains(_Module_.smethod_6<string>(918695138)))
+						if (location.Contains("kod+z+obrazka"))
 						{
 							return OperationResult.Captcha;
 						}
@@ -382,18 +382,18 @@ namespace Hackus_Mail_Checker_Reforged.Net
 						httpRequest.AllowAutoRedirect = false;
 						httpRequest.Get(this._ssoUrl, null).ToString();
 						string location = httpRequest.Response.Location;
-						if (location != _Module_.smethod_3<string>(-596939844))
+						if (location != "https://poczta.interia.pl/")
 						{
 							return OperationResult.Error;
 						}
 						this.SetHeaders(httpRequest);
 						httpRequest.AllowAutoRedirect = false;
-						location = httpRequest.Get(_Module_.smethod_3<string>(-1720712412), null).Location;
+						location = httpRequest.Get("https://poczta.interia.pl/next/", null).Location;
 						if (location == null)
 						{
 							return OperationResult.Error;
 						}
-						Match match = Regex.Match(location, _Module_.smethod_4<string>(656970352));
+						Match match = Regex.Match(location, "\\?uid=(.+)");
 						if (!match.Success)
 						{
 							return OperationResult.Error;
@@ -503,20 +503,20 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				{
 					this.SetHeaders(httpRequest);
 					httpRequest.AllowAutoRedirect = false;
-					httpRequest.AddHeader(_Module_.smethod_6<string>(1801702172), _Module_.smethod_4<string>(-35515321));
-					httpRequest.AddHeader(_Module_.smethod_6<string>(-1752813169), this._xsrfToken);
-					httpRequest.AddHeader(_Module_.smethod_4<string>(-1488415140), _Module_.smethod_6<string>(-1495379571));
+					httpRequest.AddHeader("X-CACHE-IS-VALID", "true");
+					httpRequest.AddHeader("X-XSRF-TOKEN", this._xsrfToken);
+					httpRequest.AddHeader("X-Requested-With", "XMLHttpRequest");
 					string text = this.BuildSearchRequest(httpRequest, searchRequest);
-					string input = httpRequest.Post(_Module_.smethod_4<string>(1717336297), text, _Module_.smethod_3<string>(-1143472752)).ToString();
-					Match match = Regex.Match(input, _Module_.smethod_2<string>(-73222621));
+					string input = httpRequest.Post("https://poczta.interia.pl/next/folder/1/mails", text, "application/json").ToString();
+					Match match = Regex.Match(input, "\"total\":(.+?),");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
-					if (!(match.Groups[1].Value == _Module_.smethod_2<string>(2007619594)))
+					if (!(match.Groups[1].Value == "null"))
 					{
 						searchRequest.Count = int.Parse(match.Groups[1].Value);
-						foreach (object obj in Regex.Matches(input, _Module_.smethod_3<string>(688473056)))
+						foreach (object obj in Regex.Matches(input, "\"id\":\"(.+?)\","))
 						{
 							Match match2 = (Match)obj;
 							searchRequest.FindedUids.Add(new Uid(match2.Groups[1].Value));
@@ -547,29 +547,29 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				{
 					this.SetHeaders(httpRequest);
 					httpRequest.AllowAutoRedirect = false;
-					httpRequest.AddHeader(_Module_.smethod_5<string>(2124994938), _Module_.smethod_5<string>(-497367125));
-					httpRequest.AddHeader(_Module_.smethod_5<string>(-307415759), this._xsrfToken);
-					httpRequest.AddHeader(_Module_.smethod_4<string>(-1488415140), _Module_.smethod_4<string>(1140862287));
-					string input = httpRequest.Get(_Module_.smethod_6<string>(-1751083384) + uid.UID.ToString(), null).ToString();
-					Match match = Regex.Match(input, _Module_.smethod_5<string>(-1863983748));
+					httpRequest.AddHeader("X-CACHE-IS-VALID", "true");
+					httpRequest.AddHeader("X-XSRF-TOKEN", this._xsrfToken);
+					httpRequest.AddHeader("X-Requested-With", "XMLHttpRequest");
+					string input = httpRequest.Get("https://poczta.interia.pl/next/mail/" + uid.UID.ToString(), null).ToString();
+					Match match = Regex.Match(input, "\"date\":\"(.+?)\"");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
 					message.Date = DateTime.Parse(match.Groups[1].Value);
-					match = Regex.Match(input, _Module_.smethod_2<string>(1708414172));
+					match = Regex.Match(input, "\"content\":\"(.+?)\",");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
-					message.AlternateViews.Add(new Attachment(_Module_.smethod_5<string>(473053949), _Module_.smethod_4<string>(313131675) + match.Groups[1].Value));
-					match = Regex.Match(input, _Module_.smethod_4<string>(-1720438466));
+					message.AlternateViews.Add(new Attachment("text/html", "<head><meta http-equiv='Content-Type' content='text/html;charset=UTF-8'></head>" + match.Groups[1].Value));
+					match = Regex.Match(input, "\"fromEmail\":\"(.+?)\"");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
 					}
 					message.From = match.Groups[1].Value;
-					match = Regex.Match(input, _Module_.smethod_2<string>(-37858825));
+					match = Regex.Match(input, "\"subject\":\"(.+?)\"");
 					if (!match.Success)
 					{
 						return OperationResult.Error;
@@ -591,47 +591,47 @@ namespace Hackus_Mail_Checker_Reforged.Net
 		// Token: 0x06000535 RID: 1333 RVA: 0x0001E698 File Offset: 0x0001C898
 		private string BuildSearchRequest(HttpRequest httpRequest, Request request)
 		{
-			httpRequest.AddUrlParam(_Module_.smethod_4<string>(-2069085462), (int)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds);
-			httpRequest.AddUrlParam(_Module_.smethod_5<string>(-1399834772), 1);
-			httpRequest.AddUrlParam(_Module_.smethod_4<string>(381060148), 2);
-			StringBuilder stringBuilder = new StringBuilder(_Module_.smethod_2<string>(628555505));
+			httpRequest.AddUrlParam("cacheTime", (int)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds);
+			httpRequest.AddUrlParam("page", 1);
+			httpRequest.AddUrlParam("ver", 2);
+			StringBuilder stringBuilder = new StringBuilder("{\"isSearch\":true");
 			if (request.Sender != null)
 			{
-				stringBuilder.Append(_Module_.smethod_2<string>(-1585569576) + request.Sender + _Module_.smethod_5<string>(1111656108));
+				stringBuilder.Append(",\"from\":\"" + request.Sender + "\"");
 			}
 			if (request.Subject != null)
 			{
-				httpRequest.AddUrlParam(_Module_.smethod_3<string>(-1397431748), request.Subject);
+				httpRequest.AddUrlParam("search", request.Subject);
 			}
 			else if (request.Body != null)
 			{
-				stringBuilder.Append(_Module_.smethod_4<string>(555383646) + request.Body + _Module_.smethod_3<string>(1298413043));
-				stringBuilder.Append(_Module_.smethod_5<string>(995618864));
-				httpRequest.AddUrlParam(_Module_.smethod_2<string>(79104196), request.Body);
+				stringBuilder.Append(",\"subject\":\"" + request.Body + "\"");
+				stringBuilder.Append(",\"isSearchInContent\":true");
+				httpRequest.AddUrlParam("search", request.Body);
 			}
 			if (request.CheckDate)
 			{
 				if (request.DateFrom != null)
 				{
-					stringBuilder.Append(_Module_.smethod_5<string>(235813400) + request.DateFrom.Value.ToString(_Module_.smethod_3<string>(88104128)) + _Module_.smethod_3<string>(1298413043));
+					stringBuilder.Append(",\"date_from\":\"" + request.DateFrom.Value.ToString("yyyy-MM-dd") + "\"");
 				}
 				if (request.DateTo != null)
 				{
-					stringBuilder.Append(_Module_.smethod_2<string>(-1952778484) + request.DateTo.Value.ToString(_Module_.smethod_4<string>(-1458953219)) + _Module_.smethod_5<string>(1111656108));
+					stringBuilder.Append(",\"date_to\":\"" + request.DateTo.Value.ToString("yyyy-MM-dd") + "\"");
 				}
 			}
 			else if (SearchSettings.Instance.CheckDate)
 			{
 				if (SearchSettings.Instance.DateFrom != null)
 				{
-					stringBuilder.Append(_Module_.smethod_4<string>(206736650) + SearchSettings.Instance.DateFrom.Value.ToString(_Module_.smethod_4<string>(-1458953219)) + _Module_.smethod_3<string>(1298413043));
+					stringBuilder.Append(",\"date_from\":\"" + SearchSettings.Instance.DateFrom.Value.ToString("yyyy-MM-dd") + "\"");
 				}
 				if (SearchSettings.Instance.DateTo != null)
 				{
-					stringBuilder.Append(_Module_.smethod_5<string>(800501437) + SearchSettings.Instance.DateTo.Value.ToString(_Module_.smethod_5<string>(1908418633)) + _Module_.smethod_2<string>(1588727045));
+					stringBuilder.Append(",\"date_to\":\"" + SearchSettings.Instance.DateTo.Value.ToString("yyyy-MM-dd") + "\"");
 				}
 			}
-			stringBuilder.Append(_Module_.smethod_6<string>(-1464243441));
+			stringBuilder.Append("}");
 			return stringBuilder.ToString();
 		}
 
@@ -642,7 +642,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 			request.ConnectTimeout = CheckerSettings.Instance.Timeout * 1000;
 			request.Cookies = this._cookies;
 			request.Proxy = this._proxyClient;
-			request.UserAgent = _Module_.smethod_2<string>(900569449);
+			request.UserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_3_1 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) GSA/50.0.197507736 Mobile/17D50 Safari/604.1";
 		}
 
 		// Token: 0x06000537 RID: 1335 RVA: 0x00009AE9 File Offset: 0x00007CE9

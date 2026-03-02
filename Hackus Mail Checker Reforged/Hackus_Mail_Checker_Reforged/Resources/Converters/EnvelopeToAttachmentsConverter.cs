@@ -24,7 +24,7 @@ namespace Hackus_Mail_Checker_Reforged.Resources.Converters
 				{
 					object obj = enumerator.Current;
 					ImapBodyStructure imapBodyStructure2 = (ImapBodyStructure)obj;
-					if ((imapBodyStructure2.Disposition != null && imapBodyStructure2.Disposition.ToLower() == _Module_.smethod_4<string>(1203370434)) || (imapBodyStructure2.Filename != null && imapBodyStructure2.Filename != string.Empty) || (imapBodyStructure2.ContentType != null && imapBodyStructure2.ContentType.ToLower() == _Module_.smethod_3<string>(1714078507)))
+					if ((imapBodyStructure2.Disposition != null && imapBodyStructure2.Disposition.ToLower() == "attachment") || (imapBodyStructure2.Filename != null && imapBodyStructure2.Filename != string.Empty) || (imapBodyStructure2.ContentType != null && imapBodyStructure2.ContentType.ToLower() == "message/rfc822"))
 					{
 						return true;
 					}

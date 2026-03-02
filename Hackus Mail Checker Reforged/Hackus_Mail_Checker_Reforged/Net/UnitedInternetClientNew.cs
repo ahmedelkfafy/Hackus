@@ -98,7 +98,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					{
 						continue;
 					}
-					ValueTuple<OperationResult, string> valueTuple = CaptchaHelpers.CreateInstance().SolveCaptcha(Convert.ToBase64String(item2.ToArray()), _Module_.smethod_2<string>(-1746043920), false);
+					ValueTuple<OperationResult, string> valueTuple = CaptchaHelpers.CreateInstance().SolveCaptcha(Convert.ToBase64String(item2.ToArray()), "en", false);
 					OperationResult item3 = valueTuple.Item1;
 					string item4 = valueTuple.Item2;
 					if (item3 == OperationResult.Error)
@@ -123,7 +123,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 			while (operationResult == OperationResult.HttpError);
 			return operationResult;
 			Block_4:
-			StatisticsManager.Instance.AddErrorDetails(this._mailbox.Address, _Module_.smethod_2<string>(-979085578));
+			StatisticsManager.Instance.AddErrorDetails(this._mailbox.Address, "Can't get captcha image");
 			return item;
 		}
 
@@ -140,42 +140,42 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					httpRequest.AllowAutoRedirect = true;
 					List<KeyValuePair<string, string>> list = new List<KeyValuePair<string, string>>
 					{
-						new KeyValuePair<string, string>(_Module_.smethod_5<string>(573593010), this._mailbox.Address),
-						new KeyValuePair<string, string>(_Module_.smethod_2<string>(-46006352), this._mailbox.Password),
-						new KeyValuePair<string, string>(_Module_.smethod_6<string>(-819234028), _Module_.smethod_3<string>(1727504444))
+						new KeyValuePair<string, string>("username", this._mailbox.Address),
+						new KeyValuePair<string, string>("password", this._mailbox.Password),
+						new KeyValuePair<string, string>("ibaInfo", "os=17;browser=20;deviceclass=b;abd=false")
 					};
 					this._requestHelper.SetLoginParameters(list);
 					FormUrlEncodedContent formUrlEncodedContent = new FormUrlEncodedContent(list, false, null);
 					string input = httpRequest.Post(this._requestHelper.Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers.RequestHelper.LoginURL, formUrlEncodedContent).ToString();
 					string text = httpRequest.Address.ToString();
-					if (text.Contains(_Module_.smethod_5<string>(-1059671260)))
+					if (text.Contains("auth_time"))
 					{
-						Match match = Regex.Match(input, _Module_.smethod_3<string>(1767914527));
+						Match match = Regex.Match(input, "&ott=(.+?)&");
 						if (match.Success)
 						{
 							this._ott = match.Groups[1].Value;
 						}
 						result = OperationResult.Ok;
 					}
-					else if (text.Contains(_Module_.smethod_2<string>(-1795102619)))
+					else if (text.Contains("login-failed"))
 					{
 						result = OperationResult.Bad;
 					}
-					else if (text.Contains(_Module_.smethod_3<string>(644141959)))
+					else if (text.Contains("AbuseHardLock"))
 					{
 						result = OperationResult.Blocked;
 					}
-					else if (!text.Contains(_Module_.smethod_4<string>(2095357477)))
+					else if (!text.Contains("interception"))
 					{
 						result = OperationResult.Error;
 					}
 					else
 					{
-						Match match2 = Regex.Match(input, _Module_.smethod_4<string>(1306093417));
+						Match match2 = Regex.Match(input, "<img class=\"captcha__image\" src=\"(.+?)\"");
 						if (match2.Success)
 						{
 							string value = match2.Groups[1].Value;
-							match2 = Regex.Match(value, _Module_.smethod_6<string>(-1860364206));
+							match2 = Regex.Match(value, "requestSecurityToken=(.+?)&amp");
 							if (!match2.Success)
 							{
 								result = OperationResult.Error;
@@ -183,7 +183,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 							else
 							{
 								this._token = match2.Groups[1].Value;
-								match2 = Regex.Match(value, _Module_.smethod_2<string>(-81469312));
+								match2 = Regex.Match(value, "antiCache=(.+)");
 								if (!match2.Success)
 								{
 									result = OperationResult.Error;
@@ -225,17 +225,17 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					{
 						this.SetHeaders(httpRequest);
 						httpRequest.AllowAutoRedirect = false;
-						httpRequest.AddUrlParam(_Module_.smethod_6<string>(658210312), "");
-						httpRequest.AddUrlParam(_Module_.smethod_4<string>(603991106), _Module_.smethod_3<string>(-358400360));
-						httpRequest.AddUrlParam(_Module_.smethod_4<string>(-1850962823), _Module_.smethod_2<string>(-930126043));
-						httpRequest.AddUrlParam(_Module_.smethod_6<string>(461623556), this._mailbox.Address);
-						httpRequest.AddUrlParam(_Module_.smethod_4<string>(-940878781), this._token);
-						httpRequest.AddUrlParam(_Module_.smethod_6<string>(-353513521), this._antiCache);
+						httpRequest.AddUrlParam("0--form-captchaPanel-captchaImagePanel-captcha~image", "");
+						httpRequest.AddUrlParam("interceptiontype", "VerifyLogin");
+						httpRequest.AddUrlParam("service", "freemail");
+						httpRequest.AddUrlParam("username", this._mailbox.Address);
+						httpRequest.AddUrlParam("requestSecurityToken", this._token);
+						httpRequest.AddUrlParam("antiCache", this._antiCache);
 						if (!string.IsNullOrEmpty(this._requestHelper.Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers.RequestHelper.SuccessURL))
 						{
-							httpRequest.AddUrlParam(_Module_.smethod_3<string>(34135836), this._requestHelper.Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers.RequestHelper.SuccessURL);
+							httpRequest.AddUrlParam("successURL", this._requestHelper.Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers.RequestHelper.SuccessURL);
 						}
-						MemoryStream memoryStream = httpRequest.Get(_Module_.smethod_5<string>(-1687146663) + this._requestHelper.Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers.RequestHelper.BaseURL + _Module_.smethod_2<string>(-2126947731), null).ToMemoryStream();
+						MemoryStream memoryStream = httpRequest.Get("https://interception1." + this._requestHelper.Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers.RequestHelper.BaseURL + "/logininterceptionfrontend/", null).ToMemoryStream();
 						if (memoryStream != null && memoryStream.Length != 0L)
 						{
 							return new ValueTuple<OperationResult, MemoryStream>(OperationResult.Ok, memoryStream);
@@ -266,59 +266,59 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					{
 						this.SetHeaders(httpRequest);
 						httpRequest.AllowAutoRedirect = true;
-						httpRequest.AddUrlParam(_Module_.smethod_6<string>(-1241709910), "");
-						httpRequest.AddUrlParam(_Module_.smethod_3<string>(-1803526153), _Module_.smethod_3<string>(-358400360));
-						httpRequest.AddUrlParam(_Module_.smethod_5<string>(-1898556907), _Module_.smethod_5<string>(-36000308));
-						httpRequest.AddUrlParam(_Module_.smethod_5<string>(573593010), this._mailbox.Address);
-						httpRequest.AddUrlParam(_Module_.smethod_2<string>(2018416854), this._token);
+						httpRequest.AddUrlParam("0-1.0-form-submitButton", "");
+						httpRequest.AddUrlParam("interceptiontype", "VerifyLogin");
+						httpRequest.AddUrlParam("service", "freemail");
+						httpRequest.AddUrlParam("username", this._mailbox.Address);
+						httpRequest.AddUrlParam("requestSecurityToken", this._token);
 						if (!string.IsNullOrEmpty(this._requestHelper.Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers.RequestHelper.SuccessURL))
 						{
-							httpRequest.AddUrlParam(_Module_.smethod_6<string>(-1686672997), this._requestHelper.Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers.RequestHelper.SuccessURL);
+							httpRequest.AddUrlParam("successURL", this._requestHelper.Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers.RequestHelper.SuccessURL);
 						}
 						FormUrlEncodedContent formUrlEncodedContent = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>
 						{
-							new KeyValuePair<string, string>(_Module_.smethod_2<string>(2018416854), this._token),
-							new KeyValuePair<string, string>(_Module_.smethod_3<string>(676842286), this._mailbox.Address),
-							new KeyValuePair<string, string>(_Module_.smethod_5<string>(-1001255321), this._mailbox.Password),
-							new KeyValuePair<string, string>(_Module_.smethod_4<string>(2124207391), answer),
-							new KeyValuePair<string, string>(_Module_.smethod_3<string>(-1208939542), _Module_.smethod_5<string>(-415504783))
+							new KeyValuePair<string, string>("requestSecurityToken", this._token),
+							new KeyValuePair<string, string>("usernameInput:topWrapper:inputWrapper:input", this._mailbox.Address),
+							new KeyValuePair<string, string>("passwordInput:topWrapper:inputWrapper:input", this._mailbox.Password),
+							new KeyValuePair<string, string>("captchaPanel:captchaImagePanel:captchaInput:topWrapper:inputWrapper:input", answer),
+							new KeyValuePair<string, string>("submitButton", "1")
 						}, false, null);
-						string input = httpRequest.Post(_Module_.smethod_2<string>(-745159536) + this._requestHelper.Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers.RequestHelper.BaseURL + _Module_.smethod_5<string>(-204492796), formUrlEncodedContent).ToString();
+						string input = httpRequest.Post("https://interception1." + this._requestHelper.Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers.RequestHelper.BaseURL + "/logininterceptionfrontend/", formUrlEncodedContent).ToString();
 						string text = httpRequest.Address.ToString();
-						if (text.Contains(_Module_.smethod_4<string>(71403974)))
+						if (text.Contains("auth_time"))
 						{
-							Match match = Regex.Match(input, _Module_.smethod_6<string>(-1262467330));
+							Match match = Regex.Match(input, "&ott=(.+?)&");
 							if (match.Success)
 							{
 								this._ott = match.Groups[1].Value;
 							}
 							return OperationResult.Ok;
 						}
-						if (text.Contains(_Module_.smethod_4<string>(-1507124146)))
+						if (text.Contains("login-failed"))
 						{
 							return OperationResult.Bad;
 						}
-						if (text.Contains(_Module_.smethod_4<string>(-533919950)))
+						if (text.Contains("AbuseHardLock"))
 						{
 							return OperationResult.Blocked;
 						}
-						if (!text.Contains(_Module_.smethod_6<string>(656480527)))
+						if (!text.Contains("interception"))
 						{
 							return OperationResult.Error;
 						}
-						Match match2 = Regex.Match(input, _Module_.smethod_5<string>(-1634691419));
+						Match match2 = Regex.Match(input, "<img class=\"captcha__image\" src=\"(.+?)\"");
 						if (!match2.Success)
 						{
 							return OperationResult.Error;
 						}
 						string value = match2.Groups[1].Value;
-						match2 = Regex.Match(value, _Module_.smethod_5<string>(-531940284));
+						match2 = Regex.Match(value, "requestSecurityToken=(.+?)&amp");
 						if (!match2.Success)
 						{
 							return OperationResult.Error;
 						}
 						this._token = match2.Groups[1].Value;
-						match2 = Regex.Match(value, _Module_.smethod_2<string>(-81469312));
+						match2 = Regex.Match(value, "antiCache=(.+)");
 						if (match2.Success)
 						{
 							this._antiCache = match2.Groups[1].Value;
@@ -350,13 +350,13 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					{
 						this.SetHeaders(httpRequest);
 						httpRequest.AllowAutoRedirect = true;
-						httpRequest.AddUrlParam(_Module_.smethod_5<string>(-853427077), this._ott);
-						httpRequest.AddUrlParam(_Module_.smethod_2<string>(-845802712), _Module_.smethod_5<string>(-1793646419));
-						httpRequest.AddUrlParam(_Module_.smethod_4<string>(-2122064708), _Module_.smethod_3<string>(1727504444));
-						string input = httpRequest.Get(_Module_.smethod_2<string>(-13465826) + this._requestHelper.Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers.RequestHelper.NavigatorURL + _Module_.smethod_5<string>(629226790), null).ToString();
-						if (httpRequest.Address.ToString().Contains(_Module_.smethod_3<string>(1119425760)))
+						httpRequest.AddUrlParam("ott", this._ott);
+						httpRequest.AddUrlParam("tz", "3");
+						httpRequest.AddUrlParam("ibaInfo", "os=17;browser=20;deviceclass=b;abd=false");
+						string input = httpRequest.Get("https://" + this._requestHelper.Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers.RequestHelper.NavigatorURL + "/halogin", null).ToString();
+						if (httpRequest.Address.ToString().Contains("sid"))
 						{
-							Match match = Regex.Match(input, _Module_.smethod_3<string>(838482618));
+							Match match = Regex.Match(input, "jsessionid=(.+?)\\?");
 							if (match.Success)
 							{
 								this._jsession = match.Groups[1].Value;
@@ -389,22 +389,22 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					{
 						this.SetHeaders(httpRequest);
 						httpRequest.AllowAutoRedirect = true;
-						string input = httpRequest.Get(_Module_.smethod_2<string>(-13465826) + this._requestHelper.Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers.RequestHelper.ApiURL + _Module_.smethod_3<string>(-4346808) + this._jsession, null).ToString();
-						if (httpRequest.Address.ToString().Contains(_Module_.smethod_6<string>(-58024653)))
+						string input = httpRequest.Get("https://" + this._requestHelper.Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers.RequestHelper.ApiURL + "/mail/client/settings/popImap;jsessionid=" + this._jsession, null).ToString();
+						if (httpRequest.Address.ToString().Contains("popImap"))
 						{
-							Match match = Regex.Match(input, _Module_.smethod_2<string>(-1694459443));
+							Match match = Regex.Match(input, "Wicket\\.Ajax\\.ajax\\({\"u\":\"\\.(.+?)\",\"m\":\"POST\"");
 							if (!match.Success)
 							{
 								return OperationResult.Error;
 							}
 							this._tempUrl = match.Groups[1].Value;
-							match = Regex.Match(input, _Module_.smethod_2<string>(1120800588));
+							match = Regex.Match(input, "<input type=\"hidden\" name=\"(.+?)\"");
 							if (!match.Success)
 							{
 								return OperationResult.Error;
 							}
 							this._idHf = match.Groups[1].Value;
-							match = Regex.Match(input, _Module_.smethod_3<string>(-1047299210));
+							match = Regex.Match(input, "<button name=\"popImapChapter:submitButtons:save\" id=\"(.+?)\"");
 							if (match.Success)
 							{
 								this._wicketElementId = match.Groups[1].Value;
@@ -438,42 +438,42 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					{
 						this.SetHeaders(httpRequest);
 						httpRequest.AllowAutoRedirect = true;
-						httpRequest.AddHeader(_Module_.smethod_5<string>(1626272803), _Module_.smethod_4<string>(-35515321));
-						httpRequest.AddHeader(_Module_.smethod_2<string>(-144024586), _Module_.smethod_3<string>(-404592760));
-						httpRequest.AddHeader(_Module_.smethod_4<string>(356930816), this._wicketElementId);
-						httpRequest.AddHeader(_Module_.smethod_3<string>(-121656043), _Module_.smethod_2<string>(-415939366));
+						httpRequest.AddHeader("Wicket-Ajax", "true");
+						httpRequest.AddHeader("Wicket-Ajax-BaseURL", "settings/popImap");
+						httpRequest.AddHeader("Wicket-FocusedElementId", this._wicketElementId);
+						httpRequest.AddHeader("X-Requested-With", "XMLHttpRequest");
 						FormUrlEncodedContent formUrlEncodedContent = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>
 						{
 							new KeyValuePair<string, string>(this._idHf, ""),
-							new KeyValuePair<string, string>(_Module_.smethod_4<string>(-1042465487), _Module_.smethod_4<string>(-1657406049)),
-							new KeyValuePair<string, string>(_Module_.smethod_2<string>(-543873184), _Module_.smethod_2<string>(816196536))
+							new KeyValuePair<string, string>("popImapChapter:pop3ImapSmtpCheckBox", "on"),
+							new KeyValuePair<string, string>("popImapChapter:submitButtons:save", "1")
 						}, false, null);
-						string text = httpRequest.Post(_Module_.smethod_5<string>(-1233329809) + this._requestHelper.Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers.RequestHelper.ApiURL + _Module_.smethod_5<string>(1014295583) + this._tempUrl, formUrlEncodedContent).ToString();
-						if (httpRequest.Address.ToString().Contains(_Module_.smethod_6<string>(-58024653)))
+						string text = httpRequest.Post("https://" + this._requestHelper.Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers.RequestHelper.ApiURL + "/mail/client/settings" + this._tempUrl, formUrlEncodedContent).ToString();
+						if (httpRequest.Address.ToString().Contains("popImap"))
 						{
-							if (!text.Contains(_Module_.smethod_4<string>(-945687100)))
+							if (!text.Contains("captchaTextFieldItem-captchaTextFieldItem_body-captchaRefresh"))
 							{
 								return OperationResult.Ok;
 							}
-							Match match = Regex.Match(text, _Module_.smethod_6<string>(1268215683));
+							Match match = Regex.Match(text, "<input type=\"hidden\" name=\"(.+?)\"");
 							if (!match.Success)
 							{
 								return OperationResult.Error;
 							}
 							this._idHf = match.Groups[1].Value;
-							match = Regex.Match(text, _Module_.smethod_6<string>(673778377));
+							match = Regex.Match(text, "var b=document\\.getElementById\\('(.+?)'\\)");
 							if (!match.Success)
 							{
 								return OperationResult.Error;
 							}
 							this._wicketElementId = match.Groups[1].Value;
-							match = Regex.Match(text, _Module_.smethod_2<string>(1420006010));
+							match = Regex.Match(text, "<img class=\"captcha_image\" (.+?) src=\"\\.(.+?)\"\\/>");
 							if (!match.Success)
 							{
 								return OperationResult.Error;
 							}
 							this._imapCaptchaUrl = match.Groups[2].Value;
-							match = Regex.Match(text, _Module_.smethod_3<string>(680697164));
+							match = Regex.Match(text, "captchaRefresh(.+?)function\\(\\){Wicket\\.Ajax\\.ajax\\({\"u\":\"\\.(.+?)\"");
 							if (!match.Success)
 							{
 								return OperationResult.Error;
@@ -507,7 +507,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					{
 						this.SetHeaders(httpRequest);
 						httpRequest.AllowAutoRedirect = false;
-						MemoryStream memoryStream = httpRequest.Get(_Module_.smethod_4<string>(380972411) + this._requestHelper.Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers.RequestHelper.ApiURL + _Module_.smethod_4<string>(2032237323) + this._imapCaptchaUrl, null).ToMemoryStream();
+						MemoryStream memoryStream = httpRequest.Get("https://" + this._requestHelper.Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers.RequestHelper.ApiURL + "/mail/client/settings" + this._imapCaptchaUrl, null).ToMemoryStream();
 						if (memoryStream != null && memoryStream.Length != 0L)
 						{
 							return new ValueTuple<OperationResult, MemoryStream>(OperationResult.Ok, memoryStream);
@@ -538,26 +538,26 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					{
 						this.SetHeaders(httpRequest);
 						httpRequest.AllowAutoRedirect = true;
-						httpRequest.AddHeader(_Module_.smethod_3<string>(1000122950), _Module_.smethod_6<string>(-271909259));
-						httpRequest.AddHeader(_Module_.smethod_6<string>(529493513), _Module_.smethod_4<string>(-693818491));
-						httpRequest.AddHeader(_Module_.smethod_4<string>(356930816), this._wicketElementId);
-						httpRequest.AddHeader(_Module_.smethod_5<string>(-818853918), _Module_.smethod_2<string>(-415939366));
+						httpRequest.AddHeader("Wicket-Ajax", "true");
+						httpRequest.AddHeader("Wicket-Ajax-BaseURL", "settings/popImap");
+						httpRequest.AddHeader("Wicket-FocusedElementId", this._wicketElementId);
+						httpRequest.AddHeader("X-Requested-With", "XMLHttpRequest");
 						FormUrlEncodedContent formUrlEncodedContent = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>
 						{
 							new KeyValuePair<string, string>(this._idHf, ""),
-							new KeyValuePair<string, string>(_Module_.smethod_3<string>(-754791434), _Module_.smethod_6<string>(1565738703)),
-							new KeyValuePair<string, string>(_Module_.smethod_4<string>(1175656797), answer)
+							new KeyValuePair<string, string>("chapter:chapter_body:bottomButtons:container:bottomButtons_body:ok", "1"),
+							new KeyValuePair<string, string>("chapter:chapter_body:fieldset:fieldset_body:captchaTextFieldItem:captchaTextFieldItem_body:captchaTextField", answer)
 						}, false, null);
-						string text = httpRequest.Post(_Module_.smethod_3<string>(1962255186) + this._requestHelper.Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers.RequestHelper.ApiURL + _Module_.smethod_2<string>(187820526) + this._confirmImapCaptchaUrl, formUrlEncodedContent).ToString();
-						if (httpRequest.Address.ToString().Contains(_Module_.smethod_2<string>(1352002524)))
+						string text = httpRequest.Post("https://" + this._requestHelper.Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers.RequestHelper.ApiURL + "/mail/client/settings" + this._confirmImapCaptchaUrl, formUrlEncodedContent).ToString();
+						if (httpRequest.Address.ToString().Contains("popImap"))
 						{
-							if (text.Contains(_Module_.smethod_6<string>(849199371)) || text.Contains(_Module_.smethod_3<string>(530621466)))
+							if (text.Contains("Ihre Einstellungen") || text.Contains("Settings were saved successfully"))
 							{
 								return OperationResult.Ok;
 							}
-							if (text.Contains(_Module_.smethod_3<string>(1413860975)) || text.Contains(_Module_.smethod_3<string>(-1435980528)))
+							if (text.Contains("leider falsch") || text.Contains("Incorrect entry. Please try again"))
 							{
-								Match match = Regex.Match(text, _Module_.smethod_2<string>(1776318494));
+								Match match = Regex.Match(text, "src=\"\\.(.+?)\"\\/>]]");
 								if (match.Success)
 								{
 									this._imapCaptchaUrl = match.Groups[1].Value;
@@ -611,7 +611,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					{
 						return false;
 					}
-					ValueTuple<OperationResult, string> valueTuple2 = CaptchaHelpers.CreateInstance().SolveCaptcha(Convert.ToBase64String(item2.ToArray()), _Module_.smethod_4<string>(123771213), false);
+					ValueTuple<OperationResult, string> valueTuple2 = CaptchaHelpers.CreateInstance().SolveCaptcha(Convert.ToBase64String(item2.ToArray()), "en", false);
 					OperationResult item3 = valueTuple2.Item1;
 					string item4 = valueTuple2.Item2;
 					if (item3 != OperationResult.Ok)
@@ -645,7 +645,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 			request.ConnectTimeout = CheckerSettings.Instance.Timeout * 1000;
 			request.Cookies = this._cookies;
 			request.Proxy = this._proxyClient;
-			request.UserAgent = _Module_.smethod_5<string>(-1350161687);
+			request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 YaBrowser/21.8.3.614 Yowser/2.5 Safari/537.36";
 		}
 
 		// Token: 0x060005B7 RID: 1463 RVA: 0x00009AC8 File Offset: 0x00007CC8

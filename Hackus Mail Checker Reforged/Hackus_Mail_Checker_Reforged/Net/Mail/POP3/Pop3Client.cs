@@ -11,14 +11,14 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.POP3
 		// Token: 0x06000843 RID: 2115 RVA: 0x0000AFCB File Offset: 0x000091CB
 		public override void Authenticate(string username, string password)
 		{
-			this.CheckOk(this.SendReceive(_Module_.smethod_4<string>(-1462013254) + username));
-			this.CheckOk(this.SendReceive(_Module_.smethod_5<string>(488153875) + password));
+			this.CheckOk(this.SendReceive("USER " + username));
+			this.CheckOk(this.SendReceive("PASS " + password));
 		}
 
 		// Token: 0x06000844 RID: 2116 RVA: 0x0003265C File Offset: 0x0003085C
 		public MailMessage FetchMessage(Uid uid, bool onlyHeaders = true, bool skipAdditionalParts = true)
 		{
-			this.CheckOk(this.SendReceive(onlyHeaders ? (_Module_.smethod_2<string>(-1822120560) + uid.UID.ToString() + _Module_.smethod_5<string>(-1013969465)) : (_Module_.smethod_3<string>(1379100937) + uid.UID.ToString())));
+			this.CheckOk(this.SendReceive(onlyHeaders ? ("TOP " + uid.UID.ToString() + " 0") : ("RETR " + uid.UID.ToString())));
 			MailMessage mailMessage = MessageBuilder.FromMime822(this.LocalStream.ReadMsgAsString(base.Socket, 1048576, this.ReadWriteTimeout), onlyHeaders, Encoding.UTF8, skipAdditionalParts);
 			mailMessage.Uid = uid;
 			return mailMessage;
@@ -27,7 +27,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.POP3
 		// Token: 0x06000845 RID: 2117 RVA: 0x000326F0 File Offset: 0x000308F0
 		public int GetMessagesCount()
 		{
-			string text = this.SendReceive(_Module_.smethod_5<string>(-1754305456));
+			string text = this.SendReceive("STAT");
 			this.CheckOk(text);
 			int result;
 			if (!int.TryParse(text.Split(new char[]
@@ -49,16 +49,16 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.POP3
 			}
 			if (response.IsBrokenEncoding())
 			{
-				if (!response.Contains(_Module_.smethod_5<string>(-824018099)))
+				if (!response.Contains("-ERR"))
 				{
 					throw new EncodingException();
 				}
-				response = response.Substring(response.IndexOf(_Module_.smethod_6<string>(-492713005)));
+				response = response.Substring(response.IndexOf("-ERR"));
 				throw new MailException();
 			}
 			else
 			{
-				if (!response.StartsWith(_Module_.smethod_4<string>(290838364), StringComparison.OrdinalIgnoreCase))
+				if (!response.StartsWith("+OK", StringComparison.OrdinalIgnoreCase))
 				{
 					throw new MailException(response.Substring(response.IndexOf(' ') + 1).Trim());
 				}
@@ -76,14 +76,14 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.POP3
 		// Token: 0x06000848 RID: 2120 RVA: 0x000327BC File Offset: 0x000309BC
 		public void DeleteMessage(decimal uid)
 		{
-			string response = this.SendReceive(_Module_.smethod_3<string>(-2032626850) + uid.ToString());
+			string response = this.SendReceive("DELE " + uid.ToString());
 			this.CheckOk(response);
 		}
 
 		// Token: 0x06000849 RID: 2121 RVA: 0x000327F0 File Offset: 0x000309F0
 		public void Quit()
 		{
-			string response = this.SendReceive(_Module_.smethod_4<string>(731455428));
+			string response = this.SendReceive("QUIT");
 			this.CheckOk(response);
 		}
 	}

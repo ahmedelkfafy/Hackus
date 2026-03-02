@@ -18,19 +18,19 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		// Token: 0x060006E7 RID: 1767 RVA: 0x0002C378 File Offset: 0x0002A578
 		public virtual string GetBoundary()
 		{
-			return this[_Module_.smethod_4<string>(-425688904)][_Module_.smethod_4<string>(784958944)];
+			return this["Content-Type"]["boundary"];
 		}
 
 		// Token: 0x060006E8 RID: 1768 RVA: 0x0002C3A8 File Offset: 0x0002A5A8
 		public virtual DateTime GetDate()
 		{
-			DateTime? dateTime = this[_Module_.smethod_6<string>(1554647284)].RawValue.ToNullDate();
+			DateTime? dateTime = this["Date"].RawValue.ToNullDate();
 			if (dateTime == null)
 			{
 				Regex[] array = HeaderDictionary.rxDates;
 				for (int i = 0; i < array.Length; i++)
 				{
-					Match match = array[i].Matches(this[_Module_.smethod_3<string>(-1913257904)].RawValue ?? string.Empty).Cast<Match>().LastOrDefault<Match>();
+					Match match = array[i].Matches(this["Received"].RawValue ?? string.Empty).Cast<Match>().LastOrDefault<Match>();
 					if (match != null)
 					{
 						dateTime = match.Value.ToNullDate();
@@ -173,8 +173,8 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		// Token: 0x0400038B RID: 907
 		private static Regex[] rxDates = (from x in new string[]
 		{
-			_Module_.smethod_5<string>(-2081752944),
-			_Module_.smethod_2<string>(984818407)
+			"\\d{1,2}\\s+[a-z]{3}\\s+\\d{2,4}\\s+\\d{1,2}\\:\\d{2}\\:\\d{1,2}\\s+[\\+\\-\\d\\:]*",
+			"\\d{4}\\-\\d{1,2}-\\d{1,2}\\s+\\d{1,2}\\:\\d{2}(?:\\:\\d{2})?(?:\\s+[\\+\\-\\d:]+)?"
 		}
 		select HeaderDictionary._c_.smethod_0(x, RegexOptions.IgnoreCase | RegexOptions.Compiled)).ToArray<Regex>();
 	}

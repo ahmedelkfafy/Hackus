@@ -42,7 +42,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 		public static Mailbox GetFromString(string value)
 		{
 			string[] array;
-			if (value.Contains(_Module_.smethod_6<string>(1827648947)))
+			if (value.Contains(":"))
 			{
 				array = value.Split(new char[]
 				{
@@ -51,7 +51,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			}
 			else
 			{
-				if (!value.Contains(_Module_.smethod_6<string>(-635980793)))
+				if (!value.Contains(";"))
 				{
 					return null;
 				}

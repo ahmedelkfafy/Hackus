@@ -119,7 +119,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 			return new SearchCondition
 			{
 				Field = new SearchCondition.Fields?(SearchCondition.Fields.Header),
-				Value = name + _Module_.smethod_3<string>(2023933234) + text.ToQuotedString()
+				Value = name + " " + text.ToQuotedString()
 			};
 		}
 
@@ -341,13 +341,13 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		// Token: 0x0600073F RID: 1855 RVA: 0x0000A8C6 File Offset: 0x00008AC6
 		public virtual SearchCondition Not(params SearchCondition[] other)
 		{
-			return SearchCondition.Join(_Module_.smethod_3<string>(1854450874), this, other);
+			return SearchCondition.Join("NOT", this, other);
 		}
 
 		// Token: 0x06000740 RID: 1856 RVA: 0x0000A8D9 File Offset: 0x00008AD9
 		public virtual SearchCondition Or(params SearchCondition[] other)
 		{
-			return SearchCondition.Join(_Module_.smethod_6<string>(1722844771), this, other);
+			return SearchCondition.Join("OR", this, other);
 		}
 
 		// Token: 0x06000741 RID: 1857 RVA: 0x0002D398 File Offset: 0x0002B598
@@ -355,7 +355,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		{
 			if (this.Conditions != null && this.Conditions.Count > 0 && this.Operator != null)
 			{
-				return (this.Operator.ToUpper() + _Module_.smethod_5<string>(1775690315) + string.Join<SearchCondition>(_Module_.smethod_3<string>(1011621448), this.Conditions) + _Module_.smethod_5<string>(-726659454)).Trim();
+				return (this.Operator.ToUpper() + " (" + string.Join<SearchCondition>(") (", this.Conditions) + ")").Trim();
 			}
 			StringBuilder stringBuilder = new StringBuilder();
 			if (this.Field != null)
@@ -394,7 +394,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 				}
 				if (this.Field != null)
 				{
-					stringBuilder.Append(_Module_.smethod_3<string>(2023933234));
+					stringBuilder.Append(" ");
 				}
 				stringBuilder.Append(obj);
 			}

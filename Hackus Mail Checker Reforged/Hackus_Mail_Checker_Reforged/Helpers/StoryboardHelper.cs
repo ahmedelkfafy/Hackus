@@ -50,9 +50,9 @@ namespace Hackus_Mail_Checker_Reforged.Helpers
 		}
 
 		// Token: 0x0400051D RID: 1309
-		public static readonly DependencyProperty CompletedCommandProperty = DependencyProperty.RegisterAttached(_Module_.smethod_3<string>(-529876295), typeof(ICommand), typeof(StoryboardHelper), new PropertyMetadata(null, new PropertyChangedCallback(StoryboardHelper.OnCompletedCommandChanged)));
+		public static readonly DependencyProperty CompletedCommandProperty = DependencyProperty.RegisterAttached("CompletedCommand", typeof(ICommand), typeof(StoryboardHelper), new PropertyMetadata(null, new PropertyChangedCallback(StoryboardHelper.OnCompletedCommandChanged)));
 
 		// Token: 0x0400051E RID: 1310
-		public static readonly DependencyProperty CompletedCommandParameterProperty = DependencyProperty.RegisterAttached(_Module_.smethod_2<string>(-73098666), typeof(object), typeof(StoryboardHelper), new PropertyMetadata(null));
+		public static readonly DependencyProperty CompletedCommandParameterProperty = DependencyProperty.RegisterAttached("CompletedCommandParameter", typeof(object), typeof(StoryboardHelper), new PropertyMetadata(null));
 	}
 }

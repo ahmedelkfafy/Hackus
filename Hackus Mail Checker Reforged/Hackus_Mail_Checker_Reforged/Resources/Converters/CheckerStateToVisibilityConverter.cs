@@ -14,7 +14,7 @@ namespace Hackus_Mail_Checker_Reforged.Resources.Converters
 		{
 			CheckerState checkerState = (CheckerState)value;
 			string a = (string)parameter;
-			if (a == _Module_.smethod_4<string>(-1425906993))
+			if (a == "Start")
 			{
 				if (checkerState != CheckerState.Closing)
 				{
@@ -25,9 +25,9 @@ namespace Hackus_Mail_Checker_Reforged.Resources.Converters
 				}
 				return Visibility.Visible;
 			}
-			if (!(a == _Module_.smethod_5<string>(2134532426)))
+			if (!(a == "Pause"))
 			{
-				if (!(a == _Module_.smethod_2<string>(-1199341508)))
+				if (!(a == "Resume"))
 				{
 					return DependencyProperty.UnsetValue;
 				}

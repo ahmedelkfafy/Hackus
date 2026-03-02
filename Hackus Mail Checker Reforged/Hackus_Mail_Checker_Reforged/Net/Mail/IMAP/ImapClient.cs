@@ -29,7 +29,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 		{
 			get
 			{
-				return string.Format(_Module_.smethod_4<string>(-1440244213), this._tag, this._commandNumber);
+				return string.Format("{0}{1:d3}", this._tag, this._commandNumber);
 			}
 			set
 			{
@@ -44,7 +44,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 			get
 			{
 				this._commandNumber++;
-				return string.Format(_Module_.smethod_4<string>(-1440244213), this._tag, this._commandNumber);
+				return string.Format("{0}{1:d3}", this._tag, this._commandNumber);
 			}
 		}
 
@@ -56,14 +56,14 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 		// Token: 0x0600094E RID: 2382 RVA: 0x00038B40 File Offset: 0x00036D40
 		public override void Authenticate(string username, string password)
 		{
-			string[] source = this.SendReceive(_Module_.smethod_6<string>(1401409128) + username.ToQuotedString() + _Module_.smethod_5<string>(-521209905) + password.QuoteString());
+			string[] source = this.SendReceive("LOGIN " + username.ToQuotedString() + " " + password.QuoteString());
 			this.CheckOk(source.Last<string>());
 		}
 
 		// Token: 0x0600094F RID: 2383 RVA: 0x00038B88 File Offset: 0x00036D88
 		public int SelectFolder(Folder folder)
 		{
-			string[] array = this.SendReceive(_Module_.smethod_4<string>(2065459023) + folder.Name + _Module_.smethod_4<string>(2069567598));
+			string[] array = this.SendReceive("SELECT \"" + folder.Name + "\"");
 			this.CheckOk(array.Last<string>());
 			if (array.Last<string>().IsServerDisabled())
 			{
@@ -71,7 +71,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 			}
 			for (int i = 0; i < array.Length; i++)
 			{
-				Match match = Regex.Match(array[i], _Module_.smethod_2<string>(-595532034));
+				Match match = Regex.Match(array[i], "\\d+(?=\\s+EXISTS)");
 				if (match.Success)
 				{
 					folder.MessageCount = int.Parse(match.Value);
@@ -86,11 +86,11 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 		// Token: 0x06000950 RID: 2384 RVA: 0x00038C24 File Offset: 0x00036E24
 		public int GetMessagesCount(Folder folder)
 		{
-			string[] array = this.SendReceive(_Module_.smethod_6<string>(-1708143126) + folder.Name.ToQuotedString() + _Module_.smethod_2<string>(601289654));
+			string[] array = this.SendReceive("STATUS " + folder.Name.ToQuotedString() + " (MESSAGES)");
 			this.CheckOk(array.Last<string>());
 			for (int i = 0; i < array.Length; i++)
 			{
-				Match match = Regex.Match(array[i], _Module_.smethod_5<string>(-335233589));
+				Match match = Regex.Match(array[i], "\\* STATUS.*MESSAGES (\\d+)");
 				if (match.Success)
 				{
 					folder.MessageCount = int.Parse(match.Groups[1].Value);
@@ -105,9 +105,9 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 		{
 			List<Folder> list = new List<Folder>
 			{
-				Folder.Parse(_Module_.smethod_6<string>(2132499449))
+				Folder.Parse("INBOX")
 			};
-			string[] array = this.SendReceive(_Module_.smethod_4<string>(-123201340));
+			string[] array = this.SendReceive("LIST \"\" \"*\"");
 			this.CheckOk(array.Last<string>());
 			if (array.Length == 0)
 			{
@@ -116,16 +116,16 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 			list.Clear();
 			for (int i = 0; i < array.Length; i++)
 			{
-				if (array[i].StartsWith(_Module_.smethod_2<string>(-606254921)))
+				if (array[i].StartsWith("* LIST"))
 				{
 					Match match;
-					if ((match = Regex.Match(array[i], _Module_.smethod_2<string>(642250408))).Success)
+					if ((match = Regex.Match(array[i], "\".\"\\s(.*?)$")).Success)
 					{
-						list.Add(Folder.Parse(match.Groups[1].Value.Replace(_Module_.smethod_2<string>(1588727045), "")));
+						list.Add(Folder.Parse(match.Groups[1].Value.Replace("\"", "")));
 					}
-					else if ((match = Regex.Match(array[i], _Module_.smethod_6<string>(1568789931))).Success)
+					else if ((match = Regex.Match(array[i], "NIL\\s(.*?)$")).Success)
 					{
-						list.Add(Folder.Parse(match.Groups[1].Value.Replace(_Module_.smethod_3<string>(1298413043), "")));
+						list.Add(Folder.Parse(match.Groups[1].Value.Replace("\"", "")));
 					}
 				}
 			}
@@ -138,15 +138,15 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 			HashSet<Uid> hashSet = new HashSet<Uid>();
 			string text = criteria.ToString();
 			string line = new StringReader(text).ReadLine();
-			this.LocalStream.WriteLine(this.NewTag + _Module_.smethod_5<string>(547764585) + (text.Contains(Environment.NewLine) ? _Module_.smethod_6<string>(977812195) : string.Empty) + text, this.ReadWriteTimeout);
+			this.LocalStream.WriteLine(this.NewTag + " UID SEARCH " + (text.Contains(Environment.NewLine) ? "CHARSET UTF-8 " : string.Empty) + text, this.ReadWriteTimeout);
 			string text2;
 			while ((text2 = base.ReadLine()) != null)
 			{
-				if (text2.StartsWith(_Module_.smethod_3<string>(2141242469)))
+				if (text2.StartsWith("*"))
 				{
-					while (text2.StartsWith(_Module_.smethod_2<string>(-908283613)))
+					while (text2.StartsWith("*"))
 					{
-						Match match = Regex.Match(text2, _Module_.smethod_3<string>(540126389), RegexOptions.Multiline);
+						Match match = Regex.Match(text2, "^\\* SEARCH (.+)", RegexOptions.Multiline);
 						if (match.Success)
 						{
 							string[] source = match.Groups[1].Value.Trim().Split(new char[]
@@ -161,7 +161,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 					this.CheckOk(text2);
 					return hashSet.ToArray<Uid>();
 				}
-				if (!text2.StartsWith(_Module_.smethod_4<string>(387616751)))
+				if (!text2.StartsWith("+"))
 				{
 					throw new MailException();
 				}
@@ -176,19 +176,19 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 		{
 			MailMessage mailMessage = null;
 			string text = string.Empty;
-			this.Send(_Module_.smethod_4<string>(1579031323) + uid.UID.ToString() + _Module_.smethod_4<string>(46313839));
-			while ((text = base.ReadLine()).StartsWith(_Module_.smethod_4<string>(316715980)))
+			this.Send("UID FETCH " + uid.UID.ToString() + " (FLAGS BODY BODY.PEEK[HEADER.FIELDS (FROM)])");
+			while ((text = base.ReadLine()).StartsWith("*"))
 			{
-				if (Regex.Match(text, _Module_.smethod_6<string>(89615806)).Success)
+				if (Regex.Match(text, "\\* \\d+ FETCH .* {(\\d+)}").Success)
 				{
 					text = this.LocalStream.ReadPartAsString(base.Socket, 1048576, this.ReadWriteTimeout);
 					int length;
-					if ((length = text.IndexOf(Environment.NewLine + this.Tag + _Module_.smethod_4<string>(-1145100733))) > 0)
+					if ((length = text.IndexOf(Environment.NewLine + this.Tag + " OK ")) > 0)
 					{
 						mailMessage = MessageBuilder.FromHeader(text.Substring(0, length));
 						mailMessage.Uid = uid;
-						text = text.Substring(text.IndexOf(this.Tag + _Module_.smethod_5<string>(-950387465)));
-						if (!text.EndsWith(_Module_.smethod_4<string>(-2071533490)))
+						text = text.Substring(text.IndexOf(this.Tag + " OK "));
+						if (!text.EndsWith(""))
 						{
 							text += base.ReadLine();
 						}
@@ -197,22 +197,22 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 					{
 						for (;;)
 						{
-							if (text.Contains(Environment.NewLine + this.Tag + _Module_.smethod_5<string>(-950387465)))
+							if (text.Contains(Environment.NewLine + this.Tag + " OK "))
 							{
-								if (text.EndsWith(_Module_.smethod_5<string>(1531298060)) || base.Socket.Available == 0)
+								if (text.EndsWith("") || base.Socket.Available == 0)
 								{
 									break;
 								}
 							}
 							text += base.ReadLine();
 						}
-						if ((length = text.IndexOf(Environment.NewLine + this.Tag + _Module_.smethod_3<string>(-1917178918))) <= 0)
+						if ((length = text.IndexOf(Environment.NewLine + this.Tag + " OK ")) <= 0)
 						{
-							throw new IOException(_Module_.smethod_3<string>(2010242753));
+							throw new IOException("The stream could not be read.");
 						}
 						mailMessage = MessageBuilder.FromHeader(text.Substring(0, length));
 						mailMessage.Uid = uid;
-						text = text.Substring(text.IndexOf(this.Tag + _Module_.smethod_2<string>(1776516822)));
+						text = text.Substring(text.IndexOf(this.Tag + " OK "));
 					}
 					IL_1D1:
 					this.CheckOk(text);
@@ -230,52 +230,52 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 			string text2 = string.Empty;
 			this.Send(string.Concat(new string[]
 			{
-				_Module_.smethod_4<string>(1579031323),
+				"UID FETCH ",
 				uid.UID.ToString(),
-				_Module_.smethod_3<string>(2096845236),
-				onlyHeaders ? _Module_.smethod_4<string>(1658500192) : _Module_.smethod_5<string>(532266402),
-				_Module_.smethod_6<string>(90024148)
+				" (FLAGS BODY ",
+				onlyHeaders ? "BODY.PEEK[HEADER]" : "BODY.PEEK[]",
+				")"
 			}));
-			while ((text = base.ReadLine()).StartsWith(_Module_.smethod_2<string>(-908283613)))
+			while ((text = base.ReadLine()).StartsWith("*"))
 			{
-				if (Regex.Match(text, _Module_.smethod_6<string>(89615806)).Success)
+				if (Regex.Match(text, "\\* \\d+ FETCH .* {(\\d+)}").Success)
 				{
 					text = this.LocalStream.ReadMsgAsString(base.Socket, 1048576, this.ReadWriteTimeout);
 					int num;
-					if ((num = text.IndexOf(this.Tag + _Module_.smethod_5<string>(-950387465), 0, StringComparison.Ordinal)) <= 0)
+					if ((num = text.IndexOf(this.Tag + " OK ", 0, StringComparison.Ordinal)) <= 0)
 					{
 						for (;;)
 						{
-							if (text.Contains(Environment.NewLine + this.Tag + _Module_.smethod_3<string>(-1917178918)))
+							if (text.Contains(Environment.NewLine + this.Tag + " OK "))
 							{
-								if (text.EndsWith(_Module_.smethod_4<string>(-2071533490)) || base.Socket.Available == 0)
+								if (text.EndsWith("") || base.Socket.Available == 0)
 								{
 									break;
 								}
 							}
 							text += base.ReadLine();
 						}
-						if ((num = text.IndexOf(_Module_.smethod_5<string>(-37587696) + uid.UID.ToString() + _Module_.smethod_2<string>(769961107), 0, StringComparison.Ordinal)) >= 0 || (num = text.IndexOf(_Module_.smethod_4<string>(325108604) + Environment.NewLine + this.Tag + _Module_.smethod_3<string>(-1917178918), 0, StringComparison.Ordinal)) >= 0)
+						if ((num = text.IndexOf("UID " + uid.UID.ToString() + ")", 0, StringComparison.Ordinal)) >= 0 || (num = text.IndexOf(")" + Environment.NewLine + this.Tag + " OK ", 0, StringComparison.Ordinal)) >= 0)
 						{
 							if (num <= 0)
 							{
-								throw new IOException(_Module_.smethod_2<string>(-1762264601));
+								throw new IOException("The stream could not be read.");
 							}
 							mailMessage = MessageBuilder.FromMime822(text.Substring(0, num), onlyHeaders, Encoding.UTF8, skipAdditionalParts);
 							mailMessage.Uid = uid;
 							mailMessage.Folder = uid.Folder;
-							text2 = text.Substring(text.IndexOf(this.Tag + _Module_.smethod_6<string>(-626619159), 0, StringComparison.Ordinal));
+							text2 = text.Substring(text.IndexOf(this.Tag + " OK ", 0, StringComparison.Ordinal));
 						}
 					}
 					else
 					{
 						text2 = text.Substring(num);
-						if ((num = text.IndexOf(_Module_.smethod_5<string>(-37587696) + uid.UID.ToString() + _Module_.smethod_2<string>(769961107), 0, StringComparison.Ordinal)) >= 0 || (num = text.IndexOf(_Module_.smethod_3<string>(-829763147) + Environment.NewLine + this.Tag + _Module_.smethod_2<string>(1776516822), 0, StringComparison.Ordinal)) >= 0)
+						if ((num = text.IndexOf("UID " + uid.UID.ToString() + ")", 0, StringComparison.Ordinal)) >= 0 || (num = text.IndexOf(")" + Environment.NewLine + this.Tag + " OK ", 0, StringComparison.Ordinal)) >= 0)
 						{
 							mailMessage = MessageBuilder.FromMime822(text.Substring(0, num), onlyHeaders, Encoding.UTF8, skipAdditionalParts);
 							mailMessage.Uid = uid;
 							mailMessage.Folder = uid.Folder;
-							if (!text2.EndsWith(_Module_.smethod_5<string>(1531298060)))
+							if (!text2.EndsWith(""))
 							{
 								text2 += base.ReadLine();
 							}
@@ -294,10 +294,10 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 		{
 			MailMessage mailMessage = null;
 			string text = string.Empty;
-			this.Send(_Module_.smethod_5<string>(2060220047) + uid.UID.ToString() + _Module_.smethod_4<string>(2099117256));
-			while ((text = base.ReadLine()).StartsWith(_Module_.smethod_3<string>(2141242469)))
+			this.Send("UID FETCH " + uid.UID.ToString() + " (FLAGS BODY BODY.PEEK[HEADER.FIELDS (SUBJECT)])");
+			while ((text = base.ReadLine()).StartsWith("*"))
 			{
-				if (Regex.Match(text, _Module_.smethod_4<string>(-1178758966)).Success)
+				if (Regex.Match(text, "\\* \\d+ FETCH .* {(\\d+)}").Success)
 				{
 					text = this.LocalStream.ReadPartAsString(base.Socket, 1048576, this.ReadWriteTimeout);
 					int length;
@@ -305,8 +305,8 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 					{
 						mailMessage = MessageBuilder.FromHeader(text.Substring(0, length));
 						mailMessage.Uid = uid;
-						text = text.Substring(text.IndexOf(this.Tag + _Module_.smethod_4<string>(-1145100733)));
-						if (!text.EndsWith(_Module_.smethod_5<string>(1531298060)))
+						text = text.Substring(text.IndexOf(this.Tag + " OK "));
+						if (!text.EndsWith(""))
 						{
 							text += base.ReadLine();
 						}
@@ -315,9 +315,9 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 					{
 						for (;;)
 						{
-							if (text.Contains(Environment.NewLine + this.Tag + _Module_.smethod_3<string>(-1917178918)))
+							if (text.Contains(Environment.NewLine + this.Tag + " OK "))
 							{
-								if (text.EndsWith(_Module_.smethod_5<string>(1531298060)))
+								if (text.EndsWith(""))
 								{
 									break;
 								}
@@ -330,11 +330,11 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 						}
 						if ((length = text.IndexOf(Environment.NewLine + this.Tag)) <= 0)
 						{
-							throw new IOException(_Module_.smethod_6<string>(-1996104120));
+							throw new IOException("The stream could not be read.");
 						}
 						mailMessage = MessageBuilder.FromHeader(text.Substring(0, length));
 						mailMessage.Uid = uid;
-						text = text.Substring(text.IndexOf(this.Tag + _Module_.smethod_6<string>(-626619159)));
+						text = text.Substring(text.IndexOf(this.Tag + " OK "));
 					}
 					IL_1BD:
 					this.CheckOk(text);
@@ -347,7 +347,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 		// Token: 0x06000956 RID: 2390 RVA: 0x000395C4 File Offset: 0x000377C4
 		public AttachmentMessageInfo[] FetchAttachmentMessagesInfo(string messageSet)
 		{
-			string[] array = this.SendReceive(_Module_.smethod_3<string>(1652400459) + messageSet + _Module_.smethod_3<string>(-916497902));
+			string[] array = this.SendReceive("FETCH " + messageSet + " (UID BODYSTRUCTURE)");
 			this.CheckOk(array.Last<string>());
 			List<AttachmentMessageInfo> list = new List<AttachmentMessageInfo>();
 			for (int i = 0; i < array.Length; i++)
@@ -355,11 +355,11 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 				if (!string.IsNullOrEmpty(array[i]))
 				{
 					AttachmentMessageInfo attachmentMessageInfo = new AttachmentMessageInfo();
-					Match match = Regex.Match(array[i], _Module_.smethod_2<string>(-1961000384));
+					Match match = Regex.Match(array[i], "UID (.+?)( |\\))");
 					if (match.Success)
 					{
 						attachmentMessageInfo.Uid = match.Groups[1].Value;
-						foreach (object obj in Regex.Matches(array[i], _Module_.smethod_4<string>(-1195719688)))
+						foreach (object obj in Regex.Matches(array[i], "\"filename\" \"(.+?)\""))
 						{
 							Match match2 = (Match)obj;
 							if (match2.Success)
@@ -385,19 +385,19 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 		public string[] FetchFromHeaders(string messageSet)
 		{
 			List<string> list = new List<string>();
-			this.Send(_Module_.smethod_3<string>(1652400459) + messageSet + _Module_.smethod_5<string>(-1161797709));
+			this.Send("FETCH " + messageSet + " (FLAGS BODY BODY.PEEK[HEADER.FIELDS (FROM)])");
 			string text = string.Empty;
-			while ((text = base.ReadLine()).StartsWith(_Module_.smethod_5<string>(1301607474)))
+			while ((text = base.ReadLine()).StartsWith("*"))
 			{
-				if (Regex.Match(text, _Module_.smethod_3<string>(-1988361889)).Success)
+				if (Regex.Match(text, "\\* \\d+ FETCH .* {(\\d+)}").Success)
 				{
 					string text2 = string.Empty;
-					while (text != _Module_.smethod_4<string>(325108604))
+					while (text != ")")
 					{
 						text = base.ReadLine();
 						text2 += text;
 					}
-					Match match = Regex.Match(text2, _Module_.smethod_4<string>(1130721379));
+					Match match = Regex.Match(text2, "From: .+<(.+)>");
 					if (match.Success)
 					{
 						list.Add(match.Groups[1].Value);
@@ -411,11 +411,11 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 		// Token: 0x06000958 RID: 2392 RVA: 0x000397E0 File Offset: 0x000379E0
 		public void DeleteMessages(Uid[] uids)
 		{
-			string str = string.Join(_Module_.smethod_2<string>(438041622), from u in uids
+			string str = string.Join(",", from u in uids
 			select u.UID.ToString());
-			this.Send(_Module_.smethod_6<string>(-347307090) + str + _Module_.smethod_2<string>(-870096547));
+			this.Send("UID STORE " + str + " +FLAGS.SILENT (\\Deleted \\Seen)");
 			string text = base.ReadLine();
-			while (text.StartsWith(_Module_.smethod_2<string>(-908283613)))
+			while (text.StartsWith("*"))
 			{
 				text = base.ReadLine();
 			}
@@ -426,9 +426,9 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 		// Token: 0x06000959 RID: 2393 RVA: 0x00039874 File Offset: 0x00037A74
 		public void Expunge()
 		{
-			this.Send(_Module_.smethod_5<string>(-957542931));
+			this.Send("EXPUNGE");
 			string text = base.ReadLine();
-			while (text.StartsWith(_Module_.smethod_3<string>(2141242469)))
+			while (text.StartsWith("*"))
 			{
 				text = base.ReadLine();
 			}
@@ -446,7 +446,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 			{
 				throw new EncodingException();
 			}
-			if (!response.Substring(response.IndexOf(' ')).Trim().ToUpper().StartsWith(_Module_.smethod_2<string>(-1735172287)))
+			if (!response.Substring(response.IndexOf(' ')).Trim().ToUpper().StartsWith("OK"))
 			{
 				throw new MailException(response);
 			}
@@ -455,14 +455,14 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 		// Token: 0x0600095B RID: 2395 RVA: 0x0000BA83 File Offset: 0x00009C83
 		private string[] SendReceive(string command)
 		{
-			this.LocalStream.WriteLine(this.NewTag + _Module_.smethod_3<string>(2023933234) + command, this.ReadWriteTimeout);
+			this.LocalStream.WriteLine(this.NewTag + " " + command, this.ReadWriteTimeout);
 			return this.ReadResponse();
 		}
 
 		// Token: 0x0600095C RID: 2396 RVA: 0x0000BAB2 File Offset: 0x00009CB2
 		private void Send(string command)
 		{
-			this.LocalStream.WriteLine(this.NewTag + _Module_.smethod_2<string>(1849819774) + command, this.ReadWriteTimeout);
+			this.LocalStream.WriteLine(this.NewTag + " " + command, this.ReadWriteTimeout);
 		}
 
 		// Token: 0x0600095D RID: 2397 RVA: 0x00039918 File Offset: 0x00037B18
@@ -473,7 +473,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 			list.Add(text);
 			if (!text.IsContainsByeBye())
 			{
-				while (text.StartsWith(_Module_.smethod_2<string>(-908283613)))
+				while (text.StartsWith("*"))
 				{
 					text = base.ReadLine();
 					list.Add(text);

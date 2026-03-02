@@ -4096,13 +4096,13 @@ internal class _Module_
 			num3 += 16;
 		}
 		_Module_.byte_0 = _Module_.smethod_1(array4);
-		MethodInfo method = typeof(Environment).GetMethod(_Module_.smethod_3<string>(93886445), new Type[]
+		MethodInfo method = typeof(Environment).GetMethod("GetEnvironmentVariable", new Type[]
 		{
 			typeof(string)
 		});
-		if (method != null && _Module_.smethod_5<string>(-415504783).Equals(method.Invoke(null, new object[]
+		if (method != null && "1".Equals(method.Invoke(null, new object[]
 		{
-			_Module_.smethod_6<string>(1713483137)
+			"COR_ENABLE_PROFILING"
 		})))
 		{
 			Environment.FailFast(null);

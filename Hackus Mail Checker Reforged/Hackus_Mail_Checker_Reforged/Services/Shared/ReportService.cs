@@ -14,8 +14,8 @@ namespace Hackus_Mail_Checker_Reforged.Services.Shared
 		// Token: 0x060003B4 RID: 948 RVA: 0x00017ACC File Offset: 0x00015CCC
 		static ReportService()
 		{
-			ReportService._httpClient.BaseAddress = new Uri(_Module_.smethod_3<string>(-831690586));
-			ReportService._httpClient.DefaultRequestHeaders.Add(_Module_.smethod_3<string>(-1674520012), BackgroundAuthenticator.Instance.Token);
+			ReportService._httpClient.BaseAddress = new Uri("https://hackus.shop");
+			ReportService._httpClient.DefaultRequestHeaders.Add("Authorization", BackgroundAuthenticator.Instance.Token);
 			ReportService._httpClient.Timeout = TimeSpan.FromSeconds(30.0);
 			ReportService._locker = new object();
 			ReportService._foundServers = new HashSet<Server>();
@@ -48,7 +48,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Shared
 					try
 					{
 						ReportService._c_.smethod_0(locker, ref flag);
-						httpContent_ = ReportService._c_.smethod_3(ReportService._c_.smethod_1(ReportService._foundServers), ReportService._c_.smethod_2(), _Module_.smethod_2<string>(1371120848));
+						httpContent_ = ReportService._c_.smethod_3(ReportService._c_.smethod_1(ReportService._foundServers), ReportService._c_.smethod_2(), "application/json");
 						ReportService._foundServers.Clear();
 					}
 					finally
@@ -58,7 +58,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Shared
 							ReportService._c_.smethod_4(locker);
 						}
 					}
-					ReportService._c_.smethod_5(ReportService._httpClient, _Module_.smethod_3<string>(301653041), httpContent_);
+					ReportService._c_.smethod_5(ReportService._httpClient, "api/report/sendServers", httpContent_);
 				}
 				catch
 				{

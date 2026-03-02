@@ -128,15 +128,15 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling Hackus_Mail_Checke
 		public static VersionResponse GetLastVersion()
 		{
 			Version version = Assembly.GetExecutingAssembly().GetName().Version;
-			string text = string.Format(_Module_.smethod_3<string>(-483683895), version.Major, version.Minor, version.Build);
+			string text = string.Format("{0}.{1}.{2}", version.Major, version.Minor, version.Build);
 			try
 			{
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					httpRequest.IgnoreProtocolErrors = true;
 					httpRequest.Authorization = BackgroundAuthenticator.Instance.Token;
-					httpRequest.AddUrlParam(_Module_.smethod_3<string>(-1045570179), text);
-					HttpResponse httpResponse = httpRequest.Get(new Uri(BackgroundAuthenticator.Instance.BaseUri, _Module_.smethod_4<string>(327644369)), null);
+					httpRequest.AddUrlParam("version", text);
+					HttpResponse httpResponse = httpRequest.Get(new Uri(BackgroundAuthenticator.Instance.BaseUri, "api/static/checkUpdate"), null);
 					string text2 = httpResponse.ToString();
 					if (httpResponse.StatusCode == 200)
 					{

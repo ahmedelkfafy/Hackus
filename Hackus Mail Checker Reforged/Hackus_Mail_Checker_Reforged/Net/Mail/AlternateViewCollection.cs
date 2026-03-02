@@ -27,9 +27,9 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		public Attachment GetHtmlView()
 		{
 			Attachment result;
-			if ((result = this.OfType(_Module_.smethod_4<string>(1173908513)).FirstOrDefault<Attachment>()) == null)
+			if ((result = this.OfType("text/html").FirstOrDefault<Attachment>()) == null)
 			{
-				result = this.OfType((string ct) => AlternateViewCollection._c_.smethod_0(ct, _Module_.smethod_2<string>(1569658303))).FirstOrDefault<Attachment>();
+				result = this.OfType((string ct) => AlternateViewCollection._c_.smethod_0(ct, "html")).FirstOrDefault<Attachment>();
 			}
 			return result;
 		}
@@ -38,9 +38,9 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		public Attachment GetTextView()
 		{
 			Attachment result;
-			if ((result = this.OfType(_Module_.smethod_4<string>(384644453)).FirstOrDefault<Attachment>()) == null)
+			if ((result = this.OfType("text/plain").FirstOrDefault<Attachment>()) == null)
 			{
-				result = this.OfType((string ct) => AlternateViewCollection._c_.smethod_1(ct, _Module_.smethod_5<string>(-683345321))).FirstOrDefault<Attachment>();
+				result = this.OfType((string ct) => AlternateViewCollection._c_.smethod_1(ct, "text/")).FirstOrDefault<Attachment>();
 			}
 			return result;
 		}

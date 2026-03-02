@@ -65,7 +65,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.Views.Tabs
 		// Token: 0x06000A4B RID: 2635 RVA: 0x0003BBFC File Offset: 0x00039DFC
 		public void HideScriptErrors(WebBrowser wb, bool Hide)
 		{
-			FieldInfo field = typeof(WebBrowser).GetField(_Module_.smethod_4<string>(-1580297471), BindingFlags.Instance | BindingFlags.NonPublic);
+			FieldInfo field = typeof(WebBrowser).GetField("_axIWebBrowser2", BindingFlags.Instance | BindingFlags.NonPublic);
 			if (field == null)
 			{
 				return;
@@ -73,7 +73,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.Views.Tabs
 			object value = field.GetValue(wb);
 			if (value != null)
 			{
-				value.GetType().InvokeMember(_Module_.smethod_4<string>(-529548164), BindingFlags.SetProperty, null, value, new object[]
+				value.GetType().InvokeMember("Silent", BindingFlags.SetProperty, null, value, new object[]
 				{
 					Hide
 				});

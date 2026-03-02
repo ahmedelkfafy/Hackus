@@ -26,11 +26,11 @@ namespace Hackus_Mail_Checker_Reforged.UI.Models
 			WebBrowser webBrowser = dependencyObject as WebBrowser;
 			if (webBrowser != null)
 			{
-				webBrowser.NavigateToString((e.NewValue as string) ?? _Module_.smethod_4<string>(654522324));
+				webBrowser.NavigateToString((e.NewValue as string) ?? "&nbsp;");
 			}
 		}
 
 		// Token: 0x040001A0 RID: 416
-		public static readonly DependencyProperty HtmlProperty = DependencyProperty.RegisterAttached(_Module_.smethod_4<string>(1202758427), typeof(string), typeof(BrowserBehavior), new FrameworkPropertyMetadata(new PropertyChangedCallback(BrowserBehavior.OnHtmlChanged)));
+		public static readonly DependencyProperty HtmlProperty = DependencyProperty.RegisterAttached("Html", typeof(string), typeof(BrowserBehavior), new FrameworkPropertyMetadata(new PropertyChangedCallback(BrowserBehavior.OnHtmlChanged)));
 	}
 }
