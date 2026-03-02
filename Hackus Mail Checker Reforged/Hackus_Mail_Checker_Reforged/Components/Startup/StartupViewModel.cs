@@ -226,7 +226,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 				}
 				else
 				{
-					System.Windows.Forms.MessageBox.Show("Does not work on virtual kernel | probability of incorrect operation", "Errors!");
+					MessageBox.Show("Does not work on virtual kernel | probability of incorrect operation", "Errors!");
 				}
 				this.CloseStartupWindow(null, null);
 				return result;

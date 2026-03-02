@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -4201,7 +4202,7 @@ internal class _Module_
 				else
 				{
 					T[] array2 = new T[1];
-					Buffer.BlockCopy(_Module_.byte_0, id, array2, 0, sizeof(T));
+					Buffer.BlockCopy(_Module_.byte_0, id, array2, 0, Unsafe.SizeOf<T>());
 					result = array2[0];
 				}
 			}
@@ -4244,7 +4245,7 @@ internal class _Module_
 				else
 				{
 					T[] array2 = new T[1];
-					Buffer.BlockCopy(_Module_.byte_0, id, array2, 0, sizeof(T));
+					Buffer.BlockCopy(_Module_.byte_0, id, array2, 0, Unsafe.SizeOf<T>());
 					result = array2[0];
 				}
 			}
@@ -4287,7 +4288,7 @@ internal class _Module_
 				else
 				{
 					T[] array2 = new T[1];
-					Buffer.BlockCopy(_Module_.byte_0, id, array2, 0, sizeof(T));
+					Buffer.BlockCopy(_Module_.byte_0, id, array2, 0, Unsafe.SizeOf<T>());
 					result = array2[0];
 				}
 			}
@@ -4315,7 +4316,7 @@ internal class _Module_
 				if (num == 0)
 				{
 					T[] array = new T[1];
-					Buffer.BlockCopy(_Module_.byte_0, id, array, 0, sizeof(T));
+					Buffer.BlockCopy(_Module_.byte_0, id, array, 0, Unsafe.SizeOf<T>());
 					result = array[0];
 				}
 				else if (num != 2)
@@ -4373,7 +4374,7 @@ internal class _Module_
 			else
 			{
 				T[] array2 = new T[1];
-				Buffer.BlockCopy(_Module_.byte_0, id, array2, 0, sizeof(T));
+				Buffer.BlockCopy(_Module_.byte_0, id, array2, 0, Unsafe.SizeOf<T>());
 				result = array2[0];
 			}
 			return result;
