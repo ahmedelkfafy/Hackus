@@ -52,10 +52,10 @@
 				</Border>
 				<hc:SearchBar
 					Grid.Row="1"
-					BorderElement.CornerRadius="0"
-					InfoElement.Placeholder="{DynamicResource l_SearchGroup}"
-					InfoElement.Symbol="#"
-					ThemeManager.RequestedAccentColor="#64FFD1"
+					hc:BorderElement.CornerRadius="0"
+					hc:InfoElement.Placeholder="{DynamicResource l_SearchGroup}"
+					hc:InfoElement.Symbol="#"
+					hc:ThemeManager.RequestedAccentColor="#64FFD1"
 					BorderThickness="0,0,0,1"
 					Style="{StaticResource SearchBarPlus}"
 					Command="{Binding SearchCommand}"
@@ -70,8 +70,8 @@
 					Row="2">
 					<hc:TextBox
 						Padding="10,0,30,0"
-						BorderElement.CornerRadius="0"
-						InfoElement.Placeholder="{DynamicResource l_CreateGroup}"
+						hc:BorderElement.CornerRadius="0"
+						hc:InfoElement.Placeholder="{DynamicResource l_CreateGroup}"
 						BorderThickness="0,0,0,1"
 						Text="{Binding CreateRequestGroupField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 						<UIElement.InputBindings>
@@ -249,8 +249,8 @@
 					Row="1">
 					<hc:TextBox
 						Padding="10,0,30,0"
-						BorderElement.CornerRadius="0"
-						InfoElement.Placeholder="{DynamicResource l_CreateRequest}"
+						hc:BorderElement.CornerRadius="0"
+						hc:InfoElement.Placeholder="{DynamicResource l_CreateRequest}"
 						BorderThickness="0,0,0,1"
 						Text="{Binding CreateRequestField, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 						<UIElement.InputBindings>
@@ -276,9 +276,9 @@
 				</Grid>
 				<hc:ComboBox
 					Grid.Row="2"
-					BorderElement.CornerRadius="0"
-					ThemeManager.RequestedAccentColor="#303030"
-					ThemeManager.RequestedTheme="Dark"
+					hc:BorderElement.CornerRadius="0"
+					hc:ThemeManager.RequestedAccentColor="#303030"
+					hc:ThemeManager.RequestedTheme="Dark"
 					BorderThickness="0,0,0,1"
 					Cursor="Hand"
 					FontFamily="{StaticResource Roboto-Regular}"

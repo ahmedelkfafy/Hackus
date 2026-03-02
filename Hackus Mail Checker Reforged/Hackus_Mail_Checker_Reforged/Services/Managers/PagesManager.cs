@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -55,13 +55,13 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 				switch (frameType)
 				{
 				case FrameType.MainSettings:
-					PagesManager.<>c__DisplayClass8_0.smethod_0(this._mainSettingsFrame, page);
+					PagesManager._c__DisplayClass8_0.smethod_0(this._mainSettingsFrame, page);
 					return;
 				case FrameType.MainOverlay:
-					PagesManager.<>c__DisplayClass8_0.smethod_0(this._mainOverlay, page);
+					PagesManager._c__DisplayClass8_0.smethod_0(this._mainOverlay, page);
 					return;
 				case FrameType.Startup:
-					PagesManager.<>c__DisplayClass8_0.smethod_0(this._startupFrame, page);
+					PagesManager._c__DisplayClass8_0.smethod_0(this._startupFrame, page);
 					return;
 				default:
 					return;
@@ -79,12 +79,12 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 				Func<Page, bool> predicate;
 				if ((predicate = <>9__1) == null)
 				{
-					predicate = (<>9__1 = ((Page p) => PagesManager.<>c__DisplayClass9_0.smethod_2(PagesManager.<>c__DisplayClass9_0.smethod_1(p), pageType)));
+					predicate = (<>9__1 = ((Page p) => PagesManager._c__DisplayClass9_0.smethod_2(PagesManager._c__DisplayClass9_0.smethod_1(p), pageType)));
 				}
 				Page page = cachedPages.FirstOrDefault(predicate);
 				if (page == null)
 				{
-					page = (Page)PagesManager.<>c__DisplayClass9_0.smethod_0(pageType);
+					page = (Page)PagesManager._c__DisplayClass9_0.smethod_0(pageType);
 					this._cachedPages.Add(page);
 				}
 				this.OpenPage(page, frameType);
@@ -149,12 +149,12 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			HandyControl.Controls.MessageBox.Show(new MessageBoxInfo
 			{
 				Message = text,
-				Caption = <Module>.smethod_3<string>(-1430198211),
+				Caption = _Module_.smethod_3<string>(-1430198211),
 				Button = MessageBoxButton.OK,
-				IconBrushKey = <Module>.smethod_6<string>(-1964559648),
-				IconKey = <Module>.smethod_2<string>(729149099),
-				StyleKey = <Module>.smethod_5<string>(375297047),
-				ConfirmContent = <Module>.smethod_3<string>(-1992084495)
+				IconBrushKey = _Module_.smethod_6<string>(-1964559648),
+				IconKey = _Module_.smethod_2<string>(729149099),
+				StyleKey = _Module_.smethod_5<string>(375297047),
+				ConfirmContent = _Module_.smethod_3<string>(-1992084495)
 			});
 		}
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Hackus_Mail_Checker_Reforged.UI.Models;
 
 namespace Hackus_Mail_Checker_Reforged.Components.Tools
@@ -25,7 +25,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Tools
 			set
 			{
 				this._fileName = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(-1983759734));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(-1983759734));
 			}
 		}
 
@@ -41,7 +41,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Tools
 			set
 			{
 				this._fullPath = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(464312975));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(464312975));
 			}
 		}
 

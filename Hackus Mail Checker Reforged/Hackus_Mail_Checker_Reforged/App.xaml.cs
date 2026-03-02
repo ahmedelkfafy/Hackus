@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -41,7 +41,7 @@ namespace Hackus_Mail_Checker_Reforged
 			{
 				if (value == null)
 				{
-					throw new ArgumentNullException(<Module>.smethod_4<string>(-1519713082));
+					throw new ArgumentNullException(_Module_.smethod_4<string>(-1519713082));
 				}
 				if (value == Thread.CurrentThread.CurrentCulture)
 				{
@@ -49,16 +49,16 @@ namespace Hackus_Mail_Checker_Reforged
 				}
 				Thread.CurrentThread.CurrentUICulture = value;
 				ResourceDictionary resourceDictionary = new ResourceDictionary();
-				if (!(value.Name == <Module>.smethod_2<string>(152506312)))
+				if (!(value.Name == _Module_.smethod_2<string>(152506312)))
 				{
-					resourceDictionary.Source = new Uri(<Module>.smethod_3<string>(-67753887), UriKind.Relative);
+					resourceDictionary.Source = new Uri(_Module_.smethod_3<string>(-67753887), UriKind.Relative);
 				}
 				else
 				{
-					resourceDictionary.Source = new Uri(<Module>.smethod_6<string>(242957937), UriKind.Relative);
+					resourceDictionary.Source = new Uri(_Module_.smethod_6<string>(242957937), UriKind.Relative);
 				}
 				ResourceDictionary resourceDictionary2 = (from d in Application.Current.Resources.MergedDictionaries
-				where App.<>c.smethod_1(App.<>c.smethod_0(d), null) && App.<>c.smethod_3(App.<>c.smethod_2(App.<>c.smethod_0(d)), <Module>.smethod_3<string>(1870002658))
+				where App._c_.smethod_1(App._c_.smethod_0(d), null) && App._c_.smethod_3(App._c_.smethod_2(App._c_.smethod_0(d)), _Module_.smethod_3<string>(1870002658))
 				select d).First<ResourceDictionary>();
 				if (resourceDictionary2 != null)
 				{
@@ -91,17 +91,17 @@ namespace Hackus_Mail_Checker_Reforged
 				{
 					if (value == ApplicationTheme.Dark)
 					{
-						resourceDictionary.Source = new Uri(<Module>.smethod_5<string>(792951474), UriKind.Relative);
+						resourceDictionary.Source = new Uri(_Module_.smethod_5<string>(792951474), UriKind.Relative);
 						ThemeManager.Current.ApplicationTheme = new ApplicationTheme?(ApplicationTheme.Dark);
 					}
 				}
 				else
 				{
-					resourceDictionary.Source = new Uri(<Module>.smethod_5<string>(-119848295), UriKind.Relative);
+					resourceDictionary.Source = new Uri(_Module_.smethod_5<string>(-119848295), UriKind.Relative);
 					ThemeManager.Current.ApplicationTheme = new ApplicationTheme?(ApplicationTheme.Light);
 				}
 				ResourceDictionary resourceDictionary2 = (from d in Application.Current.Resources.MergedDictionaries
-				where App.<>c.smethod_1(App.<>c.smethod_0(d), null) && App.<>c.smethod_3(App.<>c.smethod_2(App.<>c.smethod_0(d)), <Module>.smethod_3<string>(1027173232))
+				where App._c_.smethod_1(App._c_.smethod_0(d), null) && App._c_.smethod_3(App._c_.smethod_2(App._c_.smethod_0(d)), _Module_.smethod_3<string>(1027173232))
 				select d).First<ResourceDictionary>();
 				if (resourceDictionary2 == null)
 				{
@@ -121,8 +121,8 @@ namespace Hackus_Mail_Checker_Reforged
 		public App()
 		{
 			App._languages.Clear();
-			App._languages.Add(new CultureInfo(<Module>.smethod_5<string>(1510633816)));
-			App._languages.Add(new CultureInfo(<Module>.smethod_4<string>(1128797621)));
+			App._languages.Add(new CultureInfo(_Module_.smethod_5<string>(1510633816)));
+			App._languages.Add(new CultureInfo(_Module_.smethod_4<string>(1128797621)));
 			ThemeManager.Current.ApplicationTheme = new ApplicationTheme?(ApplicationTheme.Dark);
 		}
 
@@ -181,11 +181,11 @@ namespace Hackus_Mail_Checker_Reforged
 		{
 			AppDomain.CurrentDomain.UnhandledException += delegate(object sender, UnhandledExceptionEventArgs e)
 			{
-				this.LogUnhandledException((Exception)e.ExceptionObject, <Module>.smethod_2<string>(-1686262334));
+				this.LogUnhandledException((Exception)e.ExceptionObject, _Module_.smethod_2<string>(-1686262334));
 			};
 			base.DispatcherUnhandledException += delegate(object sender, DispatcherUnhandledExceptionEventArgs e)
 			{
-				this.LogUnhandledException(e.Exception, <Module>.smethod_5<string>(1166893511));
+				this.LogUnhandledException(e.Exception, _Module_.smethod_5<string>(1166893511));
 				if (e.Exception.GetType() != typeof(OutOfMemoryException))
 				{
 					e.Handled = true;
@@ -193,7 +193,7 @@ namespace Hackus_Mail_Checker_Reforged
 			};
 			TaskScheduler.UnobservedTaskException += delegate(object sender, UnobservedTaskExceptionEventArgs e)
 			{
-				this.LogUnhandledException(e.Exception, <Module>.smethod_4<string>(1487673262));
+				this.LogUnhandledException(e.Exception, _Module_.smethod_4<string>(1487673262));
 				e.SetObserved();
 			};
 		}
@@ -203,14 +203,14 @@ namespace Hackus_Mail_Checker_Reforged
 		{
 			try
 			{
-				string value = <Module>.smethod_4<string>(1027210915) + source + <Module>.smethod_2<string>(769961107);
-				using (StreamWriter streamWriter = new StreamWriter(<Module>.smethod_5<string>(-536708088), true))
+				string value = _Module_.smethod_4<string>(1027210915) + source + _Module_.smethod_2<string>(769961107);
+				using (StreamWriter streamWriter = new StreamWriter(_Module_.smethod_5<string>(-536708088), true))
 				{
 					streamWriter.WriteLine(value);
-					streamWriter.WriteLine(<Module>.smethod_6<string>(1577847198) + exception.Message);
-					streamWriter.WriteLine(<Module>.smethod_6<string>(244687722) + exception.StackTrace);
-					streamWriter.WriteLine(<Module>.smethod_3<string>(813558183) + exception.Source);
-					streamWriter.WriteLine(<Module>.smethod_2<string>(1251408930));
+					streamWriter.WriteLine(_Module_.smethod_6<string>(1577847198) + exception.Message);
+					streamWriter.WriteLine(_Module_.smethod_6<string>(244687722) + exception.StackTrace);
+					streamWriter.WriteLine(_Module_.smethod_3<string>(813558183) + exception.Source);
+					streamWriter.WriteLine(_Module_.smethod_2<string>(1251408930));
 				}
 			}
 			catch

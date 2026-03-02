@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
@@ -12,7 +12,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
 		{
 			get
 			{
-				return <Module>.smethod_4<string>(428531331);
+				return _Module_.smethod_4<string>(428531331);
 			}
 		}
 
@@ -22,7 +22,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
 		{
 			get
 			{
-				return <Module>.smethod_2<string>(-1147707449);
+				return _Module_.smethod_2<string>(-1147707449);
 			}
 		}
 
@@ -32,7 +32,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
 		{
 			get
 			{
-				return <Module>.smethod_5<string>(1675151254);
+				return _Module_.smethod_5<string>(1675151254);
 			}
 		}
 
@@ -42,7 +42,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
 		{
 			get
 			{
-				return <Module>.smethod_2<string>(1632188786);
+				return _Module_.smethod_2<string>(1632188786);
 			}
 		}
 
@@ -52,18 +52,18 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
 		{
 			get
 			{
-				return <Module>.smethod_4<string>(-953467717);
+				return _Module_.smethod_4<string>(-953467717);
 			}
 		}
 
 		// Token: 0x06000667 RID: 1639 RVA: 0x0002B680 File Offset: 0x00029880
 		public override void SetLoginParameters(IList<KeyValuePair<string, string>> parameters)
 		{
-			parameters.Add(new KeyValuePair<string, string>(<Module>.smethod_4<string>(-1850962823), <Module>.smethod_5<string>(-36000308)));
-			parameters.Add(new KeyValuePair<string, string>(<Module>.smethod_5<string>(-1307243931), <Module>.smethod_6<string>(-1697764416)));
-			parameters.Add(new KeyValuePair<string, string>(<Module>.smethod_5<string>(-899126992), <Module>.smethod_6<string>(-2140997718)));
-			parameters.Add(new KeyValuePair<string, string>(<Module>.smethod_5<string>(-1284195785), <Module>.smethod_5<string>(1258291461)));
-			parameters.Add(new KeyValuePair<string, string>(<Module>.smethod_3<string>(2139248894), <Module>.smethod_3<string>(-429649467)));
+			parameters.Add(new KeyValuePair<string, string>(_Module_.smethod_4<string>(-1850962823), _Module_.smethod_5<string>(-36000308)));
+			parameters.Add(new KeyValuePair<string, string>(_Module_.smethod_5<string>(-1307243931), _Module_.smethod_6<string>(-1697764416)));
+			parameters.Add(new KeyValuePair<string, string>(_Module_.smethod_5<string>(-899126992), _Module_.smethod_6<string>(-2140997718)));
+			parameters.Add(new KeyValuePair<string, string>(_Module_.smethod_5<string>(-1284195785), _Module_.smethod_5<string>(1258291461)));
+			parameters.Add(new KeyValuePair<string, string>(_Module_.smethod_3<string>(2139248894), _Module_.smethod_3<string>(-429649467)));
 		}
 
 		// Token: 0x0400034E RID: 846

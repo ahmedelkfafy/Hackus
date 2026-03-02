@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -49,7 +49,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler
 			set
 			{
 				this._mails = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(1514250622));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(1514250622));
 			}
 		}
 
@@ -65,7 +65,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler
 			set
 			{
 				this._notifications = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(470929222));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(470929222));
 			}
 		}
 

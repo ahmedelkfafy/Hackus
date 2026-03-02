@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -15,11 +15,11 @@ namespace Hackus_Mail_Checker_Reforged.Helpers
 			string directoryName = Path.GetDirectoryName(path);
 			string str = Path.GetFileNameWithoutExtension(path);
 			string extension = Path.GetExtension(path);
-			str = str + <Module>.smethod_4<string>(2127355163) + command;
+			str = str + _Module_.smethod_4<string>(2127355163) + command;
 			int num = 1;
 			while (File.Exists(path))
 			{
-				path = Path.Combine(directoryName, str + <Module>.smethod_4<string>(-405843621) + num.ToString() + extension);
+				path = Path.Combine(directoryName, str + _Module_.smethod_4<string>(-405843621) + num.ToString() + extension);
 				num++;
 			}
 			return new FileInfo(path);

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
@@ -59,7 +59,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			set
 			{
 				this._threads = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(-488624271));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(-488624271));
 			}
 		}
 
@@ -75,7 +75,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			set
 			{
 				this._state = value;
-				base.OnPropertyChanged(<Module>.smethod_3<string>(267025275));
+				base.OnPropertyChanged(_Module_.smethod_3<string>(267025275));
 			}
 		}
 
@@ -122,21 +122,21 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 								this.SafeExecute(new Action(Worker.Run));
 							});
 						}
-						Thread thread = ThreadsManager.<>c__DisplayClass18_0.smethod_0(threadStart_);
-						ThreadsManager.<>c__DisplayClass18_0.smethod_1(thread, true);
-						ThreadsManager.<>c__DisplayClass18_0.smethod_2(thread);
+						Thread thread = ThreadsManager._c__DisplayClass18_0.smethod_0(threadStart_);
+						ThreadsManager._c__DisplayClass18_0.smethod_1(thread, true);
+						ThreadsManager._c__DisplayClass18_0.smethod_2(thread);
 						object locker = this._locker;
 						bool flag = false;
 						try
 						{
-							ThreadsManager.<>c__DisplayClass18_0.smethod_3(locker, ref flag);
+							ThreadsManager._c__DisplayClass18_0.smethod_3(locker, ref flag);
 							this.Threads.Add(thread);
 						}
 						finally
 						{
 							if (flag)
 							{
-								ThreadsManager.<>c__DisplayClass18_0.smethod_4(locker);
+								ThreadsManager._c__DisplayClass18_0.smethod_4(locker);
 							}
 						}
 					}
@@ -212,7 +212,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			}
 			catch (Exception exception)
 			{
-				FileManager.LogUnhandledException(exception, <Module>.smethod_5<string>(-1131597857));
+				FileManager.LogUnhandledException(exception, _Module_.smethod_5<string>(-1131597857));
 				this.ThreadCancelled(this, new ThreadCancelledEventArgs(Thread.CurrentThread));
 			}
 		}
@@ -232,7 +232,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		// Token: 0x06000472 RID: 1138 RVA: 0x000094FE File Offset: 0x000076FE
 		private void OnThreadsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
 		{
-			base.OnPropertyChanged(<Module>.smethod_4<string>(-2045655874));
+			base.OnPropertyChanged(_Module_.smethod_4<string>(-2045655874));
 			if (!this.Threads.Any<Thread>())
 			{
 				this.ThreadsCancelled(this, null);

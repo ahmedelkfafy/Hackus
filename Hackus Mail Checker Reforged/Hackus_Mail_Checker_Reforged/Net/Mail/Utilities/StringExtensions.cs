@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -18,11 +18,11 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 			}
 			if (string.IsNullOrEmpty(left))
 			{
-				throw new ArgumentNullException(<Module>.smethod_2<string>(-2129473509));
+				throw new ArgumentNullException(_Module_.smethod_2<string>(-2129473509));
 			}
 			if (string.IsNullOrEmpty(right))
 			{
-				throw new ArgumentNullException(<Module>.smethod_2<string>(-1297136623));
+				throw new ArgumentNullException(_Module_.smethod_2<string>(-1297136623));
 			}
 			if (startIndex >= 0 && startIndex < self.Length)
 			{
@@ -56,7 +56,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 				}
 				return list.ToArray();
 			}
-			throw new ArgumentOutOfRangeException(<Module>.smethod_5<string>(-1730857173));
+			throw new ArgumentOutOfRangeException(_Module_.smethod_5<string>(-1730857173));
 		}
 
 		// Token: 0x06000825 RID: 2085 RVA: 0x0003216C File Offset: 0x0003036C
@@ -78,11 +78,11 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 			{
 				throw new SubstringException(string.Concat(new string[]
 				{
-					<Module>.smethod_2<string>(1616042478),
+					_Module_.smethod_2<string>(1616042478),
 					left,
-					<Module>.smethod_4<string>(-661208798),
+					_Module_.smethod_4<string>(-661208798),
 					right,
-					<Module>.smethod_4<string>(-1450472858)
+					_Module_.smethod_4<string>(-1450472858)
 				}));
 			}
 			return array;
@@ -123,11 +123,11 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 			{
 				throw new SubstringException(string.Concat(new string[]
 				{
-					<Module>.smethod_3<string>(-999311643),
+					_Module_.smethod_3<string>(-999311643),
 					left,
-					<Module>.smethod_2<string>(1066591169),
+					_Module_.smethod_2<string>(1066591169),
 					right,
-					<Module>.smethod_4<string>(-1450472858)
+					_Module_.smethod_4<string>(-1450472858)
 				}));
 			}
 			return text;
@@ -175,11 +175,11 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 			{
 				throw new SubstringException(string.Concat(new string[]
 				{
-					<Module>.smethod_5<string>(2147250330),
+					_Module_.smethod_5<string>(2147250330),
 					right,
-					<Module>.smethod_5<string>(1577396232),
+					_Module_.smethod_5<string>(1577396232),
 					left,
-					<Module>.smethod_3<string>(-718368501)
+					_Module_.smethod_3<string>(-718368501)
 				}));
 			}
 			return text;
@@ -194,7 +194,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 		// Token: 0x0600082E RID: 2094 RVA: 0x000323A4 File Offset: 0x000305A4
 		public static string QuoteString(this string value)
 		{
-			return <Module>.smethod_2<string>(1588727045) + value.Replace(<Module>.smethod_3<string>(-1591838543), <Module>.smethod_5<string>(-2043602992)).Replace(<Module>.smethod_2<string>(1020182203), <Module>.smethod_5<string>(1021050912)).Replace(<Module>.smethod_5<string>(-1278631467), <Module>.smethod_6<string>(-744853273)).Replace(<Module>.smethod_2<string>(1588727045), <Module>.smethod_4<string>(-939042760)) + <Module>.smethod_3<string>(1298413043);
+			return _Module_.smethod_2<string>(1588727045) + value.Replace(_Module_.smethod_3<string>(-1591838543), _Module_.smethod_5<string>(-2043602992)).Replace(_Module_.smethod_2<string>(1020182203), _Module_.smethod_5<string>(1021050912)).Replace(_Module_.smethod_5<string>(-1278631467), _Module_.smethod_6<string>(-744853273)).Replace(_Module_.smethod_2<string>(1588727045), _Module_.smethod_4<string>(-939042760)) + _Module_.smethod_3<string>(1298413043);
 		}
 
 		// Token: 0x0600082F RID: 2095 RVA: 0x0000AF27 File Offset: 0x00009127
@@ -222,7 +222,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 		// Token: 0x06000831 RID: 2097 RVA: 0x0000AF68 File Offset: 0x00009168
 		public static bool IsBrokenEncoding(this string s)
 		{
-			return s.Contains('�') || Regex.IsMatch(s, <Module>.smethod_3<string>(205281091));
+			return s.Contains('�') || Regex.IsMatch(s, _Module_.smethod_3<string>(205281091));
 		}
 
 		// Token: 0x06000832 RID: 2098 RVA: 0x0000AF89 File Offset: 0x00009189
@@ -239,14 +239,14 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 				return value;
 			}
 			value = StringExtensions.rxTimeZoneName.Replace(value, string.Empty);
-			value = StringExtensions.rxTimeZoneColon.Replace(value, (Match match) => StringExtensions.<>c.smethod_4(<Module>.smethod_6<string>(820097393), StringExtensions.<>c.smethod_2(StringExtensions.<>c.smethod_1(StringExtensions.<>c.smethod_0(match), 1)), StringExtensions.<>c.smethod_3(StringExtensions.<>c.smethod_2(StringExtensions.<>c.smethod_1(StringExtensions.<>c.smethod_0(match), 2)), 2, '0'), StringExtensions.<>c.smethod_2(StringExtensions.<>c.smethod_1(StringExtensions.<>c.smethod_0(match), 3))));
+			value = StringExtensions.rxTimeZoneColon.Replace(value, (Match match) => StringExtensions._c_.smethod_4(_Module_.smethod_6<string>(820097393), StringExtensions._c_.smethod_2(StringExtensions._c_.smethod_1(StringExtensions._c_.smethod_0(match), 1)), StringExtensions._c_.smethod_3(StringExtensions._c_.smethod_2(StringExtensions._c_.smethod_1(StringExtensions._c_.smethod_0(match), 2)), 2, '0'), StringExtensions._c_.smethod_2(StringExtensions._c_.smethod_1(StringExtensions._c_.smethod_0(match), 3))));
 			value = StringExtensions.rxNegativeHours.Replace(value, string.Empty);
 			Match match2 = StringExtensions.rxTimeZoneMinutes.Match(value);
 			try
 			{
 				if (match2.Captures.Count > 0 && int.Parse(match2.Groups[2].Value) > 60)
 				{
-					value = value.Substring(0, match2.Index) + match2.Groups[1].Value + <Module>.smethod_4<string>(-579467375);
+					value = value.Substring(0, match2.Index) + match2.Groups[1].Value + _Module_.smethod_4<string>(-579467375);
 				}
 			}
 			catch (FormatException)
@@ -270,30 +270,30 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 		// Token: 0x06000835 RID: 2101 RVA: 0x0000AF96 File Offset: 0x00009196
 		public static string GetRFC2060Date(this DateTime date)
 		{
-			return date.ToString(<Module>.smethod_2<string>(916988458), StringExtensions._enUsCulture);
+			return date.ToString(_Module_.smethod_2<string>(916988458), StringExtensions._enUsCulture);
 		}
 
 		// Token: 0x04000411 RID: 1041
-		private static readonly Regex rxTimeZoneName = new Regex(<Module>.smethod_4<string>(999060745), RegexOptions.IgnoreCase | RegexOptions.Compiled);
+		private static readonly Regex rxTimeZoneName = new Regex(_Module_.smethod_4<string>(999060745), RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
 		// Token: 0x04000412 RID: 1042
-		private static readonly Regex rxTimeZoneColon = new Regex(<Module>.smethod_4<string>(-226012060), RegexOptions.IgnoreCase | RegexOptions.Compiled);
+		private static readonly Regex rxTimeZoneColon = new Regex(_Module_.smethod_4<string>(-226012060), RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
 		// Token: 0x04000413 RID: 1043
-		private static readonly Regex rxTimeZoneMinutes = new Regex(<Module>.smethod_6<string>(-612780879), RegexOptions.Compiled);
+		private static readonly Regex rxTimeZoneMinutes = new Regex(_Module_.smethod_6<string>(-612780879), RegexOptions.Compiled);
 
 		// Token: 0x04000414 RID: 1044
-		private static readonly Regex rxNegativeHours = new Regex(<Module>.smethod_6<string>(-174736932), RegexOptions.Compiled);
+		private static readonly Regex rxNegativeHours = new Regex(_Module_.smethod_6<string>(-174736932), RegexOptions.Compiled);
 
 		// Token: 0x04000415 RID: 1045
-		private static readonly CultureInfo _enUsCulture = CultureInfo.GetCultureInfo(<Module>.smethod_5<string>(1510633816));
+		private static readonly CultureInfo _enUsCulture = CultureInfo.GetCultureInfo(_Module_.smethod_5<string>(1510633816));
 
 		// Token: 0x04000416 RID: 1046
 		private static readonly HashSet<string> ExcSearch = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
 		{
-			<Module>.smethod_6<string>(-642187224),
-			<Module>.smethod_2<string>(-1272669251),
-			<Module>.smethod_6<string>(1579168641)
+			_Module_.smethod_6<string>(-642187224),
+			_Module_.smethod_2<string>(-1272669251),
+			_Module_.smethod_6<string>(1579168641)
 		};
 
 		// Token: 0x04000417 RID: 1047

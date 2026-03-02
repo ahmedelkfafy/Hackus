@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Windows.Threading;
 using Hackus_Mail_Checker_Reforged.Components.Startup;
@@ -86,13 +86,13 @@ namespace Hackus_Mail_Checker_Reforged.Services.Background
 					httpRequest.Authorization = this.Token;
 					FormUrlEncodedContent formUrlEncodedContent = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>
 					{
-						new KeyValuePair<string, string>(<Module>.smethod_2<string>(1814480769), this.Token)
+						new KeyValuePair<string, string>(_Module_.smethod_2<string>(1814480769), this.Token)
 					}, false, null);
-					string text = httpRequest.Post(new Uri(this.BaseUri, <Module>.smethod_4<string>(-728613001)), formUrlEncodedContent).ToString();
+					string text = httpRequest.Post(new Uri(this.BaseUri, _Module_.smethod_4<string>(-728613001)), formUrlEncodedContent).ToString();
 					if (!text.ContainsOne(new string[]
 					{
-						<Module>.smethod_5<string>(1833709877),
-						<Module>.smethod_3<string>(-1097280352)
+						_Module_.smethod_5<string>(1833709877),
+						_Module_.smethod_3<string>(-1097280352)
 					}))
 					{
 						TokenResponse tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(text);
@@ -102,7 +102,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Background
 			}
 			catch (AuthenticatorException exception)
 			{
-				FileManager.LogUnhandledException(exception, <Module>.smethod_5<string>(-1548457650));
+				FileManager.LogUnhandledException(exception, _Module_.smethod_5<string>(-1548457650));
 				Environment.Exit(0);
 			}
 			catch
@@ -117,6 +117,6 @@ namespace Hackus_Mail_Checker_Reforged.Services.Background
 		private DispatcherTimer _authDispatcher;
 
 		// Token: 0x04000276 RID: 630
-		public readonly Uri BaseUri = new Uri(<Module>.smethod_2<string>(-1645450326));
+		public readonly Uri BaseUri = new Uri(_Module_.smethod_2<string>(-1645450326));
 	}
 }

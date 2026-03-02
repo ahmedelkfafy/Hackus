@@ -38,9 +38,9 @@
 			Row="1">
 			<hc:Pagination
 				HorizontalAlignment="Center"
-				ThemeManager.RequestedAccentColor="#64FFD1"
-				VisualElement.HighlightBackground="{StaticResource BlockBackgroundBrush}"
-				VisualElement.HighlightBorderBrush="#64FFD1"
+				hc:ThemeManager.RequestedAccentColor="#64FFD1"
+				hc:VisualElement.HighlightBackground="{StaticResource BlockBackgroundBrush}"
+				hc:VisualElement.HighlightBorderBrush="#64FFD1"
 				IsEnabled="{Binding IsPop3Busy, Converter={StaticResource Boolean2BooleanReConverter}}"
 				MaxPageCount="{Binding MaxPageCount}"
 				Visibility="{Binding ShowMessageBody, Converter={StaticResource Boolean2VisibilityReConverter}}"
@@ -701,8 +701,8 @@
 										Name="TranslateFromComboBox"
 										Width="100"
 										Height="35"
-										ThemeManager.RequestedAccentColor="#303030"
-										ThemeManager.RequestedTheme="Dark"
+										hc:ThemeManager.RequestedAccentColor="#303030"
+										hc:ThemeManager.RequestedTheme="Dark"
 										Cursor="Hand">
 										<hc:Interaction.Triggers>
 											<hc:EventTrigger
@@ -847,8 +847,8 @@
 										Width="100"
 										Height="35"
 										Margin="0,0,20,0"
-										ThemeManager.RequestedAccentColor="#303030"
-										ThemeManager.RequestedTheme="Dark"
+										hc:ThemeManager.RequestedAccentColor="#303030"
+										hc:ThemeManager.RequestedTheme="Dark"
 										Cursor="Hand"
 										Foreground="#d9d9d9">
 										<hc:Interaction.Triggers>

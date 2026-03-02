@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -131,15 +131,15 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling Hackus_Mail_Checke
 		public static VersionResponse GetLastVersion()
 		{
 			Version version = Assembly.GetExecutingAssembly().GetName().Version;
-			string text = string.Format(<Module>.smethod_3<string>(-483683895), version.Major, version.Minor, version.Build);
+			string text = string.Format(_Module_.smethod_3<string>(-483683895), version.Major, version.Minor, version.Build);
 			try
 			{
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					httpRequest.IgnoreProtocolErrors = true;
 					httpRequest.Authorization = BackgroundAuthenticator.Instance.Token;
-					httpRequest.AddUrlParam(<Module>.smethod_3<string>(-1045570179), text);
-					HttpResponse httpResponse = httpRequest.Get(new Uri(BackgroundAuthenticator.Instance.BaseUri, <Module>.smethod_4<string>(327644369)), null);
+					httpRequest.AddUrlParam(_Module_.smethod_3<string>(-1045570179), text);
+					HttpResponse httpResponse = httpRequest.Get(new Uri(BackgroundAuthenticator.Instance.BaseUri, _Module_.smethod_4<string>(327644369)), null);
 					string text2 = httpResponse.ToString();
 					if (httpResponse.StatusCode == 200)
 					{

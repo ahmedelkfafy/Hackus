@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Security.Authentication;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -11,7 +11,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		// Token: 0x06000781 RID: 1921 RVA: 0x0000AB55 File Offset: 0x00008D55
 		internal override void CheckResultOK(string result)
 		{
-			if (!result.StartsWith(<Module>.smethod_3<string>(-1876702699), StringComparison.OrdinalIgnoreCase))
+			if (!result.StartsWith(_Module_.smethod_3<string>(-1876702699), StringComparison.OrdinalIgnoreCase))
 			{
 				throw new AuthenticationException(result.Substring(result.IndexOf(' ') + 1).Trim());
 			}
@@ -20,8 +20,8 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		// Token: 0x06000782 RID: 1922 RVA: 0x0000AB85 File Offset: 0x00008D85
 		internal override void OnLogin(string username, string password)
 		{
-			this.SendCommandCheckOK(<Module>.smethod_6<string>(-1989793714) + username);
-			this.SendCommandCheckOK(<Module>.smethod_5<string>(488153875) + password);
+			this.SendCommandCheckOK(_Module_.smethod_6<string>(-1989793714) + username);
+			this.SendCommandCheckOK(_Module_.smethod_5<string>(488153875) + password);
 		}
 
 		// Token: 0x06000783 RID: 1923 RVA: 0x0002E20C File Offset: 0x0002C40C
@@ -31,7 +31,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 			{
 				try
 				{
-					this.SendCommand(<Module>.smethod_3<string>(1294492029));
+					this.SendCommand(_Module_.smethod_3<string>(1294492029));
 				}
 				catch
 				{
@@ -43,7 +43,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		public virtual int GetMessageCount()
 		{
 			this.CheckConnectionStatus();
-			string text = this.SendCommandGetResponse(<Module>.smethod_3<string>(1013548887));
+			string text = this.SendCommandGetResponse(_Module_.smethod_3<string>(1013548887));
 			this.CheckResultOK(text);
 			return int.Parse(text.Split(new char[]
 			{
@@ -61,10 +61,10 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		public virtual MailMessage GetMessage(string uid, bool headersOnly = false, bool saveAttachments = true)
 		{
 			this.CheckConnectionStatus();
-			string text = this.SendCommandGetResponse(string.Format(headersOnly ? <Module>.smethod_5<string>(-81700223) : <Module>.smethod_2<string>(1186104759), uid));
+			string text = this.SendCommandGetResponse(string.Format(headersOnly ? _Module_.smethod_5<string>(-81700223) : _Module_.smethod_2<string>(1186104759), uid));
 			this.CheckResultOK(text);
 			StringBuilder stringBuilder = new StringBuilder();
-			while ((text = this.GetResponse()) != <Module>.smethod_3<string>(2035431732))
+			while ((text = this.GetResponse()) != _Module_.smethod_3<string>(2035431732))
 			{
 				stringBuilder.AppendLine(text);
 			}
@@ -75,6 +75,6 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		}
 
 		// Token: 0x040003D1 RID: 977
-		private static Regex rxOctets = new Regex(<Module>.smethod_5<string>(-461602955), RegexOptions.IgnoreCase);
+		private static Regex rxOctets = new Regex(_Module_.smethod_5<string>(-461602955), RegexOptions.IgnoreCase);
 	}
 }

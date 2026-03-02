@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Net.Security;
 using System.Net.Sockets;
@@ -112,7 +112,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		// Token: 0x060006CB RID: 1739 RVA: 0x0002C000 File Offset: 0x0002A200
 		protected virtual void SendCommand(string command)
 		{
-			byte[] bytes = Encoding.Default.GetBytes(command + <Module>.smethod_6<string>(-1253514038));
+			byte[] bytes = Encoding.Default.GetBytes(command + _Module_.smethod_6<string>(-1253514038));
 			this._Stream.Write(bytes, 0, bytes.Length);
 		}
 
@@ -121,7 +121,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		{
 			if (!this.IsConnected)
 			{
-				throw new Exception(<Module>.smethod_2<string>(-1397953336));
+				throw new Exception(_Module_.smethod_2<string>(-1397953336));
 			}
 			this.IsAuthenticated = false;
 			this.OnLogin(username, password);
@@ -201,11 +201,11 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 			}
 			if (!this.IsConnected)
 			{
-				throw new Exception(<Module>.smethod_5<string>(1902059681));
+				throw new Exception(_Module_.smethod_5<string>(1902059681));
 			}
 			if (!this.IsAuthenticated)
 			{
-				throw new Exception(<Module>.smethod_6<string>(78628362));
+				throw new Exception(_Module_.smethod_6<string>(78628362));
 			}
 		}
 

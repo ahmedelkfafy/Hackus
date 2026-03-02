@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data;
@@ -53,7 +53,7 @@ namespace Hackus_Mail_Checker_Reforged
 		// Token: 0x06000078 RID: 120 RVA: 0x00010964 File Offset: 0x0000EB64
 		public void Open()
 		{
-			SQLiteFactory sqliteFactory = (SQLiteFactory)DbProviderFactories.GetFactory(<Module>.smethod_3<string>(619217524));
+			SQLiteFactory sqliteFactory = (SQLiteFactory)DbProviderFactories.GetFactory(_Module_.smethod_3<string>(619217524));
 			this._connection = (SQLiteConnection)sqliteFactory.CreateConnection();
 			this._connection.ConnectionString = this._connectionString;
 			this._connection.Open();
@@ -106,11 +106,11 @@ namespace Hackus_Mail_Checker_Reforged
 				{
 					sqliteConnection.Open();
 					SQLiteCommand sqliteCommand = sqliteConnection.CreateCommand();
-					sqliteCommand.CommandText = <Module>.smethod_4<string>(-1800431605);
+					sqliteCommand.CommandText = _Module_.smethod_4<string>(-1800431605);
 					sqliteCommand.ExecuteNonQuery();
 					using (SQLiteCommand sqliteCommand2 = new SQLiteCommand(sqliteConnection))
 					{
-						sqliteCommand2.CommandText = string.Format(<Module>.smethod_2<string>(-1430568235), protocol, domain);
+						sqliteCommand2.CommandText = string.Format(_Module_.smethod_2<string>(-1430568235), protocol, domain);
 						using (SQLiteDataReader sqliteDataReader = sqliteCommand2.ExecuteReader())
 						{
 							if (!sqliteDataReader.HasRows)
@@ -144,12 +144,12 @@ namespace Hackus_Mail_Checker_Reforged
 				{
 					sqliteConnection.Open();
 					SQLiteCommand sqliteCommand = sqliteConnection.CreateCommand();
-					sqliteCommand.CommandText = <Module>.smethod_2<string>(783556846);
+					sqliteCommand.CommandText = _Module_.smethod_2<string>(783556846);
 					sqliteCommand.ExecuteNonQuery();
 					string arg = searchQuery.ToLower();
 					using (SQLiteCommand sqliteCommand2 = new SQLiteCommand(sqliteConnection))
 					{
-						sqliteCommand2.CommandText = string.Format(<Module>.smethod_6<string>(1703104427), searchType, arg);
+						sqliteCommand2.CommandText = string.Format(_Module_.smethod_6<string>(1703104427), searchType, arg);
 						sqliteCommand2.CommandType = CommandType.Text;
 						using (SQLiteDataReader sqliteDataReader = sqliteCommand2.ExecuteReader())
 						{
@@ -161,7 +161,7 @@ namespace Hackus_Mail_Checker_Reforged
 					}
 					using (SQLiteCommand sqliteCommand3 = new SQLiteCommand(sqliteConnection))
 					{
-						sqliteCommand3.CommandText = string.Format(<Module>.smethod_3<string>(2145163483), searchType, arg);
+						sqliteCommand3.CommandText = string.Format(_Module_.smethod_3<string>(2145163483), searchType, arg);
 						sqliteCommand3.CommandType = CommandType.Text;
 						using (SQLiteDataReader sqliteDataReader2 = sqliteCommand3.ExecuteReader())
 						{
@@ -207,12 +207,12 @@ namespace Hackus_Mail_Checker_Reforged
 				{
 					sqliteConnection.Open();
 					SQLiteCommand sqliteCommand = sqliteConnection.CreateCommand();
-					sqliteCommand.CommandText = <Module>.smethod_6<string>(-664266087);
+					sqliteCommand.CommandText = _Module_.smethod_6<string>(-664266087);
 					sqliteCommand.ExecuteNonQuery();
 					using (SQLiteCommand sqliteCommand2 = new SQLiteCommand(sqliteConnection))
 					{
 						sqliteCommand2.Transaction = sqliteConnection.BeginTransaction();
-						sqliteCommand2.CommandText = string.Format(<Module>.smethod_4<string>(-1418126376), new object[]
+						sqliteCommand2.CommandText = string.Format(_Module_.smethod_4<string>(-1418126376), new object[]
 						{
 							server.Protocol,
 							server.Domain,
@@ -244,12 +244,12 @@ namespace Hackus_Mail_Checker_Reforged
 					{
 						sqliteConnection.Open();
 						SQLiteCommand sqliteCommand = sqliteConnection.CreateCommand();
-						sqliteCommand.CommandText = <Module>.smethod_3<string>(-1547507446);
+						sqliteCommand.CommandText = _Module_.smethod_3<string>(-1547507446);
 						sqliteCommand.ExecuteNonQuery();
 						using (SQLiteCommand sqliteCommand2 = new SQLiteCommand(sqliteConnection))
 						{
 							sqliteCommand2.Transaction = sqliteConnection.BeginTransaction();
-							sqliteCommand2.CommandText = string.Format(<Module>.smethod_2<string>(1517974662), new object[]
+							sqliteCommand2.CommandText = string.Format(_Module_.smethod_2<string>(1517974662), new object[]
 							{
 								original.Protocol,
 								updated.Hostname,
@@ -283,12 +283,12 @@ namespace Hackus_Mail_Checker_Reforged
 				{
 					sqliteConnection.Open();
 					SQLiteCommand sqliteCommand = sqliteConnection.CreateCommand();
-					sqliteCommand.CommandText = <Module>.smethod_2<string>(-614551194);
+					sqliteCommand.CommandText = _Module_.smethod_2<string>(-614551194);
 					sqliteCommand.ExecuteNonQuery();
 					using (SQLiteCommand sqliteCommand2 = new SQLiteCommand(sqliteConnection))
 					{
 						sqliteCommand2.Transaction = sqliteConnection.BeginTransaction();
-						sqliteCommand2.CommandText = string.Format(<Module>.smethod_4<string>(-18730073), server.Protocol, server.Domain);
+						sqliteCommand2.CommandText = string.Format(_Module_.smethod_4<string>(-18730073), server.Protocol, server.Domain);
 						sqliteCommand2.CommandType = CommandType.Text;
 						sqliteCommand2.ExecuteNonQuery();
 						sqliteCommand2.Transaction.Commit();
@@ -317,11 +317,11 @@ namespace Hackus_Mail_Checker_Reforged
 				{
 					sqliteConnection.Open();
 					SQLiteCommand sqliteCommand = sqliteConnection.CreateCommand();
-					sqliteCommand.CommandText = <Module>.smethod_5<string>(1526131999);
+					sqliteCommand.CommandText = _Module_.smethod_5<string>(1526131999);
 					sqliteCommand.ExecuteNonQuery();
 					using (SQLiteCommand sqliteCommand2 = new SQLiteCommand(sqliteConnection))
 					{
-						sqliteCommand2.CommandText = <Module>.smethod_2<string>(669317931);
+						sqliteCommand2.CommandText = _Module_.smethod_2<string>(669317931);
 						using (SQLiteDataReader sqliteDataReader = sqliteCommand2.ExecuteReader())
 						{
 							if (!sqliteDataReader.HasRows)

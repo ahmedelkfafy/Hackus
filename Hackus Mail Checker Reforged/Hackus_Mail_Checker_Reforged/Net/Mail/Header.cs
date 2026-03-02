@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -78,14 +78,14 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 				}).Trim();
 				string text;
 				header = (text = header.Substring(Math.Min(header.Length, num + 1)).Trim());
-				if (text.StartsWith(<Module>.smethod_2<string>(1588727045)))
+				if (text.StartsWith(_Module_.smethod_2<string>(1588727045)))
 				{
 					Header.ProcessValue(1, ref header, ref text, new char[]
 					{
 						'"'
 					});
 				}
-				else if (text.StartsWith(<Module>.smethod_5<string>(-942044748)))
+				else if (text.StartsWith(_Module_.smethod_5<string>(-942044748)))
 				{
 					Header.ProcessValue(1, ref header, ref text, new char[]
 					{
@@ -121,9 +121,9 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		public override string ToString()
 		{
 			IEnumerable<string> enumerable = from x in this._values
-			where !Header.<>c.smethod_0(x.Key)
-			select Header.<>c.smethod_1(x.Key, <Module>.smethod_2<string>(990316201), x.Value);
-			return this.Value + (enumerable.Any<string>() ? (<Module>.smethod_4<string>(1574223004) + string.Join(<Module>.smethod_6<string>(-1556939122), enumerable)) : null);
+			where !Header._c_.smethod_0(x.Key)
+			select Header._c_.smethod_1(x.Key, _Module_.smethod_2<string>(990316201), x.Value);
+			return this.Value + (enumerable.Any<string>() ? (_Module_.smethod_4<string>(1574223004) + string.Join(_Module_.smethod_6<string>(-1556939122), enumerable)) : null);
 		}
 
 		// Token: 0x04000386 RID: 902

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -186,7 +186,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 								Scheduler.Instance.AddNotification(new Notification
 								{
 									Address = this._mailbox.Address,
-									Message = ScheduledPop3Handler.<>c__DisplayClass12_0.smethod_0(<Module>.smethod_5<string>(-1781723149), finded, request),
+									Message = ScheduledPop3Handler._c__DisplayClass12_0.smethod_0(_Module_.smethod_5<string>(-1781723149), finded, request),
 									Time = DateTime.Now
 								});
 							});
@@ -244,7 +244,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 									while (enumerator.MoveNext())
 									{
 										Request request = enumerator.Current;
-										Request request2 = checkedRequests.FirstOrDefault((Request r) => ScheduledPop3Handler.<>c__DisplayClass13_1.smethod_0(r.Sender, request.Sender) && ScheduledPop3Handler.<>c__DisplayClass13_1.smethod_0(r.Body, request.Body) && ScheduledPop3Handler.<>c__DisplayClass13_1.smethod_0(r.Subject, request.Subject));
+										Request request2 = checkedRequests.FirstOrDefault((Request r) => ScheduledPop3Handler._c__DisplayClass13_1.smethod_0(r.Sender, request.Sender) && ScheduledPop3Handler._c__DisplayClass13_1.smethod_0(r.Body, request.Body) && ScheduledPop3Handler._c__DisplayClass13_1.smethod_0(r.Subject, request.Subject));
 										if (request2 != null)
 										{
 											if (request2.IsChecked)

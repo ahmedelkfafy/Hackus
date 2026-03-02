@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
@@ -32,7 +32,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Tools
 		// Token: 0x06000C4A RID: 3146 RVA: 0x0000D5E2 File Offset: 0x0000B7E2
 		public void OpenDirectory()
 		{
-			Process.Start(<Module>.smethod_6<string>(-1308867158), <Module>.smethod_3<string>(1167347191) + this._savePath.FullName + <Module>.smethod_6<string>(-77460630));
+			Process.Start(_Module_.smethod_6<string>(-1308867158), _Module_.smethod_3<string>(1167347191) + this._savePath.FullName + _Module_.smethod_6<string>(-77460630));
 		}
 
 		// Token: 0x0400069C RID: 1692

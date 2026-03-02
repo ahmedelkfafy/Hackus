@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 namespace Hackus_Mail_Checker_Reforged
@@ -16,11 +16,11 @@ namespace Hackus_Mail_Checker_Reforged
 				{
 					using (StreamWriter streamWriter = new StreamWriter(output, true))
 					{
-						streamWriter.WriteLine(<Module>.smethod_4<string>(-1147024491));
-						streamWriter.WriteLine(<Module>.smethod_4<string>(-1059862742) + exception.Message);
-						streamWriter.WriteLine(<Module>.smethod_5<string>(-125014356) + exception.StackTrace);
-						streamWriter.WriteLine(<Module>.smethod_4<string>(-362568750) + exception.Source);
-						streamWriter.WriteLine(<Module>.smethod_4<string>(-275407001));
+						streamWriter.WriteLine(_Module_.smethod_4<string>(-1147024491));
+						streamWriter.WriteLine(_Module_.smethod_4<string>(-1059862742) + exception.Message);
+						streamWriter.WriteLine(_Module_.smethod_5<string>(-125014356) + exception.StackTrace);
+						streamWriter.WriteLine(_Module_.smethod_4<string>(-362568750) + exception.Source);
+						streamWriter.WriteLine(_Module_.smethod_4<string>(-275407001));
 					}
 				}
 				catch

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.CodeDom.Compiler;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -44,18 +44,18 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Settings
 						{
 							return;
 						}
-						if (!(name == <Module>.smethod_5<string>(-113887600)))
+						if (!(name == _Module_.smethod_5<string>(-113887600)))
 						{
 							return;
 						}
-						this.SearchRequestFormControl.Content = base.Resources[<Module>.smethod_3<string>(-44624619)];
+						this.SearchRequestFormControl.Content = base.Resources[_Module_.smethod_3<string>(-44624619)];
 						return;
 					}
 					else
 					{
-						if (name == <Module>.smethod_2<string>(745493735))
+						if (name == _Module_.smethod_2<string>(745493735))
 						{
-							this.SearchRequestFormControl.Content = base.Resources[<Module>.smethod_2<string>(1194301868)];
+							this.SearchRequestFormControl.Content = base.Resources[_Module_.smethod_2<string>(1194301868)];
 							return;
 						}
 						return;
@@ -63,9 +63,9 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Settings
 				}
 				else if (num == 3884550458U)
 				{
-					if (name == <Module>.smethod_6<string>(1793765956))
+					if (name == _Module_.smethod_6<string>(1793765956))
 					{
-						this.SearchRequestFormControl.Content = base.Resources[<Module>.smethod_5<string>(-762821881)];
+						this.SearchRequestFormControl.Content = base.Resources[_Module_.smethod_5<string>(-762821881)];
 						return;
 					}
 					return;
@@ -76,9 +76,9 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Settings
 					{
 						return;
 					}
-					if (name == <Module>.smethod_3<string>(-406387927))
+					if (name == _Module_.smethod_3<string>(-406387927))
 					{
-						this.SearchRequestFormControl.Content = base.Resources[<Module>.smethod_6<string>(-578793913)];
+						this.SearchRequestFormControl.Content = base.Resources[_Module_.smethod_6<string>(-578793913)];
 						return;
 					}
 					return;
@@ -86,9 +86,9 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Settings
 			}
 			else if (num == 640711487U)
 			{
-				if (name == <Module>.smethod_6<string>(1795495741))
+				if (name == _Module_.smethod_6<string>(1795495741))
 				{
-					this.SearchRequestFormControl.Content = base.Resources[<Module>.smethod_5<string>(894285169)];
+					this.SearchRequestFormControl.Content = base.Resources[_Module_.smethod_5<string>(894285169)];
 					return;
 				}
 				return;
@@ -99,18 +99,18 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Settings
 				{
 					return;
 				}
-				if (!(name == <Module>.smethod_3<string>(1560214067)))
+				if (!(name == _Module_.smethod_3<string>(1560214067)))
 				{
 					return;
 				}
-				this.SearchRequestFormControl.Content = base.Resources[<Module>.smethod_5<string>(909783352)];
+				this.SearchRequestFormControl.Content = base.Resources[_Module_.smethod_5<string>(909783352)];
 				return;
 			}
 			else
 			{
-				if (name == <Module>.smethod_6<string>(907299352))
+				if (name == _Module_.smethod_6<string>(907299352))
 				{
-					this.SearchRequestFormControl.Content = base.Resources[<Module>.smethod_4<string>(1691458681)];
+					this.SearchRequestFormControl.Content = base.Resources[_Module_.smethod_4<string>(1691458681)];
 					return;
 				}
 				return;
@@ -131,7 +131,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Settings
 			};
 			searchGroups.Canceled += delegate(object sender, EventArgs e)
 			{
-				RequestsSettingsPage.<>c__DisplayClass2_0.smethod_0(window);
+				RequestsSettingsPage._c__DisplayClass2_0.smethod_0(window);
 			};
 			window.Show(window, false);
 		}

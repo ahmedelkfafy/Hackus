@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -7,12 +7,12 @@ using System.Text;
 using System.Threading;
 
 // Token: 0x02000001 RID: 1
-internal class <Module>
+internal class _Module_
 {
 	// Token: 0x06000001 RID: 1 RVA: 0x0000E4E0 File Offset: 0x0000C6E0
-	static <Module>()
+	static _Module_()
 	{
-		<Module>.smethod_7();
+		_Module_.smethod_7();
 		uint num = 4032U;
 		uint[] array = new uint[]
 		{
@@ -4095,19 +4095,19 @@ internal class <Module>
 			}
 			num3 += 16;
 		}
-		<Module>.byte_0 = <Module>.smethod_1(array4);
-		MethodInfo method = typeof(Environment).GetMethod(<Module>.smethod_3<string>(93886445), new Type[]
+		_Module_.byte_0 = _Module_.smethod_1(array4);
+		MethodInfo method = typeof(Environment).GetMethod(_Module_.smethod_3<string>(93886445), new Type[]
 		{
 			typeof(string)
 		});
-		if (method != null && <Module>.smethod_5<string>(-415504783).Equals(method.Invoke(null, new object[]
+		if (method != null && _Module_.smethod_5<string>(-415504783).Equals(method.Invoke(null, new object[]
 		{
-			<Module>.smethod_6<string>(1713483137)
+			_Module_.smethod_6<string>(1713483137)
 		})))
 		{
 			Environment.FailFast(null);
 		}
-		new Thread(new ParameterizedThreadStart(<Module>.smethod_0))
+		new Thread(new ParameterizedThreadStart(_Module_.smethod_0))
 		{
 			IsBackground = true
 		}.Start(null);
@@ -4119,7 +4119,7 @@ internal class <Module>
 		Thread thread2 = thread as Thread;
 		if (thread2 == null)
 		{
-			thread2 = new Thread(new ParameterizedThreadStart(<Module>.smethod_0));
+			thread2 = new Thread(new ParameterizedThreadStart(_Module_.smethod_0));
 			thread2.IsBackground = true;
 			thread2.Start(Thread.CurrentThread);
 			Thread.Sleep(500);
@@ -4151,7 +4151,7 @@ internal class <Module>
 	internal static byte[] smethod_1(byte[] data)
 	{
 		MemoryStream memoryStream = new MemoryStream(data);
-		<Module>.Class1 @class = new <Module>.Class1();
+		_Module_.Class1 @class = new _Module_.Class1();
 		byte[] array = new byte[5];
 		for (int i = 0; i < 5; i += memoryStream.Read(array, i, 5 - i))
 		{
@@ -4187,10 +4187,10 @@ internal class <Module>
 				{
 					if (num == 1)
 					{
-						int num2 = (int)<Module>.byte_0[id] | (int)<Module>.byte_0[id + 1] << 8 | (int)<Module>.byte_0[id + 2] << 16 | (int)<Module>.byte_0[id + 3] << 24;
-						int length = (int)<Module>.byte_0[id + 4] | (int)<Module>.byte_0[id + 5] << 8 | (int)<Module>.byte_0[id + 6] << 16 | (int)<Module>.byte_0[id + 7] << 24;
+						int num2 = (int)_Module_.byte_0[id] | (int)_Module_.byte_0[id + 1] << 8 | (int)_Module_.byte_0[id + 2] << 16 | (int)_Module_.byte_0[id + 3] << 24;
+						int length = (int)_Module_.byte_0[id + 4] | (int)_Module_.byte_0[id + 5] << 8 | (int)_Module_.byte_0[id + 6] << 16 | (int)_Module_.byte_0[id + 7] << 24;
 						Array array = Array.CreateInstance(typeof(T).GetElementType(), length);
-						Buffer.BlockCopy(<Module>.byte_0, id + 8, array, 0, num2 - 4);
+						Buffer.BlockCopy(_Module_.byte_0, id + 8, array, 0, num2 - 4);
 						result = (T)((object)array);
 					}
 					else
@@ -4201,14 +4201,14 @@ internal class <Module>
 				else
 				{
 					T[] array2 = new T[1];
-					Buffer.BlockCopy(<Module>.byte_0, id, array2, 0, sizeof(T));
+					Buffer.BlockCopy(_Module_.byte_0, id, array2, 0, sizeof(T));
 					result = array2[0];
 				}
 			}
 			else
 			{
-				int count = (int)<Module>.byte_0[id] | (int)<Module>.byte_0[id + 1] << 8 | (int)<Module>.byte_0[id + 2] << 16 | (int)<Module>.byte_0[id + 3] << 24;
-				result = (T)((object)string.Intern(Encoding.UTF8.GetString(<Module>.byte_0, id + 4, count)));
+				int count = (int)_Module_.byte_0[id] | (int)_Module_.byte_0[id + 1] << 8 | (int)_Module_.byte_0[id + 2] << 16 | (int)_Module_.byte_0[id + 3] << 24;
+				result = (T)((object)string.Intern(Encoding.UTF8.GetString(_Module_.byte_0, id + 4, count)));
 			}
 			return result;
 		}
@@ -4230,10 +4230,10 @@ internal class <Module>
 				{
 					if (num == 1)
 					{
-						int num2 = (int)<Module>.byte_0[id] | (int)<Module>.byte_0[id + 1] << 8 | (int)<Module>.byte_0[id + 2] << 16 | (int)<Module>.byte_0[id + 3] << 24;
-						int length = (int)<Module>.byte_0[id + 4] | (int)<Module>.byte_0[id + 5] << 8 | (int)<Module>.byte_0[id + 6] << 16 | (int)<Module>.byte_0[id + 7] << 24;
+						int num2 = (int)_Module_.byte_0[id] | (int)_Module_.byte_0[id + 1] << 8 | (int)_Module_.byte_0[id + 2] << 16 | (int)_Module_.byte_0[id + 3] << 24;
+						int length = (int)_Module_.byte_0[id + 4] | (int)_Module_.byte_0[id + 5] << 8 | (int)_Module_.byte_0[id + 6] << 16 | (int)_Module_.byte_0[id + 7] << 24;
 						Array array = Array.CreateInstance(typeof(T).GetElementType(), length);
-						Buffer.BlockCopy(<Module>.byte_0, id + 8, array, 0, num2 - 4);
+						Buffer.BlockCopy(_Module_.byte_0, id + 8, array, 0, num2 - 4);
 						result = (T)((object)array);
 					}
 					else
@@ -4244,14 +4244,14 @@ internal class <Module>
 				else
 				{
 					T[] array2 = new T[1];
-					Buffer.BlockCopy(<Module>.byte_0, id, array2, 0, sizeof(T));
+					Buffer.BlockCopy(_Module_.byte_0, id, array2, 0, sizeof(T));
 					result = array2[0];
 				}
 			}
 			else
 			{
-				int count = (int)<Module>.byte_0[id] | (int)<Module>.byte_0[id + 1] << 8 | (int)<Module>.byte_0[id + 2] << 16 | (int)<Module>.byte_0[id + 3] << 24;
-				result = (T)((object)string.Intern(Encoding.UTF8.GetString(<Module>.byte_0, id + 4, count)));
+				int count = (int)_Module_.byte_0[id] | (int)_Module_.byte_0[id + 1] << 8 | (int)_Module_.byte_0[id + 2] << 16 | (int)_Module_.byte_0[id + 3] << 24;
+				result = (T)((object)string.Intern(Encoding.UTF8.GetString(_Module_.byte_0, id + 4, count)));
 			}
 			return result;
 		}
@@ -4277,24 +4277,24 @@ internal class <Module>
 					}
 					else
 					{
-						int num2 = (int)<Module>.byte_0[id] | (int)<Module>.byte_0[id + 1] << 8 | (int)<Module>.byte_0[id + 2] << 16 | (int)<Module>.byte_0[id + 3] << 24;
-						int length = (int)<Module>.byte_0[id + 4] | (int)<Module>.byte_0[id + 5] << 8 | (int)<Module>.byte_0[id + 6] << 16 | (int)<Module>.byte_0[id + 7] << 24;
+						int num2 = (int)_Module_.byte_0[id] | (int)_Module_.byte_0[id + 1] << 8 | (int)_Module_.byte_0[id + 2] << 16 | (int)_Module_.byte_0[id + 3] << 24;
+						int length = (int)_Module_.byte_0[id + 4] | (int)_Module_.byte_0[id + 5] << 8 | (int)_Module_.byte_0[id + 6] << 16 | (int)_Module_.byte_0[id + 7] << 24;
 						Array array = Array.CreateInstance(typeof(T).GetElementType(), length);
-						Buffer.BlockCopy(<Module>.byte_0, id + 8, array, 0, num2 - 4);
+						Buffer.BlockCopy(_Module_.byte_0, id + 8, array, 0, num2 - 4);
 						result = (T)((object)array);
 					}
 				}
 				else
 				{
 					T[] array2 = new T[1];
-					Buffer.BlockCopy(<Module>.byte_0, id, array2, 0, sizeof(T));
+					Buffer.BlockCopy(_Module_.byte_0, id, array2, 0, sizeof(T));
 					result = array2[0];
 				}
 			}
 			else
 			{
-				int count = (int)<Module>.byte_0[id] | (int)<Module>.byte_0[id + 1] << 8 | (int)<Module>.byte_0[id + 2] << 16 | (int)<Module>.byte_0[id + 3] << 24;
-				result = (T)((object)string.Intern(Encoding.UTF8.GetString(<Module>.byte_0, id + 4, count)));
+				int count = (int)_Module_.byte_0[id] | (int)_Module_.byte_0[id + 1] << 8 | (int)_Module_.byte_0[id + 2] << 16 | (int)_Module_.byte_0[id + 3] << 24;
+				result = (T)((object)string.Intern(Encoding.UTF8.GetString(_Module_.byte_0, id + 4, count)));
 			}
 			return result;
 		}
@@ -4315,7 +4315,7 @@ internal class <Module>
 				if (num == 0)
 				{
 					T[] array = new T[1];
-					Buffer.BlockCopy(<Module>.byte_0, id, array, 0, sizeof(T));
+					Buffer.BlockCopy(_Module_.byte_0, id, array, 0, sizeof(T));
 					result = array[0];
 				}
 				else if (num != 2)
@@ -4324,17 +4324,17 @@ internal class <Module>
 				}
 				else
 				{
-					int num2 = (int)<Module>.byte_0[id] | (int)<Module>.byte_0[id + 1] << 8 | (int)<Module>.byte_0[id + 2] << 16 | (int)<Module>.byte_0[id + 3] << 24;
-					int length = (int)<Module>.byte_0[id + 4] | (int)<Module>.byte_0[id + 5] << 8 | (int)<Module>.byte_0[id + 6] << 16 | (int)<Module>.byte_0[id + 7] << 24;
+					int num2 = (int)_Module_.byte_0[id] | (int)_Module_.byte_0[id + 1] << 8 | (int)_Module_.byte_0[id + 2] << 16 | (int)_Module_.byte_0[id + 3] << 24;
+					int length = (int)_Module_.byte_0[id + 4] | (int)_Module_.byte_0[id + 5] << 8 | (int)_Module_.byte_0[id + 6] << 16 | (int)_Module_.byte_0[id + 7] << 24;
 					Array array2 = Array.CreateInstance(typeof(T).GetElementType(), length);
-					Buffer.BlockCopy(<Module>.byte_0, id + 8, array2, 0, num2 - 4);
+					Buffer.BlockCopy(_Module_.byte_0, id + 8, array2, 0, num2 - 4);
 					result = (T)((object)array2);
 				}
 			}
 			else
 			{
-				int count = (int)<Module>.byte_0[id] | (int)<Module>.byte_0[id + 1] << 8 | (int)<Module>.byte_0[id + 2] << 16 | (int)<Module>.byte_0[id + 3] << 24;
-				result = (T)((object)string.Intern(Encoding.UTF8.GetString(<Module>.byte_0, id + 4, count)));
+				int count = (int)_Module_.byte_0[id] | (int)_Module_.byte_0[id + 1] << 8 | (int)_Module_.byte_0[id + 2] << 16 | (int)_Module_.byte_0[id + 3] << 24;
+				result = (T)((object)string.Intern(Encoding.UTF8.GetString(_Module_.byte_0, id + 4, count)));
 			}
 			return result;
 		}
@@ -4352,8 +4352,8 @@ internal class <Module>
 			T result;
 			if (num == 0)
 			{
-				int count = (int)<Module>.byte_0[id] | (int)<Module>.byte_0[id + 1] << 8 | (int)<Module>.byte_0[id + 2] << 16 | (int)<Module>.byte_0[id + 3] << 24;
-				result = (T)((object)string.Intern(Encoding.UTF8.GetString(<Module>.byte_0, id + 4, count)));
+				int count = (int)_Module_.byte_0[id] | (int)_Module_.byte_0[id + 1] << 8 | (int)_Module_.byte_0[id + 2] << 16 | (int)_Module_.byte_0[id + 3] << 24;
+				result = (T)((object)string.Intern(Encoding.UTF8.GetString(_Module_.byte_0, id + 4, count)));
 			}
 			else if (num != 1)
 			{
@@ -4363,17 +4363,17 @@ internal class <Module>
 				}
 				else
 				{
-					int num2 = (int)<Module>.byte_0[id] | (int)<Module>.byte_0[id + 1] << 8 | (int)<Module>.byte_0[id + 2] << 16 | (int)<Module>.byte_0[id + 3] << 24;
-					int length = (int)<Module>.byte_0[id + 4] | (int)<Module>.byte_0[id + 5] << 8 | (int)<Module>.byte_0[id + 6] << 16 | (int)<Module>.byte_0[id + 7] << 24;
+					int num2 = (int)_Module_.byte_0[id] | (int)_Module_.byte_0[id + 1] << 8 | (int)_Module_.byte_0[id + 2] << 16 | (int)_Module_.byte_0[id + 3] << 24;
+					int length = (int)_Module_.byte_0[id + 4] | (int)_Module_.byte_0[id + 5] << 8 | (int)_Module_.byte_0[id + 6] << 16 | (int)_Module_.byte_0[id + 7] << 24;
 					Array array = Array.CreateInstance(typeof(T).GetElementType(), length);
-					Buffer.BlockCopy(<Module>.byte_0, id + 8, array, 0, num2 - 4);
+					Buffer.BlockCopy(_Module_.byte_0, id + 8, array, 0, num2 - 4);
 					result = (T)((object)array);
 				}
 			}
 			else
 			{
 				T[] array2 = new T[1];
-				Buffer.BlockCopy(<Module>.byte_0, id, array2, 0, sizeof(T));
+				Buffer.BlockCopy(_Module_.byte_0, id, array2, 0, sizeof(T));
 				result = array2[0];
 			}
 			return result;
@@ -4546,16 +4546,16 @@ internal class <Module>
 			}
 			num3 += 16;
 		}
-		<Module>.assembly_0 = Assembly.Load(<Module>.smethod_1(array4));
-		AppDomain.CurrentDomain.ResourceResolve += <Module>.smethod_8;
+		_Module_.assembly_0 = Assembly.Load(_Module_.smethod_1(array4));
+		AppDomain.CurrentDomain.ResourceResolve += _Module_.smethod_8;
 	}
 
 	// Token: 0x0600000A RID: 10 RVA: 0x00006110 File Offset: 0x00004310
 	internal static Assembly smethod_8(object sender, ResolveEventArgs args)
 	{
-		if (Array.IndexOf<string>(<Module>.assembly_0.GetManifestResourceNames(), args.Name) != -1)
+		if (Array.IndexOf<string>(_Module_.assembly_0.GetManifestResourceNames(), args.Name) != -1)
 		{
-			return <Module>.assembly_0;
+			return _Module_.assembly_0;
 		}
 		return null;
 	}
@@ -4564,13 +4564,13 @@ internal class <Module>
 	internal static byte[] byte_0;
 
 	// Token: 0x04000002 RID: 2 RVA: 0x00002048 File Offset: 0x00000248
-	internal static <Module>.Struct4 struct4_0;
+	internal static _Module_.Struct4 struct4_0;
 
 	// Token: 0x04000003 RID: 3
 	internal static Assembly assembly_0;
 
 	// Token: 0x04000004 RID: 4 RVA: 0x00005F48 File Offset: 0x00004148
-	internal static <Module>.Struct5 struct5_0;
+	internal static _Module_.Struct5 struct5_0;
 
 	// Token: 0x02000002 RID: 2
 	internal struct Struct0
@@ -4582,7 +4582,7 @@ internal class <Module>
 		}
 
 		// Token: 0x0600000C RID: 12 RVA: 0x0000F1C8 File Offset: 0x0000D3C8
-		internal uint method_1(<Module>.Class0 rangeDecoder)
+		internal uint method_1(_Module_.Class0 rangeDecoder)
 		{
 			uint num = (rangeDecoder.uint_1 >> 11) * this.uint_0;
 			if (rangeDecoder.uint_0 < num)
@@ -4618,7 +4618,7 @@ internal class <Module>
 		internal Struct1(int numBitLevels)
 		{
 			this.int_0 = numBitLevels;
-			this.struct0_0 = new <Module>.Struct0[1 << numBitLevels];
+			this.struct0_0 = new _Module_.Struct0[1 << numBitLevels];
 		}
 
 		// Token: 0x0600000E RID: 14 RVA: 0x0000F2B4 File Offset: 0x0000D4B4
@@ -4633,7 +4633,7 @@ internal class <Module>
 		}
 
 		// Token: 0x0600000F RID: 15 RVA: 0x0000F2EC File Offset: 0x0000D4EC
-		internal uint method_1(<Module>.Class0 rangeDecoder)
+		internal uint method_1(_Module_.Class0 rangeDecoder)
 		{
 			uint num = 1U;
 			for (int i = this.int_0; i > 0; i--)
@@ -4644,7 +4644,7 @@ internal class <Module>
 		}
 
 		// Token: 0x06000010 RID: 16 RVA: 0x0000F330 File Offset: 0x0000D530
-		internal uint method_2(<Module>.Class0 rangeDecoder)
+		internal uint method_2(_Module_.Class0 rangeDecoder)
 		{
 			uint num = 1U;
 			uint num2 = 0U;
@@ -4659,7 +4659,7 @@ internal class <Module>
 		}
 
 		// Token: 0x06000011 RID: 17 RVA: 0x0000F378 File Offset: 0x0000D578
-		internal static uint smethod_0(<Module>.Struct0[] Models, uint startIndex, <Module>.Class0 rangeDecoder, int NumBitLevels)
+		internal static uint smethod_0(_Module_.Struct0[] Models, uint startIndex, _Module_.Class0 rangeDecoder, int NumBitLevels)
 		{
 			uint num = 1U;
 			uint num2 = 0U;
@@ -4674,7 +4674,7 @@ internal class <Module>
 		}
 
 		// Token: 0x04000006 RID: 6
-		internal readonly <Module>.Struct0[] struct0_0;
+		internal readonly _Module_.Struct0[] struct0_0;
 
 		// Token: 0x04000007 RID: 7
 		internal readonly int int_0;
@@ -4759,7 +4759,7 @@ internal class <Module>
 			int num = 0;
 			while ((long)num < 4L)
 			{
-				this.struct1_0[num] = new <Module>.Struct1(6);
+				this.struct1_0[num] = new _Module_.Struct1(6);
 				num++;
 			}
 		}
@@ -4827,7 +4827,7 @@ internal class <Module>
 		internal void method_4(Stream inStream, Stream outStream, long inSize, long outSize)
 		{
 			this.method_3(inStream, outStream);
-			<Module>.Struct3 @struct = default(<Module>.Struct3);
+			_Module_.Struct3 @struct = default(_Module_.Struct3);
 			@struct.method_0();
 			uint num = 0U;
 			uint num2 = 0U;
@@ -4906,7 +4906,7 @@ internal class <Module>
 						num2 = num;
 						num8 = 2U + this.class2_0.method_2(this.class0_0, num6);
 						@struct.method_2();
-						uint num9 = this.struct1_0[(int)<Module>.Class1.smethod_0(num8)].method_1(this.class0_0);
+						uint num9 = this.struct1_0[(int)_Module_.Class1.smethod_0(num8)].method_1(this.class0_0);
 						if (num9 >= 4U)
 						{
 							int num10 = (int)((num9 >> 1) - 1U);
@@ -4918,7 +4918,7 @@ internal class <Module>
 							}
 							else
 							{
-								num += <Module>.Struct1.smethod_0(this.struct0_6, num - num9 - 1U, this.class0_0, num10);
+								num += _Module_.Struct1.smethod_0(this.struct0_6, num - num9 - 1U, this.class0_0, num10);
 							}
 						}
 						else
@@ -4968,43 +4968,43 @@ internal class <Module>
 		}
 
 		// Token: 0x0400000B RID: 11
-		internal readonly <Module>.Struct0[] struct0_0 = new <Module>.Struct0[192];
+		internal readonly _Module_.Struct0[] struct0_0 = new _Module_.Struct0[192];
 
 		// Token: 0x0400000C RID: 12
-		internal readonly <Module>.Struct0[] struct0_1 = new <Module>.Struct0[192];
+		internal readonly _Module_.Struct0[] struct0_1 = new _Module_.Struct0[192];
 
 		// Token: 0x0400000D RID: 13
-		internal readonly <Module>.Struct0[] struct0_2 = new <Module>.Struct0[12];
+		internal readonly _Module_.Struct0[] struct0_2 = new _Module_.Struct0[12];
 
 		// Token: 0x0400000E RID: 14
-		internal readonly <Module>.Struct0[] struct0_3 = new <Module>.Struct0[12];
+		internal readonly _Module_.Struct0[] struct0_3 = new _Module_.Struct0[12];
 
 		// Token: 0x0400000F RID: 15
-		internal readonly <Module>.Struct0[] struct0_4 = new <Module>.Struct0[12];
+		internal readonly _Module_.Struct0[] struct0_4 = new _Module_.Struct0[12];
 
 		// Token: 0x04000010 RID: 16
-		internal readonly <Module>.Struct0[] struct0_5 = new <Module>.Struct0[12];
+		internal readonly _Module_.Struct0[] struct0_5 = new _Module_.Struct0[12];
 
 		// Token: 0x04000011 RID: 17
-		internal readonly <Module>.Class1.Class2 class2_0 = new <Module>.Class1.Class2();
+		internal readonly _Module_.Class1.Class2 class2_0 = new _Module_.Class1.Class2();
 
 		// Token: 0x04000012 RID: 18
-		internal readonly <Module>.Class1.Class3 class3_0 = new <Module>.Class1.Class3();
+		internal readonly _Module_.Class1.Class3 class3_0 = new _Module_.Class1.Class3();
 
 		// Token: 0x04000013 RID: 19
-		internal readonly <Module>.Class4 class4_0 = new <Module>.Class4();
+		internal readonly _Module_.Class4 class4_0 = new _Module_.Class4();
 
 		// Token: 0x04000014 RID: 20
-		internal readonly <Module>.Struct0[] struct0_6 = new <Module>.Struct0[114];
+		internal readonly _Module_.Struct0[] struct0_6 = new _Module_.Struct0[114];
 
 		// Token: 0x04000015 RID: 21
-		internal readonly <Module>.Struct1[] struct1_0 = new <Module>.Struct1[4];
+		internal readonly _Module_.Struct1[] struct1_0 = new _Module_.Struct1[4];
 
 		// Token: 0x04000016 RID: 22
-		internal readonly <Module>.Class0 class0_0 = new <Module>.Class0();
+		internal readonly _Module_.Class0 class0_0 = new _Module_.Class0();
 
 		// Token: 0x04000017 RID: 23
-		internal readonly <Module>.Class1.Class2 class2_1 = new <Module>.Class1.Class2();
+		internal readonly _Module_.Class1.Class2 class2_1 = new _Module_.Class1.Class2();
 
 		// Token: 0x04000018 RID: 24
 		internal bool bool_0;
@@ -5016,7 +5016,7 @@ internal class <Module>
 		internal uint uint_1;
 
 		// Token: 0x0400001B RID: 27
-		internal <Module>.Struct1 struct1_1 = new <Module>.Struct1(4);
+		internal _Module_.Struct1 struct1_1 = new _Module_.Struct1(4);
 
 		// Token: 0x0400001C RID: 28
 		internal uint uint_2;
@@ -5029,8 +5029,8 @@ internal class <Module>
 			{
 				for (uint num = this.uint_0; num < numPosStates; num += 1U)
 				{
-					this.struct1_0[(int)num] = new <Module>.Struct1(3);
-					this.struct1_1[(int)num] = new <Module>.Struct1(3);
+					this.struct1_0[(int)num] = new _Module_.Struct1(3);
+					this.struct1_1[(int)num] = new _Module_.Struct1(3);
 				}
 				this.uint_0 = numPosStates;
 			}
@@ -5049,7 +5049,7 @@ internal class <Module>
 			}
 
 			// Token: 0x06000021 RID: 33 RVA: 0x0000FB84 File Offset: 0x0000DD84
-			internal uint method_2(<Module>.Class0 rangeDecoder, uint posState)
+			internal uint method_2(_Module_.Class0 rangeDecoder, uint posState)
 			{
 				if (this.struct0_0.method_1(rangeDecoder) == 0U)
 				{
@@ -5074,19 +5074,19 @@ internal class <Module>
 			}
 
 			// Token: 0x0400001D RID: 29
-			internal readonly <Module>.Struct1[] struct1_0 = new <Module>.Struct1[16];
+			internal readonly _Module_.Struct1[] struct1_0 = new _Module_.Struct1[16];
 
 			// Token: 0x0400001E RID: 30
-			internal readonly <Module>.Struct1[] struct1_1 = new <Module>.Struct1[16];
+			internal readonly _Module_.Struct1[] struct1_1 = new _Module_.Struct1[16];
 
 			// Token: 0x0400001F RID: 31
-			internal <Module>.Struct0 struct0_0;
+			internal _Module_.Struct0 struct0_0;
 
 			// Token: 0x04000020 RID: 32
-			internal <Module>.Struct0 struct0_1;
+			internal _Module_.Struct0 struct0_1;
 
 			// Token: 0x04000021 RID: 33
-			internal <Module>.Struct1 struct1_2 = new <Module>.Struct1(8);
+			internal _Module_.Struct1 struct1_2 = new _Module_.Struct1(8);
 
 			// Token: 0x04000022 RID: 34
 			internal uint uint_0;
@@ -5112,7 +5112,7 @@ internal class <Module>
 				this.uint_0 = (1U << numPosBits) - 1U;
 				this.int_1 = numPrevBits;
 				uint num = 1U << this.int_1 + this.int_0;
-				this.struct2_0 = new <Module>.Class1.Class3.Struct2[num];
+				this.struct2_0 = new _Module_.Class1.Class3.Struct2[num];
 				for (uint num2 = 0U; num2 < num; num2 += 1U)
 				{
 					this.struct2_0[(int)num2].method_0();
@@ -5136,13 +5136,13 @@ internal class <Module>
 			}
 
 			// Token: 0x06000026 RID: 38 RVA: 0x00006211 File Offset: 0x00004411
-			internal byte method_3(<Module>.Class0 rangeDecoder, uint pos, byte prevByte)
+			internal byte method_3(_Module_.Class0 rangeDecoder, uint pos, byte prevByte)
 			{
 				return this.struct2_0[(int)this.method_2(pos, prevByte)].method_2(rangeDecoder);
 			}
 
 			// Token: 0x06000027 RID: 39 RVA: 0x0000622C File Offset: 0x0000442C
-			internal byte method_4(<Module>.Class0 rangeDecoder, uint pos, byte prevByte, byte matchByte)
+			internal byte method_4(_Module_.Class0 rangeDecoder, uint pos, byte prevByte, byte matchByte)
 			{
 				return this.struct2_0[(int)this.method_2(pos, prevByte)].method_3(rangeDecoder, matchByte);
 			}
@@ -5153,7 +5153,7 @@ internal class <Module>
 			}
 
 			// Token: 0x04000023 RID: 35
-			internal <Module>.Class1.Class3.Struct2[] struct2_0;
+			internal _Module_.Class1.Class3.Struct2[] struct2_0;
 
 			// Token: 0x04000024 RID: 36
 			internal int int_0;
@@ -5170,7 +5170,7 @@ internal class <Module>
 				// Token: 0x06000029 RID: 41 RVA: 0x00006249 File Offset: 0x00004449
 				internal void method_0()
 				{
-					this.struct0_0 = new <Module>.Struct0[768];
+					this.struct0_0 = new _Module_.Struct0[768];
 				}
 
 				// Token: 0x0600002A RID: 42 RVA: 0x0000FCB4 File Offset: 0x0000DEB4
@@ -5183,7 +5183,7 @@ internal class <Module>
 				}
 
 				// Token: 0x0600002B RID: 43 RVA: 0x0000FCE4 File Offset: 0x0000DEE4
-				internal byte method_2(<Module>.Class0 rangeDecoder)
+				internal byte method_2(_Module_.Class0 rangeDecoder)
 				{
 					uint num = 1U;
 					do
@@ -5195,7 +5195,7 @@ internal class <Module>
 				}
 
 				// Token: 0x0600002C RID: 44 RVA: 0x0000FD18 File Offset: 0x0000DF18
-				internal byte method_3(<Module>.Class0 rangeDecoder, byte matchByte)
+				internal byte method_3(_Module_.Class0 rangeDecoder, byte matchByte)
 				{
 					uint num = 1U;
 					for (;;)
@@ -5222,7 +5222,7 @@ internal class <Module>
 				}
 
 				// Token: 0x04000027 RID: 39
-				internal <Module>.Struct0[] struct0_0;
+				internal _Module_.Struct0[] struct0_0;
 			}
 		}
 	}

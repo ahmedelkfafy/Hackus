@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
@@ -41,18 +41,18 @@ namespace Hackus_Mail_Checker_Reforged.Helpers
 				sb.Completed += delegate(object sender, EventArgs e)
 				{
 					ICommand completedCommand = StoryboardHelper.GetCompletedCommand(sb);
-					if (completedCommand != null && StoryboardHelper.<>c__DisplayClass6_0.smethod_0(completedCommand, StoryboardHelper.GetCompletedCommandParameter(sb)))
+					if (completedCommand != null && StoryboardHelper._c__DisplayClass6_0.smethod_0(completedCommand, StoryboardHelper.GetCompletedCommandParameter(sb)))
 					{
-						StoryboardHelper.<>c__DisplayClass6_0.smethod_1(completedCommand, StoryboardHelper.GetCompletedCommandParameter(sb));
+						StoryboardHelper._c__DisplayClass6_0.smethod_1(completedCommand, StoryboardHelper.GetCompletedCommandParameter(sb));
 					}
 				};
 			}
 		}
 
 		// Token: 0x0400051D RID: 1309
-		public static readonly DependencyProperty CompletedCommandProperty = DependencyProperty.RegisterAttached(<Module>.smethod_3<string>(-529876295), typeof(ICommand), typeof(StoryboardHelper), new PropertyMetadata(null, new PropertyChangedCallback(StoryboardHelper.OnCompletedCommandChanged)));
+		public static readonly DependencyProperty CompletedCommandProperty = DependencyProperty.RegisterAttached(_Module_.smethod_3<string>(-529876295), typeof(ICommand), typeof(StoryboardHelper), new PropertyMetadata(null, new PropertyChangedCallback(StoryboardHelper.OnCompletedCommandChanged)));
 
 		// Token: 0x0400051E RID: 1310
-		public static readonly DependencyProperty CompletedCommandParameterProperty = DependencyProperty.RegisterAttached(<Module>.smethod_2<string>(-73098666), typeof(object), typeof(StoryboardHelper), new PropertyMetadata(null));
+		public static readonly DependencyProperty CompletedCommandParameterProperty = DependencyProperty.RegisterAttached(_Module_.smethod_2<string>(-73098666), typeof(object), typeof(StoryboardHelper), new PropertyMetadata(null));
 	}
 }

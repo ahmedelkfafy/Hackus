@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Globalization;
 using System.Windows;
@@ -24,7 +24,7 @@ namespace Hackus_Mail_Checker_Reforged.Resources.Converters
 				{
 					object obj = enumerator.Current;
 					ImapBodyStructure imapBodyStructure2 = (ImapBodyStructure)obj;
-					if ((imapBodyStructure2.Disposition != null && imapBodyStructure2.Disposition.ToLower() == <Module>.smethod_4<string>(1203370434)) || (imapBodyStructure2.Filename != null && imapBodyStructure2.Filename != string.Empty) || (imapBodyStructure2.ContentType != null && imapBodyStructure2.ContentType.ToLower() == <Module>.smethod_3<string>(1714078507)))
+					if ((imapBodyStructure2.Disposition != null && imapBodyStructure2.Disposition.ToLower() == _Module_.smethod_4<string>(1203370434)) || (imapBodyStructure2.Filename != null && imapBodyStructure2.Filename != string.Empty) || (imapBodyStructure2.ContentType != null && imapBodyStructure2.ContentType.ToLower() == _Module_.smethod_3<string>(1714078507)))
 					{
 						return true;
 					}

@@ -82,11 +82,11 @@
 							Visibility="{Binding IsBusy, Converter={StaticResource Boolean2VisibilityReConverter}}">
 							<hc:TextBox
 								Margin="0,20,0,0"
-								InfoElement.Placeholder="mail@yahoo.com"
-								TitleElement.Title="{DynamicResource l_Login}"
+								hc:InfoElement.Placeholder="mail@yahoo.com"
+								hc:TitleElement.Title="{DynamicResource l_Login}"
 								FontFamily="{StaticResource Roboto-Regular}"
 								FontSize="13"
-								ShowClearButton="True"
+								hc:InfoElement.ShowClearButton="True"
 								Text="{Binding Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 								<UIElement.InputBindings>
 									<KeyBinding
@@ -96,12 +96,12 @@
 							</hc:TextBox>
 							<hc:PasswordBox
 								Margin="0,5,0,0"
-								InfoElement.Placeholder="qwerty"
-								TitleElement.Title="{DynamicResource l_Password}"
+								hc:InfoElement.Placeholder="qwerty"
+								hc:TitleElement.Title="{DynamicResource l_Password}"
 								FontFamily="{StaticResource Roboto-Regular}"
 								FontSize="13"
 								IsSafeEnabled="False"
-								ShowClearButton="True"
+								hc:InfoElement.ShowClearButton="True"
 								ShowEyeButton="True"
 								UnsafePassword="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 								<UIElement.InputBindings>

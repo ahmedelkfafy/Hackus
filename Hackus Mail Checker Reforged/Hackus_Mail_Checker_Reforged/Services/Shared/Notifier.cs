@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Media;
 using Hackus_Mail_Checker_Reforged.Components.Scheduler;
 using Notification.Wpf;
@@ -24,8 +24,8 @@ namespace Hackus_Mail_Checker_Reforged.Services.Shared
 			notificationContent.Title = title;
 			notificationContent.Message = message;
 			notificationContent.Type = 1;
-			notificationContent.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(<Module>.smethod_4<string>(2118262795));
-			notificationContent.Background = (SolidColorBrush)new BrushConverter().ConvertFrom(<Module>.smethod_4<string>(-2089542752));
+			notificationContent.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom(_Module_.smethod_4<string>(2118262795));
+			notificationContent.Background = (SolidColorBrush)new BrushConverter().ConvertFrom(_Module_.smethod_4<string>(-2089542752));
 			Action action = new Action(SchedulerController.Instance.Show);
 			NotificationManager notificationManager = Notifier._notificationManager;
 			object obj = notificationContent;

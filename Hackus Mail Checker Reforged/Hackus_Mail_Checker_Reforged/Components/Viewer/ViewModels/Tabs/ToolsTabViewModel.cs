@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Runtime.CompilerServices;
@@ -33,7 +33,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._paths = value;
-				base.OnPropertyChanged(<Module>.smethod_3<string>(122467350));
+				base.OnPropertyChanged(_Module_.smethod_3<string>(122467350));
 			}
 		}
 
@@ -49,7 +49,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._path = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(-228149589));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(-228149589));
 			}
 		}
 
@@ -65,7 +65,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._isProcessing = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(468309634));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(468309634));
 			}
 		}
 
@@ -81,7 +81,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 			set
 			{
 				this._sortType = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(-2026106227));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(-2026106227));
 			}
 		}
 
@@ -124,32 +124,32 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 						{
 							return;
 						}
-						if (a == <Module>.smethod_4<string>(-233792677))
+						if (a == _Module_.smethod_4<string>(-233792677))
 						{
 							this._contentFrame.Navigate(new MergePage(this));
 							return;
 						}
-						if (a == <Module>.smethod_3<string>(162877433))
+						if (a == _Module_.smethod_3<string>(162877433))
 						{
 							this._contentFrame.Navigate(new NormalizePage(this));
 							return;
 						}
-						if (a == <Module>.smethod_3<string>(-399008851))
+						if (a == _Module_.smethod_3<string>(-399008851))
 						{
 							this._contentFrame.Navigate(new ShufflePage(this));
 							return;
 						}
-						if (a == <Module>.smethod_4<string>(-1802704159))
+						if (a == _Module_.smethod_4<string>(-1802704159))
 						{
 							this._contentFrame.Navigate(new SortPage(this));
 							return;
 						}
-						if (a == <Module>.smethod_3<string>(1046116942))
+						if (a == _Module_.smethod_3<string>(1046116942))
 						{
 							this._contentFrame.Navigate(new DistinctPage(this));
 							return;
 						}
-						if (!(a == <Module>.smethod_6<string>(121769012)))
+						if (!(a == _Module_.smethod_6<string>(121769012)))
 						{
 							return;
 						}
@@ -195,7 +195,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 					result = (this._addPathCommand = new RelayCommand(delegate(object obj)
 					{
 						OpenFileDialog openFileDialog = new OpenFileDialog();
-						openFileDialog.Filter = <Module>.smethod_3<string>(182416367);
+						openFileDialog.Filter = _Module_.smethod_3<string>(182416367);
 						openFileDialog.RestoreDirectory = true;
 						bool? flag = openFileDialog.ShowDialog();
 						if (flag.GetValueOrDefault() & flag != null)
@@ -228,7 +228,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 					result = (this._addSinglePathCommand = new RelayCommand(delegate(object obj)
 					{
 						OpenFileDialog openFileDialog = new OpenFileDialog();
-						openFileDialog.Filter = <Module>.smethod_5<string>(1119604328);
+						openFileDialog.Filter = _Module_.smethod_5<string>(1119604328);
 						openFileDialog.RestoreDirectory = true;
 						bool? flag = openFileDialog.ShowDialog();
 						if (flag.GetValueOrDefault() & flag != null)
@@ -267,7 +267,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 							for (int i = 0; i < array.Length; i++)
 							{
 								FileInfo fileInfo = new FileInfo(array[i]);
-								if (fileInfo.Exists && fileInfo.Extension == <Module>.smethod_6<string>(-1352824492))
+								if (fileInfo.Exists && fileInfo.Extension == _Module_.smethod_6<string>(-1352824492))
 								{
 									BasePath item = new BasePath(fileInfo.Name, fileInfo.FullName);
 									if (!this.Paths.Contains(item))
@@ -300,7 +300,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 							if (dragEventArgs.Data.GetDataPresent(DataFormats.FileDrop))
 							{
 								FileInfo fileInfo = new FileInfo(((string[])dragEventArgs.Data.GetData(DataFormats.FileDrop))[0]);
-								if (fileInfo.Exists && fileInfo.Extension == <Module>.smethod_4<string>(1865170172))
+								if (fileInfo.Exists && fileInfo.Extension == _Module_.smethod_4<string>(1865170172))
 								{
 									this.Path = new BasePath(fileInfo.Name, fileInfo.FullName);
 								}

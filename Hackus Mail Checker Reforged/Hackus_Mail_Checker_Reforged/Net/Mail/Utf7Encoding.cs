@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Text;
 
@@ -14,15 +14,15 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 			{
 				return input;
 			}
-			string text = input.Replace(<Module>.smethod_2<string>(-2094283250), <Module>.smethod_2<string>(-1261946364));
+			string text = input.Replace(_Module_.smethod_2<string>(-2094283250), _Module_.smethod_2<string>(-1261946364));
 			for (int num = text.IndexOf('&'); num != -1; num = text.IndexOf('&', num + 1))
 			{
 				int num2 = text.IndexOf('-', num);
 				if (num2 > 0)
 				{
 					string text2 = text.Substring(num + 1, num2 - num - 1);
-					string s = <Module>.smethod_3<string>(168792022) + text2.Replace(',', '/');
-					text = text.Replace(<Module>.smethod_6<string>(-943474181) + text2 + <Module>.smethod_5<string>(1205836217), Encoding.UTF7.GetString(Encoding.UTF8.GetBytes(s)));
+					string s = _Module_.smethod_3<string>(168792022) + text2.Replace(',', '/');
+					text = text.Replace(_Module_.smethod_6<string>(-943474181) + text2 + _Module_.smethod_5<string>(1205836217), Encoding.UTF7.GetString(Encoding.UTF8.GetBytes(s)));
 				}
 			}
 			return text;
@@ -58,7 +58,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 						}
 						else
 						{
-							stringBuilder.Append(<Module>.smethod_5<string>(1395787583));
+							stringBuilder.Append(_Module_.smethod_5<string>(1395787583));
 						}
 					}
 				}
@@ -68,7 +68,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 				}
 				return stringBuilder.ToString();
 			}
-			return input.Replace(<Module>.smethod_2<string>(-1261946364), <Module>.smethod_6<string>(537429729));
+			return input.Replace(_Module_.smethod_2<string>(-1261946364), _Module_.smethod_6<string>(537429729));
 		}
 
 		// Token: 0x06000746 RID: 1862 RVA: 0x0000A8EC File Offset: 0x00008AEC

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -49,7 +49,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			set
 			{
 				this._searchQuery = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(422498998));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(422498998));
 			}
 		}
 
@@ -75,7 +75,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 			set
 			{
 				this._mailboxResults = value;
-				base.OnPropertyChanged(<Module>.smethod_3<string>(1419643292));
+				base.OnPropertyChanged(_Module_.smethod_3<string>(1419643292));
 			}
 		}
 

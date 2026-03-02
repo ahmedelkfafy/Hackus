@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -19,20 +19,20 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.Proton
 		// Token: 0x06000670 RID: 1648 RVA: 0x0002B728 File Offset: 0x00029928
 		public static void Invoke()
 		{
-			GoSrpInvoker.BinaryPath = (Environment.Is64BitOperatingSystem ? <Module>.smethod_6<string>(1112839400) : <Module>.smethod_6<string>(-806108457));
+			GoSrpInvoker.BinaryPath = (Environment.Is64BitOperatingSystem ? _Module_.smethod_6<string>(1112839400) : _Module_.smethod_6<string>(-806108457));
 			if (!File.Exists(GoSrpInvoker.BinaryPath))
 			{
-				FileManager.LogUnhandledException(new Exception(<Module>.smethod_3<string>(-670182526)), <Module>.smethod_3<string>(-1513011952));
+				FileManager.LogUnhandledException(new Exception(_Module_.smethod_3<string>(-670182526)), _Module_.smethod_3<string>(-1513011952));
 				Process.GetCurrentProcess().Kill();
 				return;
 			}
-			Environment.SetEnvironmentVariable(<Module>.smethod_2<string>(1664828476), <Module>.smethod_3<string>(-348829301));
+			Environment.SetEnvironmentVariable(_Module_.smethod_2<string>(1664828476), _Module_.smethod_3<string>(-348829301));
 			if (GoSrpInvoker.LoadLibrary(GoSrpInvoker.BinaryPath) == IntPtr.Zero)
 			{
-				GoSrpInvoker.BinaryPath = (Environment.Is64BitOperatingSystem ? <Module>.smethod_6<string>(-806108457) : <Module>.smethod_3<string>(-2115308319));
+				GoSrpInvoker.BinaryPath = (Environment.Is64BitOperatingSystem ? _Module_.smethod_6<string>(-806108457) : _Module_.smethod_3<string>(-2115308319));
 				if (GoSrpInvoker.LoadLibrary(GoSrpInvoker.BinaryPath) == IntPtr.Zero)
 				{
-					FileManager.LogUnhandledException(new Exception(<Module>.smethod_2<string>(1798111342)), <Module>.smethod_3<string>(-1513011952));
+					FileManager.LogUnhandledException(new Exception(_Module_.smethod_2<string>(1798111342)), _Module_.smethod_3<string>(-1513011952));
 					Process.GetCurrentProcess().Kill();
 					return;
 				}
@@ -80,7 +80,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.Proton
 				{
 					ushort count = binaryReader.ReadUInt16();
 					byte[] bytes = binaryReader.ReadBytes((int)count);
-					File.AppendAllText(<Module>.smethod_3<string>(-910715585), <Module>.smethod_6<string>(-1996712854) + Encoding.UTF8.GetString(bytes) + Environment.NewLine);
+					File.AppendAllText(_Module_.smethod_3<string>(-910715585), _Module_.smethod_6<string>(-1996712854) + Encoding.UTF8.GetString(bytes) + Environment.NewLine);
 					return null;
 				}
 				if (b == 1)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -85,7 +85,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Message
 			{
 				Field = new SearchCondition.Fields?(SearchCondition.Fields.Header),
 				Quote = false,
-				Value = name + <Module>.smethod_4<string>(-405843621) + text.QuoteString()
+				Value = name + _Module_.smethod_4<string>(-405843621) + text.QuoteString()
 			};
 		}
 
@@ -195,7 +195,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Message
 			return new SearchCondition
 			{
 				Field = new SearchCondition.Fields?(SearchCondition.Fields.UID),
-				Value = (uid + 1U).ToString() + <Module>.smethod_5<string>(-1652571624),
+				Value = (uid + 1U).ToString() + _Module_.smethod_5<string>(-1652571624),
 				Quote = false
 			};
 		}
@@ -206,7 +206,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Message
 			return new SearchCondition
 			{
 				Field = new SearchCondition.Fields?(SearchCondition.Fields.UID),
-				Value = <Module>.smethod_3<string>(-1869059079) + (uid - 1U).ToString(),
+				Value = _Module_.smethod_3<string>(-1869059079) + (uid - 1U).ToString(),
 				Quote = false
 			};
 		}
@@ -347,13 +347,13 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Message
 		// Token: 0x060008D3 RID: 2259 RVA: 0x0000B675 File Offset: 0x00009875
 		public SearchCondition Not(SearchCondition other)
 		{
-			return SearchCondition.Join(<Module>.smethod_2<string>(-1128663498), this, other);
+			return SearchCondition.Join(_Module_.smethod_2<string>(-1128663498), this, other);
 		}
 
 		// Token: 0x060008D4 RID: 2260 RVA: 0x0000B688 File Offset: 0x00009888
 		public SearchCondition Or(SearchCondition other)
 		{
-			return SearchCondition.Join(<Module>.smethod_6<string>(1722844771), this, other);
+			return SearchCondition.Join(_Module_.smethod_6<string>(1722844771), this, other);
 		}
 
 		// Token: 0x170001B7 RID: 439
@@ -406,7 +406,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Message
 		{
 			if (this.Conditions != null && this.Conditions.Count > 0 && this.Operator != null)
 			{
-				return (this.Operator.ToUpper() + <Module>.smethod_2<string>(536010274) + SearchCondition.Join<SearchCondition>(<Module>.smethod_5<string>(1965641681), this.Conditions) + <Module>.smethod_6<string>(90024148)).Trim();
+				return (this.Operator.ToUpper() + _Module_.smethod_2<string>(536010274) + SearchCondition.Join<SearchCondition>(_Module_.smethod_5<string>(1965641681), this.Conditions) + _Module_.smethod_6<string>(90024148)).Trim();
 			}
 			StringBuilder stringBuilder = new StringBuilder();
 			if (this.Field != null)
@@ -443,7 +443,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Message
 				}
 				else
 				{
-					stringBuilder.AppendLine(<Module>.smethod_2<string>(-2037002651) + Encoding.UTF8.GetBytes(text).Length.ToString() + <Module>.smethod_6<string>(-1464243441));
+					stringBuilder.AppendLine(_Module_.smethod_2<string>(-2037002651) + Encoding.UTF8.GetBytes(text).Length.ToString() + _Module_.smethod_6<string>(-1464243441));
 				}
 			}
 			IL_136:
@@ -451,7 +451,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Message
 			{
 				if (obj is uint[])
 				{
-					obj = SearchCondition.Join<uint>(<Module>.smethod_3<string>(-854885990), (uint[])obj);
+					obj = SearchCondition.Join<uint>(_Module_.smethod_3<string>(-854885990), (uint[])obj);
 				}
 			}
 			else
@@ -460,7 +460,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Message
 			}
 			if (this.Field != null)
 			{
-				stringBuilder.Append(<Module>.smethod_2<string>(1849819774));
+				stringBuilder.Append(_Module_.smethod_2<string>(1849819774));
 			}
 			stringBuilder.Append(obj);
 			return stringBuilder.ToString();

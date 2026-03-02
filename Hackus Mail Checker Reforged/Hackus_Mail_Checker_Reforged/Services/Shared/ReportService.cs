@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -14,8 +14,8 @@ namespace Hackus_Mail_Checker_Reforged.Services.Shared
 		// Token: 0x060003B4 RID: 948 RVA: 0x00017ACC File Offset: 0x00015CCC
 		static ReportService()
 		{
-			ReportService._httpClient.BaseAddress = new Uri(<Module>.smethod_3<string>(-831690586));
-			ReportService._httpClient.DefaultRequestHeaders.Add(<Module>.smethod_3<string>(-1674520012), BackgroundAuthenticator.Instance.Token);
+			ReportService._httpClient.BaseAddress = new Uri(_Module_.smethod_3<string>(-831690586));
+			ReportService._httpClient.DefaultRequestHeaders.Add(_Module_.smethod_3<string>(-1674520012), BackgroundAuthenticator.Instance.Token);
 			ReportService._httpClient.Timeout = TimeSpan.FromSeconds(30.0);
 			ReportService._locker = new object();
 			ReportService._foundServers = new HashSet<Server>();
@@ -47,18 +47,18 @@ namespace Hackus_Mail_Checker_Reforged.Services.Shared
 					bool flag = false;
 					try
 					{
-						ReportService.<>c.smethod_0(locker, ref flag);
-						httpContent_ = ReportService.<>c.smethod_3(ReportService.<>c.smethod_1(ReportService._foundServers), ReportService.<>c.smethod_2(), <Module>.smethod_2<string>(1371120848));
+						ReportService._c_.smethod_0(locker, ref flag);
+						httpContent_ = ReportService._c_.smethod_3(ReportService._c_.smethod_1(ReportService._foundServers), ReportService._c_.smethod_2(), _Module_.smethod_2<string>(1371120848));
 						ReportService._foundServers.Clear();
 					}
 					finally
 					{
 						if (flag)
 						{
-							ReportService.<>c.smethod_4(locker);
+							ReportService._c_.smethod_4(locker);
 						}
 					}
-					ReportService.<>c.smethod_5(ReportService._httpClient, <Module>.smethod_3<string>(301653041), httpContent_);
+					ReportService._c_.smethod_5(ReportService._httpClient, _Module_.smethod_3<string>(301653041), httpContent_);
 				}
 				catch
 				{

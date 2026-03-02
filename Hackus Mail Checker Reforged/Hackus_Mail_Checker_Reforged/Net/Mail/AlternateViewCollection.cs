@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -19,7 +19,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		public IEnumerable<Attachment> OfType(Func<string, bool> predicate)
 		{
 			return from x in this
-			where predicate(AlternateViewCollection.<>c__DisplayClass1_0.smethod_0(x.ContentType ?? string.Empty))
+			where predicate(AlternateViewCollection._c__DisplayClass1_0.smethod_0(x.ContentType ?? string.Empty))
 			select x;
 		}
 
@@ -27,9 +27,9 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		public Attachment GetHtmlView()
 		{
 			Attachment result;
-			if ((result = this.OfType(<Module>.smethod_4<string>(1173908513)).FirstOrDefault<Attachment>()) == null)
+			if ((result = this.OfType(_Module_.smethod_4<string>(1173908513)).FirstOrDefault<Attachment>()) == null)
 			{
-				result = this.OfType((string ct) => AlternateViewCollection.<>c.smethod_0(ct, <Module>.smethod_2<string>(1569658303))).FirstOrDefault<Attachment>();
+				result = this.OfType((string ct) => AlternateViewCollection._c_.smethod_0(ct, _Module_.smethod_2<string>(1569658303))).FirstOrDefault<Attachment>();
 			}
 			return result;
 		}
@@ -38,9 +38,9 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		public Attachment GetTextView()
 		{
 			Attachment result;
-			if ((result = this.OfType(<Module>.smethod_4<string>(384644453)).FirstOrDefault<Attachment>()) == null)
+			if ((result = this.OfType(_Module_.smethod_4<string>(384644453)).FirstOrDefault<Attachment>()) == null)
 			{
-				result = this.OfType((string ct) => AlternateViewCollection.<>c.smethod_1(ct, <Module>.smethod_5<string>(-683345321))).FirstOrDefault<Attachment>();
+				result = this.OfType((string ct) => AlternateViewCollection._c_.smethod_1(ct, _Module_.smethod_5<string>(-683345321))).FirstOrDefault<Attachment>();
 			}
 			return result;
 		}

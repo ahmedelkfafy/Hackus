@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using Hackus_Mail_Checker_Reforged.Models;
 using Hackus_Mail_Checker_Reforged.Models.Enums;
@@ -67,39 +67,39 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				{
 					this.SetHeaders(httpRequest);
 					httpRequest.AllowAutoRedirect = false;
-					httpRequest.AddHeader(<Module>.smethod_5<string>(-966682162), <Module>.smethod_4<string>(-795929467));
-					httpRequest.AddHeader(<Module>.smethod_4<string>(695436904), <Module>.smethod_4<string>(-970252965));
-					httpRequest.AddHeader(<Module>.smethod_4<string>(1659024462), <Module>.smethod_3<string>(-1285838694));
-					httpRequest.AddHeader(<Module>.smethod_3<string>(-121656043), <Module>.smethod_2<string>(-415939366));
-					httpRequest.AddHeader(<Module>.smethod_2<string>(1664902849), <Module>.smethod_3<string>(-81245960));
-					httpRequest.AddHeader(<Module>.smethod_2<string>(699283097), <Module>.smethod_3<string>(521050407));
-					httpRequest.AddHeader(<Module>.smethod_2<string>(-298976345), <Module>.smethod_4<string>(-1857088));
-					httpRequest.AddHeader(<Module>.smethod_5<string>(-702816674), <Module>.smethod_5<string>(-1462622138));
-					httpRequest.AddHeader(<Module>.smethod_2<string>(168875739), <Module>.smethod_2<string>(-796744013));
+					httpRequest.AddHeader(_Module_.smethod_5<string>(-966682162), _Module_.smethod_4<string>(-795929467));
+					httpRequest.AddHeader(_Module_.smethod_4<string>(695436904), _Module_.smethod_4<string>(-970252965));
+					httpRequest.AddHeader(_Module_.smethod_4<string>(1659024462), _Module_.smethod_3<string>(-1285838694));
+					httpRequest.AddHeader(_Module_.smethod_3<string>(-121656043), _Module_.smethod_2<string>(-415939366));
+					httpRequest.AddHeader(_Module_.smethod_2<string>(1664902849), _Module_.smethod_3<string>(-81245960));
+					httpRequest.AddHeader(_Module_.smethod_2<string>(699283097), _Module_.smethod_3<string>(521050407));
+					httpRequest.AddHeader(_Module_.smethod_2<string>(-298976345), _Module_.smethod_4<string>(-1857088));
+					httpRequest.AddHeader(_Module_.smethod_5<string>(-702816674), _Module_.smethod_5<string>(-1462622138));
+					httpRequest.AddHeader(_Module_.smethod_2<string>(168875739), _Module_.smethod_2<string>(-796744013));
 					string text = JsonConvert.SerializeObject(new
 					{
 						accountName = this._mailbox.Address,
 						password = this._mailbox.Password,
 						rememberMe = false
 					});
-					string text2 = httpRequest.Post(<Module>.smethod_4<string>(-142522353), text, <Module>.smethod_4<string>(-423852883)).ToString();
+					string text2 = httpRequest.Post(_Module_.smethod_4<string>(-142522353), text, _Module_.smethod_4<string>(-423852883)).ToString();
 					if (text2.ContainsOne(new string[]
 					{
-						<Module>.smethod_5<string>(1524144474),
-						<Module>.smethod_4<string>(-1459565226),
-						<Module>.smethod_6<string>(310419552)
+						_Module_.smethod_5<string>(1524144474),
+						_Module_.smethod_4<string>(-1459565226),
+						_Module_.smethod_6<string>(310419552)
 					}))
 					{
 						return OperationResult.Ok;
 					}
-					if (text2.Contains(<Module>.smethod_4<string>(1610329265)))
+					if (text2.Contains(_Module_.smethod_4<string>(1610329265)))
 					{
 						return OperationResult.Blocked;
 					}
 					if (text2.ContainsOne(new string[]
 					{
-						<Module>.smethod_5<string>(1297236047),
-						<Module>.smethod_4<string>(-1449948588)
+						_Module_.smethod_5<string>(1297236047),
+						_Module_.smethod_4<string>(-1449948588)
 					}))
 					{
 						return OperationResult.Bad;
@@ -124,7 +124,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 			request.ConnectTimeout = CheckerSettings.Instance.Timeout * 1000;
 			request.Cookies = this._cookies;
 			request.Proxy = this._proxyClient;
-			request.UserAgent = <Module>.smethod_5<string>(1482021352);
+			request.UserAgent = _Module_.smethod_5<string>(1482021352);
 		}
 
 		// Token: 0x06000526 RID: 1318 RVA: 0x00009A9E File Offset: 0x00007C9E

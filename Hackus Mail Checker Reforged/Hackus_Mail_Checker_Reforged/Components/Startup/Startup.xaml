@@ -41,8 +41,8 @@
 			Name="step"
 			Grid.Row="1"
 			VerticalAlignment="Bottom"
-			ThemeManager.RequestedAccentColor="#64FFD1"
-			ThemeManager.RequestedTheme="Dark"
+			hc:ThemeManager.RequestedAccentColor="#64FFD1"
+			hc:ThemeManager.RequestedTheme="Dark"
 			FontFamily="{StaticResource Roboto-Regular}"
 			Foreground="#64FFD1">
 			<hc:StepBarItem

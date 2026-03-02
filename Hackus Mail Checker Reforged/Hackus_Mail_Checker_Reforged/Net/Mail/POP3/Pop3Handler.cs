@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -211,7 +211,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.POP3
 						savedMessages.Add(mailMessage);
 						if (this.SearchSettings.ParseContacts)
 						{
-							Match match = Regex.Match(mailMessage.From, <Module>.smethod_4<string>(-1958406388));
+							Match match = Regex.Match(mailMessage.From, _Module_.smethod_4<string>(-1958406388));
 							if (match.Success)
 							{
 								ContactsHelper.AddContact(match.Groups[1].Value);
@@ -261,7 +261,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.POP3
 									{
 										continue;
 									}
-									Request request2 = checkedRequests.FirstOrDefault((Request r) => Pop3Handler.<>c__DisplayClass10_1.smethod_0(r.Sender, request.Sender) && Pop3Handler.<>c__DisplayClass10_1.smethod_0(r.Body, request.Body) && Pop3Handler.<>c__DisplayClass10_1.smethod_0(r.Subject, request.Subject));
+									Request request2 = checkedRequests.FirstOrDefault((Request r) => Pop3Handler._c__DisplayClass10_1.smethod_0(r.Sender, request.Sender) && Pop3Handler._c__DisplayClass10_1.smethod_0(r.Body, request.Body) && Pop3Handler._c__DisplayClass10_1.smethod_0(r.Subject, request.Subject));
 									if (request2 == null)
 									{
 										request2 = request.Clone();

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Net;
@@ -29,7 +29,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._speed = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(-365831698));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(-365831698));
 			}
 		}
 
@@ -45,7 +45,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._progress = value;
-				base.OnPropertyChanged(<Module>.smethod_6<string>(-976444071));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(-976444071));
 			}
 		}
 
@@ -81,7 +81,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 		private void Changed(object sender, DownloadProgressChangedEventArgs e)
 		{
 			this.Progress = (double)e.ProgressPercentage;
-			this.Speed = string.Format(<Module>.smethod_3<string>(486158097), ((double)e.BytesReceived / 1024.0 / this._stopwatch.Elapsed.TotalSeconds).ToString(<Module>.smethod_5<string>(1215375585)));
+			this.Speed = string.Format(_Module_.smethod_3<string>(486158097), ((double)e.BytesReceived / 1024.0 / this._stopwatch.Elapsed.TotalSeconds).ToString(_Module_.smethod_5<string>(1215375585)));
 		}
 
 		// Token: 0x04000736 RID: 1846

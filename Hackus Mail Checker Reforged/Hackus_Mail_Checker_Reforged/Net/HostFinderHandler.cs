@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -26,7 +26,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					Func<HostFinderContext, bool> predicate;
 					if ((predicate = <>9__0) == null)
 					{
-						predicate = (<>9__0 = ((HostFinderContext c) => HostFinderHandler.<>c__DisplayClass4_0.smethod_0(c.Domain, domain)));
+						predicate = (<>9__0 = ((HostFinderContext c) => HostFinderHandler._c__DisplayClass4_0.smethod_0(c.Domain, domain)));
 					}
 					hostFinderContext = contexts.FirstOrDefault(predicate);
 					if (hostFinderContext == null)

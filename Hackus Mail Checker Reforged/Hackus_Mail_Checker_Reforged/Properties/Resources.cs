@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.CodeDom.Compiler;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -28,7 +28,7 @@ namespace Hackus_Mail_Checker_Reforged.Properties
 			{
 				if (Resources.resourceMan == null)
 				{
-					Resources.resourceMan = new ResourceManager(<Module>.smethod_6<string>(710408229), typeof(Resources).Assembly);
+					Resources.resourceMan = new ResourceManager(_Module_.smethod_6<string>(710408229), typeof(Resources).Assembly);
 				}
 				return Resources.resourceMan;
 			}

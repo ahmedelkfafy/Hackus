@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Management;
 using System.Threading.Tasks;
 
@@ -66,7 +66,7 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling System.String Hack
 				}
 				if (i + 1 != bt.Length && (i + 1) % 2 == 0)
 				{
-					text += <Module>.smethod_4<string>(-1365234867);
+					text += _Module_.smethod_4<string>(-1365234867);
 				}
 			}
 			return text;
@@ -79,7 +79,7 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling System.String Hack
 			foreach (ManagementBaseObject managementBaseObject in new ManagementClass(wmiClass).GetInstances())
 			{
 				ManagementObject managementObject = (ManagementObject)managementBaseObject;
-				if (managementObject[wmiMustBeTrue].ToString() == <Module>.smethod_4<string>(409997799) && text == "")
+				if (managementObject[wmiMustBeTrue].ToString() == _Module_.smethod_4<string>(409997799) && text == "")
 				{
 					try
 					{
@@ -119,18 +119,18 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling System.String Hack
 		// Token: 0x06000CB2 RID: 3250 RVA: 0x000439CC File Offset: 0x00041BCC
 		private static string cpuId()
 		{
-			string text = HWID.identifier(<Module>.smethod_5<string>(1097749073), <Module>.smethod_4<string>(-292104512));
+			string text = HWID.identifier(_Module_.smethod_5<string>(1097749073), _Module_.smethod_4<string>(-292104512));
 			if (text == "")
 			{
-				text = HWID.identifier(<Module>.smethod_3<string>(-2128932664), <Module>.smethod_3<string>(1042262064));
+				text = HWID.identifier(_Module_.smethod_3<string>(-2128932664), _Module_.smethod_3<string>(1042262064));
 				if (text == "")
 				{
-					text = HWID.identifier(<Module>.smethod_5<string>(1097749073), <Module>.smethod_6<string>(844923117));
+					text = HWID.identifier(_Module_.smethod_5<string>(1097749073), _Module_.smethod_6<string>(844923117));
 					if (text == "")
 					{
-						text = HWID.identifier(<Module>.smethod_5<string>(1097749073), <Module>.smethod_2<string>(-1574573988));
+						text = HWID.identifier(_Module_.smethod_5<string>(1097749073), _Module_.smethod_2<string>(-1574573988));
 					}
-					text += HWID.identifier(<Module>.smethod_6<string>(731774383), <Module>.smethod_3<string>(-81510504));
+					text += HWID.identifier(_Module_.smethod_6<string>(731774383), _Module_.smethod_3<string>(-81510504));
 				}
 			}
 			return text;
@@ -139,25 +139,25 @@ ICSharpCode.Decompiler.DecompilerException: Error decompiling System.String Hack
 		// Token: 0x06000CB3 RID: 3251 RVA: 0x00043A8C File Offset: 0x00041C8C
 		private static string biosId()
 		{
-			return HWID.identifier(<Module>.smethod_5<string>(870840646), <Module>.smethod_6<string>(-1192362829)) + HWID.identifier(<Module>.smethod_6<string>(1324481904), <Module>.smethod_2<string>(285962715)) + HWID.identifier(<Module>.smethod_3<string>(1363615289), <Module>.smethod_6<string>(-1290960574)) + HWID.identifier(<Module>.smethod_5<string>(870840646), <Module>.smethod_3<string>(490012975));
+			return HWID.identifier(_Module_.smethod_5<string>(870840646), _Module_.smethod_6<string>(-1192362829)) + HWID.identifier(_Module_.smethod_6<string>(1324481904), _Module_.smethod_2<string>(285962715)) + HWID.identifier(_Module_.smethod_3<string>(1363615289), _Module_.smethod_6<string>(-1290960574)) + HWID.identifier(_Module_.smethod_5<string>(870840646), _Module_.smethod_3<string>(490012975));
 		}
 
 		// Token: 0x06000CB4 RID: 3252 RVA: 0x00043B04 File Offset: 0x00041D04
 		private static string diskId()
 		{
-			return HWID.identifier(<Module>.smethod_6<string>(337687770), <Module>.smethod_4<string>(-1143876719)) + HWID.identifier(<Module>.smethod_5<string>(122956572), <Module>.smethod_6<string>(-1192362829)) + HWID.identifier(<Module>.smethod_3<string>(-71873309), <Module>.smethod_6<string>(-253289966)) + HWID.identifier(<Module>.smethod_4<string>(-1497332034), <Module>.smethod_2<string>(-1778559655));
+			return HWID.identifier(_Module_.smethod_6<string>(337687770), _Module_.smethod_4<string>(-1143876719)) + HWID.identifier(_Module_.smethod_5<string>(122956572), _Module_.smethod_6<string>(-1192362829)) + HWID.identifier(_Module_.smethod_3<string>(-71873309), _Module_.smethod_6<string>(-253289966)) + HWID.identifier(_Module_.smethod_4<string>(-1497332034), _Module_.smethod_2<string>(-1778559655));
 		}
 
 		// Token: 0x06000CB5 RID: 3253 RVA: 0x00043B7C File Offset: 0x00041D7C
 		private static string baseId()
 		{
-			return HWID.identifier(<Module>.smethod_6<string>(1375358378), <Module>.smethod_3<string>(1373252484)) + HWID.identifier(<Module>.smethod_6<string>(1375358378), <Module>.smethod_3<string>(480375780)) + HWID.identifier(<Module>.smethod_4<string>(1659724206), <Module>.smethod_4<string>(1843052335)) + HWID.identifier(<Module>.smethod_2<string>(-113885883), <Module>.smethod_3<string>(1051899259));
+			return HWID.identifier(_Module_.smethod_6<string>(1375358378), _Module_.smethod_3<string>(1373252484)) + HWID.identifier(_Module_.smethod_6<string>(1375358378), _Module_.smethod_3<string>(480375780)) + HWID.identifier(_Module_.smethod_4<string>(1659724206), _Module_.smethod_4<string>(1843052335)) + HWID.identifier(_Module_.smethod_2<string>(-113885883), _Module_.smethod_3<string>(1051899259));
 		}
 
 		// Token: 0x06000CB6 RID: 3254 RVA: 0x0000D8AA File Offset: 0x0000BAAA
 		private static string macId()
 		{
-			return HWID.identifier(<Module>.smethod_6<string>(-548778834), <Module>.smethod_2<string>(-413091305), <Module>.smethod_2<string>(1251582467));
+			return HWID.identifier(_Module_.smethod_6<string>(-548778834), _Module_.smethod_2<string>(-413091305), _Module_.smethod_2<string>(1251582467));
 		}
 
 		// Token: 0x040006E4 RID: 1764

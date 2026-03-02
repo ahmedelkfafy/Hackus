@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -25,22 +25,22 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 				using (HttpRequest httpRequest = new HttpRequest())
 				{
 					this.SetHeaders(httpRequest);
-					string text = <Module>.smethod_3<string>(211063408) + WebSettings.Instance.CaptchaSolvationKey + <Module>.smethod_5<string>(1961668511);
-					string text2 = httpRequest.Post(<Module>.smethod_3<string>(1656189201), text, <Module>.smethod_2<string>(1371120848)).ToString();
-					if (text2.Contains(<Module>.smethod_3<string>(-2036481728)) || text2.Contains(<Module>.smethod_4<string>(1140338017)))
+					string text = _Module_.smethod_3<string>(211063408) + WebSettings.Instance.CaptchaSolvationKey + _Module_.smethod_5<string>(1961668511);
+					string text2 = httpRequest.Post(_Module_.smethod_3<string>(1656189201), text, _Module_.smethod_2<string>(1371120848)).ToString();
+					if (text2.Contains(_Module_.smethod_3<string>(-2036481728)) || text2.Contains(_Module_.smethod_4<string>(1140338017)))
 					{
-						Match match = Regex.Match(text2, <Module>.smethod_5<string>(643137585));
+						Match match = Regex.Match(text2, _Module_.smethod_5<string>(643137585));
 						if (match.Success)
 						{
-							return new ValueTuple<OperationResult, string>(OperationResult.Ok, match.Groups[1].Value + <Module>.smethod_4<string>(1401823264));
+							return new ValueTuple<OperationResult, string>(OperationResult.Ok, match.Groups[1].Value + _Module_.smethod_4<string>(1401823264));
 						}
 					}
-					Match match2 = Regex.Match(text2, <Module>.smethod_2<string>(-538251435));
+					Match match2 = Regex.Match(text2, _Module_.smethod_2<string>(-538251435));
 					if (match2.Success)
 					{
 						return new ValueTuple<OperationResult, string>(OperationResult.Error, match2.Groups[1].Value);
 					}
-					return new ValueTuple<OperationResult, string>(OperationResult.Error, <Module>.smethod_2<string>(-1503871187));
+					return new ValueTuple<OperationResult, string>(OperationResult.Error, _Module_.smethod_2<string>(-1503871187));
 				}
 			}
 			catch
@@ -59,9 +59,9 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 		{
 			if (lang == null)
 			{
-				lang = <Module>.smethod_3<string>(-1051087952);
+				lang = _Module_.smethod_3<string>(-1051087952);
 			}
-			string lang2 = (lang == <Module>.smethod_3<string>(-10129125)) ? <Module>.smethod_5<string>(-1256376075) : lang;
+			string lang2 = (lang == _Module_.smethod_3<string>(-10129125)) ? _Module_.smethod_5<string>(-1256376075) : lang;
 			ValueTuple<OperationResult, string> valueTuple = this.SendCaptchaRequest(base64, lang2, onlyLetters);
 			OperationResult item = valueTuple.Item1;
 			string item2 = valueTuple.Item2;
@@ -126,20 +126,20 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 						this.SetHeaders(httpRequest);
 						string text = string.Concat(new string[]
 						{
-							<Module>.smethod_2<string>(1409307914),
+							_Module_.smethod_2<string>(1409307914),
 							lang,
-							<Module>.smethod_5<string>(-2016181539),
+							_Module_.smethod_5<string>(-2016181539),
 							WebSettings.Instance.CaptchaSolvationKey,
-							<Module>.smethod_5<string>(-723479038),
+							_Module_.smethod_5<string>(-723479038),
 							base64,
-							<Module>.smethod_3<string>(1255943249),
+							_Module_.smethod_3<string>(1255943249),
 							(onlyLetters ? 2 : 0).ToString(),
-							<Module>.smethod_2<string>(-1104022589)
+							_Module_.smethod_2<string>(-1104022589)
 						});
-						string text2 = httpRequest.Post(<Module>.smethod_3<string>(413113823), text, <Module>.smethod_6<string>(-989874009)).ToString();
-						if (text2.Contains(<Module>.smethod_5<string>(2130957513)))
+						string text2 = httpRequest.Post(_Module_.smethod_3<string>(413113823), text, _Module_.smethod_6<string>(-989874009)).ToString();
+						if (text2.Contains(_Module_.smethod_5<string>(2130957513)))
 						{
-							Match match = Regex.Match(text2, <Module>.smethod_6<string>(-1671208907));
+							Match match = Regex.Match(text2, _Module_.smethod_6<string>(-1671208907));
 							if (match.Success)
 							{
 								return new ValueTuple<OperationResult, string>(OperationResult.Ok, match.Groups[1].Value);
@@ -173,18 +173,18 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 						this.SetHeaders(httpRequest);
 						string text = string.Concat(new string[]
 						{
-							<Module>.smethod_3<string>(211063408),
+							_Module_.smethod_3<string>(211063408),
 							WebSettings.Instance.CaptchaSolvationKey,
-							<Module>.smethod_3<string>(-1834431313),
+							_Module_.smethod_3<string>(-1834431313),
 							pageUrl,
-							<Module>.smethod_6<string>(1587817566),
+							_Module_.smethod_6<string>(1587817566),
 							siteKey,
-							<Module>.smethod_6<string>(-485793865)
+							_Module_.smethod_6<string>(-485793865)
 						});
-						string text2 = httpRequest.Post(<Module>.smethod_4<string>(1576146762), text, <Module>.smethod_4<string>(-423852883)).ToString();
-						if (text2.Contains(<Module>.smethod_3<string>(-2036481728)))
+						string text2 = httpRequest.Post(_Module_.smethod_4<string>(1576146762), text, _Module_.smethod_4<string>(-423852883)).ToString();
+						if (text2.Contains(_Module_.smethod_3<string>(-2036481728)))
 						{
-							Match match = Regex.Match(text2, <Module>.smethod_4<string>(-1421010937));
+							Match match = Regex.Match(text2, _Module_.smethod_4<string>(-1421010937));
 							if (match.Success)
 							{
 								return new ValueTuple<OperationResult, string>(OperationResult.Ok, match.Groups[1].Value);
@@ -218,20 +218,20 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 						this.SetHeaders(httpRequest);
 						string text = string.Concat(new string[]
 						{
-							<Module>.smethod_6<string>(263307015),
+							_Module_.smethod_6<string>(263307015),
 							WebSettings.Instance.CaptchaSolvationKey,
-							<Module>.smethod_3<string>(1377173498),
+							_Module_.smethod_3<string>(1377173498),
 							pageUrl,
-							<Module>.smethod_6<string>(1587817566),
+							_Module_.smethod_6<string>(1587817566),
 							siteKey,
-							<Module>.smethod_3<string>(1417583581),
+							_Module_.smethod_3<string>(1417583581),
 							userAgent,
-							<Module>.smethod_6<string>(-485793865)
+							_Module_.smethod_6<string>(-485793865)
 						});
-						string text2 = httpRequest.Post(<Module>.smethod_6<string>(-776093378), text, <Module>.smethod_6<string>(-989874009)).ToString();
-						if (text2.Contains(<Module>.smethod_4<string>(167133821)))
+						string text2 = httpRequest.Post(_Module_.smethod_6<string>(-776093378), text, _Module_.smethod_6<string>(-989874009)).ToString();
+						if (text2.Contains(_Module_.smethod_4<string>(167133821)))
 						{
-							Match match = Regex.Match(text2, <Module>.smethod_2<string>(1711237442));
+							Match match = Regex.Match(text2, _Module_.smethod_2<string>(1711237442));
 							if (match.Success)
 							{
 								return new ValueTuple<OperationResult, string>(OperationResult.Ok, match.Groups[1].Value);
@@ -269,27 +269,27 @@ namespace Hackus_Mail_Checker_Reforged.Net.Captcha
 						this.SetHeaders(httpRequest);
 						string text = string.Concat(new string[]
 						{
-							<Module>.smethod_5<string>(-644398855),
+							_Module_.smethod_5<string>(-644398855),
 							WebSettings.Instance.CaptchaSolvationKey,
-							<Module>.smethod_2<string>(-652490350),
+							_Module_.smethod_2<string>(-652490350),
 							id,
-							<Module>.smethod_3<string>(-1035668440)
+							_Module_.smethod_3<string>(-1035668440)
 						});
-						string text2 = httpRequest.Post(<Module>.smethod_3<string>(-1994144206), text, <Module>.smethod_6<string>(-989874009)).ToString();
-						if (text2.Contains(<Module>.smethod_4<string>(-1677687865)))
+						string text2 = httpRequest.Post(_Module_.smethod_3<string>(-1994144206), text, _Module_.smethod_6<string>(-989874009)).ToString();
+						if (text2.Contains(_Module_.smethod_4<string>(-1677687865)))
 						{
-							Match match = Regex.Match(text2, <Module>.smethod_2<string>(362088937));
+							Match match = Regex.Match(text2, _Module_.smethod_2<string>(362088937));
 							if (match.Success)
 							{
 								return new ValueTuple<OperationResult, string>(OperationResult.Ok, match.Groups[1].Value);
 							}
-							match = Regex.Match(text2, <Module>.smethod_3<string>(936517463));
+							match = Regex.Match(text2, _Module_.smethod_3<string>(936517463));
 							if (match.Success)
 							{
 								return new ValueTuple<OperationResult, string>(OperationResult.Ok, match.Groups[1].Value);
 							}
 						}
-						else if (text2.Contains(<Module>.smethod_6<string>(-1970157345)))
+						else if (text2.Contains(_Module_.smethod_6<string>(-1970157345)))
 						{
 							Thread.Sleep(10000);
 							goto IL_143;

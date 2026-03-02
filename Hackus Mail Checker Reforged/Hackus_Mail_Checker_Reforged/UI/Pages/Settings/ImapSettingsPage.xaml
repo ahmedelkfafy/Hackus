@@ -26,8 +26,8 @@
 				Text="{DynamicResource l_UseProtocols}" />
 			<hc:ButtonGroup
 				Margin="0,10,0,0"
-				ThemeManager.RequestedAccentColor="#64FFD1"
-				ThemeManager.RequestedTheme="Dark"
+				hc:ThemeManager.RequestedAccentColor="#64FFD1"
+				hc:ThemeManager.RequestedTheme="Dark"
 				Cursor="Hand">
 				<RadioButton
 					Content="IMAP"
@@ -80,8 +80,8 @@
 					Width="80"
 					HorizontalAlignment="Right"
 					VerticalAlignment="Center"
-					ThemeManager.RequestedAccentColor="#64FFD1"
-					ThemeManager.RequestedTheme="Dark"
+					hc:ThemeManager.RequestedAccentColor="#64FFD1"
+					hc:ThemeManager.RequestedTheme="Dark"
 					BorderThickness="0"
 					Maximum="1000"
 					Minimum="1"
@@ -124,8 +124,8 @@
 				Text="{DynamicResource l_FoldersToIMAPSearch}" />
 			<hc:ButtonGroup
 				Margin="0,10,0,0"
-				ThemeManager.RequestedAccentColor="#64FFD1"
-				ThemeManager.RequestedTheme="Dark">
+				hc:ThemeManager.RequestedAccentColor="#64FFD1"
+				hc:ThemeManager.RequestedTheme="Dark">
 				<RadioButton
 					Content="Inbox"
 					FontFamily="{StaticResource Roboto-Regular}"
@@ -175,9 +175,9 @@
 				IsEnabled="{Binding ElementName=EditFoldersModeRadio, Path=IsChecked}">
 				<hc:TextBox
 					Padding="10,0,40,0"
-					BorderElement.CornerRadius="4 4 0 0"
-					InfoElement.Placeholder="TRASH"
-					ThemeManager.RequestedAccentColor="#64FFD1"
+					hc:BorderElement.CornerRadius="4 4 0 0"
+					hc:InfoElement.Placeholder="TRASH"
+					hc:ThemeManager.RequestedAccentColor="#64FFD1"
 					FontFamily="{StaticResource Roboto-Regular}"
 					FontSize="13"
 					Foreground="#d9d9d9"
@@ -263,8 +263,8 @@
 					Width="80"
 					HorizontalAlignment="Right"
 					VerticalAlignment="Center"
-					ThemeManager.RequestedAccentColor="#64FFD1"
-					ThemeManager.RequestedTheme="Dark"
+					hc:ThemeManager.RequestedAccentColor="#64FFD1"
+					hc:ThemeManager.RequestedTheme="Dark"
 					BorderThickness="0"
 					Maximum="1000"
 					Minimum="1"
@@ -282,8 +282,8 @@
 					Width="80"
 					HorizontalAlignment="Right"
 					VerticalAlignment="Center"
-					ThemeManager.RequestedAccentColor="#64FFD1"
-					ThemeManager.RequestedTheme="Dark"
+					hc:ThemeManager.RequestedAccentColor="#64FFD1"
+					hc:ThemeManager.RequestedTheme="Dark"
 					BorderThickness="0"
 					Maximum="1000"
 					Minimum="1"

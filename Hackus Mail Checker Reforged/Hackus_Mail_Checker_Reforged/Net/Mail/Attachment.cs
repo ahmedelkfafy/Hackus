@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 namespace Hackus_Mail_Checker_Reforged.Net.Mail
@@ -26,12 +26,12 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		// Token: 0x060006AC RID: 1708 RVA: 0x0002BCD4 File Offset: 0x00029ED4
 		private Attachment(string contentType, string name, bool isAttachment)
 		{
-			this.Headers.Add(<Module>.smethod_6<string>(-1106786680), contentType);
+			this.Headers.Add(_Module_.smethod_6<string>(-1106786680), contentType);
 			if (!string.IsNullOrEmpty(name))
 			{
-				Header value = new Header(isAttachment ? <Module>.smethod_5<string>(-714738064) : <Module>.smethod_2<string>(949454611));
-				this.Headers.Add(<Module>.smethod_5<string>(-1253199419), value);
-				value[isAttachment ? <Module>.smethod_4<string>(-1650761709) : <Module>.smethod_5<string>(1290480718)] = name;
+				Header value = new Header(isAttachment ? _Module_.smethod_5<string>(-714738064) : _Module_.smethod_2<string>(949454611));
+				this.Headers.Add(_Module_.smethod_5<string>(-1253199419), value);
+				value[isAttachment ? _Module_.smethod_4<string>(-1650761709) : _Module_.smethod_5<string>(1290480718)] = name;
 			}
 		}
 
@@ -41,11 +41,11 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		{
 			get
 			{
-				return this.Headers[<Module>.smethod_5<string>(-1253199419)][<Module>.smethod_4<string>(-1650761709)].NotEmpty(new string[]
+				return this.Headers[_Module_.smethod_5<string>(-1253199419)][_Module_.smethod_4<string>(-1650761709)].NotEmpty(new string[]
 				{
-					this.Headers[<Module>.smethod_4<string>(450736905)][<Module>.smethod_4<string>(-1760129032)],
-					this.Headers[<Module>.smethod_2<string>(-715219161)][<Module>.smethod_2<string>(400003302)],
-					this.Headers[<Module>.smethod_4<string>(-425688904)][<Module>.smethod_3<string>(1948829249)]
+					this.Headers[_Module_.smethod_4<string>(450736905)][_Module_.smethod_4<string>(-1760129032)],
+					this.Headers[_Module_.smethod_2<string>(-715219161)][_Module_.smethod_2<string>(400003302)],
+					this.Headers[_Module_.smethod_4<string>(-425688904)][_Module_.smethod_3<string>(1948829249)]
 				});
 			}
 		}
@@ -59,7 +59,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 				string result;
 				if ((result = this._ContentDisposition) == null)
 				{
-					result = (this._ContentDisposition = this.Headers[<Module>.smethod_3<string>(-1151248644)].Value.ToLower());
+					result = (this._ContentDisposition = this.Headers[_Module_.smethod_3<string>(-1151248644)].Value.ToLower());
 				}
 				return result;
 			}
@@ -76,7 +76,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		{
 			get
 			{
-				return this.ContentDisposition == <Module>.smethod_2<string>(-2047998239) || !string.IsNullOrEmpty(this.Filename);
+				return this.ContentDisposition == _Module_.smethod_2<string>(-2047998239) || !string.IsNullOrEmpty(this.Filename);
 			}
 		}
 
@@ -100,7 +100,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		public virtual byte[] GetData()
 		{
 			string body = this.Body;
-			if (this.ContentTransferEncoding.Is(<Module>.smethod_2<string>(1648508631)) && Utils.IsValidBase64String(ref body, false))
+			if (this.ContentTransferEncoding.Is(_Module_.smethod_2<string>(1648508631)) && Utils.IsValidBase64String(ref body, false))
 			{
 				try
 				{

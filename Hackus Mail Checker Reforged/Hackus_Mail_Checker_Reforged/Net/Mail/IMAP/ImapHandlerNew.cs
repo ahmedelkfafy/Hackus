@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -146,7 +146,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 			case FoldersMode.Inbox:
 				list = new List<Folder>
 				{
-					Folder.Parse(<Module>.smethod_6<string>(2132499449))
+					Folder.Parse(_Module_.smethod_6<string>(2132499449))
 				};
 				break;
 			case FoldersMode.All:
@@ -160,12 +160,12 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 			{
 				list = new List<Folder>
 				{
-					Folder.Parse(<Module>.smethod_2<string>(-1971847226))
+					Folder.Parse(_Module_.smethod_2<string>(-1971847226))
 				};
 			}
 			if (!list.Any<Folder>())
 			{
-				list.Add(Folder.Parse(<Module>.smethod_4<string>(-521243277)));
+				list.Add(Folder.Parse(_Module_.smethod_4<string>(-521243277)));
 			}
 			this._allFolders = list;
 			return list;
@@ -187,7 +187,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 			}
 			return new List<Folder>
 			{
-				Folder.Parse(<Module>.smethod_6<string>(2132499449))
+				Folder.Parse(_Module_.smethod_6<string>(2132499449))
 			};
 		}
 
@@ -303,7 +303,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 							if (ex.Message != null)
 							{
 								string text = ex.Message.ToLower();
-								if (text.Contains(<Module>.smethod_3<string>(-704876428)) || text.Contains(<Module>.smethod_6<string>(-1690236542)))
+								if (text.Contains(_Module_.smethod_3<string>(-704876428)) || text.Contains(_Module_.smethod_6<string>(-1690236542)))
 								{
 									goto IL_1AC2;
 								}
@@ -324,7 +324,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 								{
 									try
 									{
-										Request request2 = checkedRequests.FirstOrDefault((Request r) => ImapHandlerNew.<>c__DisplayClass15_2.smethod_0(r.Sender, request.Sender) && ImapHandlerNew.<>c__DisplayClass15_2.smethod_0(r.Body, request.Body) && ImapHandlerNew.<>c__DisplayClass15_2.smethod_0(r.Subject, request.Subject));
+										Request request2 = checkedRequests.FirstOrDefault((Request r) => ImapHandlerNew._c__DisplayClass15_2.smethod_0(r.Sender, request.Sender) && ImapHandlerNew._c__DisplayClass15_2.smethod_0(r.Body, request.Body) && ImapHandlerNew._c__DisplayClass15_2.smethod_0(r.Subject, request.Subject));
 										if (request2 != null)
 										{
 											if (!request2.IsChecked)
@@ -333,7 +333,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 												Func<string, bool> predicate;
 												if ((predicate = <>9__1) == null)
 												{
-													predicate = (<>9__1 = ((string u) => ImapHandlerNew.<>c__DisplayClass15_1.smethod_0(u, allFolders[i].Name)));
+													predicate = (<>9__1 = ((string u) => ImapHandlerNew._c__DisplayClass15_1.smethod_0(u, allFolders[i].Name)));
 												}
 												if (!checkedFolders.Any(predicate) && (request2.SavedUids == null || request2.SavedUids.Count < this.SearchSettings.DownloadLettersLimit))
 												{
@@ -353,7 +353,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 										Func<Uid, bool> predicate2;
 										if ((predicate2 = <>9__2) == null)
 										{
-											predicate2 = (<>9__2 = ((Uid u) => ImapHandlerNew.<>c__DisplayClass15_1.smethod_0(u.Folder.Name, allFolders[i].Name)));
+											predicate2 = (<>9__2 = ((Uid u) => ImapHandlerNew._c__DisplayClass15_1.smethod_0(u.Folder.Name, allFolders[i].Name)));
 										}
 										Uid[] array;
 										if (!findedUids.Any(predicate2))
@@ -366,7 +366,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 											Func<Uid, bool> predicate3;
 											if ((predicate3 = <>9__3) == null)
 											{
-												predicate3 = (<>9__3 = ((Uid u) => ImapHandlerNew.<>c__DisplayClass15_1.smethod_0(u.Folder.Name, allFolders[i].Name)));
+												predicate3 = (<>9__3 = ((Uid u) => ImapHandlerNew._c__DisplayClass15_1.smethod_0(u.Folder.Name, allFolders[i].Name)));
 											}
 											array = findedUids2.Where(predicate3).ToArray<Uid>();
 										}
@@ -404,7 +404,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 															}
 															catch (Exception ex2)
 															{
-																if (ex2.Message == null || !ex2.Message.Contains(<Module>.smethod_5<string>(1891727559)))
+																if (ex2.Message == null || !ex2.Message.Contains(_Module_.smethod_5<string>(1891727559)))
 																{
 																	throw;
 																}
@@ -424,7 +424,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 																	}
 																	catch (Exception ex3)
 																	{
-																		if (ex3.Message == null || !ex3.Message.Contains(<Module>.smethod_4<string>(-401647309)))
+																		if (ex3.Message == null || !ex3.Message.Contains(_Module_.smethod_4<string>(-401647309)))
 																		{
 																			throw;
 																		}
@@ -483,7 +483,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 															}
 															catch (Exception ex4)
 															{
-																if (ex4.Message == null || !ex4.Message.Contains(<Module>.smethod_6<string>(2021793209)))
+																if (ex4.Message == null || !ex4.Message.Contains(_Module_.smethod_6<string>(2021793209)))
 																{
 																	throw;
 																}
@@ -507,7 +507,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 																	}
 																	catch (Exception ex5)
 																	{
-																		if (ex5.Message == null || !ex5.Message.Contains(<Module>.smethod_3<string>(207274666)))
+																		if (ex5.Message == null || !ex5.Message.Contains(_Module_.smethod_3<string>(207274666)))
 																		{
 																			throw;
 																		}
@@ -557,7 +557,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 														}
 														catch (Exception ex6)
 														{
-															if (ex6.Message == null || !ex6.Message.Contains(<Module>.smethod_5<string>(1891727559)))
+															if (ex6.Message == null || !ex6.Message.Contains(_Module_.smethod_5<string>(1891727559)))
 															{
 																throw;
 															}
@@ -616,7 +616,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 															}
 															catch (Exception ex7)
 															{
-																if (ex7.Message == null || !ex7.Message.Contains(<Module>.smethod_2<string>(802576006)))
+																if (ex7.Message == null || !ex7.Message.Contains(_Module_.smethod_2<string>(802576006)))
 																{
 																	throw;
 																}
@@ -640,7 +640,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 																	}
 																	catch (Exception ex8)
 																	{
-																		if (ex8.Message == null || !ex8.Message.Contains(<Module>.smethod_4<string>(-401647309)))
+																		if (ex8.Message == null || !ex8.Message.Contains(_Module_.smethod_4<string>(-401647309)))
 																		{
 																			throw;
 																		}
@@ -695,7 +695,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 															}
 															catch (Exception ex9)
 															{
-																if (ex9.Message == null || !ex9.Message.Contains(<Module>.smethod_2<string>(802576006)))
+																if (ex9.Message == null || !ex9.Message.Contains(_Module_.smethod_2<string>(802576006)))
 																{
 																	throw;
 																}
@@ -713,7 +713,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 																}
 																catch (Exception ex10)
 																{
-																	if (ex10.Message == null || !ex10.Message.Contains(<Module>.smethod_3<string>(207274666)))
+																	if (ex10.Message == null || !ex10.Message.Contains(_Module_.smethod_3<string>(207274666)))
 																	{
 																		throw;
 																	}
@@ -777,7 +777,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 															}
 															catch (Exception ex11)
 															{
-																if (ex11.Message == null || !ex11.Message.Contains(<Module>.smethod_2<string>(802576006)))
+																if (ex11.Message == null || !ex11.Message.Contains(_Module_.smethod_2<string>(802576006)))
 																{
 																	throw;
 																}
@@ -795,7 +795,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 																}
 																catch (Exception ex12)
 																{
-																	if (ex12.Message == null || !ex12.Message.Contains(<Module>.smethod_5<string>(1891727559)))
+																	if (ex12.Message == null || !ex12.Message.Contains(_Module_.smethod_5<string>(1891727559)))
 																	{
 																		throw;
 																	}
@@ -857,7 +857,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 														}
 														catch (Exception ex13)
 														{
-															if (ex13.Message == null || !ex13.Message.Contains(<Module>.smethod_5<string>(1891727559)))
+															if (ex13.Message == null || !ex13.Message.Contains(_Module_.smethod_5<string>(1891727559)))
 															{
 																throw;
 															}
@@ -875,7 +875,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 															}
 															catch (Exception ex14)
 															{
-																if (ex14.Message == null || !ex14.Message.Contains(<Module>.smethod_2<string>(802576006)))
+																if (ex14.Message == null || !ex14.Message.Contains(_Module_.smethod_2<string>(802576006)))
 																{
 																	throw;
 																}
@@ -971,7 +971,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 									{
 										num4 = 1;
 									}
-									string[] array4 = this._imapClient.FetchFromHeaders(string.Format(<Module>.smethod_2<string>(-1006202683), num4, num3));
+									string[] array4 = this._imapClient.FetchFromHeaders(string.Format(_Module_.smethod_2<string>(-1006202683), num4, num3));
 									if (array4.Any<string>())
 									{
 										list.AddRange(array4);
@@ -1031,7 +1031,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 									{
 										num8 = 1;
 									}
-									AttachmentMessageInfo[] array5 = this._imapClient.FetchAttachmentMessagesInfo(string.Format(<Module>.smethod_6<string>(66824234), num8, num7));
+									AttachmentMessageInfo[] array5 = this._imapClient.FetchAttachmentMessagesInfo(string.Format(_Module_.smethod_6<string>(66824234), num8, num7));
 									if (array5 != null && array5.Any<AttachmentMessageInfo>())
 									{
 										list2.AddRange(array5);

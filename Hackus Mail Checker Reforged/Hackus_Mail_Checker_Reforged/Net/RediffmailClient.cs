@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using Hackus_Mail_Checker_Reforged.Models;
 using Hackus_Mail_Checker_Reforged.Models.Enums;
@@ -86,7 +86,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 			request.ConnectTimeout = CheckerSettings.Instance.Timeout * 1000;
 			request.Cookies = this._cookies;
 			request.Proxy = this._proxyClient;
-			request.UserAgent = <Module>.smethod_3<string>(1998876527);
+			request.UserAgent = _Module_.smethod_3<string>(1998876527);
 		}
 
 		// Token: 0x0600059E RID: 1438 RVA: 0x00009C78 File Offset: 0x00007E78

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.CodeDom.Compiler;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -60,7 +60,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.Views.Tabs
 		// Token: 0x06000A59 RID: 2649 RVA: 0x0003BEE0 File Offset: 0x0003A0E0
 		public void HideScriptErrors(WebBrowser wb, bool Hide)
 		{
-			FieldInfo field = typeof(WebBrowser).GetField(<Module>.smethod_4<string>(-1580297471), BindingFlags.Instance | BindingFlags.NonPublic);
+			FieldInfo field = typeof(WebBrowser).GetField(_Module_.smethod_4<string>(-1580297471), BindingFlags.Instance | BindingFlags.NonPublic);
 			if (field == null)
 			{
 				return;
@@ -68,7 +68,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.Views.Tabs
 			object value = field.GetValue(wb);
 			if (value != null)
 			{
-				value.GetType().InvokeMember(<Module>.smethod_6<string>(-943578156), BindingFlags.SetProperty, null, value, new object[]
+				value.GetType().InvokeMember(_Module_.smethod_6<string>(-943578156), BindingFlags.SetProperty, null, value, new object[]
 				{
 					Hide
 				});

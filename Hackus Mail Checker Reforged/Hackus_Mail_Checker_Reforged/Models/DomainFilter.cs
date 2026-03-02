@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Hackus_Mail_Checker_Reforged.UI.Models;
 
 namespace Hackus_Mail_Checker_Reforged.Models
@@ -18,7 +18,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._domain = value;
-				base.OnPropertyChanged(<Module>.smethod_3<string>(-1334223077));
+				base.OnPropertyChanged(_Module_.smethod_3<string>(-1334223077));
 			}
 		}
 
@@ -34,7 +34,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._isEnabled = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(855342463));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(855342463));
 			}
 		}
 

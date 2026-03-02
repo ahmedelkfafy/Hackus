@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
 using Hackus_Mail_Checker_Reforged.UI.Models;
 
@@ -26,7 +26,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._name = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(1843052335));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(1843052335));
 			}
 		}
 
@@ -42,7 +42,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			set
 			{
 				this._requests = value;
-				base.OnPropertyChanged(<Module>.smethod_6<string>(1897553056));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(1897553056));
 			}
 		}
 

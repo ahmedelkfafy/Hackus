@@ -987,8 +987,8 @@
 							Name="SearchInput"
 							Grid.Column="1"
 							Height="20"
-							InfoElement.Placeholder="{DynamicResource l_MainDataGridSearchPlaceholder}"
-							ThemeManager.RequestedTheme="Default"
+							hc:InfoElement.Placeholder="{DynamicResource l_MainDataGridSearchPlaceholder}"
+							hc:ThemeManager.RequestedTheme="Default"
 							Background="{DynamicResource BlockBackgroundBrush}"
 							BorderThickness="0"
 							FontFamily="{StaticResource Roboto-Regular}"
@@ -1495,7 +1495,7 @@
 				</Border>
 				<hc:SideMenu
 					Grid.Column="1"
-					ThemeManager.RequestedTheme="Dark"
+					hc:ThemeManager.RequestedTheme="Dark"
 					Background="{DynamicResource BlockBackgroundBrush}"
 					BorderBrush="#2b2b2b"
 					BorderThickness="2,0,0,0"

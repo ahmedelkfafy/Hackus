@@ -188,8 +188,8 @@
 									Width="80"
 									HorizontalAlignment="Right"
 									VerticalAlignment="Center"
-									ThemeManager.RequestedAccentColor="#64FFD1"
-									ThemeManager.RequestedTheme="Dark"
+									hc:ThemeManager.RequestedAccentColor="#64FFD1"
+									hc:ThemeManager.RequestedTheme="Dark"
 									BorderThickness="0"
 									Maximum="100"
 									Minimum="1"
@@ -207,8 +207,8 @@
 									Width="80"
 									HorizontalAlignment="Right"
 									VerticalAlignment="Center"
-									ThemeManager.RequestedAccentColor="#64FFD1"
-									ThemeManager.RequestedTheme="Dark"
+									hc:ThemeManager.RequestedAccentColor="#64FFD1"
+									hc:ThemeManager.RequestedTheme="Dark"
 									BorderThickness="0"
 									Maximum="100"
 									Minimum="1"
@@ -426,20 +426,20 @@
 														</Grid.ColumnDefinitions>
 														<hc:DatePicker
 															HorizontalAlignment="Stretch"
-															BorderElement.CornerRadius="0 0 0 4"
-															InfoElement.Placeholder="{DynamicResource l_From}"
-															ThemeManager.RequestedAccentColor="#64FFD1"
-															ThemeManager.RequestedTheme="Dark"
+															hc:BorderElement.CornerRadius="0 0 0 4"
+															hc:InfoElement.Placeholder="{DynamicResource l_From}"
+															hc:ThemeManager.RequestedAccentColor="#64FFD1"
+															hc:ThemeManager.RequestedTheme="Dark"
 															FontFamily="{StaticResource Roboto-Regular}"
 															Foreground="#d9d9d9"
 															SelectedDate="{Binding DateFrom}" />
 														<hc:DatePicker
 															Grid.Column="1"
 															HorizontalAlignment="Stretch"
-															BorderElement.CornerRadius="0 0 4 0"
-															InfoElement.Placeholder="{DynamicResource l_To}"
-															ThemeManager.RequestedAccentColor="#64FFD1"
-															ThemeManager.RequestedTheme="Dark"
+															hc:BorderElement.CornerRadius="0 0 4 0"
+															hc:InfoElement.Placeholder="{DynamicResource l_To}"
+															hc:ThemeManager.RequestedAccentColor="#64FFD1"
+															hc:ThemeManager.RequestedTheme="Dark"
 															FontFamily="{StaticResource Roboto-Regular}"
 															Foreground="#d9d9d9"
 															SelectedDate="{Binding DateTo}" />
@@ -572,8 +572,8 @@
 					</Grid.ColumnDefinitions>
 					<hc:TextBox
 						Margin="0,0,5,0"
-						InfoElement.Placeholder="{DynamicResource l_Address}"
-						ThemeManager.RequestedAccentColor="#64FFD1"
+						hc:InfoElement.Placeholder="{DynamicResource l_Address}"
+						hc:ThemeManager.RequestedAccentColor="#64FFD1"
 						FontFamily="{StaticResource Roboto-Regular}"
 						Foreground="#d9d9d9"
 						Text="{Binding Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
@@ -586,8 +586,8 @@
 					<hc:TextBox
 						Grid.Column="1"
 						Margin="5,0,5,0"
-						InfoElement.Placeholder="{DynamicResource l_Password}"
-						ThemeManager.RequestedAccentColor="#64FFD1"
+						hc:InfoElement.Placeholder="{DynamicResource l_Password}"
+						hc:ThemeManager.RequestedAccentColor="#64FFD1"
 						FontFamily="{StaticResource Roboto-Regular}"
 						Foreground="#d9d9d9"
 						Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">

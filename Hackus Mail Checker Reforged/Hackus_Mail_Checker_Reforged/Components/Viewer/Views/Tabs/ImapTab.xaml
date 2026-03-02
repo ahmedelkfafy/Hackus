@@ -638,9 +638,9 @@
 						MaxWidth="100" />
 				</Grid.ColumnDefinitions>
 				<hc:SearchBar
-					BorderElement.CornerRadius="4 0 0 4"
-					InfoElement.Placeholder="Steam"
-					ShowClearButton="True"
+					hc:BorderElement.CornerRadius="4 0 0 4"
+					hc:InfoElement.Placeholder="Steam"
+					hc:InfoElement.ShowClearButton="True"
 					Style="{StaticResource SearchBarPlus}"
 					Command="{Binding SearchCommand}"
 					Text="{Binding SearchQuery.Query, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -654,13 +654,13 @@
 					SelectedItem="{Binding SearchQuery.Type}" />
 				<hc:DatePicker
 					Grid.Column="2"
-					BorderElement.CornerRadius="0"
-					InfoElement.Placeholder="From"
+					hc:BorderElement.CornerRadius="0"
+					hc:InfoElement.Placeholder="From"
 					SelectedDate="{Binding SearchQuery.DateFrom}" />
 				<hc:DatePicker
 					Grid.Column="3"
-					BorderElement.CornerRadius="0"
-					InfoElement.Placeholder="To"
+					hc:BorderElement.CornerRadius="0"
+					hc:InfoElement.Placeholder="To"
 					SelectedDate="{Binding SearchQuery.DateTo}" />
 				<Button
 					Grid.Column="4"
@@ -700,9 +700,9 @@
 			<hc:Pagination
 				Grid.Row="2"
 				HorizontalAlignment="Center"
-				ThemeManager.RequestedAccentColor="#64FFD1"
-				VisualElement.HighlightBackground="{StaticResource BlockBackgroundBrush}"
-				VisualElement.HighlightBorderBrush="#64FFD1"
+				hc:ThemeManager.RequestedAccentColor="#64FFD1"
+				hc:VisualElement.HighlightBackground="{StaticResource BlockBackgroundBrush}"
+				hc:VisualElement.HighlightBorderBrush="#64FFD1"
 				IsEnabled="{Binding IsImapBusy, Converter={StaticResource Boolean2BooleanReConverter}}"
 				MaxPageCount="{Binding MaxPageCount}"
 				Visibility="{Binding ShowMessageBody, Converter={StaticResource Boolean2VisibilityReConverter}}"

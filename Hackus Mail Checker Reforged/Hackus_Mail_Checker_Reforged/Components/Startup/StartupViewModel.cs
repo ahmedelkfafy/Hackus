@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
@@ -46,7 +46,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._webLoader = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(2013179521));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(2013179521));
 			}
 		}
 
@@ -62,7 +62,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._username = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(-1795053037));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(-1795053037));
 			}
 		}
 
@@ -78,7 +78,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._password = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(-2024528016));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(-2024528016));
 			}
 		}
 
@@ -94,7 +94,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._isAuthorizing = value;
-				base.OnPropertyChanged(<Module>.smethod_5<string>(1679524561));
+				base.OnPropertyChanged(_Module_.smethod_5<string>(1679524561));
 			}
 		}
 
@@ -110,7 +110,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._errorMessage = value;
-				base.OnPropertyChanged(<Module>.smethod_3<string>(1945040507));
+				base.OnPropertyChanged(_Module_.smethod_3<string>(1945040507));
 			}
 		}
 
@@ -126,7 +126,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._status = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(-2020302528));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(-2020302528));
 			}
 		}
 
@@ -142,7 +142,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._currentVersion = value;
-				base.OnPropertyChanged(<Module>.smethod_6<string>(1816861895));
+				base.OnPropertyChanged(_Module_.smethod_6<string>(1816861895));
 			}
 		}
 
@@ -158,7 +158,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._lastVersion = value;
-				base.OnPropertyChanged(<Module>.smethod_4<string>(-1579685464));
+				base.OnPropertyChanged(_Module_.smethod_4<string>(-1579685464));
 			}
 		}
 
@@ -174,7 +174,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			set
 			{
 				this._hwid = value;
-				base.OnPropertyChanged(<Module>.smethod_2<string>(2116559043));
+				base.OnPropertyChanged(_Module_.smethod_2<string>(2116559043));
 			}
 		}
 
@@ -197,7 +197,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 							});
 						});
 						Version version = Assembly.GetExecutingAssembly().GetName().Version;
-						this.CurrentVersion = string.Format(<Module>.smethod_6<string>(-1788529920), version.Major, version.Minor, version.Build);
+						this.CurrentVersion = string.Format(_Module_.smethod_6<string>(-1788529920), version.Major, version.Minor, version.Build);
 						PagesManager.Instance.OpenPage(new AuthenticationPage(this), FrameType.Startup);
 						ValueTuple<string, string> savedCredentials = Registry.GetSavedCredentials();
 						this.Username = savedCredentials.Item1;
@@ -313,7 +313,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 					{
 						try
 						{
-							StartupViewModel.<>c.smethod_0(<Module>.smethod_6<string>(-1159392939));
+							StartupViewModel._c_.smethod_0(_Module_.smethod_6<string>(-1159392939));
 						}
 						catch
 						{
@@ -396,12 +396,12 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 		{
 			string[] array = new string[]
 			{
-				<Module>.smethod_3<string>(1937066207),
-				<Module>.smethod_3<string>(-1193718438),
-				<Module>.smethod_6<string>(633176638),
-				<Module>.smethod_6<string>(-854646412),
-				<Module>.smethod_2<string>(-328767974),
-				<Module>.smethod_5<string>(471068304)
+				_Module_.smethod_3<string>(1937066207),
+				_Module_.smethod_3<string>(-1193718438),
+				_Module_.smethod_6<string>(633176638),
+				_Module_.smethod_6<string>(-854646412),
+				_Module_.smethod_2<string>(-328767974),
+				_Module_.smethod_5<string>(471068304)
 			};
 			for (int i = 0; i < array.Length; i++)
 			{
@@ -419,12 +419,12 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 		{
 			foreach (string path in new string[]
 			{
-				<Module>.smethod_2<string>(-1346071367),
-				<Module>.smethod_5<string>(-441731465),
-				<Module>.smethod_4<string>(173166154),
-				<Module>.smethod_2<string>(1885357107),
-				<Module>.smethod_4<string>(-107552369),
-				<Module>.smethod_4<string>(245902946)
+				_Module_.smethod_2<string>(-1346071367),
+				_Module_.smethod_5<string>(-441731465),
+				_Module_.smethod_4<string>(173166154),
+				_Module_.smethod_2<string>(1885357107),
+				_Module_.smethod_4<string>(-107552369),
+				_Module_.smethod_4<string>(245902946)
 			})
 			{
 				if (File.Exists(path))
@@ -448,12 +448,12 @@ namespace Hackus_Mail_Checker_Reforged.Components.Startup
 			HandyControl.Controls.MessageBox.Show(new MessageBoxInfo
 			{
 				Message = message,
-				Caption = ResourceHelper.GetResource<string>(<Module>.smethod_3<string>(-416025122)),
+				Caption = ResourceHelper.GetResource<string>(_Module_.smethod_3<string>(-416025122)),
 				Button = MessageBoxButton.OK,
-				IconBrushKey = <Module>.smethod_5<string>(1573819439),
-				IconKey = <Module>.smethod_6<string>(1292737040),
-				StyleKey = <Module>.smethod_6<string>(1294466825),
-				ConfirmContent = ResourceHelper.GetResource<string>(<Module>.smethod_5<string>(1193916707))
+				IconBrushKey = _Module_.smethod_5<string>(1573819439),
+				IconKey = _Module_.smethod_6<string>(1292737040),
+				StyleKey = _Module_.smethod_6<string>(1294466825),
+				ConfirmContent = ResourceHelper.GetResource<string>(_Module_.smethod_5<string>(1193916707))
 			});
 		}
 

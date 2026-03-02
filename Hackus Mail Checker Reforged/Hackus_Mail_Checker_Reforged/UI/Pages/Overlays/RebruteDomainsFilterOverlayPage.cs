@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.CodeDom.Compiler;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -30,7 +30,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.Pages.Overlays
 				return;
 			}
 			this._contentLoaded = true;
-			Uri resourceLocator = new Uri(<Module>.smethod_4<string>(1182913144), UriKind.Relative);
+			Uri resourceLocator = new Uri(_Module_.smethod_4<string>(1182913144), UriKind.Relative);
 			Application.LoadComponent(this, resourceLocator);
 		}
 

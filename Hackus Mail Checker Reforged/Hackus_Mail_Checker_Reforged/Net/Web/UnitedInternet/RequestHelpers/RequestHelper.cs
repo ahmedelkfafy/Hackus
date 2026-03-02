@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
@@ -32,11 +32,11 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web.UnitedInternet.RequestHelpers
 		// Token: 0x06000660 RID: 1632 RVA: 0x0002B62C File Offset: 0x0002982C
 		public static RequestHelper Get(string domain)
 		{
-			if (domain == <Module>.smethod_3<string>(-2067254616) || domain == <Module>.smethod_6<string>(-25871447))
+			if (domain == _Module_.smethod_3<string>(-2067254616) || domain == _Module_.smethod_6<string>(-25871447))
 			{
 				return new GmxComRequestHelper();
 			}
-			if (!(domain == <Module>.smethod_2<string>(-995331050)))
+			if (!(domain == _Module_.smethod_2<string>(-995331050)))
 			{
 				return new GmxNetRequestHelper();
 			}
