@@ -412,7 +412,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		// Token: 0x0600044F RID: 1103 RVA: 0x000198D0 File Offset: 0x00017AD0
 		public void AddRequestValue(RequestResult result)
 		{
-			Func<RequestResult, bool> _9__1;
+			Func<RequestResult, bool> _9__1 = null;
 			Application.Current.Dispatcher.Invoke(delegate()
 			{
 				IEnumerable<RequestResult> requestValues = this.RequestValues;
@@ -434,7 +434,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		// Token: 0x06000450 RID: 1104 RVA: 0x0001990C File Offset: 0x00017B0C
 		public void AddBadDetails(string address, string message)
 		{
-			Func<KeyValuePair<string, string>, bool> _9__1;
+			Func<KeyValuePair<string, string>, bool> _9__1 = null;
 			Application.Current.Dispatcher.Invoke(delegate()
 			{
 				IEnumerable<KeyValuePair<string, string>> badDetails = this.BadDetails;
@@ -454,7 +454,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		// Token: 0x06000451 RID: 1105 RVA: 0x00019950 File Offset: 0x00017B50
 		public void AddBlockedDetails(string address, string message)
 		{
-			Func<KeyValuePair<string, string>, bool> _9__1;
+			Func<KeyValuePair<string, string>, bool> _9__1 = null;
 			Application.Current.Dispatcher.Invoke(delegate()
 			{
 				IEnumerable<KeyValuePair<string, string>> blockedDetails = this.BlockedDetails;
@@ -474,7 +474,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		// Token: 0x06000452 RID: 1106 RVA: 0x00019994 File Offset: 0x00017B94
 		public void AddErrorDetails(string address, string message)
 		{
-			Func<KeyValuePair<string, string>, bool> _9__1;
+			Func<KeyValuePair<string, string>, bool> _9__1 = null;
 			Application.Current.Dispatcher.Invoke(delegate()
 			{
 				IEnumerable<KeyValuePair<string, string>> errorDetails = this.ErrorDetails;

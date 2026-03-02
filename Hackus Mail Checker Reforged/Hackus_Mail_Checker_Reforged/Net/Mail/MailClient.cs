@@ -89,18 +89,18 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 						this.TcpClient.DisposeObject(ar);
 						return;
 					}
-					catch (ThreadAbortException connectException)
+					catch (ThreadAbortException abortEx)
 					{
 						this.TcpClient.DisposeObject(ar);
-						ThreadAbortException connectException = connectException;
+						connectException = abortEx;
 					}
 					catch (ObjectDisposedException)
 					{
 						return;
 					}
-					catch (Exception connectException2)
+					catch (Exception ex)
 					{
-						ThreadAbortException connectException = connectException2;
+						connectException = ex;
 					}
 					connectDoneEvent.Set();
 				}, this.TcpClient);

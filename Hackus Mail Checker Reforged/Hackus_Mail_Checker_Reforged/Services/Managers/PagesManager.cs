@@ -72,7 +72,7 @@ namespace Hackus_Mail_Checker_Reforged.Services.Managers
 		// Token: 0x0600040B RID: 1035 RVA: 0x000193D4 File Offset: 0x000175D4
 		public void OpenCachedPage(Type pageType, FrameType frameType)
 		{
-			Func<Page, bool> _9__1;
+			Func<Page, bool> _9__1 = null;
 			Application.Current.Dispatcher.Invoke(delegate()
 			{
 				IEnumerable<Page> cachedPages = this._cachedPages;

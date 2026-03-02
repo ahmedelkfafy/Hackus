@@ -282,12 +282,12 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 			bool flag = this.IsAdditionalCheckRequired();
 			try
 			{
-				Func<AttachmentMessageInfo, bool> _9__11;
+				Func<AttachmentMessageInfo, bool> _9__11 = null;
 				int l;
 				int i;
-				Func<string, bool> _9__1;
-				Func<Uid, bool> _9__2;
-				Func<Uid, bool> _9__3;
+				Func<string, bool> _9__1 = null;
+				Func<Uid, bool> _9__2 = null;
+				Func<Uid, bool> _9__3 = null;
 				for (i = 0; i < allFolders.Count; i = l + 1)
 				{
 					this.WaitPause();

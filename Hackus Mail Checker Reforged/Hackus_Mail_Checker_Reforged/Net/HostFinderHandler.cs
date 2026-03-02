@@ -14,7 +14,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 		// Token: 0x06000514 RID: 1300 RVA: 0x0001D1AC File Offset: 0x0001B3AC
 		public static Server Find(string domain)
 		{
-			Func<HostFinderContext, bool> _9__0;
+			Func<HostFinderContext, bool> _9__0 = null;
 			Server result;
 			for (;;)
 			{
