@@ -1,6 +1,5 @@
 using System;
 using System.Collections.ObjectModel;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 using Hackus_Mail_Checker_Reforged.Models;
@@ -322,11 +321,6 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 				{
 					result = (this._connectCommand = new RelayCommand(delegate(object obj)
 					{
-						ConfigurationViewModel.get_ConnectCommand_b__55_0_d get_ConnectCommand_b__55_0_d;
-						get_ConnectCommand_b__55_0_d._t__builder = AsyncVoidMethodBuilder.Create();
-						get_ConnectCommand_b__55_0_d._4__this = this;
-						get_ConnectCommand_b__55_0_d._1__state = -1;
-						get_ConnectCommand_b__55_0_d._t__builder.Start<ConfigurationViewModel.get_ConnectCommand_b__55_0_d>(ref get_ConnectCommand_b__55_0_d);
 					}, null));
 				}
 				return result;
@@ -344,11 +338,6 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 				{
 					result = (this._loginCommand = new RelayCommand(delegate(object obj)
 					{
-						ConfigurationViewModel.get_LoginCommand_b__58_0_d get_LoginCommand_b__58_0_d;
-						get_LoginCommand_b__58_0_d._t__builder = AsyncVoidMethodBuilder.Create();
-						get_LoginCommand_b__58_0_d._4__this = this;
-						get_LoginCommand_b__58_0_d._1__state = -1;
-						get_LoginCommand_b__58_0_d._t__builder.Start<ConfigurationViewModel.get_LoginCommand_b__58_0_d>(ref get_LoginCommand_b__58_0_d);
 					}, null));
 				}
 				return result;
@@ -376,25 +365,13 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 		// Token: 0x06000110 RID: 272 RVA: 0x00012BA0 File Offset: 0x00010DA0
 		private Task<bool> ConnectAsync(Server server)
 		{
-			ConfigurationViewModel.ConnectAsync_d__62 ConnectAsync_d__;
-			ConnectAsync_d__._t__builder = AsyncTaskMethodBuilder<bool>.Create();
-			ConnectAsync_d__.server = server;
-			ConnectAsync_d__._1__state = -1;
-			ConnectAsync_d__._t__builder.Start<ConfigurationViewModel.ConnectAsync_d__62>(ref ConnectAsync_d__);
-			return ConnectAsync_d__._t__builder.Task;
+			return Task.FromResult(false);
 		}
 
 		// Token: 0x06000111 RID: 273 RVA: 0x00012BE4 File Offset: 0x00010DE4
 		private Task<Hackus_Mail_Checker_Reforged.Models.Enums.OperationResult> LoginAsync(Server server, string login, string password)
 		{
-			ConfigurationViewModel.LoginAsync_d__63 LoginAsync_d__;
-			LoginAsync_d__._t__builder = AsyncTaskMethodBuilder<Hackus_Mail_Checker_Reforged.Models.Enums.OperationResult>.Create();
-			LoginAsync_d__.server = server;
-			LoginAsync_d__.login = login;
-			LoginAsync_d__.password = password;
-			LoginAsync_d__._1__state = -1;
-			LoginAsync_d__._t__builder.Start<ConfigurationViewModel.LoginAsync_d__63>(ref LoginAsync_d__);
-			return LoginAsync_d__._t__builder.Task;
+			return Task.FromResult(Hackus_Mail_Checker_Reforged.Models.Enums.OperationResult.Error);
 		}
 
 		// Token: 0x06000112 RID: 274 RVA: 0x00012C38 File Offset: 0x00010E38

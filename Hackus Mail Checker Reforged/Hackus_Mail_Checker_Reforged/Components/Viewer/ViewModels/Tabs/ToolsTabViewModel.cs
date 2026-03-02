@@ -1,7 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -96,12 +95,6 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 				{
 					result = (this._startCommand = new RelayCommand(delegate(object obj)
 					{
-						ToolsTabViewModel.get_StartCommand_b__23_0_d get_StartCommand_b__23_0_d;
-						get_StartCommand_b__23_0_d._t__builder = AsyncVoidMethodBuilder.Create();
-						get_StartCommand_b__23_0_d._4__this = this;
-						get_StartCommand_b__23_0_d.obj = obj;
-						get_StartCommand_b__23_0_d._1__state = -1;
-						get_StartCommand_b__23_0_d._t__builder.Start<ToolsTabViewModel.get_StartCommand_b__23_0_d>(ref get_StartCommand_b__23_0_d);
 					}, null));
 				}
 				return result;

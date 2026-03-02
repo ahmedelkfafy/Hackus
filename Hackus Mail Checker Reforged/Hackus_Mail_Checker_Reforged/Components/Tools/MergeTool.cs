@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Hackus_Mail_Checker_Reforged.UI.Models;
@@ -22,12 +21,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Tools
 		// Token: 0x06000C29 RID: 3113 RVA: 0x00041B10 File Offset: 0x0003FD10
 		public Task<bool> Run()
 		{
-			MergeTool.Run_d__4 Run_d__;
-			Run_d__._t__builder = AsyncTaskMethodBuilder<bool>.Create();
-			Run_d__._4__this = this;
-			Run_d__._1__state = -1;
-			Run_d__._t__builder.Start<MergeTool.Run_d__4>(ref Run_d__);
-			return Run_d__._t__builder.Task;
+			return Task.FromResult(false);
 		}
 
 		// Token: 0x06000C2A RID: 3114 RVA: 0x00041B54 File Offset: 0x0003FD54

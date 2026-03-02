@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.SQLite;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Hackus_Mail_Checker_Reforged.Models;
@@ -40,14 +39,7 @@ namespace Hackus_Mail_Checker_Reforged
 		// Token: 0x06000077 RID: 119 RVA: 0x00010910 File Offset: 0x0000EB10
 		public Task UploadConfiguration(HashSet<string> toSearch, ProtocolType protocol)
 		{
-			SqlConfiguration.UploadConfiguration_d__8 UploadConfiguration_d__;
-			UploadConfiguration_d__._t__builder = AsyncTaskMethodBuilder.Create();
-			UploadConfiguration_d__._4__this = this;
-			UploadConfiguration_d__.toSearch = toSearch;
-			UploadConfiguration_d__.protocol = protocol;
-			UploadConfiguration_d__._1__state = -1;
-			UploadConfiguration_d__._t__builder.Start<SqlConfiguration.UploadConfiguration_d__8>(ref UploadConfiguration_d__);
-			return UploadConfiguration_d__._t__builder.Task;
+			return Task.CompletedTask;
 		}
 
 		// Token: 0x06000078 RID: 120 RVA: 0x00010964 File Offset: 0x0000EB64
