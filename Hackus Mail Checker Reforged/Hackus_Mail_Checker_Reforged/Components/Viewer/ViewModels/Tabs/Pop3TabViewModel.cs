@@ -396,6 +396,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 							await Task.Run(() =>
 							{
 								try { this.Pop3.Disconnect(); }
+								catch { }
 							});
 						}
 						catch { }
@@ -623,6 +624,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 								await Task.Run(() =>
 								{
 									try { this.Pop3.Disconnect(); }
+									catch { }
 								});
 							}
 						}
