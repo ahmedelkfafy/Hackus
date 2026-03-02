@@ -120,7 +120,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 					try
 					{
 						AsyncCallback asyncCallback = null;
-						AsyncCallback _9__0;
+						AsyncCallback _9__0 = null;
 						for (;;)
 						{
 							if (asyncResult == null)
@@ -410,7 +410,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 				try
 				{
 					AsyncCallback asyncCallback = null;
-					AsyncCallback _9__0;
+					AsyncCallback _9__0 = null;
 					for (;;)
 					{
 						if (asyncResult == null || asyncResult.IsCompleted)

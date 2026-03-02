@@ -78,12 +78,11 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 				if (match.Success)
 				{
 					folder.MessageCount = int.Parse(match.Value);
-					IL_81:
-					this.SelectedFolder = folder;
-					return folder.MessageCount;
+					break;
 				}
 			}
-			goto IL_81;
+			this.SelectedFolder = folder;
+			return folder.MessageCount;
 		}
 
 		// Token: 0x06000950 RID: 2384 RVA: 0x00038C24 File Offset: 0x00036E24
@@ -222,7 +221,8 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 					return mailMessage;
 				}
 			}
-			goto IL_1D1;
+			this.CheckOk(text);
+			return mailMessage;
 		}
 
 		// Token: 0x06000954 RID: 2388 RVA: 0x00039104 File Offset: 0x00037304
@@ -289,7 +289,8 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 					return mailMessage;
 				}
 			}
-			goto IL_2CC;
+			this.CheckOk(string.IsNullOrEmpty(text2) ? text : text2);
+			return mailMessage;
 		}
 
 		// Token: 0x06000955 RID: 2389 RVA: 0x000393F0 File Offset: 0x000375F0
@@ -344,7 +345,8 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 					return mailMessage;
 				}
 			}
-			goto IL_1BD;
+			this.CheckOk(text);
+			return mailMessage;
 		}
 
 		// Token: 0x06000956 RID: 2390 RVA: 0x000395C4 File Offset: 0x000377C4
