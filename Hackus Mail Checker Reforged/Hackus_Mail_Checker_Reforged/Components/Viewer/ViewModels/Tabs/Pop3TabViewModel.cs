@@ -309,7 +309,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 					Application.Current.Dispatcher.Invoke(delegate()
 					{
 						MailMessage msg = e.DownloadedMessage;
-						if (!this.Messages.Any(m => m.MessageId == msg.MessageId))
+						if (!this.Messages.Any(m => m.MessageID == msg.MessageID))
 						{
 							if (this.Messages != null)
 								this.Messages.Add(msg);
@@ -332,7 +332,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 				this.Pop3OperationStatus = "Loading messages...";
 				int totalMessages = await Task.Run(() =>
 				{
-					try { return this.Pop3.GetMessageCount(); }
+					try { return this.Pop3.MessageCount; }
 					catch { return 0; }
 				});
 				this.MaxPageCount = Math.Max(1, (totalMessages + this.Limit - 1) / this.Limit);
@@ -345,7 +345,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 					int index = i;
 					await Task.Run(() =>
 					{
-						try { this.Pop3.DownloadEntireMessage(index, false); }
+						try { this.Pop3.DownloadEntireMessage(index); }
 						catch { }
 					});
 				}
@@ -395,8 +395,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 						{
 							await Task.Run(() =>
 							{
-								try { this.Pop3.Quit(); }
-								catch { try { this.Pop3.Disconnect(); } catch { } }
+								try { this.Pop3.Disconnect(); }
 							});
 						}
 						catch { }
@@ -623,8 +622,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 							{
 								await Task.Run(() =>
 								{
-									try { this.Pop3.Quit(); }
-									catch { try { this.Pop3.Disconnect(); } catch { } }
+									try { this.Pop3.Disconnect(); }
 								});
 							}
 						}
@@ -754,7 +752,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 				this.Pop3OperationStatus = "Loading last 100 messages...";
 				int totalMessages = await Task.Run(() =>
 				{
-					try { return this.Pop3.GetMessageCount(); }
+					try { return this.Pop3.MessageCount; }
 					catch { return 0; }
 				});
 				int startIndex = Math.Max(1, totalMessages - 99);
@@ -764,7 +762,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.ViewModels.Tabs
 					int index = i;
 					await Task.Run(() =>
 					{
-						try { this.Pop3.DownloadEntireMessage(index, false); }
+						try { this.Pop3.DownloadEntireMessage(index); }
 						catch { }
 					});
 				}
