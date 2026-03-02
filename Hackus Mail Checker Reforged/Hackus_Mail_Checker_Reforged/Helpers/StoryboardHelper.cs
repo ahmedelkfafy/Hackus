@@ -35,7 +35,7 @@ namespace Hackus_Mail_Checker_Reforged.Helpers
 		// Token: 0x06000A1E RID: 2590 RVA: 0x0003B154 File Offset: 0x00039354
 		private static void OnCompletedCommandChanged(object sender, DependencyPropertyChangedEventArgs e)
 		{
-			Storyboard sb = sender2 as Storyboard;
+			Storyboard sb = sender as Storyboard;
 			if (sb != null)
 			{
 				sb.Completed += delegate(object sender, EventArgs e)

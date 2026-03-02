@@ -47,7 +47,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Viewer.Views.Tabs
 		{
 			RelayCommand openMessageCommand = ((Pop3TabViewModel)base.DataContext).OpenMessageCommand;
 			ListBoxItem listBoxItem = sender as ListBoxItem;
-			openMessageCommand.Execute((listBoxItem != null) ? listBoxItem.method_0() : null);
+			openMessageCommand.Execute((listBoxItem != null) ? listBoxItem.DataContext : null);
 			ListBoxItem listBoxItem2 = sender as ListBoxItem;
 			this.ListBoxResults.SelectedItem = listBoxItem2.DataContext;
 		}
