@@ -156,7 +156,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			{
 				this.SavedMids = new HashSet<Mid>();
 			}
-			if (this.SavedMids.Any((Mid u) => Request._c__DisplayClass37_0.smethod_0(u.MID, mid.MID)))
+			if (this.SavedMids.Any((Mid u) => u.MID == mid.MID))
 			{
 				return;
 			}
@@ -170,7 +170,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			{
 				this.FindedMids = new HashSet<Mid>();
 			}
-			if (!this.FindedMids.Any((Mid u) => Request._c__DisplayClass38_0.smethod_0(u.MID, mid.MID)))
+			if (!this.FindedMids.Any((Mid u) => u.MID == mid.MID))
 			{
 				this.FindedMids.Add(mid);
 				return;
@@ -184,7 +184,7 @@ namespace Hackus_Mail_Checker_Reforged.Models
 			{
 				this.CheckedFolders = new HashSet<string>();
 			}
-			if (!this.CheckedFolders.Any((string f) => Request._c__DisplayClass39_0.smethod_0(f, folder)))
+			if (!this.CheckedFolders.Any((string f) => f == folder))
 			{
 				this.CheckedFolders.Add(folder);
 				return;

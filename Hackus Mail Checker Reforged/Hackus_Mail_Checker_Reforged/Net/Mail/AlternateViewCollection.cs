@@ -19,7 +19,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 		public IEnumerable<Attachment> OfType(Func<string, bool> predicate)
 		{
 			return from x in this
-			where predicate(AlternateViewCollection._c__DisplayClass1_0.smethod_0(x.ContentType ?? string.Empty))
+			where predicate((x.ContentType ?? string.Empty).ToLower())
 			select x;
 		}
 
@@ -29,7 +29,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 			Attachment result;
 			if ((result = this.OfType("text/html").FirstOrDefault<Attachment>()) == null)
 			{
-				result = this.OfType((string ct) => AlternateViewCollection._c_.smethod_0(ct, "html")).FirstOrDefault<Attachment>();
+				result = this.OfType((string ct) => ct.Contains("html")).FirstOrDefault<Attachment>();
 			}
 			return result;
 		}
@@ -40,7 +40,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 			Attachment result;
 			if ((result = this.OfType("text/plain").FirstOrDefault<Attachment>()) == null)
 			{
-				result = this.OfType((string ct) => AlternateViewCollection._c_.smethod_1(ct, "text/")).FirstOrDefault<Attachment>();
+				result = this.OfType((string ct) => ct.StartsWith("text/")).FirstOrDefault<Attachment>();
 			}
 			return result;
 		}

@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -253,7 +254,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 				{
 					result = (this._initializeCommand = new RelayCommand(delegate(object obj)
 					{
-						PagesManager.Instance.OpenCachedPage(MainViewModel._c_.smethod_0(typeof(GlobalSettingsPage).TypeHandle), FrameType.MainSettings);
+						PagesManager.Instance.OpenCachedPage(typeof(GlobalSettingsPage), FrameType.MainSettings);
 					}, null));
 				}
 				return result;
@@ -271,7 +272,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 				{
 					result = (this._startCommand = new RelayCommand(delegate(object obj)
 					{
-					}, (object obj) => MailManager.Instance.Any() && ThreadsManager.Instance.State == CheckerState.Stopped && (!ProxySettings.Instance.UseProxy || ProxyManager.Instance.Any() || !MainViewModel._c_.smethod_1(ProxySettings.Instance.WebLinks))));
+					}, (object obj) => MailManager.Instance.Any() && ThreadsManager.Instance.State == CheckerState.Stopped && (!ProxySettings.Instance.UseProxy || ProxyManager.Instance.Any() || !string.IsNullOrEmpty(ProxySettings.Instance.WebLinks))));
 				}
 				return result;
 			}
@@ -374,7 +375,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 				{
 					result = (this._openWebSettingsCommand = new RelayCommand(delegate(object obj)
 					{
-						PagesManager.Instance.OpenCachedPage(MainViewModel._c_.smethod_0(typeof(WebSettingsPage).TypeHandle), FrameType.MainOverlay);
+						PagesManager.Instance.OpenCachedPage(typeof(WebSettingsPage), FrameType.MainOverlay);
 					}, null));
 				}
 				return result;
@@ -393,19 +394,19 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 					result = (this._selectSettingsPageCommand = new RelayCommand(delegate(object obj)
 					{
 						string string_ = obj as string;
-						if (MainViewModel._c_.smethod_2(string_, "MainSettings"))
+						if (string_ == "MainSettings")
 						{
-							PagesManager.Instance.OpenCachedPage(MainViewModel._c_.smethod_0(typeof(GlobalSettingsPage).TypeHandle), FrameType.MainSettings);
+							PagesManager.Instance.OpenCachedPage(typeof(GlobalSettingsPage), FrameType.MainSettings);
 							return;
 						}
-						if (MainViewModel._c_.smethod_2(string_, "SearchSettings"))
+						if (string_ == "SearchSettings")
 						{
-							PagesManager.Instance.OpenCachedPage(MainViewModel._c_.smethod_0(typeof(SearchSettingsPage).TypeHandle), FrameType.MainSettings);
+							PagesManager.Instance.OpenCachedPage(typeof(SearchSettingsPage), FrameType.MainSettings);
 							return;
 						}
-						if (MainViewModel._c_.smethod_2(string_, "RequestsSettings"))
+						if (string_ == "RequestsSettings")
 						{
-							PagesManager.Instance.OpenCachedPage(MainViewModel._c_.smethod_0(typeof(RequestsSettingsPage).TypeHandle), FrameType.MainSettings);
+							PagesManager.Instance.OpenCachedPage(typeof(RequestsSettingsPage), FrameType.MainSettings);
 							return;
 						}
 					}, null));
@@ -448,7 +449,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 				{
 					result = (this._openDomainsFilterCommand = new RelayCommand(delegate(object obj)
 					{
-						PagesManager.Instance.OpenCachedPage(MainViewModel._c_.smethod_0(typeof(DomainsFilterOverlayPage).TypeHandle), FrameType.MainOverlay);
+						PagesManager.Instance.OpenCachedPage(typeof(DomainsFilterOverlayPage), FrameType.MainOverlay);
 					}, null));
 				}
 				return result;
@@ -466,7 +467,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 				{
 					result = (this._openRebruteDomainsFilterCommand = new RelayCommand(delegate(object obj)
 					{
-						PagesManager.Instance.OpenCachedPage(MainViewModel._c_.smethod_0(typeof(RebruteDomainsFilterOverlayPage).TypeHandle), FrameType.MainOverlay);
+						PagesManager.Instance.OpenCachedPage(typeof(RebruteDomainsFilterOverlayPage), FrameType.MainOverlay);
 					}, null));
 				}
 				return result;
@@ -484,7 +485,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 				{
 					result = (this._openAttachmentsFilterCommand = new RelayCommand(delegate(object obj)
 					{
-						PagesManager.Instance.OpenCachedPage(MainViewModel._c_.smethod_0(typeof(AttachmentsFilterOverlayPage).TypeHandle), FrameType.MainOverlay);
+						PagesManager.Instance.OpenCachedPage(typeof(AttachmentsFilterOverlayPage), FrameType.MainOverlay);
 					}, null));
 				}
 				return result;
@@ -502,7 +503,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 				{
 					result = (this._openRequestsManagerCommand = new RelayCommand(delegate(object obj)
 					{
-						PagesManager.Instance.OpenCachedPage(MainViewModel._c_.smethod_0(typeof(RequestsManagerPage).TypeHandle), FrameType.MainOverlay);
+						PagesManager.Instance.OpenCachedPage(typeof(RequestsManagerPage), FrameType.MainOverlay);
 					}, null));
 				}
 				return result;
@@ -767,7 +768,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 											{
 												if (num == 2692293871U)
 												{
-													if (text == "Subject" && !this.SearchSettings.Requests.Any((Request r) => MainViewModel._c__DisplayClass116_0.smethod_0(r.Subject, request)))
+													if (text == "Subject" && !this.SearchSettings.Requests.Any((Request r) => r.Subject == request))
 													{
 														this.SearchSettings.Requests.Add(new Request
 														{
@@ -782,7 +783,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 												{
 													'='
 												});
-												if (parts.Length >= 2 && parts[0].Length != 0 && parts[1].Length != 0 && !this.SearchSettings.Requests.Any((Request r) => MainViewModel._c__DisplayClass116_1.smethod_0(r.Sender, parts[0]) && MainViewModel._c__DisplayClass116_1.smethod_0(r.Subject, parts[1])))
+												if (parts.Length >= 2 && parts[0].Length != 0 && parts[1].Length != 0 && !this.SearchSettings.Requests.Any((Request r) => r.Sender == parts[0] && r.Subject == parts[1]))
 												{
 													this.SearchSettings.Requests.Add(new Request
 													{
@@ -800,7 +801,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 												{
 													'='
 												});
-												if (parts.Length >= 2 && parts[0].Length != 0 && parts[1].Length != 0 && !this.SearchSettings.Requests.Any((Request r) => MainViewModel._c__DisplayClass116_1.smethod_0(r.Subject, parts[0]) && MainViewModel._c__DisplayClass116_1.smethod_0(r.Body, parts[1])))
+												if (parts.Length >= 2 && parts[0].Length != 0 && parts[1].Length != 0 && !this.SearchSettings.Requests.Any((Request r) => r.Subject == parts[0] && r.Body == parts[1]))
 												{
 													this.SearchSettings.Requests.Add(new Request
 													{
@@ -812,7 +813,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 										}
 										else if (num == 3849582724U)
 										{
-											if (text == "Sender" && !this.SearchSettings.Requests.Any((Request r) => MainViewModel._c__DisplayClass116_0.smethod_0(r.Sender, request)))
+											if (text == "Sender" && !this.SearchSettings.Requests.Any((Request r) => r.Sender == request))
 											{
 												this.SearchSettings.Requests.Add(new Request
 												{
@@ -831,7 +832,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 												{
 													'='
 												});
-												if (parts.Length >= 2 && parts[0].Length != 0 && parts[1].Length != 0 && !this.SearchSettings.Requests.Any((Request r) => MainViewModel._c__DisplayClass116_1.smethod_0(r.Sender, parts[0]) && MainViewModel._c__DisplayClass116_1.smethod_0(r.Body, parts[1])))
+												if (parts.Length >= 2 && parts[0].Length != 0 && parts[1].Length != 0 && !this.SearchSettings.Requests.Any((Request r) => r.Sender == parts[0] && r.Body == parts[1]))
 												{
 													this.SearchSettings.Requests.Add(new Request
 													{
@@ -849,7 +850,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 												{
 													'='
 												});
-												if (parts.Length >= 3 && parts[0].Length != 0 && parts[1].Length != 0 && parts[2].Length != 0 && !this.SearchSettings.Requests.Any((Request r) => MainViewModel._c__DisplayClass116_1.smethod_0(r.Sender, parts[0]) && MainViewModel._c__DisplayClass116_1.smethod_0(r.Subject, parts[1]) && MainViewModel._c__DisplayClass116_1.smethod_0(r.Body, parts[2])))
+												if (parts.Length >= 3 && parts[0].Length != 0 && parts[1].Length != 0 && parts[2].Length != 0 && !this.SearchSettings.Requests.Any((Request r) => r.Sender == parts[0] && r.Subject == parts[1] && r.Body == parts[2]))
 												{
 													this.SearchSettings.Requests.Add(new Request
 													{
@@ -861,7 +862,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 											}
 										}
 									}
-									else if (text == "Body" && !this.SearchSettings.Requests.Any((Request r) => MainViewModel._c__DisplayClass116_0.smethod_0(r.Body, request)))
+									else if (text == "Body" && !this.SearchSettings.Requests.Any((Request r) => r.Body == request))
 									{
 										this.SearchSettings.Requests.Add(new Request
 										{
@@ -1026,7 +1027,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 				{
 					result = (this._editConfigurationCommand = new RelayCommand(delegate(object obj)
 					{
-						PagesManager.Instance.OpenCachedPage(MainViewModel._c_.smethod_0(typeof(ConfigurationPage).TypeHandle), FrameType.MainOverlay);
+						PagesManager.Instance.OpenCachedPage(typeof(ConfigurationPage), FrameType.MainOverlay);
 					}, null));
 				}
 				return result;
@@ -1172,57 +1173,57 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 				{
 					result = (this._exportRequestsCommand = new RelayCommand(delegate(object obj)
 					{
-						SaveFileDialog saveFileDialog = MainViewModel._c_.smethod_3();
-						MainViewModel._c_.smethod_4(saveFileDialog, "Requests");
-						MainViewModel._c_.smethod_5(saveFileDialog, ".hreq");
-						MainViewModel._c_.smethod_6(saveFileDialog, "Hackus requests (.hreq)|*.hreq");
-						bool? flag = MainViewModel._c_.smethod_7(saveFileDialog);
+						SaveFileDialog saveFileDialog = new SaveFileDialog();
+						saveFileDialog.FileName = "Requests";
+						saveFileDialog.DefaultExt = ".hreq";
+						saveFileDialog.Filter = "Hackus requests (.hreq)|*.hreq";
+						bool? flag = saveFileDialog.ShowDialog();
 						if (flag.GetValueOrDefault() & flag != null)
 						{
-							string string_ = MainViewModel._c_.smethod_8(saveFileDialog);
+							string string_ = saveFileDialog.FileName;
 							if (SearchSettings.Instance.Requests.Count > 0)
 							{
-								StreamWriter streamWriter = MainViewModel._c_.smethod_9(string_, false);
+								StreamWriter streamWriter = new StreamWriter(string_, false);
 								try
 								{
 									IEnumerator<Request> enumerator = SearchSettings.Instance.Requests.GetEnumerator();
 									try
 									{
-										while (MainViewModel._c_.smethod_13(enumerator))
+										while (enumerator.MoveNext())
 										{
 											Request request = enumerator.Current;
 											if (request.Sender != null)
 											{
-												MainViewModel._c_.smethod_11(streamWriter, MainViewModel._c_.smethod_10("[FROM]", request.Sender, "[/FROM]"));
+												streamWriter.WriteLine("[FROM]" + request.Sender + "[/FROM]");
 											}
 											if (request.Subject != null)
 											{
-												MainViewModel._c_.smethod_11(streamWriter, MainViewModel._c_.smethod_10("[SUBJECT]", request.Subject, "[/SUBJECT]"));
+												streamWriter.WriteLine("[SUBJECT]" + request.Subject + "[/SUBJECT]");
 											}
 											if (request.Body != null)
 											{
-												MainViewModel._c_.smethod_11(streamWriter, MainViewModel._c_.smethod_10("[BODY]", request.Body, "[/BODY]"));
+												streamWriter.WriteLine("[BODY]" + request.Body + "[/BODY]");
 											}
 											if (request.CheckDate)
 											{
-												MainViewModel._c_.smethod_11(streamWriter, "[CHECKDATE]TRUE[/CHECKDATE]");
+												streamWriter.WriteLine("[CHECKDATE]TRUE[/CHECKDATE]");
 											}
 											if (request.DateFrom != null)
 											{
-												MainViewModel._c_.smethod_11(streamWriter, MainViewModel._c_.smethod_10("[DATEFROM]", request.DateFrom.Value.ToString("MM/dd/yyyy"), "[/DATEFROM]"));
+												streamWriter.WriteLine("[DATEFROM]" + request.DateFrom.Value.ToString("MM/dd/yyyy") + "[/DATEFROM]");
 											}
 											if (request.DateTo != null)
 											{
-												MainViewModel._c_.smethod_11(streamWriter, MainViewModel._c_.smethod_10("[DATETO]", request.DateTo.Value.ToString("MM/dd/yyyy"), "[/DATETO]"));
+												streamWriter.WriteLine("[DATETO]" + request.DateTo.Value.ToString("MM/dd/yyyy") + "[/DATETO]");
 											}
-											MainViewModel._c_.smethod_11(streamWriter, MainViewModel._c_.smethod_12());
+											streamWriter.WriteLine("---");
 										}
 									}
 									finally
 									{
 										if (enumerator != null)
 										{
-											MainViewModel._c_.smethod_14(enumerator);
+											enumerator.Dispose();
 										}
 									}
 								}
@@ -1230,7 +1231,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 								{
 									if (streamWriter != null)
 									{
-										MainViewModel._c_.smethod_14(streamWriter);
+										streamWriter.Dispose();
 									}
 								}
 							}
@@ -1253,9 +1254,9 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 					result = (this._manageRequestGroupsCommand = new RelayCommand(delegate(object obj)
 					{
 						SearchGroups frameworkElement_ = SingleOpenHelper.CreateControl<SearchGroups>();
-						PopupWindow popupWindow = MainViewModel._c_.smethod_15();
-						MainViewModel._c_.smethod_16(popupWindow, frameworkElement_);
-						MainViewModel._c_.smethod_17(popupWindow, popupWindow, false);
+						PopupWindow popupWindow = new PopupWindow();
+						popupWindow.PopupElement = frameworkElement_;
+						popupWindow.Show(popupWindow, false);
 					}, null));
 				}
 				return result;
@@ -1345,14 +1346,14 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 				{
 					result = (this._openResultsFolderCommand = new RelayCommand(delegate(object obj)
 					{
-						if (!MainViewModel._c_.smethod_1(FileManager.ResultsPath))
+						if (!string.IsNullOrEmpty(FileManager.ResultsPath))
 						{
-							DirectoryInfo fileSystemInfo_ = MainViewModel._c_.smethod_18(FileManager.ResultsPath);
-							MainViewModel._c_.smethod_20("explorer.exe", MainViewModel._c_.smethod_19(fileSystemInfo_));
+							DirectoryInfo fileSystemInfo_ = new DirectoryInfo(FileManager.ResultsPath);
+							Process.Start("explorer.exe", fileSystemInfo_.FullName);
 							return;
 						}
-						DirectoryInfo fileSystemInfo_2 = MainViewModel._c_.smethod_18("Results");
-						MainViewModel._c_.smethod_20("explorer.exe", MainViewModel._c_.smethod_19(fileSystemInfo_2));
+						DirectoryInfo fileSystemInfo_2 = new DirectoryInfo("Results");
+						Process.Start("explorer.exe", fileSystemInfo_2.FullName);
 					}, null));
 				}
 				return result;
@@ -1372,11 +1373,11 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 					{
 						if (this.Language == "Russian")
 						{
-							App.Language = App.Languages.First((CultureInfo lang) => MainViewModel._c_.smethod_2(MainViewModel._c_.smethod_21(lang), "en-US"));
+							App.Language = App.Languages.First((CultureInfo lang) => lang.Name == "en-US");
 						}
 						else
 						{
-							App.Language = App.Languages.First((CultureInfo lang) => MainViewModel._c_.smethod_2(MainViewModel._c_.smethod_21(lang), "ru-RU"));
+							App.Language = App.Languages.First((CultureInfo lang) => lang.Name == "ru-RU");
 						}
 						Registry.SaveLanguage();
 						base.OnPropertyChanged(nameof(Language));
@@ -1421,7 +1422,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 				{
 					result = (this._showStatisticDetailsCommand = new RelayCommand(delegate(object obj)
 					{
-						PagesManager.Instance.OpenCachedPage(MainViewModel._c_.smethod_0(typeof(StatisticsDetailsPage).TypeHandle), FrameType.MainOverlay);
+						PagesManager.Instance.OpenCachedPage(typeof(StatisticsDetailsPage), FrameType.MainOverlay);
 					}, null));
 				}
 				return result;
@@ -1458,7 +1459,7 @@ namespace Hackus_Mail_Checker_Reforged.UI.ViewModels
 					{
 						try
 						{
-							MainViewModel._c_.smethod_22("https://t.me/HackusOfficial");
+							Process.Start("https://t.me/HackusOfficial");
 						}
 						catch
 						{

@@ -239,7 +239,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 				return value;
 			}
 			value = StringExtensions.rxTimeZoneName.Replace(value, string.Empty);
-			value = StringExtensions.rxTimeZoneColon.Replace(value, (Match match) => StringExtensions._c_.smethod_4(" ", StringExtensions._c_.smethod_2(StringExtensions._c_.smethod_1(StringExtensions._c_.smethod_0(match), 1)), StringExtensions._c_.smethod_3(StringExtensions._c_.smethod_2(StringExtensions._c_.smethod_1(StringExtensions._c_.smethod_0(match), 2)), 2, '0'), StringExtensions._c_.smethod_2(StringExtensions._c_.smethod_1(StringExtensions._c_.smethod_0(match), 3))));
+			value = StringExtensions.rxTimeZoneColon.Replace(value, (Match match) => " " + match.Groups[1].Value + match.Groups[2].Value.PadLeft(2, '0') + match.Groups[3].Value);
 			value = StringExtensions.rxNegativeHours.Replace(value, string.Empty);
 			Match match2 = StringExtensions.rxTimeZoneMinutes.Match(value);
 			try

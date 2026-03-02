@@ -678,7 +678,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Web
 				while (enumerator.MoveNext())
 				{
 					Request request = enumerator.Current;
-					Request request3 = checkedRequests.FirstOrDefault((Request r) => AolClient._c__DisplayClass23_0.smethod_0(r.Sender, request.Sender) && AolClient._c__DisplayClass23_0.smethod_0(r.Body, request.Body) && AolClient._c__DisplayClass23_0.smethod_0(r.Subject, request.Subject));
+					Request request3 = checkedRequests.FirstOrDefault((Request r) => r.Sender == request.Sender && r.Body == request.Body && r.Subject == request.Subject);
 					if (request3 == null)
 					{
 						request3 = request.Clone();

@@ -58,7 +58,7 @@ namespace Hackus_Mail_Checker_Reforged
 					resourceDictionary.Source = new Uri("Resources/Languages/RussianLanguage.xaml", UriKind.Relative);
 				}
 				ResourceDictionary resourceDictionary2 = (from d in Application.Current.Resources.MergedDictionaries
-				where App._c_.smethod_1(App._c_.smethod_0(d), null) && App._c_.smethod_3(App._c_.smethod_2(App._c_.smethod_0(d)), "Resources/Languages/")
+				where d.Source != null && d.Source.OriginalString.StartsWith("Resources/Languages/")
 				select d).First<ResourceDictionary>();
 				if (resourceDictionary2 != null)
 				{
@@ -101,7 +101,7 @@ namespace Hackus_Mail_Checker_Reforged
 					ThemeManager.Current.ApplicationTheme = new ApplicationTheme?(ApplicationTheme.Light);
 				}
 				ResourceDictionary resourceDictionary2 = (from d in Application.Current.Resources.MergedDictionaries
-				where App._c_.smethod_1(App._c_.smethod_0(d), null) && App._c_.smethod_3(App._c_.smethod_2(App._c_.smethod_0(d)), "Resources/Themes/")
+				where d.Source != null && d.Source.OriginalString.StartsWith("Resources/Themes/")
 				select d).First<ResourceDictionary>();
 				if (resourceDictionary2 == null)
 				{

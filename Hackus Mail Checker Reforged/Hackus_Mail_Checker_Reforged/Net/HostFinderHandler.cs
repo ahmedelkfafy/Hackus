@@ -26,7 +26,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 					Func<HostFinderContext, bool> predicate;
 					if ((predicate = _9__0) == null)
 					{
-						predicate = (_9__0 = ((HostFinderContext c) => HostFinderHandler._c__DisplayClass4_0.smethod_0(c.Domain, domain)));
+						predicate = (_9__0 = ((HostFinderContext c) => c.Domain == domain));
 					}
 					hostFinderContext = contexts.FirstOrDefault(predicate);
 					if (hostFinderContext == null)

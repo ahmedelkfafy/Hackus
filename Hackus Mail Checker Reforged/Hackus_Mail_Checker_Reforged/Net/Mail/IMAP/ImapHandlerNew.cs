@@ -324,7 +324,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 								{
 									try
 									{
-										Request request2 = checkedRequests.FirstOrDefault((Request r) => ImapHandlerNew._c__DisplayClass15_2.smethod_0(r.Sender, request.Sender) && ImapHandlerNew._c__DisplayClass15_2.smethod_0(r.Body, request.Body) && ImapHandlerNew._c__DisplayClass15_2.smethod_0(r.Subject, request.Subject));
+										Request request2 = checkedRequests.FirstOrDefault((Request r) => r.Sender == request.Sender && r.Body == request.Body && r.Subject == request.Subject);
 										if (request2 != null)
 										{
 											if (!request2.IsChecked)
@@ -333,7 +333,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 												Func<string, bool> predicate;
 												if ((predicate = _9__1) == null)
 												{
-													predicate = (_9__1 = ((string u) => ImapHandlerNew._c__DisplayClass15_1.smethod_0(u, allFolders[i].Name)));
+													predicate = (_9__1 = ((string u) => u == allFolders[i].Name));
 												}
 												if (!checkedFolders.Any(predicate) && (request2.SavedUids == null || request2.SavedUids.Count < this.SearchSettings.DownloadLettersLimit))
 												{
@@ -353,7 +353,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 										Func<Uid, bool> predicate2;
 										if ((predicate2 = _9__2) == null)
 										{
-											predicate2 = (_9__2 = ((Uid u) => ImapHandlerNew._c__DisplayClass15_1.smethod_0(u.Folder.Name, allFolders[i].Name)));
+											predicate2 = (_9__2 = ((Uid u) => u.Folder.Name == allFolders[i].Name));
 										}
 										Uid[] array;
 										if (!findedUids.Any(predicate2))
@@ -366,7 +366,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.IMAP
 											Func<Uid, bool> predicate3;
 											if ((predicate3 = _9__3) == null)
 											{
-												predicate3 = (_9__3 = ((Uid u) => ImapHandlerNew._c__DisplayClass15_1.smethod_0(u.Folder.Name, allFolders[i].Name)));
+												predicate3 = (_9__3 = ((Uid u) => u.Folder.Name == allFolders[i].Name));
 											}
 											array = findedUids2.Where(predicate3).ToArray<Uid>();
 										}

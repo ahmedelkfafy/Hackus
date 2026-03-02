@@ -180,19 +180,18 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 									{
 										try
 										{
-											StreamHelper._c__DisplayClass6_0.smethod_1(StreamHelper._c__DisplayClass6_0.smethod_0(innerAr));
-											rData = StreamHelper._c__DisplayClass6_0.smethod_2(stream, innerAr);
+											rData = stream.EndRead(innerAr);
 										}
 										catch (Exception ex)
 										{
 											if (ex is NullReferenceException || ex is ObjectDisposedException)
 											{
-												innerException = StreamHelper._c__DisplayClass6_0.smethod_3("The stream could not be read.", ex);
+												innerException = new System.IO.IOException("The stream could not be read.", ex);
 												return;
 											}
 											innerException = ex;
 										}
-										StreamHelper._c__DisplayClass6_0.smethod_4(readDoneEvent);
+										readDoneEvent.Set();
 									});
 								}
 								asyncCallback = (callback = asyncCallback2);
@@ -430,19 +429,18 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.Utilities
 									{
 										try
 										{
-											StreamHelper._c__DisplayClass11_0.smethod_1(StreamHelper._c__DisplayClass11_0.smethod_0(innerAr));
-											rData = StreamHelper._c__DisplayClass11_0.smethod_2(stream, innerAr);
+											rData = stream.EndRead(innerAr);
 										}
 										catch (Exception ex)
 										{
 											if (ex is NullReferenceException || ex is ObjectDisposedException)
 											{
-												innerException = StreamHelper._c__DisplayClass11_0.smethod_3("The stream could not be read.");
+												innerException = new System.IO.IOException("The stream could not be read.");
 												return;
 											}
 											innerException = ex;
 										}
-										StreamHelper._c__DisplayClass11_0.smethod_4(readDoneEvent);
+										readDoneEvent.Set();
 									});
 								}
 								asyncCallback = (callback = asyncCallback2);

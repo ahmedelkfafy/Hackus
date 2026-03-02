@@ -154,7 +154,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail
 			{
 				' '
 			})
-			where !Imap._c_.smethod_0(x)
+			where !string.IsNullOrEmpty(x)
 			select x).ToArray<string>();
 		}
 

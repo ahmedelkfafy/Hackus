@@ -704,7 +704,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				while (enumerator.MoveNext())
 				{
 					Request request = enumerator.Current;
-					Request request3 = checkedRequests.FirstOrDefault((Request r) => YandexClientNew._c__DisplayClass20_0.smethod_0(r.Sender, request.Sender) && YandexClientNew._c__DisplayClass20_0.smethod_0(r.Body, request.Body) && YandexClientNew._c__DisplayClass20_0.smethod_0(r.Subject, request.Subject));
+					Request request3 = checkedRequests.FirstOrDefault((Request r) => r.Sender == request.Sender && r.Body == request.Body && r.Subject == request.Subject);
 					if (request3 != null)
 					{
 						if (request3.IsChecked)

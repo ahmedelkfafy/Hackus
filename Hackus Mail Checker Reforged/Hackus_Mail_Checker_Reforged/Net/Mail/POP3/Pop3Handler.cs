@@ -261,7 +261,7 @@ namespace Hackus_Mail_Checker_Reforged.Net.Mail.POP3
 									{
 										continue;
 									}
-									Request request2 = checkedRequests.FirstOrDefault((Request r) => Pop3Handler._c__DisplayClass10_1.smethod_0(r.Sender, request.Sender) && Pop3Handler._c__DisplayClass10_1.smethod_0(r.Body, request.Body) && Pop3Handler._c__DisplayClass10_1.smethod_0(r.Subject, request.Subject));
+									Request request2 = checkedRequests.FirstOrDefault((Request r) => r.Sender == request.Sender && r.Body == request.Body && r.Subject == request.Subject);
 									if (request2 == null)
 									{
 										request2 = request.Clone();

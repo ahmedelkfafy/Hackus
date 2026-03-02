@@ -286,7 +286,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 				'.'
 			});
 			array = (from p in array
-			where HostFinderContext._c_.smethod_0(p) > 1
+			where p.Length > 1
 			select p).ToArray<string>();
 			int num = array.Length;
 			if (num >= 2)
@@ -319,7 +319,7 @@ namespace Hackus_Mail_Checker_Reforged.Net
 		// Token: 0x06000503 RID: 1283 RVA: 0x0001C214 File Offset: 0x0001A414
 		private Server FindCoincidence(string mx)
 		{
-			KeyValuePair<string, string> keyValuePair = HostFinderContext._recordCoincidences.FirstOrDefault((KeyValuePair<string, string> r) => HostFinderContext._c__DisplayClass21_0.smethod_0(mx, r.Key));
+			KeyValuePair<string, string> keyValuePair = HostFinderContext._recordCoincidences.FirstOrDefault((KeyValuePair<string, string> r) => mx.Contains(r.Key));
 			if (keyValuePair.Key == null)
 			{
 				return null;

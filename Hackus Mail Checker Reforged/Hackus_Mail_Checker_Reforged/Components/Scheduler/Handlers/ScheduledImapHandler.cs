@@ -194,7 +194,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 							Scheduler.Instance.AddNotification(new Notification
 							{
 								Address = this._mailbox.Address,
-								Message = ScheduledImapHandler._c__DisplayClass12_0.smethod_0("New messages ({0}, {1}) were found on the account", finded, request),
+								Message = string.Format("New messages ({0}, {1}) were found on the account", finded, request),
 								Time = DateTime.Now
 							});
 						});
@@ -242,7 +242,7 @@ namespace Hackus_Mail_Checker_Reforged.Components.Scheduler.Handlers
 						{
 							try
 							{
-								Request request2 = checkedRequests.FirstOrDefault((Request r) => ScheduledImapHandler._c__DisplayClass13_0.smethod_0(r.Sender, request.Sender) && ScheduledImapHandler._c__DisplayClass13_0.smethod_0(r.Body, request.Body) && ScheduledImapHandler._c__DisplayClass13_0.smethod_0(r.Subject, request.Subject));
+								Request request2 = checkedRequests.FirstOrDefault((Request r) => r.Sender == request.Sender && r.Body == request.Body && r.Subject == request.Subject);
 								if (request2 == null)
 								{
 									request2 = request.Clone();

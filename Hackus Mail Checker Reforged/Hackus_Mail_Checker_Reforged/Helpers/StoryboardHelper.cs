@@ -41,9 +41,9 @@ namespace Hackus_Mail_Checker_Reforged.Helpers
 				sb.Completed += delegate(object sender, EventArgs e)
 				{
 					ICommand completedCommand = StoryboardHelper.GetCompletedCommand(sb);
-					if (completedCommand != null && StoryboardHelper._c__DisplayClass6_0.smethod_0(completedCommand, StoryboardHelper.GetCompletedCommandParameter(sb)))
+					if (completedCommand != null && completedCommand.CanExecute(StoryboardHelper.GetCompletedCommandParameter(sb)))
 					{
-						StoryboardHelper._c__DisplayClass6_0.smethod_1(completedCommand, StoryboardHelper.GetCompletedCommandParameter(sb));
+						completedCommand.Execute(StoryboardHelper.GetCompletedCommandParameter(sb));
 					}
 				};
 			}
